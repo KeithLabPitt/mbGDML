@@ -1,0 +1,1002 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mbgdml package &mdash; mbGDML  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mbgdml.analysis package" href="mbgdml.analysis.html" />
+    <link rel="prev" title="mbgdml" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> mbGDML
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">mbgdml package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mbgdml.analysis.html">mbgdml.analysis package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mbgdml.data.html">mbgdml.data package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-mbgdml.calculate">mbgdml.calculate module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-mbgdml.cli">mbgdml.cli module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-mbgdml.parse">mbgdml.parse module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-mbgdml.partition">mbgdml.partition module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-mbgdml.predict">mbgdml.predict module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-mbgdml.solvents">mbgdml.solvents module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-mbgdml.train">mbgdml.train module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-mbgdml.utils">mbgdml.utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-mbgdml">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">mbGDML</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">mbgdml</a> &raquo;</li>
+        
+      <li>mbgdml package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/doc/mbgdml.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mbgdml-package">
+<h1>mbgdml package<a class="headerlink" href="#mbgdml-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mbgdml.analysis.html">mbgdml.analysis package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mbgdml.analysis.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mbgdml.analysis.html#mbgdml-analysis-nbody-module">mbgdml.analysis.nbody module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mbgdml.analysis.html#mbgdml-analysis-similarity-module">mbgdml.analysis.similarity module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mbgdml.analysis.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mbgdml.data.html">mbgdml.data package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mbgdml.data.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mbgdml.data.html#module-mbgdml.data.basedata">mbgdml.data.basedata module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mbgdml.data.html#module-mbgdml.data.calculation">mbgdml.data.calculation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mbgdml.data.html#module-mbgdml.data.dataset">mbgdml.data.dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mbgdml.data.html#module-mbgdml.data.generate">mbgdml.data.generate module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mbgdml.data.html#module-mbgdml.data.model">mbgdml.data.model module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mbgdml.data.html#module-mbgdml.data.predictset">mbgdml.data.predictset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mbgdml.data.html#module-mbgdml.data.structure">mbgdml.data.structure module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mbgdml.data.html#module-mbgdml.data">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mbgdml.calculate">
+<span id="mbgdml-calculate-module"></span><h2>mbgdml.calculate module<a class="headerlink" href="#module-mbgdml.calculate" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mbgdml.calculate.CalcTemplate">
+<em class="property">class </em><code class="descclassname">mbgdml.calculate.</code><code class="descname">CalcTemplate</code><a class="headerlink" href="#mbgdml.calculate.CalcTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Contains all quantum chemistry calculations templates for mako.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mbgdml.calculate.ORCA">
+<em class="property">class </em><code class="descclassname">mbgdml.calculate.</code><code class="descname">ORCA</code><a class="headerlink" href="#mbgdml.calculate.ORCA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Prepares, writes, and submits ORCA 4.2.0 calculations.</p>
+<dl class="method">
+<dt id="mbgdml.calculate.ORCA.input_corrections">
+<code class="descname">input_corrections</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.ORCA.input_corrections" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.calculate.ORCA.write_input">
+<code class="descname">write_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.ORCA.write_input" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.calculate.ORCA.write_submit">
+<code class="descname">write_submit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.ORCA.write_submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mbgdml.calculate.mbGDMLCalculator">
+<em class="property">class </em><code class="descclassname">mbgdml.calculate.</code><code class="descname">mbGDMLCalculator</code><span class="sig-paren">(</span><em>elements</em>, <em>model_paths</em>, <em>e_unit_model='kcal/mol'</em>, <em>r_unit_model='Angstrom'</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLCalculator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ase.calculators.calculator.Calculator</span></code></p>
+<p>Initializes mbGDML calculator with models and units.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first docutils">
+<dt>model_paths (list): Paths of all models to be used for GDML</dt>
+<dd>prediction.</dd>
+<dt>e_unit_model (str, optional): Specifies the units of energy</dt>
+<dd>prediction for the GDML models. Defaults to ‘kcal/mol’.</dd>
+</dl>
+<p class="last">r_unit_model (str, optional): [description]. Defaults to ‘Angstrom’.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="mbgdml.calculate.mbGDMLCalculator.calculate">
+<code class="descname">calculate</code><span class="sig-paren">(</span><em>atoms=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLCalculator.calculate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do the calculation.</p>
+<dl class="docutils">
+<dt>properties: list of str</dt>
+<dd>List of what needs to be calculated.  Can be any combination
+of ‘energy’, ‘forces’, ‘stress’, ‘dipole’, ‘charges’, ‘magmom’
+and ‘magmoms’.</dd>
+<dt>system_changes: list of str</dt>
+<dd>List of what has changed since last calculation.  Can be
+any combination of these six: ‘positions’, ‘numbers’, ‘cell’,
+‘pbc’, ‘initial_charges’ and ‘initial_magmoms’.</dd>
+</dl>
+<p>Subclasses need to implement this, but can ignore properties
+and system_changes if they want.  Calculated properties should
+be inserted into results dictionary like shown in this dummy
+example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;energy&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s1">&#39;forces&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">atoms</span><span class="p">),</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="s1">&#39;stress&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>
+                <span class="s1">&#39;dipole&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+                <span class="s1">&#39;charges&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">atoms</span><span class="p">)),</span>
+                <span class="s1">&#39;magmom&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s1">&#39;magmoms&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">atoms</span><span class="p">))}</span>
+</pre></div>
+</div>
+<p>The subclass implementation should first call this
+implementation to set the atoms attribute and create any missing
+directories.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.calculate.mbGDMLCalculator.implemented_properties">
+<code class="descname">implemented_properties</code><em class="property"> = ['energy', 'forces']</em><a class="headerlink" href="#mbgdml.calculate.mbGDMLCalculator.implemented_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.calculate.mbGDMLCalculator.load_models">
+<code class="descname">load_models</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLCalculator.load_models" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads models for GDML prediction.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>model_paths (list): List containing paths of all GDML models to be</dt>
+<dd>loaded. All of these models will be used during the MD run.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mbgdml.calculate.mbGDMLMD">
+<em class="property">class </em><code class="descclassname">mbgdml.calculate.</code><code class="descname">mbGDMLMD</code><span class="sig-paren">(</span><em>structure_name</em>, <em>structure_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mbgdml.data.html#mbgdml.data.basedata.mbGDMLData" title="mbgdml.data.basedata.mbGDMLData"><code class="xref py py-class docutils literal notranslate"><span class="pre">mbgdml.data.basedata.mbGDMLData</span></code></a></p>
+<dl class="method">
+<dt id="mbgdml.calculate.mbGDMLMD.load_calculator">
+<code class="descname">load_calculator</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD.load_calculator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads the many-body GDML ASE calculator.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>model_paths (list): Paths to all many-body GDML models to be used.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.calculate.mbGDMLMD.printenergy">
+<code class="descname">printenergy</code><span class="sig-paren">(</span><em>a</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD.printenergy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Quick function to print MD information during simulation.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>a (atoms): Atoms object from ASE.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.calculate.mbGDMLMD.relax">
+<code class="descname">relax</code><span class="sig-paren">(</span><em>max_force=0.0001</em>, <em>steps=100</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD.relax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Short relaxation of structure.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>max_force (float, optional): Maximum force. Defaults to 1e-4.
+steps (int, optional): Maximum allowable steps. Defaults to 100.</dd>
+<dt>Raises:</dt>
+<dd>AttributeError: Requires a calculator to be loaded first.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.calculate.mbGDMLMD.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>steps</em>, <em>t_step</em>, <em>temp</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs a MD simulation using the Verlet algorithm in ASE.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">steps (int): Number of steps for the MD simulation.
+t_step (float): Time step in femtoseconds.
+temp (float): Temperature in Kelvin used for initializing</p>
+<blockquote class="last">
+<div>velocities.</div></blockquote>
+</dd>
+<dt>Raises:</dt>
+<dd>AttributeError: Requires a calculator to be loaded first.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mbgdml.calculate.partition_engrad">
+<code class="descclassname">mbgdml.calculate.</code><code class="descname">partition_engrad</code><span class="sig-paren">(</span><em>package</em>, <em>partition_dict</em>, <em>temperature</em>, <em>md_iteration</em>, <em>calc_dir='.'</em>, <em>calc_name='partition-engrad'</em>, <em>theory_level_engrad='MP2'</em>, <em>basis_set_engrad='def2-TZVP'</em>, <em>options_engrad='TightSCF FrozenCore'</em>, <em>control_blocks_engrad='%scf\n    ConvForced true\nend\n%maxcore 8000\n'</em>, <em>submit=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.partition_engrad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets up a partition ORCA 4.2.0 EnGrad calculation for trajectory.</p>
+<p>Can be submitted or just have the input files prepared.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>package (str): specifies the quantum chemistry program to be used. ORCA</dt>
+<dd>is currently the only package directly supported.</dd>
+<dt>partition_dict (dict): contains all information for the partition</dt>
+<dd>including ‘solvent_label’, ‘partition_size’, ‘atoms’, and ‘coords’.</dd>
+<dt>temperature (int): used for labeling and identifying the thermostat</dt>
+<dd>temperature for the molecular dynamics simulation.</dd>
+<dt>md_iteration (int): used for labeling and identifying the iteration of</dt>
+<dd>the molecular dynamics simulation.</dd>
+<dt>calc_dir (str, optional): Path to write calculation.</dt>
+<dd>Defaults to current directory (‘./’).</dd>
+<dt>calc_name (str, optional): Name for the calculation.</dt>
+<dd>Defaults to ‘partition-engrad’.</dd>
+<dt>theory_level_engrad (str, optional): keword that specifies the</dt>
+<dd>level of theory (e.g., MP2, BP86, B3LYP, etc.) used for calculations.
+Defaults to ‘MP2’ for ORCA 4.2.0.</dd>
+<dt>basis_set_engrad (str, optional): keyword that specifies the basis set</dt>
+<dd>(e.g., def2-SVP, def2-TZVP, etc.). Defaults to ‘def2-TZVP’.</dd>
+<dt>options_engrad (str, optional): all options specifically for the EnGrad</dt>
+<dd>calculation (e.g., SCF convergence criteria, algorithms, etc.)
+Defaults to ‘TightSCF FrozenCore’.</dd>
+<dt>control_blocks_engrad (str, optional): all options that control the</dt>
+<dd>calculation. Defaults to ‘%scf    ConvForced true end’.</dd>
+<dt>submit (bool, optional): controls whether the calculation is submitted.</dt>
+<dd>Defaults to False.</dd>
+</dl>
+</dd>
+<dt>Example:</dt>
+<dd><dl class="first docutils">
+<dt>calculate.partition_engrad(</dt>
+<dd>‘orca’, ‘/path/to/dir/’,
+partition_dict, temp, iteration</dd>
+</dl>
+<p class="last">)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mbgdml.cli">
+<span id="mbgdml-cli-module"></span><h2>mbgdml.cli module<a class="headerlink" href="#module-mbgdml.cli" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mbgdml.parse">
+<span id="mbgdml-parse-module"></span><h2>mbgdml.parse module<a class="headerlink" href="#module-mbgdml.parse" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mbgdml.parse.cluster_size">
+<code class="descclassname">mbgdml.parse.</code><code class="descname">cluster_size</code><span class="sig-paren">(</span><em>xyz_path</em>, <em>solvent</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.parse.cluster_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines number of solvent molecules in a xyz file.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>xyz_path (str): Path to xyz file of interest.
+solvent (lst): Specifies solvents to determine the number of atoms included in a molecule.</dd>
+<dt>Returns:</dt>
+<dd>int: Number of solvent molecules in specified xyz file.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="mbgdml.parse.parse_cluster">
+<code class="descclassname">mbgdml.parse.</code><code class="descname">parse_cluster</code><span class="sig-paren">(</span><em>cluster_data</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.parse.parse_cluster" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates dictionary of all solvent molecules in solvent cluster from a
+cluster_data dictionary.</p>
+<dl class="docutils">
+<dt>Notes:</dt>
+<dd>Molecules are specified by specified by uppercase letters, and their
+values the xyz coordinates.</dd>
+<dt>Args:</dt>
+<dd>cluster_data (dict): Contains ‘atoms’ that is a list of elements</dd>
+</dl>
+<p>organized by molecule and matches the order of the numpy array
+containing atomic coordinates</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>dict: Contains solvent molecules with keys of uppercase characters</dd>
+</dl>
+<p>with dicts as values containing ‘atoms’ and ‘coords’.</p>
+<dl class="docutils">
+<dt>{</dt>
+<dd><dl class="first last docutils">
+<dt>‘A’:    {</dt>
+<dd><blockquote class="first">
+<div><p>‘atoms’:   array([8, 1, 6, 1, 1, 1], dtype=int32),
+‘coords’:  array([[ 1.45505901, -0.880818  ,  0.851331  ],</p>
+<blockquote>
+<div>[ 0.505216  , -1.15252401,  0.844885  ],
+[ 2.22036801, -1.94217701,  0.2977    ],
+[ 3.25924901, -1.61877101,  0.264909  ],
+[ 1.89693001, -2.18833701, -0.717112  ],
+[ 2.15446301, -2.84056201,  0.915723  ]])</div></blockquote>
+</div></blockquote>
+<p class="last">},</p>
+</dd>
+<dt>‘B’:    {</dt>
+<dd><blockquote class="first">
+<div><p>‘atoms’:   array([8, 1, 6, 1, 1, 1], dtype=int32),
+‘coords’:  array([[ 1.14600801,  1.44243601, -0.473102  ],</p>
+<blockquote>
+<div>[ 1.38561801,  0.614295  ,  0.00943   ],
+[ 1.47489701,  2.54700101,  0.357836  ],
+[ 1.16626501,  3.45362102, -0.159587  ],
+[ 2.55100901,  2.59826701,  0.538796  ],
+[ 0.957941  ,  2.49831901,  1.31983201]])</div></blockquote>
+</div></blockquote>
+<p class="last">}</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>}</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mbgdml.parse.parse_coords">
+<code class="descclassname">mbgdml.parse.</code><code class="descname">parse_coords</code><span class="sig-paren">(</span><em>fileName</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.parse.parse_coords" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mbgdml.parse.parse_gdml_data">
+<code class="descclassname">mbgdml.parse.</code><code class="descname">parse_gdml_data</code><span class="sig-paren">(</span><em>out_file</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.parse.parse_gdml_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses GDML-relevant data from partition output file.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>out_file (str): path to computational chemistry output file. This should</dt>
+<dd>contain all MD steps for the partition.</dd>
+</dl>
+</dd>
+<dt>Returns:</dt>
+<dd><dl class="first last docutils">
+<dt>dict: contains all information needed to build GDML data sets.</dt>
+<dd><dl class="first last docutils">
+<dt>‘atoms’ is a (n) numpy array containing the atomic numbers of the</dt>
+<dd>atoms in the partition.</dd>
+<dt>‘coords’ is a (m, n, 3) numpy array containing the m MD step</dt>
+<dd>coordinates of the n atoms in the partition.</dd>
+<dt>‘grads’ is a (m, n, 3) numpy array containing the gradients of the</dt>
+<dd>m MD steps containing the n atoms in the partition.</dd>
+<dt>‘energies’ is a (m, 1) numpy array containing the electronic </dt>
+<dd>energies of each m MD steps for the partition.</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="mbgdml.parse.parse_stringfile">
+<code class="descclassname">mbgdml.parse.</code><code class="descname">parse_stringfile</code><span class="sig-paren">(</span><em>stringfile_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.parse.parse_stringfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses xyz stringfile into <a href="#id1"><span class="problematic" id="id2">**</span></a><a href="#id3"><span class="problematic" id="id4">*</span></a></p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>stringfile_path (str):  Specifies path to stringfile.</dd>
+<dt>Returns:</dt>
+<dd><a href="#id5"><span class="problematic" id="id6">**</span></a><a href="#id7"><span class="problematic" id="id8">*</span></a></dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="mbgdml.parse.struct_dict">
+<code class="descclassname">mbgdml.parse.</code><code class="descname">struct_dict</code><span class="sig-paren">(</span><em>origin</em>, <em>struct_list</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.parse.struct_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mbgdml.partition">
+<span id="mbgdml-partition-module"></span><h2>mbgdml.partition module<a class="headerlink" href="#module-mbgdml.partition" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mbgdml.partition.partition_cluster">
+<code class="descclassname">mbgdml.partition.</code><code class="descname">partition_cluster</code><span class="sig-paren">(</span><em>cluster</em>, <em>nbody</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.partition.partition_cluster" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates dictionary with all possible n-body combinations of solvent
+cluster.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first docutils">
+<dt>cluster (dict): Dictionary of solvent molecules in cluster from</dt>
+<dd>parse_cluster</dd>
+</dl>
+<p class="last">nbody (int):    Desired number of solvent molecules in combination.</p>
+</dd>
+<dt>Returns:</dt>
+<dd><dl class="first docutils">
+<dt>dict:   All nonrepeating solvent molecule combinations from cluster with</dt>
+<dd>keys being uppercase concatenations of molecule labels and
+values being the string of coordinates.</dd>
+</dl>
+<p class="last">ABC is considered the same as BAC and only included once.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="mbgdml.partition.partition_trajectory">
+<code class="descclassname">mbgdml.partition.</code><code class="descname">partition_trajectory</code><span class="sig-paren">(</span><em>traj_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.partition.partition_trajectory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Partitions MD trajectory into separate trajectories for each possible
+segment.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>traj_path (str): Path to trajectory with xyz coordinates.</dd>
+<dt>Returns:</dt>
+<dd><dl class="first last docutils">
+<dt>dict: All nonrepeating solvent molecule combinations from cluster with</dt>
+<dd>keys being uppercase concatenations of molecule labels and
+values being the string of coordinates.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mbgdml.predict">
+<span id="mbgdml-predict-module"></span><h2>mbgdml.predict module<a class="headerlink" href="#module-mbgdml.predict" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mbgdml.predict.mbGDMLPredict">
+<em class="property">class </em><code class="descclassname">mbgdml.predict.</code><code class="descname">mbGDMLPredict</code><span class="sig-paren">(</span><em>models</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.predict.mbGDMLPredict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="mbgdml.predict.mbGDMLPredict.decomposed_predict">
+<code class="descname">decomposed_predict</code><span class="sig-paren">(</span><em>z</em>, <em>R</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.predict.mbGDMLPredict.decomposed_predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes predicted total energy and atomic forces decomposed by
+many body order.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">z (list): Atomic numbers of all atoms in the system.
+R (np.ndarray): Cartesian coordinates of all atoms of the structure</p>
+<blockquote class="last">
+<div>specified in the same order as z. The array should have shape
+(n, 3) where n is the number of atoms.</div></blockquote>
+</dd>
+<dt>Returns:</dt>
+<dd><dl class="first last docutils">
+<dt>tuple: Dictionaries of many-body contributions of total energies</dt>
+<dd>(float) and forces (np.ndarray) of the structure. Note that
+forces has the same shape as R. Each key of the dictionary is
+the order of the many-body model. Within this dictionary is a
+total, ‘T’, and molecule combinations identified in the system
+and their contributions.</dd>
+</dl>
+</dd>
+</dl>
+<p>Examples:
+&gt;&gt;&gt; atoms = [8, 1, 1, 8, 1, 1]
+&gt;&gt;&gt; coords = array([[ 1.530147,  1.121901,  0.396232],</p>
+<blockquote>
+<div>[ 2.350485,  1.1297  , -0.085235],
+[ 0.823842,  1.311077, -0.2846  ],
+[-1.464849, -1.155867, -0.449863],
+[-1.41447 , -1.99605 , -0.917981],
+[-0.868584, -1.275659,  0.32329 ]])</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">E_predicted</span><span class="p">,</span> <span class="n">F_predicted</span> <span class="o">=</span> <span class="n">decomposed_predict</span><span class="p">(</span><span class="n">atoms</span><span class="p">,</span> <span class="n">coords</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">E_predicted</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span>  <span class="c1"># Units here are kcal/mol</span>
+<span class="go">-95775.24328734782</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">F_predicted</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span>  <span class="c1"># Units here are kcal/(mol A)</span>
+<span class="go">array([[-4.06668790e+01,  5.97564871e+00, -1.63273803e+01],</span>
+<span class="go">       [ 1.10787347e+01,  6.38884805e-01, -9.01790818e+00],</span>
+<span class="go">       [ 2.82554119e+01, -8.11473944e+00,  2.53684238e+01],</span>
+<span class="go">       [ 1.45845554e+01, -2.53514310e+00,  1.76065017e+01],</span>
+<span class="go">       [-3.53967582e-02,  2.91676403e-01,  2.61011071e-01],</span>
+<span class="go">       [-1.32164262e+01,  3.74366076e+00, -1.78906481e+01]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.predict.mbGDMLPredict.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>z</em>, <em>R</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.predict.mbGDMLPredict.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predicts total energy and atomic forces using many-body GDML models.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">z (list): Atomic numbers of all atoms in the system.
+R (np.ndarray): Cartesian coordinates of all atoms of the structure</p>
+<blockquote class="last">
+<div>specified in the same order as z. The array should have shape
+(n, 3) where n is the number of atoms.</div></blockquote>
+</dd>
+<dt>Returns:</dt>
+<dd><dl class="first last docutils">
+<dt>tuple: Total energy of the system (float) and atomic forces</dt>
+<dd>(np.ndarray) in the units specified by the GDML models.
+Note that the forces have the same shape as R.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.predict.mbGDMLPredict.remove_nbody">
+<code class="descname">remove_nbody</code><span class="sig-paren">(</span><em>dataset</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.predict.mbGDMLPredict.remove_nbody" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates GDML dataset with GDML predicted n-body predictions
+removed.</p>
+<p>To employ the many body expansion, we need GDML models that predict
+n-body corrections/contributions. This provides the appropriate dataset
+for training an (n+1)-body mbGDML model.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>base_vars (dict): GDML dataset converted to a dict containing n-body</dt>
+<dd>contributions to be removed.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mbgdml.solvents">
+<span id="mbgdml-solvents-module"></span><h2>mbgdml.solvents module<a class="headerlink" href="#module-mbgdml.solvents" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mbgdml.solvents.solvent">
+<em class="property">class </em><code class="descclassname">mbgdml.solvents.</code><code class="descname">solvent</code><span class="sig-paren">(</span><em>atom_list</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.solvents.solvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Identifies and describes the solvent for MB-GDML.</p>
+<p>Represents the solvent that makes up the cluster MB-GDML is being trained
+from.</p>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd><dl class="first docutils">
+<dt>system (str): Designates what kind of system this is. Currently only</dt>
+<dd>‘solvent’ systems.</dd>
+</dl>
+<p class="last">solvent_name (str): Name of the solvent.
+solvent_label (str): A label for the solvent for filenaming purposes.
+solvent_molec_size (int): Total number of atoms in one solvent molecule.
+cluster_size (int): Total number of solvent molecules in cluster.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="mbgdml.solvents.solvent.atom_numbers">
+<code class="descname">atom_numbers</code><span class="sig-paren">(</span><em>chem_formula</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.solvents.solvent.atom_numbers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides a dictionary of atoms and their quantity from chemical
+formula.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>chem_formula (str): the chemical formula of a single solvent</dt>
+<dd>molecule. For example, ‘CH3OH’ for methanol, ‘H2O’ for water,
+and ‘C2H3N’ for acetonitrile.</dd>
+</dl>
+</dd>
+<dt>Returns:</dt>
+<dd><dl class="first last docutils">
+<dt>dict: contains the atoms as their elemental symbol for keys and</dt>
+<dd>their quantity as values.</dd>
+</dl>
+</dd>
+<dt>Example:</dt>
+<dd>atom_numbers(‘CH3OH’)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.solvents.solvent.identify_solvent">
+<code class="descname">identify_solvent</code><span class="sig-paren">(</span><em>atom_list</em>, <em>all_solvents</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.solvents.solvent.identify_solvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Identifies the solvent from a repeated list of elements.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>atom_list (lst): List of elements as strings. Elements should be</dt>
+<dd>repeated. For example, [‘H’, ‘H’, ‘O’, ‘O’, ‘H’, ‘H’]. Note that
+the order does not matter; only the quantity.</dd>
+<dt>all_solvents (dict): Contains all solvents described in</dt>
+<dd>solvents.json. Keys are the name of the solvent, and the values
+are dicts ‘label’ and ‘formula’ that provide a solvent label
+and chemical formula, respectively.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mbgdml.solvents.system_info">
+<code class="descclassname">mbgdml.solvents.</code><code class="descname">system_info</code><span class="sig-paren">(</span><em>atoms</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.solvents.system_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines information about the system key to mbGDML.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>atoms (list): Atomic numbers of all atoms in the system.</dd>
+<dt>Returns:</dt>
+<dd><dl class="first last docutils">
+<dt>dict: System information useful for mbGDML. Information includes</dt>
+<dd>‘system’ which categorizes the system and provides specific
+information.</dd>
+</dl>
+</dd>
+<dt>Notes:</dt>
+<dd>For a ‘solvent’ system the additional information returned is the
+‘solvent_name’, ‘solvent_label’, ‘solvent_molec_size’, and
+‘cluster_size’.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mbgdml.train">
+<span id="mbgdml-train-module"></span><h2>mbgdml.train module<a class="headerlink" href="#module-mbgdml.train" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mbgdml.train.MBGDMLTrain">
+<em class="property">class </em><code class="descclassname">mbgdml.train.</code><code class="descname">MBGDMLTrain</code><a class="headerlink" href="#mbgdml.train.MBGDMLTrain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="mbgdml.train.MBGDMLTrain.load_dataset">
+<code class="descname">load_dataset</code><span class="sig-paren">(</span><em>dataset_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.train.MBGDMLTrain.load_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a GDML dataset from npz format from specified path.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>dataset_path (str): Path to stored numpy arrays representing a GDML</dt>
+<dd>dataset of a single solvent partition size.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.train.MBGDMLTrain.train_GDML">
+<code class="descname">train_GDML</code><span class="sig-paren">(</span><em>model_dir</em>, <em>num_train</em>, <em>num_validate</em>, <em>num_test</em>, <em>sigma_range='2:10:100'</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.train.MBGDMLTrain.train_GDML" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trains a GDML model through the command line interface.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">model_dir (str): Path to a common directory for GDML models.
+num_train (int): The number of training points to sample.
+num_validate (int): The number of validation points to sample,</p>
+<blockquote>
+<div>without replacement.</div></blockquote>
+<dl class="last docutils">
+<dt>num_test (int): The number of test points to test the validated</dt>
+<dd>GDML model.</dd>
+<dt>sigma_range (str, optional): Range of kernel length scales to train</dt>
+<dd>and validate GDML values one. Format is
+‘&lt;start&gt;:&lt;interval&gt;:&lt;stop&gt;’. Note, the more length scales the
+longer the training time. Two is the minimum value.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mbgdml.utils">
+<span id="mbgdml-utils-module"></span><h2>mbgdml.utils module<a class="headerlink" href="#module-mbgdml.utils" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mbgdml.utils.atoms_by_element">
+<code class="descclassname">mbgdml.utils.</code><code class="descname">atoms_by_element</code><span class="sig-paren">(</span><em>atom_list</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.utils.atoms_by_element" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a list of atoms identified by their atomic number to their
+elemental symbol.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>atom_list (list): Contains numbers that represent atomic numbers.</dd>
+<dt>Returns:</dt>
+<dd>list: Contains strings of elemental symbols matching atom_list.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="mbgdml.utils.convert_forces">
+<code class="descclassname">mbgdml.utils.</code><code class="descname">convert_forces</code><span class="sig-paren">(</span><em>package</em>, <em>forces</em>, <em>e_units</em>, <em>r_units</em>, <em>e_units_calc=None</em>, <em>r_units_calc=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.utils.convert_forces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts forces (or gradients) to specified units.</p>
+<p>cclib automatically converts energy units to eV, but does not convert
+gradients. GDML needs consistent energy and force units, so we convert
+them.</p>
+<blockquote>
+<div>Only supports ‘ORCA’ for automatically determining calc units.
+Otherwise, manually specify <cite>e_units_calc</cite> and <cite>r_units_calc</cite>.</div></blockquote>
+<dl class="docutils">
+<dt>package <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>Computational chemistry package used for computations.</dd>
+<dt>forces <span class="classifier-delimiter">:</span> <span class="classifier">numpy.ndarray</span></dt>
+<dd>An array with units of energy and distance matching <cite>e_units_calc</cite>
+and <cite>r_units_calc</cite>.</dd>
+<dt>e_units <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>Desired units of energy. Available units are ‘eV’, ‘hartree’,
+‘kcal/mol’, and ‘kJ/mol’.</dd>
+<dt>r_units <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>Desired units of distance. Available units implemented in cclib’s
+convertor function are ‘Angstrom’ and ‘bohr’.</dd>
+<dt>e_units_calc <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
+<dd>Specifies package-specific energy units used in calculation.
+Defaults to None.</dd>
+<dt>r_units_calc <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
+<dd>Specifies package-specific distance units used in calculation.
+Defaults to None.</dd>
+</dl>
+<dl class="docutils">
+<dt>ValueError</dt>
+<dd>If the selected energy units are not implemented.</dd>
+<dt>ValueError</dt>
+<dd>If the selected distance units are not implemented.</dd>
+<dt>ValueError</dt>
+<dd>If calculation package is not defined here for known energy and
+distance units.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="mbgdml.utils.get_files">
+<code class="descclassname">mbgdml.utils.</code><code class="descname">get_files</code><span class="sig-paren">(</span><em>path</em>, <em>expression</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.utils.get_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns paths to all files in a given directory that matches a provided
+expression in the file name. Commonly used to find all files of a certain
+type, e.g. output or xyz files.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>path (str): Specifies the directory to search.
+expression (str): Expression to be tested against all file names in
+‘path’.</dd>
+<dt>Returns:</dt>
+<dd>list: all absolute paths to files matching the provided expression.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="mbgdml.utils.make_folder">
+<code class="descclassname">mbgdml.utils.</code><code class="descname">make_folder</code><span class="sig-paren">(</span><em>folder</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.utils.make_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates folder at specified path.
+If the current folder exists, it creates another folder
+with an added number.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>pathFolder (str): Path to desired folder.</dd>
+<dt>Returns:</dt>
+<dd>str: Final path of new folder; ends in ‘/’.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="mbgdml.utils.natsort_list">
+<code class="descclassname">mbgdml.utils.</code><code class="descname">natsort_list</code><span class="sig-paren">(</span><em>unsorted_list</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.utils.natsort_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Basic function that organizes a list based on human (or natural) sorting
+methodology.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>unsorted_list (list): List of strings.</dd>
+<dt>Returns:</dt>
+<dd>list: Sorted list of string.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="mbgdml.utils.norm_path">
+<code class="descclassname">mbgdml.utils.</code><code class="descname">norm_path</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.utils.norm_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalizes directory paths to be consistent.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>path (string): Path to a directory.</dd>
+<dt>Returns:</dt>
+<dd>normd_path: Normalized path.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="mbgdml.utils.string_coords">
+<code class="descclassname">mbgdml.utils.</code><code class="descname">string_coords</code><span class="sig-paren">(</span><em>atoms</em>, <em>coords</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.utils.string_coords" title="Permalink to this definition">¶</a></dt>
+<dd><p>Puts atomic coordinates into a Python string. Typically used for 
+writing to an input file.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>atoms (np.array): A (n, 1) numpy array containing all n elements labled</dt>
+<dd>by their atomic number.</dd>
+<dt>coords (np.array): Contains atomic positions in a (n, 3) numpy array</dt>
+<dd>where the x, y, and z Cartesian coordinates in Angstroms are given
+for the n atoms.</dd>
+</dl>
+</dd>
+<dt>Returns:</dt>
+<dd>str: all atomic coordinates contained in a string.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mbgdml">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mbgdml" title="Permalink to this headline">¶</a></h2>
+<p>Top-level package for mbgdml.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mbgdml.analysis.html" class="btn btn-neutral float-right" title="mbgdml.analysis package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="modules.html" class="btn btn-neutral float-left" title="mbgdml" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Alex M. Maldonado
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
