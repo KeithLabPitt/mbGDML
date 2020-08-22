@@ -191,48 +191,62 @@
 <dt id="mbgdml.data.basedata.mbGDMLData.add_system_info">
 <code class="descname">add_system_info</code><span class="sig-paren">(</span><em>dict_data</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.add_system_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds information about the system to the model.</p>
-<dl class="docutils">
-<dt>dataset <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
-<dd>Custom data structure that contains all information for a
-GDML dataset.</dd>
-</dl>
-<dl class="docutils">
-<dt>dict</dt>
-<dd>An updated GDML dataset with additional information regarding
-the system.</dd>
-</dl>
-<blockquote>
-<div>If the system is a solvent, the ‘solvent’ name and ‘cluster_size’
-is included.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dataset</strong> (<em>dict</em>) – Custom data structure that contains all information for a
+GDML dataset.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An updated GDML dataset with additional information regarding
+the system.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If the system is a solvent, the ‘solvent’ name and ‘cluster_size’
+is included.</p>
+</div>
 </dd></dl>
 
 <dl class="method">
 <dt id="mbgdml.data.basedata.mbGDMLData.get_system_info">
 <code class="descname">get_system_info</code><span class="sig-paren">(</span><em>atoms</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.get_system_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Describes the dataset system.</p>
-<dl class="docutils">
-<dt>atoms <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
-<dd>Atomic numbers of all atoms in the system. The atoms
-are repeated; for example, water is [‘H’, ‘H’, ‘O’].</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>atoms</strong> (<em>list</em>) – Atomic numbers of all atoms in the system. The atoms
+are repeated; for example, water is [‘H’, ‘H’, ‘O’].</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="mbgdml.data.basedata.mbGDMLData.save">
 <code class="descname">save</code><span class="sig-paren">(</span><em>name</em>, <em>data</em>, <em>save_dir</em>, <em>is_dataset</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>General save function for GDML data sets and models.</p>
-<dl class="docutils">
-<dt>name <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>Name of the file to be saved not including the
-extension.</dd>
-<dt>data <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
-<dd>Base variables for dataset or model.</dd>
-<dt>save_dir <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>Directory to save the file.</dd>
-<dt>is_dataset <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
-<dd>Is the file a dataset? Controls whether the md5 of
-the file is saved.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – Name of the file to be saved not including the
+extension.</li>
+<li><strong>data</strong> (<em>dict</em>) – Base variables for dataset or model.</li>
+<li><strong>save_dir</strong> (<em>str</em>) – Directory to save the file.</li>
+<li><strong>is_dataset</strong> (<em>bool</em>) – Is the file a dataset? Controls whether the md5 of
+the file is saved.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -249,93 +263,298 @@ the file is saved.</dd>
 partition from a single MD trajectory. For a single dimer partition of a
 n step MD trajectory would have n coordinates, single point energies,
 and gradients.</p>
-<dl class="docutils">
-<dt>output_path <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>Path to computational chemistry output file that contains energies
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>output_path</strong> (<em>str</em>) – Path to computational chemistry output file that contains energies
 and gradients (preferably ab initio) of all MD steps of a
-single partition.</dd>
-<dt>cluster_label <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>Identifies the cluster where this partition originates from. Specifies
+single partition.</li>
+<li><strong>cluster_label</strong> (<em>str</em>) – Identifies the cluster where this partition originates from. Specifies
 at least the solvent and size of the parent cluster. For example, if
 this partition is the number 23 structure from ABCluster
-for a four water cluster, this could be ‘4H2O.abc23’.</dd>
-<dt>partition_label <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>Specifies the molecules composing this partition. Typically we use a
+for a four water cluster, this could be ‘4H2O.abc23’.</li>
+<li><strong>partition_label</strong> (<em>str</em>) – Specifies the molecules composing this partition. Typically we use a
 single uppercase letter per molecule in the order it appears in the
 xyz coordinates. For example, a partition from a 4H2O cluster with the
-first and third water molecules would be ‘AC’.</dd>
-<dt>md_temp <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
-<dd>The set point for the MD thermostat. This only affects labeling and
+first and third water molecules would be ‘AC’.</li>
+<li><strong>md_temp</strong> (<em>int</em>) – The set point for the MD thermostat. This only affects labeling and
 directory organization as it has a significant impact on geometry
-sampling.</dd>
-<dt>md_iter <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
-<dd>Specifies the MD iteration for labeling and data-tracking purposes.
-Defaults to 0.</dd>
-<dt>e_units <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
-<dd>Desired units of energy. Available units implemented are ‘eV’,
-‘hartree’, ‘kcal/mol’, and ‘kJ/mol’. Defaults to ‘kcal/mol’.</dd>
-<dt>r_units <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
-<dd>Desired units of distance. Available units implemented in cclib’s
-convertor function are ‘Angstrom’ and ‘bohr’.</dd>
-</dl>
-<blockquote>
-<div>Typical GDML units are kcal/mol and kcal/(mol * Angstrom) for energies
-and forces, respectively.</div></blockquote>
-<dl class="docutils">
-<dt>output_path <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>Path to computational chemistry output file that contains energies
+sampling.</li>
+<li><strong>md_iter</strong> (<em>int</em><em>, </em><em>optional</em>) – Specifies the MD iteration for labeling and data-tracking purposes.
+Defaults to 0.</li>
+<li><strong>e_units</strong> (<em>str</em><em>, </em><em>optional</em>) – Desired units of energy. Available units implemented are ‘eV’,
+‘hartree’, ‘kcal/mol’, and ‘kJ/mol’. Defaults to ‘kcal/mol’.</li>
+<li><strong>r_units</strong> (<em>str</em><em>, </em><em>optional</em>) – Desired units of distance. Available units implemented in cclib’s
+convertor function are ‘Angstrom’ and ‘bohr’.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Typical GDML units are kcal/mol and kcal/(mol * Angstrom) for energies
+and forces, respectively.</p>
+</div>
+<dl class="attribute">
+<dt id="mbgdml.data.calculation.PartitionOutput.output_path">
+<code class="descname">output_path</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.output_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path to computational chemistry output file that contains energies
 and gradients (preferably ab initio) of all MD steps of a
-single partition.</dd>
-<dt>cluster_label <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>Identifies the cluster where this partition originates from. Specifies
+single partition.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.calculation.PartitionOutput.cluster_label">
+<code class="descname">cluster_label</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.cluster_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Identifies the cluster where this partition originates from. Specifies
 at least the solvent and size of the parent cluster. For example, if
 this partition is the number 23 structure from ABCluster
-for a four water cluster, this could be ‘4H2O.abc23’.</dd>
-<dt>partition_label <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>Specifies the molecules composing this partition. Typically we use a
+for a four water cluster, this could be ‘4H2O.abc23’.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.calculation.PartitionOutput.partition_label">
+<code class="descname">partition_label</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.partition_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies the molecules composing this partition. Typically we use a
 single uppercase letter per molecule in the order it appears in the
 xyz coordinates. For example, a partition from a 4H2O cluster with the
-first and third water molecules would be ‘AC’.</dd>
-<dt>md_temp <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
-<dd>The set point for the MD thermostat. This only affects labeling and
+first and third water molecules would be ‘AC’.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.calculation.PartitionOutput.md_temp">
+<code class="descname">md_temp</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.md_temp" title="Permalink to this definition">¶</a></dt>
+<dd><p>The set point for the MD thermostat. This only affects labeling and
 directory organization as it has a significant impact on geometry
-sampling.</dd>
-<dt>md_iter <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
-<dd>Specifies the MD iteration for labeling and data-tracking purposes.
-Defaults to 0.</dd>
-<dt>e_units <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
-<dd>Desired units of energy. Available units implemented are ‘eV’,
-‘hartree’, ‘kcal/mol’, and ‘kJ/mol’. Defaults to ‘kcal/mol’.</dd>
-<dt>r_units <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
-<dd>Desired units of distance. Available units implemented in cclib’s
-convertor function are ‘Angstrom’ and ‘bohr’.</dd>
-<dt>output_name <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>The name of the quantum chemistry output file (no extension).</dd>
-<dt>partition_size <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
-<dd>The number of solvent molecules in the partition.</dd>
-<dt>cclib_data <span class="classifier-delimiter">:</span> <span class="classifier">cclib.ccdata</span></dt>
-<dd>Contains all data parsed from output file.</dd>
-<dt>z <span class="classifier-delimiter">:</span> <span class="classifier">numpy.ndarray</span></dt>
-<dd>A (n,) array containing n atomic numbers.</dd>
-<dt>R <span class="classifier-delimiter">:</span> <span class="classifier">numpy.ndarray</span></dt>
-<dd>A (m, n, 3) array containing the atomic coordinates
-of n atoms of m MD steps.</dd>
-<dt>E <span class="classifier-delimiter">:</span> <span class="classifier">numpy.ndarray</span></dt>
-<dd>A (m,) array containing the energies of m structures.</dd>
-<dt>G <span class="classifier-delimiter">:</span> <span class="classifier">numpy.ndarray</span></dt>
-<dd>A (m, n, 3) array containing the atomic gradients of n atoms of m MD
-steps.</dd>
-<dt>F <span class="classifier-delimiter">:</span> <span class="classifier">numpy.ndarray</span></dt>
-<dd>A (m, n, 3) array containing the atomic forces
-of n atoms of m MD steps. Simply the negative of grads.</dd>
-<dt>system <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>From mbgdml.solvents and designates the system. Currently
-only ‘solvent’ is implemented.</dd>
-<dt>solvent_info <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
-<dd>If the system is ‘solvent’, contains information
+sampling.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.calculation.PartitionOutput.md_iter">
+<code class="descname">md_iter</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.md_iter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies the MD iteration for labeling and data-tracking purposes.
+Defaults to 0.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int, optional</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.calculation.PartitionOutput.e_units">
+<code class="descname">e_units</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.e_units" title="Permalink to this definition">¶</a></dt>
+<dd><p>Desired units of energy. Available units implemented are ‘eV’,
+‘hartree’, ‘kcal/mol’, and ‘kJ/mol’. Defaults to ‘kcal/mol’.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str, optional</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.calculation.PartitionOutput.r_units">
+<code class="descname">r_units</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.r_units" title="Permalink to this definition">¶</a></dt>
+<dd><p>Desired units of distance. Available units implemented in cclib’s
+convertor function are ‘Angstrom’ and ‘bohr’.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str, optional</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.calculation.PartitionOutput.output_name">
+<code class="descname">output_name</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.output_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the quantum chemistry output file (no extension).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.calculation.PartitionOutput.partition_size">
+<code class="descname">partition_size</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.partition_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of solvent molecules in the partition.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.calculation.PartitionOutput.cclib_data">
+<code class="descname">cclib_data</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.cclib_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains all data parsed from output file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">cclib.ccdata</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.calculation.PartitionOutput.z">
+<code class="descname">z</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.z" title="Permalink to this definition">¶</a></dt>
+<dd><p>A (n,) array containing n atomic numbers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">numpy.ndarray</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.calculation.PartitionOutput.R">
+<code class="descname">R</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.R" title="Permalink to this definition">¶</a></dt>
+<dd><p>A (m, n, 3) array containing the atomic coordinates
+of n atoms of m MD steps.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">numpy.ndarray</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.calculation.PartitionOutput.E">
+<code class="descname">E</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.E" title="Permalink to this definition">¶</a></dt>
+<dd><p>A (m,) array containing the energies of m structures.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">numpy.ndarray</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.calculation.PartitionOutput.G">
+<code class="descname">G</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.G" title="Permalink to this definition">¶</a></dt>
+<dd><p>A (m, n, 3) array containing the atomic gradients of n atoms of m MD
+steps.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">numpy.ndarray</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.calculation.PartitionOutput.F">
+<code class="descname">F</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.F" title="Permalink to this definition">¶</a></dt>
+<dd><p>A (m, n, 3) array containing the atomic forces
+of n atoms of m MD steps. Simply the negative of grads.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">numpy.ndarray</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.calculation.PartitionOutput.system">
+<code class="descname">system</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.system" title="Permalink to this definition">¶</a></dt>
+<dd><p>From mbgdml.solvents and designates the system. Currently
+only ‘solvent’ is implemented.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.calculation.PartitionOutput.solvent_info">
+<code class="descname">solvent_info</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.solvent_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the system is ‘solvent’, contains information
 about the system and solvent. ‘solvent_name’, ‘solvent_label’,
-‘solvent_molec_size’, and ‘cluster_size’.</dd>
-</dl>
+‘solvent_molec_size’, and ‘cluster_size’.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -346,33 +565,68 @@ about the system and solvent. ‘solvent_name’, ‘solvent_label’,
 <em class="property">class </em><code class="descclassname">mbgdml.data.dataset.</code><code class="descname">mbGDMLDataset</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mbgdml.data.basedata.mbGDMLData" title="mbgdml.data.basedata.mbGDMLData"><code class="xref py py-class docutils literal notranslate"><span class="pre">mbgdml.data.basedata.mbGDMLData</span></code></a></p>
 <p>For creating, loading, manipulating, and using GDML data sets.</p>
-<dl class="docutils">
-<dt>load(dataset_path)</dt>
-<dd>Use numpy.load to read information from data set.</dd>
-<dt>read_trajectory(file_path)</dt>
-<dd>Use cclib to read trajectory (usually xyz format) and assign z and R
-attributes.</dd>
-<dt>read_forces(file_path)</dt>
-<dd>Use cclib to read file (usually xyz format) to assign F attribute.</dd>
-</dl>
-<p>create_dataset(gdml_data_dir, dataset_name, atoms, coords, energies, forces,
-e_units, e_units_calc, r_units_calc, theory=’unknown’,
-gdml_r_units=’Angstrom’, gdml_e_units=’kcal/mol’, write=True)</p>
-<blockquote>
-<div>Creates and writes a single GDML data set.</div></blockquote>
-<dl class="docutils">
-<dt>dataset <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
-<dd>Contains all information and arrays stored in data set.</dd>
-</dl>
+<dl class="method">
+<dt id="mbgdml.data.dataset.mbGDMLDataset.load">
+<code class="descname">load</code><span class="sig-paren">(</span><em>dataset_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use numpy.load to read information from data set.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.data.dataset.mbGDMLDataset.read_trajectory">
+<code class="descname">read_trajectory</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.read_trajectory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use cclib to read trajectory (usually xyz format) and assign z and R
+attributes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.data.dataset.mbGDMLDataset.read_forces">
+<code class="descname">read_forces</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.read_forces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use cclib to read file (usually xyz format) to assign F attribute.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">create_dataset(gdml_data_dir, dataset_name, atoms, coords, energies, forces,</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">e_units, e_units_calc, r_units_calc, theory='unknown',</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">gdml_r_units='Angstrom', gdml_e_units='kcal/mol', write=True)</code></dt>
+<dd><p>Creates and writes a single GDML data set.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.dataset.mbGDMLDataset.dataset">
+<code class="descname">dataset</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains all information and arrays stored in data set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.E">
 <code class="descname">E</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.E" title="Permalink to this definition">¶</a></dt>
 <dd><p>The energies of structure(s).</p>
 <p>A numpy.ndarray with shape of (n,) where n is the number of atoms.</p>
-<dl class="docutils">
-<dt>AttributeError</dt>
-<dd>If there is no created or loaded data set.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – If there is no created or loaded data set.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
@@ -381,10 +635,14 @@ gdml_r_units=’Angstrom’, gdml_e_units=’kcal/mol’, write=True)</p>
 <dd><p>The atomic forces of atoms in structure(s).</p>
 <p>A numpy.ndarray with shape of (m, n, 3) where m is the number of
 structures and n is the number of atoms with 3 positional coordinates.</p>
-<dl class="docutils">
-<dt>AttributeError</dt>
-<dd>If there is no created or loaded data set.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – If there is no created or loaded data set.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
@@ -393,83 +651,86 @@ structures and n is the number of atoms with 3 positional coordinates.</p>
 <dd><p>The atomic positions of structure(s).</p>
 <p>A numpy.ndarray with shape of (m, n, 3) where m is the number of
 structures and n is the number of atoms with 3 positional coordinates.</p>
-<dl class="docutils">
-<dt>AttributeError</dt>
-<dd>If there is no created or loaded data set.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – If there is no created or loaded data set.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.combine_datasets">
 <code class="descname">combine_datasets</code><span class="sig-paren">(</span><em>partition_dir</em>, <em>write_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.combine_datasets" title="Permalink to this definition">¶</a></dt>
 <dd><p>Combines GDML datasets.</p>
-<p>Finds all files labeled with ‘dataset.npz’ (defined in 
+<p>Finds all files labeled with ‘dataset.npz’ (defined in
 PartitionCalcOutput.create_dataset) in a user specified directory
 and combines them. Typically used on a single partition size (e.g.,
 monomer, dimer, trimer, etc.) to represent the complete dataset of that
 partition size.</p>
-<dl class="docutils">
-<dt>partition_dir <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>Path to directory containing GDML datasets. Typically to a
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>partition_dir</strong> (<em>str</em>) – Path to directory containing GDML datasets. Typically to a
 directory containing only a single partition size
-of a single solvent.</dd>
-<dt>write_dir (str): Path to the directory where the partition-size GDML</dt>
-<dd>dataset will be written. Usually the cluster directory in the 
-gdml-dataset directory.</dd>
-</dl>
+of a single solvent.</li>
+<li><strong>(</strong><strong>str</strong><strong>)</strong> (<em>write_dir</em>) – dataset will be written. Usually the cluster directory in the
+gdml-dataset directory.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.create_dataset">
 <code class="descname">create_dataset</code><span class="sig-paren">(</span><em>gdml_data_dir</em>, <em>dataset_name</em>, <em>z</em>, <em>R</em>, <em>E</em>, <em>F</em>, <em>e_units</em>, <em>r_units</em>, <em>theory='unknown'</em>, <em>e_units_gdml='kcal/mol'</em>, <em>r_units_gdml='Angstrom'</em>, <em>e_units_calc=None</em>, <em>r_units_calc=None</em>, <em>write=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.create_dataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates and writes GDML dataset.</p>
-<dl class="docutils">
-<dt>gdml_data_dir <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>Path to common GDML data set directory for a particular cluster.</dd>
-<dt>dataset_name <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>The name to label the dataset.</dd>
-<dt>z <span class="classifier-delimiter">:</span> <span class="classifier">numpy.ndarray</span></dt>
-<dd>A (n,) array containing atomic numbers of n atoms.</dd>
-<dt>R <span class="classifier-delimiter">:</span> <span class="classifier">numpy.ndarray</span></dt>
-<dd>A (m, n, 3) array containing the atomic coordinates of n atoms of
-m MD steps.</dd>
-<dt>E <span class="classifier-delimiter">:</span> <span class="classifier">numpy.ndarray</span></dt>
-<dd>A (m,) array containing the energies of m MD steps.</dd>
-<dt>F <span class="classifier-delimiter">:</span> <span class="classifier">numpy.ndarray</span></dt>
-<dd>A (m, n, 3) array containing the atomic forces of n atoms of
-m MD steps. Simply the negative of grads.</dd>
-<dt>e_units <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>The energy units of <cite>energies</cite>.</dd>
-<dt>r_units <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>The distance units of <cite>coords</cite>.</dd>
-<dt>e_units_calc <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>The units of energies reported in the partition calculation output
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>gdml_data_dir</strong> (<em>str</em>) – Path to common GDML data set directory for a particular cluster.</li>
+<li><strong>dataset_name</strong> (<em>str</em>) – The name to label the dataset.</li>
+<li><strong>z</strong> (<em>numpy.ndarray</em>) – A (n,) array containing atomic numbers of n atoms.</li>
+<li><strong>R</strong> (<em>numpy.ndarray</em>) – A (m, n, 3) array containing the atomic coordinates of n atoms of
+m MD steps.</li>
+<li><strong>E</strong> (<em>numpy.ndarray</em>) – A (m,) array containing the energies of m MD steps.</li>
+<li><strong>F</strong> (<em>numpy.ndarray</em>) – A (m, n, 3) array containing the atomic forces of n atoms of
+m MD steps. Simply the negative of grads.</li>
+<li><strong>e_units</strong> (<em>str</em>) – The energy units of <cite>energies</cite>.</li>
+<li><strong>r_units</strong> (<em>str</em>) – The distance units of <cite>coords</cite>.</li>
+<li><strong>e_units_calc</strong> (<em>str</em>) – The units of energies reported in the partition calculation output
 file. This is used to convert forces. Options are ‘eV’, ‘hartree’,
-‘kcal/mol’, and ‘kJ/mol’.</dd>
-<dt>r_units_calc <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>The units of the coordinates in the partition calculation output
+‘kcal/mol’, and ‘kJ/mol’.</li>
+<li><strong>r_units_calc</strong> (<em>str</em>) – The units of the coordinates in the partition calculation output
 file. This is only used convert forces if needed.
-Options are ‘Angstrom’ or ‘bohr’.</dd>
-<dt>theory <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
-<dd>The level of theory and basis set used for the partition
-calculations. For example, ‘MP2.def2TZVP. Defaults to ‘unknown’.</dd>
-<dt>r_units_gdml <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
-<dd>Desired coordinate units for the GDML data set. Defaults to ‘Angstrom’.</dd>
-<dt>e_units_gdml <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
-<dd>Desired energy units for the GDML dataset. Defaults to ‘kcal/mol’.</dd>
-<dt>write <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
-<dd>Whether or not the dataset is written to disk. Defaults to True.</dd>
-</dl>
-<dl class="docutils">
-<dt>ValueError</dt>
-<dd>If units do not match GDML units and no calculation units were
-provided.</dd>
-</dl>
+Options are ‘Angstrom’ or ‘bohr’.</li>
+<li><strong>theory</strong> (<em>str</em><em>, </em><em>optional</em>) – The level of theory and basis set used for the partition
+calculations. For example, ‘MP2.def2TZVP. Defaults to ‘unknown’.</li>
+<li><strong>r_units_gdml</strong> (<em>str</em><em>, </em><em>optional</em>) – Desired coordinate units for the GDML data set. Defaults to ‘Angstrom’.</li>
+<li><strong>e_units_gdml</strong> (<em>str</em><em>, </em><em>optional</em>) – Desired energy units for the GDML dataset. Defaults to ‘kcal/mol’.</li>
+<li><strong>write</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether or not the dataset is written to disk. Defaults to True.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – If units do not match GDML units and no calculation units were
+provided.</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
-<dt id="mbgdml.data.dataset.mbGDMLDataset.load">
-<code class="descname">load</code><span class="sig-paren">(</span><em>dataset_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.load" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">load</code><span class="sig-paren">(</span><em>dataset_path</em><span class="sig-paren">)</span></dt>
 <dd><p>Uses numpy.load to read data set</p>
 <p>Sets dataset, z, R, E, and F attributes.</p>
 </dd></dl>
@@ -483,22 +744,28 @@ provided.</dd>
 <dt id="mbgdml.data.dataset.mbGDMLDataset.partition_dataset_name">
 <code class="descname">partition_dataset_name</code><span class="sig-paren">(</span><em>cluster_label</em>, <em>partition_label</em>, <em>md_temp</em>, <em>md_iter</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.partition_dataset_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Automates and standardizes partition datasets names.</p>
-<dl class="docutils">
-<dt>cluster_label <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>The label identifying the parent cluster of the partition.
-For example, ‘4H2O.abc0’.</dd>
-<dt>partition_label <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>Identifies what solvent molecules are in the partition.
-For example, ‘AB’.</dd>
-<dt>md_temp <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
-<dd>Set point temperautre for the MD thermostat in Kelvin.</dd>
-<dt>md_iter <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
-<dd>Identifies the iteration of the MD iteration.</dd>
-</dl>
-<dl class="docutils">
-<dt>str</dt>
-<dd>Standardized data set name.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cluster_label</strong> (<em>str</em>) – The label identifying the parent cluster of the partition.
+For example, ‘4H2O.abc0’.</li>
+<li><strong>partition_label</strong> (<em>str</em>) – Identifies what solvent molecules are in the partition.
+For example, ‘AB’.</li>
+<li><strong>md_temp</strong> (<em>int</em>) – Set point temperautre for the MD thermostat in Kelvin.</li>
+<li><strong>md_iter</strong> (<em>int</em>) – Identifies the iteration of the MD iteration.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Standardized data set name.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -507,24 +774,32 @@ For example, ‘AB’.</dd>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="mbgdml.data.dataset.mbGDMLDataset.read_forces">
-<code class="descname">read_forces</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.read_forces" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">read_forces</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span></dt>
 <dd><p>Use cclib to read file (usually xyz format) to assign F attribute.</p>
-<dl class="docutils">
-<dt>file_path <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>Path to file.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_path</strong> (<em>str</em>) – Path to file.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
-<dt id="mbgdml.data.dataset.mbGDMLDataset.read_trajectory">
-<code class="descname">read_trajectory</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.read_trajectory" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">read_trajectory</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span></dt>
 <dd><p>Use cclib to read trajectory (usually xyz format) and assign z and R
 attributes.</p>
-<dl class="docutils">
-<dt>file_path <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>Path to file.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_path</strong> (<em>str</em>) – Path to file.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
@@ -533,10 +808,14 @@ attributes.</p>
 <dd><p>Atomic numbers of all atoms in data set structures.</p>
 <p>A (n,) shape array of type numpy.int32 containing atomic numbers of
 atoms in the structures in order as they appear.</p>
-<dl class="docutils">
-<dt>AttributeError</dt>
-<dd>If there is no created or loaded data set.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – If there is no created or loaded data set.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -556,18 +835,22 @@ containing n solvent molecules.</p>
 <p>The trajectories must be labled with the following scheme:
 ‘solvent info-temperature-iteration-<em>traj</em>.xyz’. For example,
 ‘4MeOH-300K-1-md-trajectory.xyz’.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd><dl class="first docutils">
-<dt>trajfolder (path): folder containing all MD trajectories to be included</dt>
-<dd>in solvent data sets. Must contain ‘traj’ in filename and have an
-‘xyz’ file extension.</dd>
-</dl>
-<p class="last">submit(bool, optional): specifies if calculations should be submitted.</p>
-</dd>
-<dt>Example:</dt>
-<dd>data_sets(‘/path/to/dir’, True)</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>trajfolder</strong> (<em>path</em>) – folder containing all MD trajectories to be included
+in solvent data sets. Must contain ‘traj’ in filename and have an
+‘xyz’ file extension.</li>
+<li><strong>submit</strong> (<em>bool</em><em>, </em><em>optional</em>) – specifies if calculations should be submitted.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Example</p>
+<p>data_sets(‘/path/to/dir’, True)</p>
 </dd></dl>
 
 </div>
@@ -578,66 +861,110 @@ containing n solvent molecules.</p>
 <em class="property">class </em><code class="descclassname">mbgdml.data.model.</code><code class="descname">mbGDMLModel</code><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mbgdml.data.basedata.mbGDMLData" title="mbgdml.data.basedata.mbGDMLData"><code class="xref py py-class docutils literal notranslate"><span class="pre">mbgdml.data.basedata.mbGDMLData</span></code></a></p>
 <p>A class to load, inspect, and modify GDML models.</p>
-<dl class="docutils">
-<dt>model_path <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>Path to the npz file.</dd>
-<dt>model <span class="classifier-delimiter">:</span> <span class="classifier">numpy.npzfile</span></dt>
-<dd>GDML model for predicting energies and forces.</dd>
-</dl>
-<dl class="docutils">
-<dt>load(model_path)</dt>
-<dd>Loads GDML model.</dd>
-<dt>get_model_name(log_path)</dt>
-<dd>Retrives GDML model’s name from log file.</dd>
-<dt>add_manybody_info(mb_order)</dt>
-<dd>Adds many-body (mb) information to GDML model.</dd>
-</dl>
-<dl class="method">
-<dt id="mbgdml.data.model.mbGDMLModel.add_manybody_info">
-<code class="descname">add_manybody_info</code><span class="sig-paren">(</span><em>mb_order</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel.add_manybody_info" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds many-body (mb) information to GDML model.</p>
-<dl class="docutils">
-<dt>mb_order <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
-<dd>The max order of many-body predictions removed from the dataset.</dd>
-</dl>
-<dl class="docutils">
-<dt>AttributeError</dt>
-<dd>If accessing information when no model is loaded.</dd>
-</dl>
+<dl class="attribute">
+<dt id="mbgdml.data.model.mbGDMLModel.model_path">
+<code class="descname">model_path</code><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel.model_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path to the npz file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mbgdml.data.model.mbGDMLModel.code_version">
-<code class="descname">code_version</code><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel.code_version" title="Permalink to this definition">¶</a></dt>
-<dd><p>sGDML code version used to train the model.</p>
-<dl class="docutils">
-<dt>AttributeError</dt>
-<dd>If accessing information when no model is loaded.</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="mbgdml.data.model.mbGDMLModel.get_model_name">
-<code class="descname">get_model_name</code><span class="sig-paren">(</span><em>log_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel.get_model_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrives GDML model’s name from log file.</p>
-<dl class="docutils">
-<dt>log_path <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>Path to the log file.</dd>
-</dl>
+<dt id="mbgdml.data.model.mbGDMLModel.model">
+<code class="descname">model</code><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>GDML model for predicting energies and forces.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">numpy.npzfile</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="mbgdml.data.model.mbGDMLModel.load">
 <code class="descname">load</code><span class="sig-paren">(</span><em>model_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads GDML model.</p>
-<dl class="docutils">
-<dt>model_path <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>Path to GDML model.</dd>
-</dl>
-<dl class="docutils">
-<dt>AttributeError</dt>
-<dd>If npz file is not a GDML model.</dd>
-</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.data.model.mbGDMLModel.get_model_name">
+<code class="descname">get_model_name</code><span class="sig-paren">(</span><em>log_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel.get_model_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrives GDML model’s name from log file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.data.model.mbGDMLModel.add_manybody_info">
+<code class="descname">add_manybody_info</code><span class="sig-paren">(</span><em>mb_order</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel.add_manybody_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds many-body (mb) information to GDML model.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">add_manybody_info</code><span class="sig-paren">(</span><em>mb_order</em><span class="sig-paren">)</span></dt>
+<dd><p>Adds many-body (mb) information to GDML model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mb_order</strong> (<em>int</em>) – The max order of many-body predictions removed from the dataset.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – If accessing information when no model is loaded.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.model.mbGDMLModel.code_version">
+<code class="descname">code_version</code><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel.code_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>sGDML code version used to train the model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – If accessing information when no model is loaded.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">get_model_name</code><span class="sig-paren">(</span><em>log_path</em><span class="sig-paren">)</span></dt>
+<dd><p>Retrives GDML model’s name from log file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>log_path</strong> (<em>str</em>) – Path to the log file.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">load</code><span class="sig-paren">(</span><em>model_path</em><span class="sig-paren">)</span></dt>
+<dd><p>Loads GDML model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model_path</strong> (<em>str</em>) – Path to GDML model.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – If npz file is not a GDML model.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -664,10 +991,14 @@ The predict set accomplishes just this.</p>
 <dt id="mbgdml.data.predictset.mbGDMLPredictset.load">
 <code class="descname">load</code><span class="sig-paren">(</span><em>predictset_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads predict data set and loads data.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>predictset_path (str): Path to predict data set.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>predictset_path</strong> (<em>str</em>) – Path to predict data set.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -700,57 +1031,109 @@ The predict set accomplishes just this.</p>
 <p>Makes using structures with mbGDML easier by providing a
 simple-to-use class to automate parsing of xyz or calculation files or
 manually specifying atoms and coordinates.</p>
-<dl class="docutils">
-<dt>parse(file_path)</dt>
-<dd>Parses file using cclib for atomic numbers and xyz coordinates.</dd>
-</dl>
-<dl class="docutils">
-<dt>z <span class="classifier-delimiter">:</span> <span class="classifier">numpy.ndarray</span></dt>
-<dd>A (n,) shape array of type numpy.int32 containing atomic numbers of
-atoms in the structures in order as they appear.</dd>
-<dt>R <span class="classifier-delimiter">:</span> <span class="classifier">numpy.ndarray</span></dt>
-<dd>The atomic positions of structure(s) in a np.ndarray. Has a shape of
-(n, m, 3) where n is the number of structures and m is the number of
-atoms with 3 positional coordinates.</dd>
-<dt>z_num <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
-<dd>The number of atoms stored in z.</dd>
-<dt>R_num <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
-<dd>The number of structures stored in R.</dd>
-</dl>
+<dl class="method">
+<dt id="mbgdml.data.structure.structure.parse">
+<code class="descname">parse</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.structure.structure.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses file using cclib for atomic numbers and xyz coordinates.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.structure.structure.z">
+<code class="descname">z</code><a class="headerlink" href="#mbgdml.data.structure.structure.z" title="Permalink to this definition">¶</a></dt>
+<dd><p>A (n,) shape array of type numpy.int32 containing atomic numbers of
+atoms in the structures in order as they appear.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">numpy.ndarray</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="mbgdml.data.structure.structure.R">
 <code class="descname">R</code><a class="headerlink" href="#mbgdml.data.structure.structure.R" title="Permalink to this definition">¶</a></dt>
+<dd><p>The atomic positions of structure(s) in a np.ndarray. Has a shape of
+(n, m, 3) where n is the number of structures and m is the number of
+atoms with 3 positional coordinates.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">numpy.ndarray</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.structure.structure.z_num">
+<code class="descname">z_num</code><a class="headerlink" href="#mbgdml.data.structure.structure.z_num" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of atoms stored in z.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.structure.structure.R_num">
+<code class="descname">R_num</code><a class="headerlink" href="#mbgdml.data.structure.structure.R_num" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of structures stored in R.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">R</code></dt>
 <dd><p>The atomic positions of structure(s) in a np.ndarray.</p>
 <p>R has a shape of (n, m, 3) where n is the number of structures and
 m is the number of atoms with 3 positional coordinates.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mbgdml.data.structure.structure.R_num">
-<code class="descname">R_num</code><a class="headerlink" href="#mbgdml.data.structure.structure.R_num" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">R_num</code></dt>
 <dd><p>The number of structures.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="mbgdml.data.structure.structure.parse">
-<code class="descname">parse</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.structure.structure.parse" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">parse</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span></dt>
 <dd><p>Parses file using cclib for atomic numbers and xyz coordinates.</p>
-<dl class="docutils">
-<dt>file_path <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>Path to file parsable by cclib.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_path</strong> (<em>str</em>) – Path to file parsable by cclib.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mbgdml.data.structure.structure.z">
-<code class="descname">z</code><a class="headerlink" href="#mbgdml.data.structure.structure.z" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">z</code></dt>
 <dd><p>Array of atoms’ atomic numbers in the same number as in
 the coordinate file.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mbgdml.data.structure.structure.z_num">
-<code class="descname">z_num</code><a class="headerlink" href="#mbgdml.data.structure.structure.z_num" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">z_num</code></dt>
 <dd><p>The number of atoms.</p>
 </dd></dl>
 

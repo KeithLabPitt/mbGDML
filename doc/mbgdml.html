@@ -240,17 +240,21 @@
 <em class="property">class </em><code class="descclassname">mbgdml.calculate.</code><code class="descname">mbGDMLCalculator</code><span class="sig-paren">(</span><em>elements</em>, <em>model_paths</em>, <em>e_unit_model='kcal/mol'</em>, <em>r_unit_model='Angstrom'</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLCalculator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ase.calculators.calculator.Calculator</span></code></p>
 <p>Initializes mbGDML calculator with models and units.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd><dl class="first docutils">
-<dt>model_paths (list): Paths of all models to be used for GDML</dt>
-<dd>prediction.</dd>
-<dt>e_unit_model (str, optional): Specifies the units of energy</dt>
-<dd>prediction for the GDML models. Defaults to ‘kcal/mol’.</dd>
-</dl>
-<p class="last">r_unit_model (str, optional): [description]. Defaults to ‘Angstrom’.</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>model_paths</strong> (<em>list</em>) – Paths of all models to be used for GDML
+prediction.</li>
+<li><strong>e_unit_model</strong> (<em>str</em><em>, </em><em>optional</em>) – Specifies the units of energy
+prediction for the GDML models. Defaults to ‘kcal/mol’.</li>
+<li><strong>r_unit_model</strong> (<em>str</em><em>, </em><em>optional</em>) – [description]. Defaults to ‘Angstrom’.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="mbgdml.calculate.mbGDMLCalculator.calculate">
 <code class="descname">calculate</code><span class="sig-paren">(</span><em>atoms=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLCalculator.calculate" title="Permalink to this definition">¶</a></dt>
@@ -292,14 +296,15 @@ directories.</p>
 <dt id="mbgdml.calculate.mbGDMLCalculator.load_models">
 <code class="descname">load_models</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLCalculator.load_models" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads models for GDML prediction.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd><dl class="first last docutils">
-<dt>model_paths (list): List containing paths of all GDML models to be</dt>
-<dd>loaded. All of these models will be used during the MD run.</dd>
-</dl>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model_paths</strong> (<em>list</em>) – List containing paths of all GDML models to be
+loaded. All of these models will be used during the MD run.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -312,50 +317,72 @@ directories.</p>
 <dt id="mbgdml.calculate.mbGDMLMD.load_calculator">
 <code class="descname">load_calculator</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD.load_calculator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads the many-body GDML ASE calculator.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>model_paths (list): Paths to all many-body GDML models to be used.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model_paths</strong> (<em>list</em>) – Paths to all many-body GDML models to be used.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="mbgdml.calculate.mbGDMLMD.printenergy">
 <code class="descname">printenergy</code><span class="sig-paren">(</span><em>a</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD.printenergy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Quick function to print MD information during simulation.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>a (atoms): Atoms object from ASE.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>a</strong> (<em>atoms</em>) – Atoms object from ASE.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="mbgdml.calculate.mbGDMLMD.relax">
 <code class="descname">relax</code><span class="sig-paren">(</span><em>max_force=0.0001</em>, <em>steps=100</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD.relax" title="Permalink to this definition">¶</a></dt>
 <dd><p>Short relaxation of structure.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>max_force (float, optional): Maximum force. Defaults to 1e-4.
-steps (int, optional): Maximum allowable steps. Defaults to 100.</dd>
-<dt>Raises:</dt>
-<dd>AttributeError: Requires a calculator to be loaded first.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>max_force</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum force. Defaults to 1e-4.</li>
+<li><strong>steps</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum allowable steps. Defaults to 100.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – Requires a calculator to be loaded first.</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="mbgdml.calculate.mbGDMLMD.run">
 <code class="descname">run</code><span class="sig-paren">(</span><em>steps</em>, <em>t_step</em>, <em>temp</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs a MD simulation using the Verlet algorithm in ASE.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd><p class="first">steps (int): Number of steps for the MD simulation.
-t_step (float): Time step in femtoseconds.
-temp (float): Temperature in Kelvin used for initializing</p>
-<blockquote class="last">
-<div>velocities.</div></blockquote>
-</dd>
-<dt>Raises:</dt>
-<dd>AttributeError: Requires a calculator to be loaded first.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>steps</strong> (<em>int</em>) – Number of steps for the MD simulation.</li>
+<li><strong>t_step</strong> (<em>float</em>) – Time step in femtoseconds.</li>
+<li><strong>temp</strong> (<em>float</em>) – Temperature in Kelvin used for initializing
+velocities.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – Requires a calculator to be loaded first.</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -365,44 +392,47 @@ temp (float): Temperature in Kelvin used for initializing</p>
 <code class="descclassname">mbgdml.calculate.</code><code class="descname">partition_engrad</code><span class="sig-paren">(</span><em>package</em>, <em>partition_dict</em>, <em>temperature</em>, <em>md_iteration</em>, <em>calc_dir='.'</em>, <em>calc_name='partition-engrad'</em>, <em>theory_level_engrad='MP2'</em>, <em>basis_set_engrad='def2-TZVP'</em>, <em>options_engrad='TightSCF FrozenCore'</em>, <em>control_blocks_engrad='%scf\n    ConvForced true\nend\n%maxcore 8000\n'</em>, <em>submit=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.partition_engrad" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets up a partition ORCA 4.2.0 EnGrad calculation for trajectory.</p>
 <p>Can be submitted or just have the input files prepared.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>package</strong> (<em>str</em>) – specifies the quantum chemistry program to be used. ORCA
+is currently the only package directly supported.</li>
+<li><strong>partition_dict</strong> (<em>dict</em>) – contains all information for the partition
+including ‘solvent_label’, ‘partition_size’, ‘atoms’, and ‘coords’.</li>
+<li><strong>temperature</strong> (<em>int</em>) – used for labeling and identifying the thermostat
+temperature for the molecular dynamics simulation.</li>
+<li><strong>md_iteration</strong> (<em>int</em>) – used for labeling and identifying the iteration of
+the molecular dynamics simulation.</li>
+<li><strong>calc_dir</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to write calculation.
+Defaults to current directory (‘./’).</li>
+<li><strong>calc_name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name for the calculation.
+Defaults to ‘partition-engrad’.</li>
+<li><strong>theory_level_engrad</strong> (<em>str</em><em>, </em><em>optional</em>) – keword that specifies the
+level of theory (e.g., MP2, BP86, B3LYP, etc.) used for calculations.
+Defaults to ‘MP2’ for ORCA 4.2.0.</li>
+<li><strong>basis_set_engrad</strong> (<em>str</em><em>, </em><em>optional</em>) – keyword that specifies the basis set
+(e.g., def2-SVP, def2-TZVP, etc.). Defaults to ‘def2-TZVP’.</li>
+<li><strong>options_engrad</strong> (<em>str</em><em>, </em><em>optional</em>) – all options specifically for the EnGrad
+calculation (e.g., SCF convergence criteria, algorithms, etc.)
+Defaults to ‘TightSCF FrozenCore’.</li>
+<li><strong>control_blocks_engrad</strong> (<em>str</em><em>, </em><em>optional</em>) – all options that control the
+calculation. Defaults to ‘%scf    ConvForced true end’.</li>
+<li><strong>submit</strong> (<em>bool</em><em>, </em><em>optional</em>) – controls whether the calculation is submitted.
+Defaults to False.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Example</p>
 <dl class="docutils">
-<dt>Args:</dt>
-<dd><dl class="first last docutils">
-<dt>package (str): specifies the quantum chemistry program to be used. ORCA</dt>
-<dd>is currently the only package directly supported.</dd>
-<dt>partition_dict (dict): contains all information for the partition</dt>
-<dd>including ‘solvent_label’, ‘partition_size’, ‘atoms’, and ‘coords’.</dd>
-<dt>temperature (int): used for labeling and identifying the thermostat</dt>
-<dd>temperature for the molecular dynamics simulation.</dd>
-<dt>md_iteration (int): used for labeling and identifying the iteration of</dt>
-<dd>the molecular dynamics simulation.</dd>
-<dt>calc_dir (str, optional): Path to write calculation.</dt>
-<dd>Defaults to current directory (‘./’).</dd>
-<dt>calc_name (str, optional): Name for the calculation.</dt>
-<dd>Defaults to ‘partition-engrad’.</dd>
-<dt>theory_level_engrad (str, optional): keword that specifies the</dt>
-<dd>level of theory (e.g., MP2, BP86, B3LYP, etc.) used for calculations.
-Defaults to ‘MP2’ for ORCA 4.2.0.</dd>
-<dt>basis_set_engrad (str, optional): keyword that specifies the basis set</dt>
-<dd>(e.g., def2-SVP, def2-TZVP, etc.). Defaults to ‘def2-TZVP’.</dd>
-<dt>options_engrad (str, optional): all options specifically for the EnGrad</dt>
-<dd>calculation (e.g., SCF convergence criteria, algorithms, etc.)
-Defaults to ‘TightSCF FrozenCore’.</dd>
-<dt>control_blocks_engrad (str, optional): all options that control the</dt>
-<dd>calculation. Defaults to ‘%scf    ConvForced true end’.</dd>
-<dt>submit (bool, optional): controls whether the calculation is submitted.</dt>
-<dd>Defaults to False.</dd>
-</dl>
-</dd>
-<dt>Example:</dt>
-<dd><dl class="first docutils">
 <dt>calculate.partition_engrad(</dt>
 <dd>‘orca’, ‘/path/to/dir/’,
 partition_dict, temp, iteration</dd>
 </dl>
-<p class="last">)</p>
-</dd>
-</dl>
+<p>)</p>
 </dd></dl>
 
 </div>
@@ -415,13 +445,24 @@ partition_dict, temp, iteration</dd>
 <dt id="mbgdml.parse.cluster_size">
 <code class="descclassname">mbgdml.parse.</code><code class="descname">cluster_size</code><span class="sig-paren">(</span><em>xyz_path</em>, <em>solvent</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.parse.cluster_size" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determines number of solvent molecules in a xyz file.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>xyz_path (str): Path to xyz file of interest.
-solvent (lst): Specifies solvents to determine the number of atoms included in a molecule.</dd>
-<dt>Returns:</dt>
-<dd>int: Number of solvent molecules in specified xyz file.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>xyz_path</strong> (<em>str</em>) – Path to xyz file of interest.</li>
+<li><strong>solvent</strong> (<em>lst</em>) – Specifies solvents to determine the number of atoms included in a molecule.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Number of solvent molecules in specified xyz file.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -429,19 +470,29 @@ solvent (lst): Specifies solvents to determine the number of atoms included in a
 <code class="descclassname">mbgdml.parse.</code><code class="descname">parse_cluster</code><span class="sig-paren">(</span><em>cluster_data</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.parse.parse_cluster" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates dictionary of all solvent molecules in solvent cluster from a
 cluster_data dictionary.</p>
-<dl class="docutils">
-<dt>Notes:</dt>
-<dd>Molecules are specified by specified by uppercase letters, and their
-values the xyz coordinates.</dd>
-<dt>Args:</dt>
-<dd>cluster_data (dict): Contains ‘atoms’ that is a list of elements</dd>
-</dl>
+<p class="rubric">Notes</p>
+<p>Molecules are specified by specified by uppercase letters, and their
+values the xyz coordinates.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cluster_data</strong> (<em>dict</em>) – Contains ‘atoms’ that is a list of elements</td>
+</tr>
+</tbody>
+</table>
 <p>organized by molecule and matches the order of the numpy array
 containing atomic coordinates</p>
-<dl class="docutils">
-<dt>Returns:</dt>
-<dd>dict: Contains solvent molecules with keys of uppercase characters</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Contains solvent molecules with keys of uppercase characters</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
 <p>with dicts as values containing ‘atoms’ and ‘coords’.</p>
 <dl class="docutils">
 <dt>{</dt>
@@ -487,42 +538,49 @@ containing atomic coordinates</p>
 <dt id="mbgdml.parse.parse_gdml_data">
 <code class="descclassname">mbgdml.parse.</code><code class="descname">parse_gdml_data</code><span class="sig-paren">(</span><em>out_file</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.parse.parse_gdml_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parses GDML-relevant data from partition output file.</p>
-<dl class="docutils">
-<dt>Args:</dt>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>out_file</strong> (<em>str</em>) – path to computational chemistry output file. This should
+contain all MD steps for the partition.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>contains all information needed to build GDML data sets.</dt>
 <dd><dl class="first last docutils">
-<dt>out_file (str): path to computational chemistry output file. This should</dt>
-<dd>contain all MD steps for the partition.</dd>
-</dl>
-</dd>
-<dt>Returns:</dt>
-<dd><dl class="first last docutils">
-<dt>dict: contains all information needed to build GDML data sets.</dt>
-<dd><dl class="first last docutils">
-<dt>‘atoms’ is a (n) numpy array containing the atomic numbers of the</dt>
+<dt>’atoms’ is a (n) numpy array containing the atomic numbers of the</dt>
 <dd>atoms in the partition.</dd>
-<dt>‘coords’ is a (m, n, 3) numpy array containing the m MD step</dt>
+<dt>’coords’ is a (m, n, 3) numpy array containing the m MD step</dt>
 <dd>coordinates of the n atoms in the partition.</dd>
-<dt>‘grads’ is a (m, n, 3) numpy array containing the gradients of the</dt>
+<dt>’grads’ is a (m, n, 3) numpy array containing the gradients of the</dt>
 <dd>m MD steps containing the n atoms in the partition.</dd>
-<dt>‘energies’ is a (m, 1) numpy array containing the electronic </dt>
+<dt>’energies’ is a (m, 1) numpy array containing the electronic</dt>
 <dd>energies of each m MD steps for the partition.</dd>
 </dl>
 </dd>
 </dl>
-</dd>
-</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="mbgdml.parse.parse_stringfile">
 <code class="descclassname">mbgdml.parse.</code><code class="descname">parse_stringfile</code><span class="sig-paren">(</span><em>stringfile_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.parse.parse_stringfile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parses xyz stringfile into <a href="#id1"><span class="problematic" id="id2">**</span></a><a href="#id3"><span class="problematic" id="id4">*</span></a></p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>stringfile_path (str):  Specifies path to stringfile.</dd>
-<dt>Returns:</dt>
-<dd><a href="#id5"><span class="problematic" id="id6">**</span></a><a href="#id7"><span class="problematic" id="id8">*</span></a></dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stringfile_path</strong> (<em>str</em>) – Specifies path to stringfile.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a href="#id5"><span class="problematic" id="id6">**</span></a><a href="#id7"><span class="problematic" id="id8">*</span></a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -538,23 +596,32 @@ containing atomic coordinates</p>
 <code class="descclassname">mbgdml.partition.</code><code class="descname">partition_cluster</code><span class="sig-paren">(</span><em>cluster</em>, <em>nbody</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.partition.partition_cluster" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates dictionary with all possible n-body combinations of solvent
 cluster.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd><dl class="first docutils">
-<dt>cluster (dict): Dictionary of solvent molecules in cluster from</dt>
-<dd>parse_cluster</dd>
-</dl>
-<p class="last">nbody (int):    Desired number of solvent molecules in combination.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cluster</strong> (<em>dict</em>) – Dictionary of solvent molecules in cluster from
+parse_cluster</li>
+<li><strong>nbody</strong> (<em>int</em>) – Desired number of solvent molecules in combination.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>All nonrepeating solvent molecule combinations from cluster with</dt>
+<dd><p class="first last">keys being uppercase concatenations of molecule labels and
+values being the string of coordinates.</p>
 </dd>
-<dt>Returns:</dt>
-<dd><dl class="first docutils">
-<dt>dict:   All nonrepeating solvent molecule combinations from cluster with</dt>
-<dd>keys being uppercase concatenations of molecule labels and
-values being the string of coordinates.</dd>
 </dl>
-<p class="last">ABC is considered the same as BAC and only included once.</p>
-</dd>
-</dl>
+<p>ABC is considered the same as BAC and only included once.</p>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -562,17 +629,23 @@ values being the string of coordinates.</dd>
 <code class="descclassname">mbgdml.partition.</code><code class="descname">partition_trajectory</code><span class="sig-paren">(</span><em>traj_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.partition.partition_trajectory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Partitions MD trajectory into separate trajectories for each possible
 segment.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>traj_path (str): Path to trajectory with xyz coordinates.</dd>
-<dt>Returns:</dt>
-<dd><dl class="first last docutils">
-<dt>dict: All nonrepeating solvent molecule combinations from cluster with</dt>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>traj_path</strong> (<em>str</em>) – Path to trajectory with xyz coordinates.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>All nonrepeating solvent molecule combinations from cluster with</dt>
 <dd>keys being uppercase concatenations of molecule labels and
 values being the string of coordinates.</dd>
 </dl>
-</dd>
-</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -587,25 +660,35 @@ values being the string of coordinates.</dd>
 <code class="descname">decomposed_predict</code><span class="sig-paren">(</span><em>z</em>, <em>R</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.predict.mbGDMLPredict.decomposed_predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes predicted total energy and atomic forces decomposed by
 many body order.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd><p class="first">z (list): Atomic numbers of all atoms in the system.
-R (np.ndarray): Cartesian coordinates of all atoms of the structure</p>
-<blockquote class="last">
-<div>specified in the same order as z. The array should have shape
-(n, 3) where n is the number of atoms.</div></blockquote>
-</dd>
-<dt>Returns:</dt>
-<dd><dl class="first last docutils">
-<dt>tuple: Dictionaries of many-body contributions of total energies</dt>
-<dd>(float) and forces (np.ndarray) of the structure. Note that
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>z</strong> (<em>list</em>) – Atomic numbers of all atoms in the system.</li>
+<li><strong>R</strong> (<em>np.ndarray</em>) – Cartesian coordinates of all atoms of the structure
+specified in the same order as z. The array should have shape
+(n, 3) where n is the number of atoms.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>Dictionaries of many-body contributions of total energies</dt>
+<dd><p class="first last">(float) and forces (np.ndarray) of the structure. Note that
 forces has the same shape as R. Each key of the dictionary is
 the order of the many-body model. Within this dictionary is a
 total, ‘T’, and molecule combinations identified in the system
-and their contributions.</dd>
-</dl>
+and their contributions.</p>
 </dd>
 </dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
+</td>
+</tr>
+</tbody>
+</table>
 <p>Examples:
 &gt;&gt;&gt; atoms = [8, 1, 1, 8, 1, 1]
 &gt;&gt;&gt; coords = array([[ 1.530147,  1.121901,  0.396232],</p>
@@ -633,22 +716,32 @@ and their contributions.</dd>
 <dt id="mbgdml.predict.mbGDMLPredict.predict">
 <code class="descname">predict</code><span class="sig-paren">(</span><em>z</em>, <em>R</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.predict.mbGDMLPredict.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predicts total energy and atomic forces using many-body GDML models.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd><p class="first">z (list): Atomic numbers of all atoms in the system.
-R (np.ndarray): Cartesian coordinates of all atoms of the structure</p>
-<blockquote class="last">
-<div>specified in the same order as z. The array should have shape
-(n, 3) where n is the number of atoms.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>z</strong> (<em>list</em>) – Atomic numbers of all atoms in the system.</li>
+<li><strong>R</strong> (<em>np.ndarray</em>) – Cartesian coordinates of all atoms of the structure
+specified in the same order as z. The array should have shape
+(n, 3) where n is the number of atoms.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>Total energy of the system (float) and atomic forces</dt>
+<dd><p class="first last">(np.ndarray) in the units specified by the GDML models.
+Note that the forces have the same shape as R.</p>
 </dd>
-<dt>Returns:</dt>
-<dd><dl class="first last docutils">
-<dt>tuple: Total energy of the system (float) and atomic forces</dt>
-<dd>(np.ndarray) in the units specified by the GDML models.
-Note that the forces have the same shape as R.</dd>
 </dl>
-</dd>
-</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -659,14 +752,15 @@ removed.</p>
 <p>To employ the many body expansion, we need GDML models that predict
 n-body corrections/contributions. This provides the appropriate dataset
 for training an (n+1)-body mbGDML model.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd><dl class="first last docutils">
-<dt>base_vars (dict): GDML dataset converted to a dict containing n-body</dt>
-<dd>contributions to be removed.</dd>
-</dl>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>base_vars</strong> (<em>dict</em>) – GDML dataset converted to a dict containing n-body
+contributions to be removed.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -681,59 +775,125 @@ for training an (n+1)-body mbGDML model.</p>
 <p>Identifies and describes the solvent for MB-GDML.</p>
 <p>Represents the solvent that makes up the cluster MB-GDML is being trained
 from.</p>
-<dl class="docutils">
-<dt>Attributes:</dt>
-<dd><dl class="first docutils">
-<dt>system (str): Designates what kind of system this is. Currently only</dt>
-<dd>‘solvent’ systems.</dd>
-</dl>
-<p class="last">solvent_name (str): Name of the solvent.
-solvent_label (str): A label for the solvent for filenaming purposes.
-solvent_molec_size (int): Total number of atoms in one solvent molecule.
-cluster_size (int): Total number of solvent molecules in cluster.</p>
-</dd>
-</dl>
+<dl class="attribute">
+<dt id="mbgdml.solvents.solvent.system">
+<code class="descname">system</code><a class="headerlink" href="#mbgdml.solvents.solvent.system" title="Permalink to this definition">¶</a></dt>
+<dd><p>Designates what kind of system this is. Currently only
+‘solvent’ systems.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.solvents.solvent.solvent_name">
+<code class="descname">solvent_name</code><a class="headerlink" href="#mbgdml.solvents.solvent.solvent_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the solvent.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.solvents.solvent.solvent_label">
+<code class="descname">solvent_label</code><a class="headerlink" href="#mbgdml.solvents.solvent.solvent_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>A label for the solvent for filenaming purposes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.solvents.solvent.solvent_molec_size">
+<code class="descname">solvent_molec_size</code><a class="headerlink" href="#mbgdml.solvents.solvent.solvent_molec_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Total number of atoms in one solvent molecule.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.solvents.solvent.cluster_size">
+<code class="descname">cluster_size</code><a class="headerlink" href="#mbgdml.solvents.solvent.cluster_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Total number of solvent molecules in cluster.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="method">
 <dt id="mbgdml.solvents.solvent.atom_numbers">
 <code class="descname">atom_numbers</code><span class="sig-paren">(</span><em>chem_formula</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.solvents.solvent.atom_numbers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provides a dictionary of atoms and their quantity from chemical
 formula.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd><dl class="first last docutils">
-<dt>chem_formula (str): the chemical formula of a single solvent</dt>
-<dd>molecule. For example, ‘CH3OH’ for methanol, ‘H2O’ for water,
-and ‘C2H3N’ for acetonitrile.</dd>
-</dl>
-</dd>
-<dt>Returns:</dt>
-<dd><dl class="first last docutils">
-<dt>dict: contains the atoms as their elemental symbol for keys and</dt>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>chem_formula</strong> (<em>str</em>) – the chemical formula of a single solvent
+molecule. For example, ‘CH3OH’ for methanol, ‘H2O’ for water,
+and ‘C2H3N’ for acetonitrile.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>contains the atoms as their elemental symbol for keys and</dt>
 <dd>their quantity as values.</dd>
 </dl>
-</dd>
-<dt>Example:</dt>
-<dd>atom_numbers(‘CH3OH’)</dd>
-</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Example</p>
+<p>atom_numbers(‘CH3OH’)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mbgdml.solvents.solvent.identify_solvent">
 <code class="descname">identify_solvent</code><span class="sig-paren">(</span><em>atom_list</em>, <em>all_solvents</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.solvents.solvent.identify_solvent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Identifies the solvent from a repeated list of elements.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd><dl class="first last docutils">
-<dt>atom_list (lst): List of elements as strings. Elements should be</dt>
-<dd>repeated. For example, [‘H’, ‘H’, ‘O’, ‘O’, ‘H’, ‘H’]. Note that
-the order does not matter; only the quantity.</dd>
-<dt>all_solvents (dict): Contains all solvents described in</dt>
-<dd>solvents.json. Keys are the name of the solvent, and the values
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>atom_list</strong> (<em>lst</em>) – List of elements as strings. Elements should be
+repeated. For example, [‘H’, ‘H’, ‘O’, ‘O’, ‘H’, ‘H’]. Note that
+the order does not matter; only the quantity.</li>
+<li><strong>all_solvents</strong> (<em>dict</em>) – Contains all solvents described in
+solvents.json. Keys are the name of the solvent, and the values
 are dicts ‘label’ and ‘formula’ that provide a solvent label
-and chemical formula, respectively.</dd>
-</dl>
-</dd>
-</dl>
+and chemical formula, respectively.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -742,21 +902,27 @@ and chemical formula, respectively.</dd>
 <dt id="mbgdml.solvents.system_info">
 <code class="descclassname">mbgdml.solvents.</code><code class="descname">system_info</code><span class="sig-paren">(</span><em>atoms</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.solvents.system_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determines information about the system key to mbGDML.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>atoms (list): Atomic numbers of all atoms in the system.</dd>
-<dt>Returns:</dt>
-<dd><dl class="first last docutils">
-<dt>dict: System information useful for mbGDML. Information includes</dt>
-<dd>‘system’ which categorizes the system and provides specific
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>atoms</strong> (<em>list</em>) – Atomic numbers of all atoms in the system.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>System information useful for mbGDML. Information includes</dt>
+<dd>’system’ which categorizes the system and provides specific
 information.</dd>
 </dl>
-</dd>
-<dt>Notes:</dt>
-<dd>For a ‘solvent’ system the additional information returned is the
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>For a ‘solvent’ system the additional information returned is the
 ‘solvent_name’, ‘solvent_label’, ‘solvent_molec_size’, and
-‘cluster_size’.</dd>
-</dl>
+‘cluster_size’.</p>
 </dd></dl>
 
 </div>
@@ -770,37 +936,41 @@ information.</dd>
 <dt id="mbgdml.train.MBGDMLTrain.load_dataset">
 <code class="descname">load_dataset</code><span class="sig-paren">(</span><em>dataset_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.train.MBGDMLTrain.load_dataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads a GDML dataset from npz format from specified path.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd><dl class="first last docutils">
-<dt>dataset_path (str): Path to stored numpy arrays representing a GDML</dt>
-<dd>dataset of a single solvent partition size.</dd>
-</dl>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dataset_path</strong> (<em>str</em>) – Path to stored numpy arrays representing a GDML
+dataset of a single solvent partition size.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="mbgdml.train.MBGDMLTrain.train_GDML">
 <code class="descname">train_GDML</code><span class="sig-paren">(</span><em>model_dir</em>, <em>num_train</em>, <em>num_validate</em>, <em>num_test</em>, <em>sigma_range='2:10:100'</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.train.MBGDMLTrain.train_GDML" title="Permalink to this definition">¶</a></dt>
 <dd><p>Trains a GDML model through the command line interface.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd><p class="first">model_dir (str): Path to a common directory for GDML models.
-num_train (int): The number of training points to sample.
-num_validate (int): The number of validation points to sample,</p>
-<blockquote>
-<div>without replacement.</div></blockquote>
-<dl class="last docutils">
-<dt>num_test (int): The number of test points to test the validated</dt>
-<dd>GDML model.</dd>
-<dt>sigma_range (str, optional): Range of kernel length scales to train</dt>
-<dd>and validate GDML values one. Format is
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>model_dir</strong> (<em>str</em>) – Path to a common directory for GDML models.</li>
+<li><strong>num_train</strong> (<em>int</em>) – The number of training points to sample.</li>
+<li><strong>num_validate</strong> (<em>int</em>) – The number of validation points to sample,
+without replacement.</li>
+<li><strong>num_test</strong> (<em>int</em>) – The number of test points to test the validated
+GDML model.</li>
+<li><strong>sigma_range</strong> (<em>str</em><em>, </em><em>optional</em>) – Range of kernel length scales to train
+and validate GDML values one. Format is
 ‘&lt;start&gt;:&lt;interval&gt;:&lt;stop&gt;’. Note, the more length scales the
-longer the training time. Two is the minimum value.</dd>
-</dl>
-</dd>
-</dl>
+longer the training time. Two is the minimum value.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -813,12 +983,18 @@ longer the training time. Two is the minimum value.</dd>
 <code class="descclassname">mbgdml.utils.</code><code class="descname">atoms_by_element</code><span class="sig-paren">(</span><em>atom_list</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.utils.atoms_by_element" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a list of atoms identified by their atomic number to their
 elemental symbol.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>atom_list (list): Contains numbers that represent atomic numbers.</dd>
-<dt>Returns:</dt>
-<dd>list: Contains strings of elemental symbols matching atom_list.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>atom_list</strong> (<em>list</em>) – Contains numbers that represent atomic numbers.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Contains strings of elemental symbols matching atom_list.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -828,37 +1004,40 @@ elemental symbol.</p>
 <p>cclib automatically converts energy units to eV, but does not convert
 gradients. GDML needs consistent energy and force units, so we convert
 them.</p>
-<blockquote>
-<div>Only supports ‘ORCA’ for automatically determining calc units.
-Otherwise, manually specify <cite>e_units_calc</cite> and <cite>r_units_calc</cite>.</div></blockquote>
-<dl class="docutils">
-<dt>package <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>Computational chemistry package used for computations.</dd>
-<dt>forces <span class="classifier-delimiter">:</span> <span class="classifier">numpy.ndarray</span></dt>
-<dd>An array with units of energy and distance matching <cite>e_units_calc</cite>
-and <cite>r_units_calc</cite>.</dd>
-<dt>e_units <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>Desired units of energy. Available units are ‘eV’, ‘hartree’,
-‘kcal/mol’, and ‘kJ/mol’.</dd>
-<dt>r_units <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd>Desired units of distance. Available units implemented in cclib’s
-convertor function are ‘Angstrom’ and ‘bohr’.</dd>
-<dt>e_units_calc <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
-<dd>Specifies package-specific energy units used in calculation.
-Defaults to None.</dd>
-<dt>r_units_calc <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
-<dd>Specifies package-specific distance units used in calculation.
-Defaults to None.</dd>
-</dl>
-<dl class="docutils">
-<dt>ValueError</dt>
-<dd>If the selected energy units are not implemented.</dd>
-<dt>ValueError</dt>
-<dd>If the selected distance units are not implemented.</dd>
-<dt>ValueError</dt>
-<dd>If calculation package is not defined here for known energy and
-distance units.</dd>
-</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Only supports ‘ORCA’ for automatically determining calc units.
+Otherwise, manually specify <cite>e_units_calc</cite> and <cite>r_units_calc</cite>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>package</strong> (<em>str</em>) – Computational chemistry package used for computations.</li>
+<li><strong>forces</strong> (<em>numpy.ndarray</em>) – An array with units of energy and distance matching <cite>e_units_calc</cite>
+and <cite>r_units_calc</cite>.</li>
+<li><strong>e_units</strong> (<em>str</em>) – Desired units of energy. Available units are ‘eV’, ‘hartree’,
+‘kcal/mol’, and ‘kJ/mol’.</li>
+<li><strong>r_units</strong> (<em>str</em>) – Desired units of distance. Available units implemented in cclib’s
+convertor function are ‘Angstrom’ and ‘bohr’.</li>
+<li><strong>e_units_calc</strong> (<em>str</em><em>, </em><em>optional</em>) – Specifies package-specific energy units used in calculation.
+Defaults to None.</li>
+<li><strong>r_units_calc</strong> (<em>str</em><em>, </em><em>optional</em>) – Specifies package-specific distance units used in calculation.
+Defaults to None.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – If the selected energy units are not implemented.</li>
+<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – If the selected distance units are not implemented.</li>
+<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – If calculation package is not defined here for known energy and
+distance units.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -867,14 +1046,25 @@ distance units.</dd>
 <dd><p>Returns paths to all files in a given directory that matches a provided
 expression in the file name. Commonly used to find all files of a certain
 type, e.g. output or xyz files.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>path (str): Specifies the directory to search.
-expression (str): Expression to be tested against all file names in
-‘path’.</dd>
-<dt>Returns:</dt>
-<dd>list: all absolute paths to files matching the provided expression.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> (<em>str</em>) – Specifies the directory to search.</li>
+<li><strong>expression</strong> (<em>str</em>) – Expression to be tested against all file names in</li>
+<li><strong>'path'.</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">all absolute paths to files matching the provided expression.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -883,12 +1073,18 @@ expression (str): Expression to be tested against all file names in
 <dd><p>Creates folder at specified path.
 If the current folder exists, it creates another folder
 with an added number.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>pathFolder (str): Path to desired folder.</dd>
-<dt>Returns:</dt>
-<dd>str: Final path of new folder; ends in ‘/’.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pathFolder</strong> (<em>str</em>) – Path to desired folder.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Final path of new folder; ends in ‘/’.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -896,44 +1092,64 @@ with an added number.</p>
 <code class="descclassname">mbgdml.utils.</code><code class="descname">natsort_list</code><span class="sig-paren">(</span><em>unsorted_list</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.utils.natsort_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Basic function that organizes a list based on human (or natural) sorting
 methodology.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>unsorted_list (list): List of strings.</dd>
-<dt>Returns:</dt>
-<dd>list: Sorted list of string.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>unsorted_list</strong> (<em>list</em>) – List of strings.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Sorted list of string.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="mbgdml.utils.norm_path">
 <code class="descclassname">mbgdml.utils.</code><code class="descname">norm_path</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.utils.norm_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Normalizes directory paths to be consistent.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>path (string): Path to a directory.</dd>
-<dt>Returns:</dt>
-<dd>normd_path: Normalized path.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>string</em>) – Path to a directory.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Normalized path.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">normd_path</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="mbgdml.utils.string_coords">
 <code class="descclassname">mbgdml.utils.</code><code class="descname">string_coords</code><span class="sig-paren">(</span><em>atoms</em>, <em>coords</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.utils.string_coords" title="Permalink to this definition">¶</a></dt>
-<dd><p>Puts atomic coordinates into a Python string. Typically used for 
+<dd><p>Puts atomic coordinates into a Python string. Typically used for
 writing to an input file.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd><dl class="first last docutils">
-<dt>atoms (np.array): A (n, 1) numpy array containing all n elements labled</dt>
-<dd>by their atomic number.</dd>
-<dt>coords (np.array): Contains atomic positions in a (n, 3) numpy array</dt>
-<dd>where the x, y, and z Cartesian coordinates in Angstroms are given
-for the n atoms.</dd>
-</dl>
-</dd>
-<dt>Returns:</dt>
-<dd>str: all atomic coordinates contained in a string.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>atoms</strong> (<em>np.array</em>) – A (n, 1) numpy array containing all n elements labled
+by their atomic number.</li>
+<li><strong>coords</strong> (<em>np.array</em>) – Contains atomic positions in a (n, 3) numpy array
+where the x, y, and z Cartesian coordinates in Angstroms are given
+for the n atoms.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">all atomic coordinates contained in a string.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
