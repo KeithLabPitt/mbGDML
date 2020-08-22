@@ -180,14 +180,145 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="mbgdml-analysis-nbody-module">
-<h2>mbgdml.analysis.nbody module<a class="headerlink" href="#mbgdml-analysis-nbody-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-mbgdml.analysis.nbody">
+<span id="mbgdml-analysis-nbody-module"></span><h2>mbgdml.analysis.nbody module<a class="headerlink" href="#module-mbgdml.analysis.nbody" title="Permalink to this headline">¶</a></h2>
+<p>Analyses for mbGDML models.</p>
+<dl class="class">
+<dt id="mbgdml.analysis.nbody.NBody">
+<em class="property">class </em><code class="descclassname">mbgdml.analysis.nbody.</code><code class="descname">NBody</code><a class="headerlink" href="#mbgdml.analysis.nbody.NBody" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Probing individual n-body contributions of force fields.</p>
+<dl class="method">
+<dt id="mbgdml.analysis.nbody.NBody.compute_force_similarity">
+<code class="descname">compute_force_similarity</code><span class="sig-paren">(</span><em>predict_force</em>, <em>true_force</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.analysis.nbody.NBody.compute_force_similarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates cosine distance of two arrays.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">compute_force_similarity</code><span class="sig-paren">(</span><em>predict_force</em>, <em>true_force</em><span class="sig-paren">)</span></dt>
+<dd><p>Compute modified cosine distance of two force vectors.</p>
+<p>Computes 1 - cosine_similarity. Two exact vectors will thus have a
+similarity of 0, orthogal vectors will be 1, and equal but opposite
+will be 2.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>predict_force</strong> (<em>np.ndarray</em>) – Array of the predicted force vector by GDML.</li>
+<li><strong>true_force</strong> (<em>np.ndarray</em>) – Array of the true force vector of the same shape as predict_force</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Similarity (accuracy) of predicted force vector for an atom. 0.0 is
+perfect similarity and the further away from zero the less similar
+(accurate).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mbgdml.analysis.nbody.NBodyHeatMaps">
+<em class="property">class </em><code class="descclassname">mbgdml.analysis.nbody.</code><code class="descname">NBodyHeatMaps</code><a class="headerlink" href="#mbgdml.analysis.nbody.NBodyHeatMaps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mbgdml.analysis.nbody.NBody" title="mbgdml.analysis.nbody.NBody"><code class="xref py py-class docutils literal notranslate"><span class="pre">mbgdml.analysis.nbody.NBody</span></code></a></p>
+<p>Heat maps for n-body contribution accuracy.</p>
+<dl class="method">
+<dt id="mbgdml.analysis.nbody.NBodyHeatMaps.cluster_force_similarity">
+<code class="descname">cluster_force_similarity</code><span class="sig-paren">(</span><em>predict_set</em>, <em>structure_index</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.analysis.nbody.NBodyHeatMaps.cluster_force_similarity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">cluster_force_similarity</code><span class="sig-paren">(</span><em>predict_set</em>, <em>structure_index</em><span class="sig-paren">)</span></dt>
+<dd><p>Computes the</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.analysis.nbody.NBodyHeatMaps.create_heatmap">
+<code class="descname">create_heatmap</code><span class="sig-paren">(</span><em>similarity</em>, <em>atoms</em>, <em>num_nbody</em>, <em>name</em>, <em>data_labels</em>, <em>save_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.analysis.nbody.NBodyHeatMaps.create_heatmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates matplotlib heatmap figure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>similarity</strong> (<em>numpy.ndarray</em>) – Cosine distances in n x m array where n is the order of n-body
+contributions, and m is the number of atoms.</li>
+<li><strong>atoms</strong> (<em>list</em>) – Strings of elemental symbols in the same order as atoms in the
+system.</li>
+<li><strong>num_nbody</strong> (<em>int</em>) – Maximum number of n-body contributions to include.</li>
+<li><strong>name</strong> (<em>str</em>) – File name to save the heatmap.</li>
+<li><strong>data_labels</strong> (<em>bool</em>) – Whether or not to include values of cosine distance inside
+heatmap cells.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.analysis.nbody.NBodyHeatMaps.force_heatmap">
+<code class="descname">force_heatmap</code><span class="sig-paren">(</span><em>predict_set</em>, <em>structure_list</em>, <em>base_name</em>, <em>save_dir</em>, <em>data_labels=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.analysis.nbody.NBodyHeatMaps.force_heatmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes and saves force heat map of predict set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>predict_set</strong> (<em>mbgdml.data.mbGDMLPredictset</em>) – Object with loaded predict set.</li>
+<li><strong>structure_list</strong> (<em>list</em>) – Indices of structures to include in the heatmap.</li>
+<li><strong>base_name</strong> (<em>str</em>) – First part of saved file name.</li>
+<li><strong>save_dir</strong> (<em>str</em>) – Path to save the heatmap to as a png.</li>
+<li><strong>data_labels</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether or not to include values of cosine distance inside
+heatmap cells.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mbgdml.analysis.nbody.NBodyMD">
+<em class="property">class </em><code class="descclassname">mbgdml.analysis.nbody.</code><code class="descname">NBodyMD</code><a class="headerlink" href="#mbgdml.analysis.nbody.NBodyMD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mbgdml.analysis.nbody.NBody" title="mbgdml.analysis.nbody.NBody"><code class="xref py py-class docutils literal notranslate"><span class="pre">mbgdml.analysis.nbody.NBody</span></code></a></p>
+</dd></dl>
+
 </div>
-<div class="section" id="mbgdml-analysis-similarity-module">
-<h2>mbgdml.analysis.similarity module<a class="headerlink" href="#mbgdml-analysis-similarity-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-mbgdml.analysis.similarity">
+<span id="mbgdml-analysis-similarity-module"></span><h2>mbgdml.analysis.similarity module<a class="headerlink" href="#module-mbgdml.analysis.similarity" title="Permalink to this headline">¶</a></h2>
+<p>Analyses for mbGDML models.</p>
+<dl class="class">
+<dt id="mbgdml.analysis.similarity.similarity">
+<em class="property">class </em><code class="descclassname">mbgdml.analysis.similarity.</code><code class="descname">similarity</code><a class="headerlink" href="#mbgdml.analysis.similarity.similarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="mbgdml.analysis.similarity.similarity.initialize_soap">
+<code class="descname">initialize_soap</code><span class="sig-paren">(</span><em>atoms</em>, <em>rcut</em>, <em>nmax</em>, <em>lmax</em>, <em>sigma</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.analysis.similarity.similarity.initialize_soap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.analysis.similarity.similarity.prepare_structures">
+<code class="descname">prepare_structures</code><span class="sig-paren">(</span><em>z</em>, <em>R</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.analysis.similarity.similarity.prepare_structures" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-mbgdml.analysis">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mbgdml.analysis" title="Permalink to this headline">¶</a></h2>
+<p>Analysis package for mbgdml.</p>
 </div>
 </div>
 
