@@ -187,9 +187,41 @@
 <em class="property">class </em><code class="descclassname">mbgdml.data.basedata.</code><code class="descname">mbGDMLData</code><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Parent class for mbGDML data and predict sets.</p>
+<dl class="attribute">
+<dt id="mbgdml.data.basedata.mbGDMLData.system_info">
+<code class="descname">system_info</code><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.system_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Information describing the system.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.data.basedata.mbGDMLData.get_system_info">
+<code class="descname">get_system_info</code><span class="sig-paren">(</span><em>atoms</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.get_system_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the system_info attribute.</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="mbgdml.data.basedata.mbGDMLData.add_system_info">
 <code class="descname">add_system_info</code><span class="sig-paren">(</span><em>dict_data</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.add_system_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds system information to data set.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.data.basedata.mbGDMLData.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>name</em>, <em>data</em>, <em>save_dir</em>, <em>is_dataset</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves data set.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">add_system_info</code><span class="sig-paren">(</span><em>dict_data</em><span class="sig-paren">)</span></dt>
 <dd><p>Adds information about the system to the model.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -205,22 +237,20 @@ the system.</td>
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If the system is a solvent, the ‘solvent’ name and ‘cluster_size’
+<p class="rubric">Notes</p>
+<p>If the system is a solvent, the ‘solvent’ name and ‘cluster_size’
 is included.</p>
-</div>
 </dd></dl>
 
 <dl class="method">
-<dt id="mbgdml.data.basedata.mbGDMLData.get_system_info">
-<code class="descname">get_system_info</code><span class="sig-paren">(</span><em>atoms</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.get_system_info" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">get_system_info</code><span class="sig-paren">(</span><em>atoms</em><span class="sig-paren">)</span></dt>
 <dd><p>Describes the dataset system.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>atoms</strong> (<em>list</em>) – Atomic numbers of all atoms in the system. The atoms
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>atoms</strong> (<em>list</em>) – Atomic symbols of all atoms in the system. The atoms
 are repeated; for example, water is [‘H’, ‘H’, ‘O’].</td>
 </tr>
 </tbody>
@@ -228,8 +258,8 @@ are repeated; for example, water is [‘H’, ‘H’, ‘O’].</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="mbgdml.data.basedata.mbGDMLData.save">
-<code class="descname">save</code><span class="sig-paren">(</span><em>name</em>, <em>data</em>, <em>save_dir</em>, <em>is_dataset</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.save" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">save</code><span class="sig-paren">(</span><em>name</em>, <em>data</em>, <em>save_dir</em>, <em>is_dataset</em><span class="sig-paren">)</span></dt>
 <dd><p>General save function for GDML data sets and models.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -565,6 +595,20 @@ about the system and solvent. ‘solvent_name’, ‘solvent_label’,
 <em class="property">class </em><code class="descclassname">mbgdml.data.dataset.</code><code class="descname">mbGDMLDataset</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mbgdml.data.basedata.mbGDMLData" title="mbgdml.data.basedata.mbGDMLData"><code class="xref py py-class docutils literal notranslate"><span class="pre">mbgdml.data.basedata.mbGDMLData</span></code></a></p>
 <p>For creating, loading, manipulating, and using GDML data sets.</p>
+<dl class="attribute">
+<dt id="mbgdml.data.dataset.mbGDMLDataset.dataset">
+<code class="descname">dataset</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains all information and arrays stored in data set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.load">
 <code class="descname">load</code><span class="sig-paren">(</span><em>dataset_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.load" title="Permalink to this definition">¶</a></dt>
@@ -598,20 +642,6 @@ attributes.</p>
 <dt>
 <code class="descname">gdml_r_units='Angstrom', gdml_e_units='kcal/mol', write=True)</code></dt>
 <dd><p>Creates and writes a single GDML data set.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="mbgdml.data.dataset.mbGDMLDataset.dataset">
-<code class="descname">dataset</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.dataset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Contains all information and arrays stored in data set.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="attribute">
@@ -738,7 +768,27 @@ provided.</p>
 <dl class="method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.mb_dataset">
 <code class="descname">mb_dataset</code><span class="sig-paren">(</span><em>nbody</em>, <em>models_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.mb_dataset" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Creates a many-body data set.</p>
+<p>Removes n-body contributions of energy and forces from a data set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>nbody</strong> (<em>int</em>) – Number of n-body contributions to include.</li>
+<li><strong>models_dir</strong> (<em>str</em>) – Path to directory containing GDML files.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – If there is no data set loaded.</li>
+<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – If there are more than one models with the same name.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.partition_dataset_name">
@@ -771,7 +821,16 @@ For example, ‘AB’.</li>
 <dl class="method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.print">
 <code class="descname">print</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.print" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Prints all structure coordinates, energies, and force of a data set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – If there is no data set loaded.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt>
@@ -840,17 +899,18 @@ containing n solvent molecules.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>trajfolder</strong> (<em>path</em>) – folder containing all MD trajectories to be included
-in solvent data sets. Must contain ‘traj’ in filename and have an
-‘xyz’ file extension.</li>
+<li><strong>trajfolder</strong> (<em>str</em>) – Directory containing all MD trajectories to be included in solvent data
+sets. Must contain ‘traj’ in filename and have an ‘xyz’ file extension.</li>
 <li><strong>submit</strong> (<em>bool</em><em>, </em><em>optional</em>) – specifies if calculations should be submitted.</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Example</p>
-<p>data_sets(‘/path/to/dir’, True)</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data_sets</span><span class="p">(</span><span class="s1">&#39;./path/to/dir/&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -976,8 +1036,8 @@ in solvent data sets. Must contain ‘traj’ in filename and have an
 <dt id="mbgdml.data.predictset.mbGDMLPredictset">
 <em class="property">class </em><code class="descclassname">mbgdml.data.predictset.</code><code class="descname">mbGDMLPredictset</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mbgdml.data.basedata.mbGDMLData" title="mbgdml.data.basedata.mbGDMLData"><code class="xref py py-class docutils literal notranslate"><span class="pre">mbgdml.data.basedata.mbGDMLData</span></code></a></p>
-<p>A predict set is a data set with mbGDML predicted energy and forces instead
-of training data.</p>
+<p>A predict set is a data set with mbGDML predicted energy and forces
+instead of training data.</p>
 <p>When analyzing many structures using mbGDML it is easier (and faster) to
 predict all many-body contributions once and then analyze the stored data.
 The predict set accomplishes just this.</p>
@@ -1016,7 +1076,16 @@ The predict set accomplishes just this.</p>
 <dl class="method">
 <dt id="mbgdml.data.predictset.mbGDMLPredictset.nbody_predictions">
 <code class="descname">nbody_predictions</code><span class="sig-paren">(</span><em>nbody_order</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.nbody_predictions" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>???</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nbody_order</strong> (<em>int</em>) – </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 
