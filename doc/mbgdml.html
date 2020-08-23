@@ -240,51 +240,30 @@
 <em class="property">class </em><code class="descclassname">mbgdml.calculate.</code><code class="descname">mbGDMLCalculator</code><span class="sig-paren">(</span><em>elements</em>, <em>model_paths</em>, <em>e_unit_model='kcal/mol'</em>, <em>r_unit_model='Angstrom'</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLCalculator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ase.calculators.calculator.Calculator</span></code></p>
 <p>Initializes mbGDML calculator with models and units.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>model_paths</strong> (<em>list</em>) – Paths of all models to be used for GDML
-prediction.</li>
-<li><strong>e_unit_model</strong> (<em>str</em><em>, </em><em>optional</em>) – Specifies the units of energy
-prediction for the GDML models. Defaults to ‘kcal/mol’.</li>
-<li><strong>r_unit_model</strong> (<em>str</em><em>, </em><em>optional</em>) – [description]. Defaults to ‘Angstrom’.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
+<dl class="docutils">
+<dt>model_paths <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd>Paths of all models to be used for GDML prediction.</dd>
+<dt>e_unit_model <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
+<dd>Specifies the units of energy prediction for the GDML models. Defaults
+to ‘kcal/mol’.</dd>
+<dt>r_unit_model <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
+<dd>Specifies the distance units for GDML models. Defaults to ‘Angstrom’.</dd>
+</dl>
+<dl class="method">
+<dt id="mbgdml.calculate.mbGDMLCalculator.load_models">
+<code class="descname">load_models</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLCalculator.load_models" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads models for GDML prediction.</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="mbgdml.calculate.mbGDMLCalculator.calculate">
 <code class="descname">calculate</code><span class="sig-paren">(</span><em>atoms=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLCalculator.calculate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do the calculation.</p>
-<dl class="docutils">
-<dt>properties: list of str</dt>
-<dd>List of what needs to be calculated.  Can be any combination
-of ‘energy’, ‘forces’, ‘stress’, ‘dipole’, ‘charges’, ‘magmom’
-and ‘magmoms’.</dd>
-<dt>system_changes: list of str</dt>
-<dd>List of what has changed since last calculation.  Can be
-any combination of these six: ‘positions’, ‘numbers’, ‘cell’,
-‘pbc’, ‘initial_charges’ and ‘initial_magmoms’.</dd>
-</dl>
-<p>Subclasses need to implement this, but can ignore properties
-and system_changes if they want.  Calculated properties should
-be inserted into results dictionary like shown in this dummy
-example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;energy&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-                <span class="s1">&#39;forces&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">atoms</span><span class="p">),</span> <span class="mi">3</span><span class="p">)),</span>
-                <span class="s1">&#39;stress&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>
-                <span class="s1">&#39;dipole&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-                <span class="s1">&#39;charges&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">atoms</span><span class="p">)),</span>
-                <span class="s1">&#39;magmom&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-                <span class="s1">&#39;magmoms&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">atoms</span><span class="p">))}</span>
-</pre></div>
-</div>
-<p>The subclass implementation should first call this
-implementation to set the atoms attribute and create any missing
-directories.</p>
+<dd></dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">calculate</code><span class="sig-paren">(</span><em>atoms=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Predicts energy and forces using many-body GDML models.</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -293,18 +272,14 @@ directories.</p>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="mbgdml.calculate.mbGDMLCalculator.load_models">
-<code class="descname">load_models</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLCalculator.load_models" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">load_models</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span></dt>
 <dd><p>Loads models for GDML prediction.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model_paths</strong> (<em>list</em>) – List containing paths of all GDML models to be
-loaded. All of these models will be used during the MD run.</td>
-</tr>
-</tbody>
-</table>
+<dl class="docutils">
+<dt>model_paths <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd>Contains paths of all GDML models to be loaded. All of these models
+will be used during the MD run.</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -313,50 +288,54 @@ loaded. All of these models will be used during the MD run.</td>
 <dt id="mbgdml.calculate.mbGDMLMD">
 <em class="property">class </em><code class="descclassname">mbgdml.calculate.</code><code class="descname">mbGDMLMD</code><span class="sig-paren">(</span><em>structure_name</em>, <em>structure_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="mbgdml.data.html#mbgdml.data.basedata.mbGDMLData" title="mbgdml.data.basedata.mbGDMLData"><code class="xref py py-class docutils literal notranslate"><span class="pre">mbgdml.data.basedata.mbGDMLData</span></code></a></p>
-<dl class="method">
-<dt id="mbgdml.calculate.mbGDMLMD.load_calculator">
-<code class="descname">load_calculator</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD.load_calculator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loads the many-body GDML ASE calculator.</p>
+<p>Molecular dynamics through ASE with many-body GDML models.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model_paths</strong> (<em>list</em>) – Paths to all many-body GDML models to be used.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>structure_name</strong> (<em>str</em>) – Name of the structure. Mainly for file naming.</li>
+<li><strong>structure_path</strong> (<em>str</em>) – Path to the structure file.</li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="mbgdml.calculate.mbGDMLMD.load_calculator">
+<code class="descname">load_calculator</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD.load_calculator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads the many-body GDML ASE calculator.</p>
+<dl class="docutils">
+<dt>model_paths <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd>Paths to all many-body GDML models to be used.</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="mbgdml.calculate.mbGDMLMD.printenergy">
 <code class="descname">printenergy</code><span class="sig-paren">(</span><em>a</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD.printenergy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Quick function to print MD information during simulation.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>a</strong> (<em>atoms</em>) – Atoms object from ASE.</td>
-</tr>
-</tbody>
-</table>
+<dl class="docutils">
+<dt>a <span class="classifier-delimiter">:</span> <span class="classifier"><cite>ase.atoms</cite></span></dt>
+<dd>Atoms object from ASE.</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="mbgdml.calculate.mbGDMLMD.relax">
 <code class="descname">relax</code><span class="sig-paren">(</span><em>max_force=0.0001</em>, <em>steps=100</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD.relax" title="Permalink to this definition">¶</a></dt>
 <dd><p>Short relaxation of structure.</p>
+<dl class="docutils">
+<dt>max_force <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd>Maximum force. Defaults to 1e-4.</dd>
+<dt>steps <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
+<dd>Maximum allowable steps. Defaults to 100.</dd>
+</dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>max_force</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum force. Defaults to 1e-4.</li>
-<li><strong>steps</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum allowable steps. Defaults to 100.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – Requires a calculator to be loaded first.</p>
-</td>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – Requires a calculator to be loaded first.</td>
 </tr>
 </tbody>
 </table>
@@ -366,20 +345,19 @@ loaded. All of these models will be used during the MD run.</td>
 <dt id="mbgdml.calculate.mbGDMLMD.run">
 <code class="descname">run</code><span class="sig-paren">(</span><em>steps</em>, <em>t_step</em>, <em>temp</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs a MD simulation using the Verlet algorithm in ASE.</p>
+<dl class="docutils">
+<dt>steps <span class="classifier-delimiter">:</span> <span class="classifier"><cite>int</cite></span></dt>
+<dd>Number of steps for the MD simulation.</dd>
+<dt>t_step <span class="classifier-delimiter">:</span> <span class="classifier"><cite>float</cite></span></dt>
+<dd>Time step in femtoseconds.</dd>
+<dt>temp <span class="classifier-delimiter">:</span> <span class="classifier"><cite>float</cite></span></dt>
+<dd>Temperature in Kelvin used for initializing velocities.</dd>
+</dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>steps</strong> (<em>int</em>) – Number of steps for the MD simulation.</li>
-<li><strong>t_step</strong> (<em>float</em>) – Time step in femtoseconds.</li>
-<li><strong>temp</strong> (<em>float</em>) – Temperature in Kelvin used for initializing
-velocities.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – Requires a calculator to be loaded first.</p>
-</td>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – Requires a calculator to be loaded first.</td>
 </tr>
 </tbody>
 </table>
@@ -392,47 +370,44 @@ velocities.</li>
 <code class="descclassname">mbgdml.calculate.</code><code class="descname">partition_engrad</code><span class="sig-paren">(</span><em>package</em>, <em>partition_dict</em>, <em>temperature</em>, <em>md_iteration</em>, <em>calc_dir='.'</em>, <em>calc_name='partition-engrad'</em>, <em>theory_level_engrad='MP2'</em>, <em>basis_set_engrad='def2-TZVP'</em>, <em>options_engrad='TightSCF FrozenCore'</em>, <em>control_blocks_engrad='%scf\n    ConvForced true\nend\n%maxcore 8000\n'</em>, <em>submit=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.partition_engrad" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets up a partition ORCA 4.2.0 EnGrad calculation for trajectory.</p>
 <p>Can be submitted or just have the input files prepared.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>package</strong> (<em>str</em>) – specifies the quantum chemistry program to be used. ORCA
-is currently the only package directly supported.</li>
-<li><strong>partition_dict</strong> (<em>dict</em>) – contains all information for the partition
-including ‘solvent_label’, ‘partition_size’, ‘atoms’, and ‘coords’.</li>
-<li><strong>temperature</strong> (<em>int</em>) – used for labeling and identifying the thermostat
-temperature for the molecular dynamics simulation.</li>
-<li><strong>md_iteration</strong> (<em>int</em>) – used for labeling and identifying the iteration of
-the molecular dynamics simulation.</li>
-<li><strong>calc_dir</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to write calculation.
-Defaults to current directory (‘./’).</li>
-<li><strong>calc_name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name for the calculation.
-Defaults to ‘partition-engrad’.</li>
-<li><strong>theory_level_engrad</strong> (<em>str</em><em>, </em><em>optional</em>) – keword that specifies the
-level of theory (e.g., MP2, BP86, B3LYP, etc.) used for calculations.
-Defaults to ‘MP2’ for ORCA 4.2.0.</li>
-<li><strong>basis_set_engrad</strong> (<em>str</em><em>, </em><em>optional</em>) – keyword that specifies the basis set
-(e.g., def2-SVP, def2-TZVP, etc.). Defaults to ‘def2-TZVP’.</li>
-<li><strong>options_engrad</strong> (<em>str</em><em>, </em><em>optional</em>) – all options specifically for the EnGrad
-calculation (e.g., SCF convergence criteria, algorithms, etc.)
-Defaults to ‘TightSCF FrozenCore’.</li>
-<li><strong>control_blocks_engrad</strong> (<em>str</em><em>, </em><em>optional</em>) – all options that control the
-calculation. Defaults to ‘%scf    ConvForced true end’.</li>
-<li><strong>submit</strong> (<em>bool</em><em>, </em><em>optional</em>) – controls whether the calculation is submitted.
-Defaults to False.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Example</p>
 <dl class="docutils">
-<dt>calculate.partition_engrad(</dt>
-<dd>‘orca’, ‘/path/to/dir/’,
-partition_dict, temp, iteration</dd>
+<dt>package <span class="classifier-delimiter">:</span> <span class="classifier"><cite>str</cite></span></dt>
+<dd>Specifies the quantum chemistry program to be used. ORCA is currently
+the only package directly supported.</dd>
+<dt>partition_dict <span class="classifier-delimiter">:</span> <span class="classifier"><cite>dict</cite></span></dt>
+<dd>Contains all information for the partition including ‘solvent_label’,
+‘partition_size’, ‘atoms’, and ‘coords’.</dd>
+<dt>temperature <span class="classifier-delimiter">:</span> <span class="classifier"><cite>int</cite></span></dt>
+<dd>Used for labeling and identifying the thermostat temperature for the
+molecular dynamics simulation.</dd>
+<dt>md_iteration <span class="classifier-delimiter">:</span> <span class="classifier"><cite>int</cite></span></dt>
+<dd>Used for labeling and identifying the iteration of the molecular
+dynamics simulation.</dd>
+<dt>calc_dir <span class="classifier-delimiter">:</span> <span class="classifier"><cite>str</cite>, optional</span></dt>
+<dd>Path to write calculation. Defaults to current directory (‘./’).</dd>
+<dt>calc_name <span class="classifier-delimiter">:</span> <span class="classifier"><cite>str</cite>, optional</span></dt>
+<dd>Name for the calculation. Defaults to ‘partition-engrad’.</dd>
+<dt>theory_level_engrad <span class="classifier-delimiter">:</span> <span class="classifier"><cite>str</cite>, optional</span></dt>
+<dd>Keword that specifies the level of theory (e.g., MP2, BP86, B3LYP,
+etc.) used for calculations. Defaults to ‘MP2’ for ORCA 4.2.0.</dd>
+<dt>basis_set_engrad <span class="classifier-delimiter">:</span> <span class="classifier"><cite>str</cite>, optional</span></dt>
+<dd>Keyword that specifies the basis set (e.g., def2-SVP, def2-TZVP, etc.).
+Defaults to ‘def2-TZVP’.</dd>
+<dt>options_engrad <span class="classifier-delimiter">:</span> <span class="classifier"><cite>str</cite>, optional</span></dt>
+<dd>All options specifically for the EnGrad calculation (e.g., SCF
+convergence criteria, algorithms, etc.) Defaults to ‘TightSCF
+FrozenCore’.</dd>
+<dt>control_blocks_engrad <span class="classifier-delimiter">:</span> <span class="classifier"><cite>str</cite>, optional</span></dt>
+<dd>All options that control the calculation. Defaults to
+‘%scf    ConvForced true end’.</dd>
+<dt>submit <span class="classifier-delimiter">:</span> <span class="classifier"><cite>bool</cite>, optional</span></dt>
+<dd>Controls whether the calculation is submitted. Defaults to False.</dd>
 </dl>
-<p>)</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">calculate</span><span class="o">.</span><span class="n">partition_engrad</span><span class="p">(</span><span class="s1">&#39;orca&#39;</span><span class="p">,</span> <span class="s1">&#39;/path/to/dir/&#39;</span><span class="p">,</span> <span class="n">partition_dict</span><span class="p">,</span>
+<span class="go">temp, iteration)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
