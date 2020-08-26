@@ -426,7 +426,8 @@ FrozenCore’.</dd>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>xyz_path</strong> (<em>str</em>) – Path to xyz file of interest.</li>
-<li><strong>solvent</strong> (<em>lst</em>) – Specifies solvents to determine the number of atoms included in a molecule.</li>
+<li><strong>solvent</strong> (<em>lst</em>) – Specifies solvents to determine the number of atoms included in a
+molecule.</li>
 </ul>
 </td>
 </tr>
@@ -445,48 +446,40 @@ FrozenCore’.</dd>
 <code class="descclassname">mbgdml.parse.</code><code class="descname">parse_cluster</code><span class="sig-paren">(</span><em>cluster_data</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.parse.parse_cluster" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates dictionary of all solvent molecules in solvent cluster from a
 cluster_data dictionary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cluster_data</strong> (<em>dict</em>) – Contains ‘atoms’ that is a list of elements organized by molecule and
+matches the order of the numpy array containing atomic coordinates</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Contains solvent molecules with keys of uppercase characters with dicts
+as values containing ‘atoms’ and ‘coords’.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Notes</p>
 <p>Molecules are specified by specified by uppercase letters, and their
 values the xyz coordinates.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cluster_data</strong> (<em>dict</em>) – Contains ‘atoms’ that is a list of elements</td>
-</tr>
-</tbody>
-</table>
-<p>organized by molecule and matches the order of the numpy array
-containing atomic coordinates</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Contains solvent molecules with keys of uppercase characters</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
-<p>with dicts as values containing ‘atoms’ and ‘coords’.</p>
 <dl class="docutils">
 <dt>{</dt>
-<dd><dl class="first last docutils">
-<dt>‘A’:    {</dt>
-<dd><blockquote class="first">
-<div><p>‘atoms’:   array([8, 1, 6, 1, 1, 1], dtype=int32),
+<dd><dl class="first docutils">
+<dt>‘A’: {</dt>
+<dd><p class="first">‘atoms’:   array([8, 1, 6, 1, 1, 1], dtype=int32),
 ‘coords’:  array([[ 1.45505901, -0.880818  ,  0.851331  ],</p>
-<blockquote>
+<blockquote class="last">
 <div>[ 0.505216  , -1.15252401,  0.844885  ],
 [ 2.22036801, -1.94217701,  0.2977    ],
 [ 3.25924901, -1.61877101,  0.264909  ],
 [ 1.89693001, -2.18833701, -0.717112  ],
 [ 2.15446301, -2.84056201,  0.915723  ]])</div></blockquote>
-</div></blockquote>
-<p class="last">},</p>
 </dd>
-<dt>‘B’:    {</dt>
-<dd><blockquote class="first">
+</dl>
+<p>},
+‘B’: {</p>
+<blockquote>
 <div><p>‘atoms’:   array([8, 1, 6, 1, 1, 1], dtype=int32),
 ‘coords’:  array([[ 1.14600801,  1.44243601, -0.473102  ],</p>
 <blockquote>
@@ -497,8 +490,6 @@ containing atomic coordinates</p>
 [ 0.957941  ,  2.49831901,  1.31983201]])</div></blockquote>
 </div></blockquote>
 <p class="last">}</p>
-</dd>
-</dl>
 </dd>
 </dl>
 <p>}</p>
@@ -517,24 +508,17 @@ containing atomic coordinates</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>out_file</strong> (<em>str</em>) – path to computational chemistry output file. This should
-contain all MD steps for the partition.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>out_file</strong> (<em>str</em>) – Path to computational chemistry output file. This should contain all MD
+steps for the partition.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
-<dt>contains all information needed to build GDML data sets.</dt>
-<dd><dl class="first last docutils">
-<dt>’atoms’ is a (n) numpy array containing the atomic numbers of the</dt>
-<dd>atoms in the partition.</dd>
-<dt>’coords’ is a (m, n, 3) numpy array containing the m MD step</dt>
-<dd>coordinates of the n atoms in the partition.</dd>
-<dt>’grads’ is a (m, n, 3) numpy array containing the gradients of the</dt>
-<dd>m MD steps containing the n atoms in the partition.</dd>
-<dt>’energies’ is a (m, 1) numpy array containing the electronic</dt>
-<dd>energies of each m MD steps for the partition.</dd>
-</dl>
-</dd>
-</dl>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Contains all information needed to build GDML data sets. ‘atoms’ is a
+(n) numpy array containing the atomic numbers of the atoms in the
+partition. ‘coords’ is a (m, n, 3) numpy array containing the m MD
+step coordinates of the n atoms in the partition. ‘grads’ is a
+(m, n, 3) numpy array containing the gradients of the m MD steps
+containing the n atoms in the partition. ‘energies’ is a (m, 1) numpy
+array containing the electronic energies of each m MD steps for the
+partition.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
 </tr>
@@ -552,7 +536,9 @@ contain all MD steps for the partition.</td>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stringfile_path</strong> (<em>str</em>) – Specifies path to stringfile.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a href="#id5"><span class="problematic" id="id6">**</span></a><a href="#id7"><span class="problematic" id="id8">*</span></a></td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">TODO</td>
 </tr>
 </tbody>
 </table>
@@ -576,20 +562,14 @@ cluster.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>cluster</strong> (<em>dict</em>) – Dictionary of solvent molecules in cluster from
-parse_cluster</li>
+<li><strong>cluster</strong> (<em>dict</em>) – Dictionary of solvent molecules in cluster from parse_cluster</li>
 <li><strong>nbody</strong> (<em>int</em>) – Desired number of solvent molecules in combination.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
-<dt>All nonrepeating solvent molecule combinations from cluster with</dt>
-<dd><p class="first last">keys being uppercase concatenations of molecule labels and
-values being the string of coordinates.</p>
-</dd>
-</dl>
-<p>ABC is considered the same as BAC and only included once.</p>
-</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">All nonrepeating solvent molecule combinations from cluster with keys
+being uppercase concatenations of molecule labels and values being the
+string of coordinates.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
@@ -597,6 +577,8 @@ values being the string of coordinates.</p>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>ABC is considered the same as BAC and only included once.</p>
 </dd></dl>
 
 <dl class="function">
@@ -610,12 +592,9 @@ segment.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>traj_path</strong> (<em>str</em>) – Path to trajectory with xyz coordinates.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
-<dt>All nonrepeating solvent molecule combinations from cluster with</dt>
-<dd>keys being uppercase concatenations of molecule labels and
-values being the string of coordinates.</dd>
-</dl>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">All nonrepeating solvent molecule combinations from cluster with keys
+being uppercase concatenations of molecule labels and values being the
+string of coordinates.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
 </tr>
@@ -641,22 +620,18 @@ many body order.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>z</strong> (<em>list</em>) – Atomic numbers of all atoms in the system.</li>
-<li><strong>R</strong> (<em>np.ndarray</em>) – Cartesian coordinates of all atoms of the structure
-specified in the same order as z. The array should have shape
-(n, 3) where n is the number of atoms.</li>
+<li><strong>R</strong> (<em>numpy.ndarray</em>) – Cartesian coordinates of all atoms of the structure specified in
+the same order as z. The array should have shape (n, 3) where n is
+the number of atoms.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
-<dt>Dictionaries of many-body contributions of total energies</dt>
-<dd><p class="first last">(float) and forces (np.ndarray) of the structure. Note that
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Dictionaries of many-body contributions of total energies
+(float) and forces (np.ndarray) of the structure. Note that
 forces has the same shape as R. Each key of the dictionary is
 the order of the many-body model. Within this dictionary is a
 total, ‘T’, and molecule combinations identified in the system
 and their contributions.</p>
-</dd>
-</dl>
-</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
@@ -664,16 +639,15 @@ and their contributions.</p>
 </tr>
 </tbody>
 </table>
-<p>Examples:
-&gt;&gt;&gt; atoms = [8, 1, 1, 8, 1, 1]
-&gt;&gt;&gt; coords = array([[ 1.530147,  1.121901,  0.396232],</p>
-<blockquote>
-<div>[ 2.350485,  1.1297  , -0.085235],
-[ 0.823842,  1.311077, -0.2846  ],
-[-1.464849, -1.155867, -0.449863],
-[-1.41447 , -1.99605 , -0.917981],
-[-0.868584, -1.275659,  0.32329 ]])</div></blockquote>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">E_predicted</span><span class="p">,</span> <span class="n">F_predicted</span> <span class="o">=</span> <span class="n">decomposed_predict</span><span class="p">(</span><span class="n">atoms</span><span class="p">,</span> <span class="n">coords</span><span class="p">)</span>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">atoms</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">coords</span> <span class="o">=</span> <span class="n">array</span><span class="p">([[</span> <span class="mf">1.530147</span><span class="p">,</span>  <span class="mf">1.121901</span><span class="p">,</span>  <span class="mf">0.396232</span><span class="p">],</span>
+<span class="go">                    [ 2.350485,  1.1297  , -0.085235],</span>
+<span class="go">                    [ 0.823842,  1.311077, -0.2846  ],</span>
+<span class="go">                    [-1.464849, -1.155867, -0.449863],</span>
+<span class="go">                    [-1.41447 , -1.99605 , -0.917981],</span>
+<span class="go">                    [-0.868584, -1.275659,  0.32329 ]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">E_predicted</span><span class="p">,</span> <span class="n">F_predicted</span> <span class="o">=</span> <span class="n">decomposed_predict</span><span class="p">(</span><span class="n">atoms</span><span class="p">,</span> <span class="n">coords</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">E_predicted</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span>  <span class="c1"># Units here are kcal/mol</span>
 <span class="go">-95775.24328734782</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">F_predicted</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span>  <span class="c1"># Units here are kcal/(mol A)</span>
@@ -697,19 +671,15 @@ and their contributions.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>z</strong> (<em>list</em>) – Atomic numbers of all atoms in the system.</li>
-<li><strong>R</strong> (<em>np.ndarray</em>) – Cartesian coordinates of all atoms of the structure
-specified in the same order as z. The array should have shape
-(n, 3) where n is the number of atoms.</li>
+<li><strong>R</strong> (<em>numpy.ndarray</em>) – Cartesian coordinates of all atoms of the structure specified in
+the same order as z. The array should have shape (n, 3) where n is
+the number of atoms.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
-<dt>Total energy of the system (float) and atomic forces</dt>
-<dd><p class="first last">(np.ndarray) in the units specified by the GDML models.
-Note that the forces have the same shape as R.</p>
-</dd>
-</dl>
-</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Total energy of the system (float) and atomic forces (numpy.ndarray)
+in the units specified by the GDML models. Note that the forces
+have the same shape as R.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
@@ -731,8 +701,8 @@ for training an (n+1)-body mbGDML model.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>base_vars</strong> (<em>dict</em>) – GDML dataset converted to a dict containing n-body
-contributions to be removed.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>base_vars</strong> (<em>dict</em>) – GDML dataset converted to a dict containing n-body contributions to
+be removed.</td>
 </tr>
 </tbody>
 </table>
@@ -753,8 +723,8 @@ from.</p>
 <dl class="attribute">
 <dt id="mbgdml.solvents.solvent.system">
 <code class="descname">system</code><a class="headerlink" href="#mbgdml.solvents.solvent.system" title="Permalink to this definition">¶</a></dt>
-<dd><p>Designates what kind of system this is. Currently only
-‘solvent’ systems.</p>
+<dd><p>Designates what kind of system this is. Currently only ‘solvent’
+systems.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -830,22 +800,20 @@ formula.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>chem_formula</strong> (<em>str</em>) – the chemical formula of a single solvent
-molecule. For example, ‘CH3OH’ for methanol, ‘H2O’ for water,
-and ‘C2H3N’ for acetonitrile.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>chem_formula</strong> (<em>str</em>) – The chemical formula of a single solvent  molecule. For example,
+‘CH3OH’ for methanol, ‘H2O’ for water, and ‘C2H3N’ for acetonitrile.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
-<dt>contains the atoms as their elemental symbol for keys and</dt>
-<dd>their quantity as values.</dd>
-</dl>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Contains the atoms as their elemental symbol for keys and their
+quantity as values.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Example</p>
-<p>atom_numbers(‘CH3OH’)</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">atom_numbers</span><span class="p">(</span><span class="s1">&#39;CH3OH&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -857,13 +825,12 @@ and ‘C2H3N’ for acetonitrile.</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>atom_list</strong> (<em>lst</em>) – List of elements as strings. Elements should be
-repeated. For example, [‘H’, ‘H’, ‘O’, ‘O’, ‘H’, ‘H’]. Note that
-the order does not matter; only the quantity.</li>
-<li><strong>all_solvents</strong> (<em>dict</em>) – Contains all solvents described in
-solvents.json. Keys are the name of the solvent, and the values
-are dicts ‘label’ and ‘formula’ that provide a solvent label
-and chemical formula, respectively.</li>
+<li><strong>atom_list</strong> (<em>list</em>) – Elements as strings. Elements should be repeated. For example,
+[‘H’, ‘H’, ‘O’, ‘O’, ‘H’, ‘H’]. Note that the order does not
+matter; only the quantity.</li>
+<li><strong>all_solvents</strong> (<em>dict</em>) – Contains all solvents described in solvents.json. Keys are the name
+of the solvent, and the values are dicts ‘label’ and ‘formula’ that
+provide a solvent label and chemical formula, respectively.</li>
 </ul>
 </td>
 </tr>
@@ -883,12 +850,8 @@ and chemical formula, respectively.</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>atoms</strong> (<em>list</em>) – Atomic numbers of all atoms in the system.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
-<dt>System information useful for mbGDML. Information includes</dt>
-<dd>’system’ which categorizes the system and provides specific
-information.</dd>
-</dl>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">System information useful for mbGDML. Information includes ‘system’
+which categorizes the system and provides specific information.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
 </tr>
@@ -896,8 +859,7 @@ information.</dd>
 </table>
 <p class="rubric">Notes</p>
 <p>For a ‘solvent’ system the additional information returned is the
-‘solvent_name’, ‘solvent_label’, ‘solvent_molec_size’, and
-‘cluster_size’.</p>
+‘solvent_name’, ‘solvent_label’, ‘solvent_molec_size’, and ‘cluster_size’.</p>
 </dd></dl>
 
 </div>
@@ -915,8 +877,8 @@ information.</dd>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dataset_path</strong> (<em>str</em>) – Path to stored numpy arrays representing a GDML
-dataset of a single solvent partition size.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dataset_path</strong> (<em>str</em>) – Path to stored numpy arrays representing a GDML dataset of a single
+solvent partition size.</td>
 </tr>
 </tbody>
 </table>
@@ -933,14 +895,11 @@ dataset of a single solvent partition size.</td>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>model_dir</strong> (<em>str</em>) – Path to a common directory for GDML models.</li>
 <li><strong>num_train</strong> (<em>int</em>) – The number of training points to sample.</li>
-<li><strong>num_validate</strong> (<em>int</em>) – The number of validation points to sample,
-without replacement.</li>
-<li><strong>num_test</strong> (<em>int</em>) – The number of test points to test the validated
-GDML model.</li>
-<li><strong>sigma_range</strong> (<em>str</em><em>, </em><em>optional</em>) – Range of kernel length scales to train
-and validate GDML values one. Format is
-‘&lt;start&gt;:&lt;interval&gt;:&lt;stop&gt;’. Note, the more length scales the
-longer the training time. Two is the minimum value.</li>
+<li><strong>num_validate</strong> (<em>int</em>) – The number of validation points to sample, without replacement.</li>
+<li><strong>num_test</strong> (<em>int</em>) – The number of test points to test the validated GDML model.</li>
+<li><strong>sigma_range</strong> (<em>str</em><em>, </em><em>optional</em>) – Range of kernel length scales to train and validate GDML values
+one. Format is <cite>&lt;start&gt;:&lt;interval&gt;:&lt;stop&gt;</cite>. Note, the more length
+scales the longer the training time. Two is the minimum value.</li>
 </ul>
 </td>
 </tr>
@@ -958,15 +917,17 @@ longer the training time. Two is the minimum value.</li>
 <code class="descclassname">mbgdml.utils.</code><code class="descname">atoms_by_element</code><span class="sig-paren">(</span><em>atom_list</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.utils.atoms_by_element" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a list of atoms identified by their atomic number to their
 elemental symbol.</p>
+<p>Parameters
+atom_list : list</p>
+<blockquote>
+<div>Contains numbers that represent atomic numbers.</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>atom_list</strong> (<em>list</em>) – Contains numbers that represent atomic numbers.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Contains strings of elemental symbols matching atom_list.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Contains strings of elemental symbols matching atom_list.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
 </tr>
 </tbody>
 </table>
@@ -979,11 +940,6 @@ elemental symbol.</p>
 <p>cclib automatically converts energy units to eV, but does not convert
 gradients. GDML needs consistent energy and force units, so we convert
 them.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Only supports ‘ORCA’ for automatically determining calc units.
-Otherwise, manually specify <cite>e_units_calc</cite> and <cite>r_units_calc</cite>.</p>
-</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1013,6 +969,9 @@ distance units.</li>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>Only supports ‘ORCA’ for automatically determining calc units.
+Otherwise, manually specify <cite>e_units_calc</cite> and <cite>r_units_calc</cite>.</p>
 </dd></dl>
 
 <dl class="function">
@@ -1027,8 +986,7 @@ type, e.g. output or xyz files.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>path</strong> (<em>str</em>) – Specifies the directory to search.</li>
-<li><strong>expression</strong> (<em>str</em>) – Expression to be tested against all file names in</li>
-<li><strong>'path'.</strong> – </li>
+<li><strong>expression</strong> (<em>str</em>) – Expression to be tested against all file names in ‘path’.</li>
 </ul>
 </td>
 </tr>
@@ -1089,11 +1047,11 @@ methodology.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>string</em>) – Path to a directory.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>str</em>) – Path to a directory.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Normalized path.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">normd_path</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
 </tr>
 </tbody>
 </table>
@@ -1104,24 +1062,23 @@ methodology.</p>
 <code class="descclassname">mbgdml.utils.</code><code class="descname">string_coords</code><span class="sig-paren">(</span><em>atoms</em>, <em>coords</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.utils.string_coords" title="Permalink to this definition">¶</a></dt>
 <dd><p>Puts atomic coordinates into a Python string. Typically used for
 writing to an input file.</p>
+<p>Parameters
+atoms : numpy.ndarray</p>
+<blockquote>
+<div>A (n, 1) numpy array containing all n elements labled by their atomic
+number.</div></blockquote>
+<dl class="docutils">
+<dt>coords <span class="classifier-delimiter">:</span> <span class="classifier">numpy.array</span></dt>
+<dd>Contains atomic positions in a (n, 3) numpy array where the x, y, and z
+Cartesian coordinates in Angstroms are given for the n atoms.</dd>
+</dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>atoms</strong> (<em>np.array</em>) – A (n, 1) numpy array containing all n elements labled
-by their atomic number.</li>
-<li><strong>coords</strong> (<em>np.array</em>) – Contains atomic positions in a (n, 3) numpy array
-where the x, y, and z Cartesian coordinates in Angstroms are given
-for the n atoms.</li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">all atomic coordinates contained in a string.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">all atomic coordinates contained in a string.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
-</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
 </tr>
 </tbody>
 </table>
