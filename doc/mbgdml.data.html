@@ -1034,54 +1034,286 @@ sets. Must contain ‘traj’ in filename and have an ‘xyz’ file extension.<
 <span id="mbgdml-data-predictset-module"></span><h2>mbgdml.data.predictset module<a class="headerlink" href="#module-mbgdml.data.predictset" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="mbgdml.data.predictset.mbGDMLPredictset">
-<em class="property">class </em><code class="descclassname">mbgdml.data.predictset.</code><code class="descname">mbGDMLPredictset</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mbgdml.data.predictset.</code><code class="descname">mbGDMLPredictset</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mbgdml.data.basedata.mbGDMLData" title="mbgdml.data.basedata.mbGDMLData"><code class="xref py py-class docutils literal notranslate"><span class="pre">mbgdml.data.basedata.mbGDMLData</span></code></a></p>
 <p>A predict set is a data set with mbGDML predicted energy and forces
 instead of training data.</p>
 <p>When analyzing many structures using mbGDML it is easier (and faster) to
 predict all many-body contributions once and then analyze the stored data.
 The predict set accomplishes just this.</p>
-<dl class="method">
-<dt id="mbgdml.data.predictset.mbGDMLPredictset.create_predictset">
-<code class="descname">create_predictset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.create_predictset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates a predict set from loaded data set and models.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="mbgdml.data.predictset.mbGDMLPredictset.load">
-<code class="descname">load</code><span class="sig-paren">(</span><em>predictset_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.load" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reads predict data set and loads data.</p>
+<dl class="attribute">
+<dt id="mbgdml.data.predictset.mbGDMLPredictset.predictset">
+<code class="descname">predictset</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.predictset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of loaded npz predict set file.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>predictset_path</strong> (<em>str</em>) – Path to predict data set.</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><cite>dict</cite></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.predictset.mbGDMLPredictset.sgdml_version">
+<code class="descname">sgdml_version</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.sgdml_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>The sGDML Python package version used for predictions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><cite>str</cite></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.predictset.mbGDMLPredictset.name">
+<code class="descname">name</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>File name of the predict set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><cite>str</cite></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.predictset.mbGDMLPredictset.theory">
+<code class="descname">theory</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.theory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies the level of theory used for GDML training.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><cite>str</cite></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.predictset.mbGDMLPredictset.n_z">
+<code class="descname">n_z</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.n_z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of atoms in each structure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><cite>int</cite></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.predictset.mbGDMLPredictset.z">
+<code class="descname">z</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Atomic numbers of all atoms in every structure (same in each one) with
+shape <code class="docutils literal notranslate"><span class="pre">n_z</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><cite>numpy.ndarray</cite></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.predictset.mbGDMLPredictset.n_R">
+<code class="descname">n_R</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.n_R" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of structures in the predict set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><cite>int</cite></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.predictset.mbGDMLPredictset.R">
+<code class="descname">R</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.R" title="Permalink to this definition">¶</a></dt>
+<dd><p>Atomic coordinates of every structure with shape (<code class="docutils literal notranslate"><span class="pre">n_R</span></code>, <code class="docutils literal notranslate"><span class="pre">n_z</span></code>, 3).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><cite>numpy.ndarray</cite></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.predictset.mbGDMLPredictset.r_unit">
+<code class="descname">r_unit</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.r_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Units of space for the structures’ coordinates.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><cite>str</cite></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.predictset.mbGDMLPredictset.e_unit">
+<code class="descname">e_unit</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.e_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Units of energy.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><cite>str</cite></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.predictset.mbGDMLPredictset.E_true">
+<code class="descname">E_true</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.E_true" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference energies with shape <code class="docutils literal notranslate"><span class="pre">n_R</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><cite>numpy.ndarray</cite></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.predictset.mbGDMLPredictset.F_true">
+<code class="descname">F_true</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.F_true" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference atomic forces with shape (<code class="docutils literal notranslate"><span class="pre">n_R</span></code>, <code class="docutils literal notranslate"><span class="pre">n_z</span></code>, 3).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><cite>numpy.ndarray</cite></td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
 <dl class="method">
-<dt id="mbgdml.data.predictset.mbGDMLPredictset.load_dataset">
-<code class="descname">load_dataset</code><span class="sig-paren">(</span><em>dataset_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.load_dataset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loads data set in preparation to create a predict set.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="mbgdml.data.predictset.mbGDMLPredictset.load_models">
-<code class="descname">load_models</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.load_models" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loads model(s) in preparation to create a predict set.</p>
+<dt id="mbgdml.data.predictset.mbGDMLPredictset.load">
+<code class="descname">load</code><span class="sig-paren">(</span><em>predictset_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a npz predict set file into memory.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mbgdml.data.predictset.mbGDMLPredictset.nbody_predictions">
 <code class="descname">nbody_predictions</code><span class="sig-paren">(</span><em>nbody_order</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.nbody_predictions" title="Permalink to this definition">¶</a></dt>
-<dd><p>???</p>
+<dd><p>Calculates energies and atomic forces of all structures including up to
+<code class="docutils literal notranslate"><span class="pre">nbody_order</span></code> corrections.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.data.predictset.mbGDMLPredictset.load_dataset">
+<code class="descname">load_dataset</code><span class="sig-paren">(</span><em>dataset_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.load_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a data set prior to creating a predict set.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.data.predictset.mbGDMLPredictset.load_models">
+<code class="descname">load_models</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.load_models" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads GDML models prior to creating a predict set.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.data.predictset.mbGDMLPredictset.create_predictset">
+<code class="descname">create_predictset</code><span class="sig-paren">(</span><em>name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.create_predictset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a predict set from loaded data set and models.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nbody_order</strong> (<em>int</em>) – </td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<cite>str</cite>, optional) – The desired file name for the predict set. Defaults to the name of
+the data set with any occurrence of ‘data’ changed to ‘predict’.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – If no data set or GDML models were loaded beforehand.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">load</code><span class="sig-paren">(</span><em>predictset_path</em><span class="sig-paren">)</span></dt>
+<dd><p>Reads predict data set and loads data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>predictset_path</strong> (<em>str</em>) – Path to predict set npz file.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">load_dataset</code><span class="sig-paren">(</span><em>dataset_path</em><span class="sig-paren">)</span></dt>
+<dd><p>Loads data set in preparation to create a predict set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dataset_path</strong> (<cite>str</cite>) – Path to data set.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">load_models</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span></dt>
+<dd><p>Loads model(s) in preparation to create a predict set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model_paths</strong> (<cite>list</cite> [<cite>str</cite>]) – Paths to GDML models in assending order of n-body corrections, e.g.,
+[‘/path/to/1body-model.npz’, ‘/path/to/2body-model.npz’].</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">nbody_predictions</code><span class="sig-paren">(</span><em>max_nbody_order</em><span class="sig-paren">)</span></dt>
+<dd><p>Energies and forces of all structures up to and including a specific
+n-body order.</p>
+<p>Predict sets have data that is broken down into many-body contributions.
+This function sums the many-body contributions up to the specified
+level; for example, <cite>3</cite> returns the energy and force predictions when
+including one, two, and three body contributions/corrections.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>max_nbody_order</strong> (<cite>int</cite>) – Highest many-body order corrections to include.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Energies and forces of all structures with all many-body corrections
+up to nbody_order.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">tuple (<cite>numpy.ndarray</cite>)</td>
 </tr>
 </tbody>
 </table>
