@@ -189,15 +189,66 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Probing individual n-body contributions of force fields.</p>
 <dl class="method">
-<dt id="mbgdml.analysis.nbody.NBody.compute_force_similarity">
-<code class="descname">compute_force_similarity</code><span class="sig-paren">(</span><em>predict_force</em>, <em>true_force</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.analysis.nbody.NBody.compute_force_similarity" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculates cosine distance of two arrays.</p>
+<dt id="mbgdml.analysis.nbody.NBody.average_force_similarity">
+<code class="descname">average_force_similarity</code><span class="sig-paren">(</span><em>predict_set</em>, <em>structure_list</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.analysis.nbody.NBody.average_force_similarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes average force similarity over multiple structures.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>predict_set</strong> (<cite>mbgdml.data.mbGDMLPredictset</cite>) – Object with loaded predict set.</li>
+<li><strong>structure_list</strong> (<cite>list</cite>) – Indices of structures to include in the heatmap. To select all
+structures, one could use
+<code class="docutils literal notranslate"><span class="pre">list(range(0,</span> <span class="pre">predict_set.F_true.shape[0]))</span></code> for example.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Average cosine distances of all possible n-body corrections over
+selected structures in the shape of <code class="docutils literal notranslate"><span class="pre">(n_z,</span> <span class="pre">nbodies)</span></code> where <code class="docutils literal notranslate"><span class="pre">n_z</span></code>
+is the number of atoms in the structure and <code class="docutils literal notranslate"><span class="pre">nbodies</span></code> is the
+number of n-body corrections in the predict set.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><cite>numpy.ndarray</cite></p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
-<dt>
-<code class="descname">compute_force_similarity</code><span class="sig-paren">(</span><em>predict_force</em>, <em>true_force</em><span class="sig-paren">)</span></dt>
-<dd><p>Compute modified cosine distance of two force vectors.</p>
+<dt id="mbgdml.analysis.nbody.NBody.cluster_force_similarity">
+<code class="descname">cluster_force_similarity</code><span class="sig-paren">(</span><em>predict_set</em>, <em>structure_index</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.analysis.nbody.NBody.cluster_force_similarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the cosine distance of each atomic force of a single
+structure for all n-body corrections.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>predict_set</strong> (<cite>mbgdml.data.mbGDMLPredictset</cite>) – Object with loaded predict set.</li>
+<li><strong>structure_index</strong> (<cite>int</cite>) – Index of the structure in the predict set arrays.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Cosine similarities of all possible n-body corrections of a single
+structure in the shape of <code class="docutils literal notranslate"><span class="pre">(n_z,</span> <span class="pre">nbodies)</span></code> where <code class="docutils literal notranslate"><span class="pre">n_z</span></code> is the
+number of atoms in the structure and <code class="docutils literal notranslate"><span class="pre">nbodies</span></code> is the number of
+n-body corrections in the predict set.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><cite>numpy.ndarray</cite></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.analysis.nbody.NBody.force_similarity">
+<code class="descname">force_similarity</code><span class="sig-paren">(</span><em>predict_force</em>, <em>true_force</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.analysis.nbody.NBody.force_similarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute cosine distance of two force vectors.</p>
 <p>Computes 1 - cosine_similarity. Two exact vectors will thus have a
 similarity of 0, orthogal vectors will be 1, and equal but opposite
 will be 2.</p>
@@ -206,8 +257,8 @@ will be 2.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>predict_force</strong> (<em>np.ndarray</em>) – Array of the predicted force vector by GDML.</li>
-<li><strong>true_force</strong> (<em>np.ndarray</em>) – Array of the true force vector of the same shape as predict_force</li>
+<li><strong>predict_force</strong> (<cite>numpy.ndarray</cite>) – Array of the predicted force vector by GDML.</li>
+<li><strong>true_force</strong> (<cite>numpy.ndarray</cite>) – Array of the true force vector of the same shape as predict_force</li>
 </ul>
 </td>
 </tr>
@@ -216,7 +267,7 @@ perfect similarity and the further away from zero the less similar
 (accurate).</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><cite>float</cite></p>
 </td>
 </tr>
 </tbody>
@@ -231,32 +282,20 @@ perfect similarity and the further away from zero the less similar
 <dd><p>Bases: <a class="reference internal" href="#mbgdml.analysis.nbody.NBody" title="mbgdml.analysis.nbody.NBody"><code class="xref py py-class docutils literal notranslate"><span class="pre">mbgdml.analysis.nbody.NBody</span></code></a></p>
 <p>Heat maps for n-body contribution accuracy.</p>
 <dl class="method">
-<dt id="mbgdml.analysis.nbody.NBodyHeatMaps.cluster_force_similarity">
-<code class="descname">cluster_force_similarity</code><span class="sig-paren">(</span><em>predict_set</em>, <em>structure_index</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.analysis.nbody.NBodyHeatMaps.cluster_force_similarity" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt>
-<code class="descname">cluster_force_similarity</code><span class="sig-paren">(</span><em>predict_set</em>, <em>structure_index</em><span class="sig-paren">)</span></dt>
-<dd><p>Computes the</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="mbgdml.analysis.nbody.NBodyHeatMaps.create_heatmap">
-<code class="descname">create_heatmap</code><span class="sig-paren">(</span><em>similarity</em>, <em>atoms</em>, <em>num_nbody</em>, <em>name</em>, <em>data_labels</em>, <em>save_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.analysis.nbody.NBodyHeatMaps.create_heatmap" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_heatmap</code><span class="sig-paren">(</span><em>similarity</em>, <em>y_labels</em>, <em>num_nbody</em>, <em>name</em>, <em>data_labels</em>, <em>save_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.analysis.nbody.NBodyHeatMaps.create_heatmap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates matplotlib heatmap figure.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>similarity</strong> (<em>numpy.ndarray</em>) – Cosine distances in n x m array where n is the order of n-body
+<li><strong>similarity</strong> (<cite>numpy.ndarray</cite>) – Cosine distances in n x m array where n is the order of n-body
 contributions, and m is the number of atoms.</li>
-<li><strong>atoms</strong> (<em>list</em>) – Strings of elemental symbols in the same order as atoms in the
-system.</li>
-<li><strong>num_nbody</strong> (<em>int</em>) – Maximum number of n-body contributions to include.</li>
-<li><strong>name</strong> (<em>str</em>) – File name to save the heatmap.</li>
-<li><strong>data_labels</strong> (<em>bool</em>) – Whether or not to include values of cosine distance inside
+<li><strong>y_labels</strong> (<cite>list</cite> [<cite>str</cite>]) – Labels of the y axis of the heat map.</li>
+<li><strong>num_nbody</strong> (<cite>list</cite> [<cite>str</cite>]) – Maximum number of n-body contributions to include.</li>
+<li><strong>name</strong> (<cite>str</cite>) – File name to save the heatmap.</li>
+<li><strong>data_labels</strong> (<cite>bool</cite>) – Whether or not to include values of cosine distance inside
 heatmap cells.</li>
 </ul>
 </td>
@@ -274,11 +313,11 @@ heatmap cells.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>predict_set</strong> (<em>mbgdml.data.mbGDMLPredictset</em>) – Object with loaded predict set.</li>
-<li><strong>structure_list</strong> (<em>list</em>) – Indices of structures to include in the heatmap.</li>
-<li><strong>base_name</strong> (<em>str</em>) – First part of saved file name.</li>
-<li><strong>save_dir</strong> (<em>str</em>) – Path to save the heatmap to as a png.</li>
-<li><strong>data_labels</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether or not to include values of cosine distance inside
+<li><strong>predict_set</strong> (<cite>mbgdml.data.mbGDMLPredictset</cite>) – Object with loaded predict set.</li>
+<li><strong>structure_list</strong> (<cite>list</cite>) – Indices of structures to include in the heatmap.</li>
+<li><strong>base_name</strong> (<cite>str</cite>) – First part of saved file name.</li>
+<li><strong>save_dir</strong> (<cite>str</cite>) – Path to save the heatmap to as a png.</li>
+<li><strong>data_labels</strong> (<cite>bool</cite>, optional) – Whether or not to include values of cosine distance inside
 heatmap cells.</li>
 </ul>
 </td>
