@@ -1211,31 +1211,6 @@ shape <code class="docutils literal notranslate"><span class="pre">n_z</span></c
 </dd></dl>
 
 <dl class="method">
-<dt id="mbgdml.data.predictset.mbGDMLPredictset.load">
-<code class="descname">load</code><span class="sig-paren">(</span><em>predictset_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.load" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load a npz predict set file into memory.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="mbgdml.data.predictset.mbGDMLPredictset.nbody_predictions">
-<code class="descname">nbody_predictions</code><span class="sig-paren">(</span><em>nbody_order</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.nbody_predictions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculates energies and atomic forces of all structures including up to
-<code class="docutils literal notranslate"><span class="pre">nbody_order</span></code> corrections.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="mbgdml.data.predictset.mbGDMLPredictset.load_dataset">
-<code class="descname">load_dataset</code><span class="sig-paren">(</span><em>dataset_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.load_dataset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load a data set prior to creating a predict set.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="mbgdml.data.predictset.mbGDMLPredictset.load_models">
-<code class="descname">load_models</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.load_models" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loads GDML models prior to creating a predict set.</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="mbgdml.data.predictset.mbGDMLPredictset.create_predictset">
 <code class="descname">create_predictset</code><span class="sig-paren">(</span><em>name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.create_predictset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a predict set from loaded data set and models.</p>
@@ -1253,8 +1228,8 @@ the data set with any occurrence of ‘data’ changed to ‘predict’.</td>
 </dd></dl>
 
 <dl class="method">
-<dt>
-<code class="descname">load</code><span class="sig-paren">(</span><em>predictset_path</em><span class="sig-paren">)</span></dt>
+<dt id="mbgdml.data.predictset.mbGDMLPredictset.load">
+<code class="descname">load</code><span class="sig-paren">(</span><em>predictset_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads predict data set and loads data.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1267,8 +1242,8 @@ the data set with any occurrence of ‘data’ changed to ‘predict’.</td>
 </dd></dl>
 
 <dl class="method">
-<dt>
-<code class="descname">load_dataset</code><span class="sig-paren">(</span><em>dataset_path</em><span class="sig-paren">)</span></dt>
+<dt id="mbgdml.data.predictset.mbGDMLPredictset.load_dataset">
+<code class="descname">load_dataset</code><span class="sig-paren">(</span><em>dataset_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.load_dataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads data set in preparation to create a predict set.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1281,8 +1256,8 @@ the data set with any occurrence of ‘data’ changed to ‘predict’.</td>
 </dd></dl>
 
 <dl class="method">
-<dt>
-<code class="descname">load_models</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span></dt>
+<dt id="mbgdml.data.predictset.mbGDMLPredictset.load_models">
+<code class="descname">load_models</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.load_models" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads model(s) in preparation to create a predict set.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1296,8 +1271,8 @@ the data set with any occurrence of ‘data’ changed to ‘predict’.</td>
 </dd></dl>
 
 <dl class="method">
-<dt>
-<code class="descname">nbody_predictions</code><span class="sig-paren">(</span><em>max_nbody_order</em><span class="sig-paren">)</span></dt>
+<dt id="mbgdml.data.predictset.mbGDMLPredictset.nbody_predictions">
+<code class="descname">nbody_predictions</code><span class="sig-paren">(</span><em>max_nbody_order</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.nbody_predictions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Energies and forces of all structures up to and including a specific
 n-body order.</p>
 <p>Predict sets have data that is broken down into many-body contributions.
