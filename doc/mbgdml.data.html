@@ -84,6 +84,7 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorials.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">API</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="mbgdml.html">mbgdml package</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="mbgdml.html#subpackages">Subpackages</a><ul class="current">
@@ -202,26 +203,8 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="mbgdml.data.basedata.mbGDMLData.get_system_info">
-<code class="descname">get_system_info</code><span class="sig-paren">(</span><em>atoms</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.get_system_info" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the system_info attribute.</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="mbgdml.data.basedata.mbGDMLData.add_system_info">
 <code class="descname">add_system_info</code><span class="sig-paren">(</span><em>dict_data</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.add_system_info" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds system information to data set.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="mbgdml.data.basedata.mbGDMLData.save">
-<code class="descname">save</code><span class="sig-paren">(</span><em>name</em>, <em>data</em>, <em>save_dir</em>, <em>is_dataset</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.save" title="Permalink to this definition">¶</a></dt>
-<dd><p>Saves data set.</p>
-</dd></dl>
-
-<dl class="method">
-<dt>
-<code class="descname">add_system_info</code><span class="sig-paren">(</span><em>dict_data</em><span class="sig-paren">)</span></dt>
 <dd><p>Adds information about the system to the model.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -243,8 +226,8 @@ is included.</p>
 </dd></dl>
 
 <dl class="method">
-<dt>
-<code class="descname">get_system_info</code><span class="sig-paren">(</span><em>atoms</em><span class="sig-paren">)</span></dt>
+<dt id="mbgdml.data.basedata.mbGDMLData.get_system_info">
+<code class="descname">get_system_info</code><span class="sig-paren">(</span><em>atoms</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.get_system_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Describes the dataset system.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -258,8 +241,8 @@ are repeated; for example, water is [‘H’, ‘H’, ‘O’].</td>
 </dd></dl>
 
 <dl class="method">
-<dt>
-<code class="descname">save</code><span class="sig-paren">(</span><em>name</em>, <em>data</em>, <em>save_dir</em>, <em>is_dataset</em><span class="sig-paren">)</span></dt>
+<dt id="mbgdml.data.basedata.mbGDMLData.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>name</em>, <em>data</em>, <em>save_dir</em>, <em>is_dataset</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>General save function for GDML data sets and models.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -603,45 +586,10 @@ about the system and solvent. ‘solvent_name’, ‘solvent_label’,
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">dict</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><cite>dict</cite></td>
 </tr>
 </tbody>
 </table>
-</dd></dl>
-
-<dl class="method">
-<dt id="mbgdml.data.dataset.mbGDMLDataset.load">
-<code class="descname">load</code><span class="sig-paren">(</span><em>dataset_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.load" title="Permalink to this definition">¶</a></dt>
-<dd><p>Use numpy.load to read information from data set.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="mbgdml.data.dataset.mbGDMLDataset.read_trajectory">
-<code class="descname">read_trajectory</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.read_trajectory" title="Permalink to this definition">¶</a></dt>
-<dd><p>Use cclib to read trajectory (usually xyz format) and assign z and R
-attributes.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="mbgdml.data.dataset.mbGDMLDataset.read_forces">
-<code class="descname">read_forces</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.read_forces" title="Permalink to this definition">¶</a></dt>
-<dd><p>Use cclib to read file (usually xyz format) to assign F attribute.</p>
-</dd></dl>
-
-<dl class="method">
-<dt>
-<code class="descname">create_dataset(gdml_data_dir, dataset_name, atoms, coords, energies, forces,</code></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt>
-<code class="descname">e_units, e_units_calc, r_units_calc, theory='unknown',</code></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt>
-<code class="descname">gdml_r_units='Angstrom', gdml_e_units='kcal/mol', write=True)</code></dt>
-<dd><p>Creates and writes a single GDML data set.</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -726,12 +674,12 @@ gdml-dataset directory.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>gdml_data_dir</strong> (<em>str</em>) – Path to common GDML data set directory for a particular cluster.</li>
-<li><strong>dataset_name</strong> (<em>str</em>) – The name to label the dataset.</li>
-<li><strong>z</strong> (<em>numpy.ndarray</em>) – A (n,) array containing atomic numbers of n atoms.</li>
-<li><strong>R</strong> (<em>numpy.ndarray</em>) – A (m, n, 3) array containing the atomic coordinates of n atoms of
+<li><strong>gdml_data_dir</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Path to common GDML data set directory for a particular cluster.</li>
+<li><strong>dataset_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The name to label the dataset.</li>
+<li><strong>z</strong> (<cite>numpy.ndarray</cite>) – A (n,) array containing atomic numbers of n atoms.</li>
+<li><strong>R</strong> (<cite>numpy.ndarray</cite>) – A (m, n, 3) array containing the atomic coordinates of n atoms of
 m MD steps.</li>
-<li><strong>E</strong> (<em>numpy.ndarray</em>) – A (m,) array containing the energies of m MD steps.</li>
+<li><strong>E</strong> (<cite>numpy.ndarray</cite>) – A (m,) array containing the energies of m MD steps.</li>
 <li><strong>F</strong> (<em>numpy.ndarray</em>) – A (m, n, 3) array containing the atomic forces of n atoms of
 m MD steps. Simply the negative of grads.</li>
 <li><strong>e_units</strong> (<em>str</em>) – The energy units of <cite>energies</cite>.</li>
@@ -759,10 +707,17 @@ provided.</p>
 </dd></dl>
 
 <dl class="method">
-<dt>
-<code class="descname">load</code><span class="sig-paren">(</span><em>dataset_path</em><span class="sig-paren">)</span></dt>
-<dd><p>Uses numpy.load to read data set</p>
-<p>Sets dataset, z, R, E, and F attributes.</p>
+<dt id="mbgdml.data.dataset.mbGDMLDataset.load">
+<code class="descname">load</code><span class="sig-paren">(</span><em>dataset_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses <code class="docutils literal notranslate"><span class="pre">numpy.load</span></code> to read data set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dataset_path</strong> (<cite>str</cite>) – Path to NumPy <code class="docutils literal notranslate"><span class="pre">npz</span></code> file.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -833,24 +788,24 @@ For example, ‘AB’.</li>
 </dd></dl>
 
 <dl class="method">
-<dt>
-<code class="descname">read_forces</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span></dt>
-<dd><p>Use cclib to read file (usually xyz format) to assign F attribute.</p>
+<dt id="mbgdml.data.dataset.mbGDMLDataset.read_coordinates">
+<code class="descname">read_coordinates</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.read_coordinates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads atomic numbers and coordinates from XYZ file.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_path</strong> (<em>str</em>) – Path to file.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_path</strong> (<cite>str</cite>) – Path to xyz file.</td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
 </dd></dl>
 
 <dl class="method">
-<dt>
-<code class="descname">read_trajectory</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span></dt>
-<dd><p>Use cclib to read trajectory (usually xyz format) and assign z and R
-attributes.</p>
+<dt id="mbgdml.data.dataset.mbGDMLDataset.read_forces">
+<code class="descname">read_forces</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.read_forces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use cclib to read file (usually xyz format) to assign F attribute.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />

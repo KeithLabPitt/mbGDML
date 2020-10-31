@@ -36,7 +36,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="mbgdml" href="doc/modules.html" />
+    <link rel="next" title="Tutorials" href="tutorials/tutorials.html" />
     <link rel="prev" title="mbGDML" href="index.html" /> 
 </head>
 
@@ -83,7 +83,11 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="doc/modules.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
 </ul>
@@ -153,6 +157,33 @@
             
   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>At the moment, the only way to install mbGDML is directly from the <a class="reference external" href="https://github.com/keithgroup/mbGDML">GitHub repository</a>.</p>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>The following packages are required:</p>
+<ul class="simple">
+<li>ase</li>
+<li>cclib (&gt;=1.6.4)</li>
+<li>click</li>
+<li>dscribe</li>
+<li>mako</li>
+<li>matplotlib</li>
+<li>natsort</li>
+<li>numpy</li>
+<li>periodictable</li>
+<li>sgdml</li>
+</ul>
+<p>All of these required packages can be installed with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">ase</span> <span class="s1">&#39;cclib&gt;=1.6.4&#39;</span> <span class="n">click</span> <span class="n">dscribe</span> <span class="n">mako</span> <span class="n">matplotlib</span> <span class="n">natsort</span> <span class="n">numpy</span> <span class="n">periodictable</span> <span class="n">sgdml</span>
+</pre></div>
+</div>
+<p>Then, clone and install the repository.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">keithgroup</span><span class="o">/</span><span class="n">mbGDML</span>
+<span class="n">cd</span> <span class="n">mbgdml</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">.</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -163,7 +194,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="doc/modules.html" class="btn btn-neutral float-right" title="mbgdml" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="tutorials/tutorials.html" class="btn btn-neutral float-right" title="Tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="mbGDML" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
