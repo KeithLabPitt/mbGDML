@@ -210,14 +210,14 @@
 <dl class="class">
 <dt id="mbgdml.calculate.CalcTemplate">
 <em class="property">class </em><code class="descclassname">mbgdml.calculate.</code><code class="descname">CalcTemplate</code><a class="headerlink" href="#mbgdml.calculate.CalcTemplate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Contains all quantum chemistry calculations templates for mako.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="mbgdml.calculate.ORCA">
 <em class="property">class </em><code class="descclassname">mbgdml.calculate.</code><code class="descname">ORCA</code><a class="headerlink" href="#mbgdml.calculate.ORCA" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Prepares, writes, and submits ORCA 4.2.0 calculations.</p>
 <dl class="method">
 <dt id="mbgdml.calculate.ORCA.input_corrections">
@@ -295,8 +295,8 @@ will be used during the MD run.</dd>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>structure_name</strong> (<em>str</em>) – Name of the structure. Mainly for file naming.</li>
-<li><strong>structure_path</strong> (<em>str</em>) – Path to the structure file.</li>
+<li><strong>structure_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Name of the structure. Mainly for file naming.</li>
+<li><strong>structure_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Path to the structure file.</li>
 </ul>
 </td>
 </tr>
@@ -336,7 +336,7 @@ will be used during the MD run.</dd>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – Requires a calculator to be loaded first.</td>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code></a> – Requires a calculator to be loaded first.</td>
 </tr>
 </tbody>
 </table>
@@ -358,7 +358,7 @@ will be used during the MD run.</dd>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – Requires a calculator to be loaded first.</td>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code></a> – Requires a calculator to be loaded first.</td>
 </tr>
 </tbody>
 </table>
@@ -426,7 +426,7 @@ FrozenCore’.</dd>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>xyz_path</strong> (<em>str</em>) – Path to xyz file of interest.</li>
+<li><strong>xyz_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Path to xyz file of interest.</li>
 <li><strong>solvent</strong> (<em>lst</em>) – Specifies solvents to determine the number of atoms included in a
 molecule.</li>
 </ul>
@@ -435,7 +435,7 @@ molecule.</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Number of solvent molecules in specified xyz file.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">int</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></p>
 </td>
 </tr>
 </tbody>
@@ -451,13 +451,13 @@ cluster_data dictionary.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cluster_data</strong> (<em>dict</em>) – Contains ‘atoms’ that is a list of elements organized by molecule and
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cluster_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><em>dict</em></a>) – Contains ‘atoms’ that is a list of elements organized by molecule and
 matches the order of the numpy array containing atomic coordinates</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Contains solvent molecules with keys of uppercase characters with dicts
 as values containing ‘atoms’ and ‘coords’.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -502,7 +502,7 @@ values the xyz coordinates.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>out_file</strong> (<em>str</em>) – Path to computational chemistry output file. This should contain all MD
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>out_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Path to computational chemistry output file. This should contain all MD
 steps for the partition.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Contains all information needed to build GDML data sets. ‘atoms’ is a
@@ -514,7 +514,7 @@ containing the n atoms in the partition. ‘energies’ is a (m, 1) numpy
 array containing the electronic energies of each m MD steps for the
 partition.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -523,12 +523,16 @@ partition.</td>
 <dl class="function">
 <dt id="mbgdml.parse.parse_stringfile">
 <code class="descclassname">mbgdml.parse.</code><code class="descname">parse_stringfile</code><span class="sig-paren">(</span><em>stringfile_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.parse.parse_stringfile" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parses xyz stringfile into <a href="#id1"><span class="problematic" id="id2">**</span></a><a href="#id3"><span class="problematic" id="id4">*</span></a></p>
+<dd><p>Parses data from string file.</p>
+<p>A string file is data presented as consecutive xyz data. The data could be
+three Cartesian coordinates for each atom, three atomic force vector
+components, or both coordinates and atomic forces in one line (referred to
+as extended xyz).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stringfile_path</strong> (<em>str</em>) – Specifies path to stringfile.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stringfile_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to string file.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
 </tr>
@@ -556,8 +560,8 @@ cluster.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>cluster</strong> (<em>dict</em>) – Dictionary of solvent molecules in cluster from parse_cluster</li>
-<li><strong>nbody</strong> (<em>int</em>) – Desired number of solvent molecules in combination.</li>
+<li><strong>cluster</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><em>dict</em></a>) – Dictionary of solvent molecules in cluster from parse_cluster</li>
+<li><strong>nbody</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – Desired number of solvent molecules in combination.</li>
 </ul>
 </td>
 </tr>
@@ -566,7 +570,7 @@ being uppercase concatenations of molecule labels and values being the
 string of coordinates.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)">dict</a></p>
 </td>
 </tr>
 </tbody>
@@ -584,13 +588,13 @@ segment.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>traj_path</strong> (<em>str</em>) – Path to trajectory with xyz coordinates.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>traj_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Path to trajectory with xyz coordinates.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">All nonrepeating solvent molecule combinations from cluster with keys
 being uppercase concatenations of molecule labels and values being the
 string of coordinates.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -602,7 +606,7 @@ string of coordinates.</td>
 <dl class="class">
 <dt id="mbgdml.predict.mbGDMLPredict">
 <em class="property">class </em><code class="descclassname">mbgdml.predict.</code><code class="descname">mbGDMLPredict</code><span class="sig-paren">(</span><em>models</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.predict.mbGDMLPredict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="method">
 <dt id="mbgdml.predict.mbGDMLPredict.decomposed_predict">
 <code class="descname">decomposed_predict</code><span class="sig-paren">(</span><em>z</em>, <em>R</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.predict.mbGDMLPredict.decomposed_predict" title="Permalink to this definition">¶</a></dt>
@@ -613,8 +617,8 @@ many body order.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>z</strong> (<em>list</em>) – Atomic numbers of all atoms in the system.</li>
-<li><strong>R</strong> (<em>numpy.ndarray</em>) – Cartesian coordinates of all atoms of the structure specified in
+<li><strong>z</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) – Atomic numbers of all atoms in the system.</li>
+<li><strong>R</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><em>numpy.ndarray</em></a>) – Cartesian coordinates of all atoms of the structure specified in
 the same order as z. The array should have shape (n, 3) where n is
 the number of atoms.</li>
 </ul>
@@ -628,7 +632,7 @@ total, ‘T’, and molecule combinations identified in the system
 and their contributions.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.9)">tuple</a></p>
 </td>
 </tr>
 </tbody>
@@ -664,8 +668,8 @@ and their contributions.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>z</strong> (<em>list</em>) – Atomic numbers of all atoms in the system.</li>
-<li><strong>R</strong> (<em>numpy.ndarray</em>) – Cartesian coordinates of all atoms of the structure specified in
+<li><strong>z</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) – Atomic numbers of all atoms in the system.</li>
+<li><strong>R</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><em>numpy.ndarray</em></a>) – Cartesian coordinates of all atoms of the structure specified in
 the same order as z. The array should have shape (n, 3) where n is
 the number of atoms.</li>
 </ul>
@@ -676,7 +680,7 @@ in the units specified by the GDML models. Note that the forces
 have the same shape as R.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.9)">tuple</a></p>
 </td>
 </tr>
 </tbody>
@@ -695,7 +699,7 @@ for training an (n+1)-body mbGDML model.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>base_vars</strong> (<em>dict</em>) – GDML dataset converted to a dict containing n-body contributions to
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>base_vars</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><em>dict</em></a>) – GDML dataset converted to a dict containing n-body contributions to
 be removed.</td>
 </tr>
 </tbody>
@@ -710,7 +714,7 @@ be removed.</td>
 <dl class="class">
 <dt id="mbgdml.solvents.solvent">
 <em class="property">class </em><code class="descclassname">mbgdml.solvents.</code><code class="descname">solvent</code><span class="sig-paren">(</span><em>atom_list</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.solvents.solvent" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Identifies and describes the solvent for MB-GDML.</p>
 <p>Represents the solvent that makes up the cluster MB-GDML is being trained
 from.</p>
@@ -723,7 +727,7 @@ systems.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -737,7 +741,7 @@ systems.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -751,7 +755,7 @@ systems.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -765,7 +769,7 @@ systems.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></td>
 </tr>
 </tbody>
 </table>
@@ -779,7 +783,7 @@ systems.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></td>
 </tr>
 </tbody>
 </table>
@@ -794,13 +798,13 @@ formula.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>chem_formula</strong> (<em>str</em>) – The chemical formula of a single solvent  molecule. For example,
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>chem_formula</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The chemical formula of a single solvent  molecule. For example,
 ‘CH3OH’ for methanol, ‘H2O’ for water, and ‘C2H3N’ for acetonitrile.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Contains the atoms as their elemental symbol for keys and their
 quantity as values.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -819,10 +823,10 @@ quantity as values.</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>atom_list</strong> (<em>list</em>) – Elements as strings. Elements should be repeated. For example,
+<li><strong>atom_list</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) – Elements as strings. Elements should be repeated. For example,
 [‘H’, ‘H’, ‘O’, ‘O’, ‘H’, ‘H’]. Note that the order does not
 matter; only the quantity.</li>
-<li><strong>all_solvents</strong> (<em>dict</em>) – Contains all solvents described in solvents.json. Keys are the name
+<li><strong>all_solvents</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><em>dict</em></a>) – Contains all solvents described in solvents.json. Keys are the name
 of the solvent, and the values are dicts ‘label’ and ‘formula’ that
 provide a solvent label and chemical formula, respectively.</li>
 </ul>
@@ -842,12 +846,12 @@ provide a solvent label and chemical formula, respectively.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>atoms</strong> (<em>list</em>) – Atomic numbers of all atoms in the system.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>atoms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) – Atomic numbers of all atoms in the system.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">System information useful for mbGDML. Information includes ‘system’
 which categorizes the system and provides specific information.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -862,7 +866,7 @@ which categorizes the system and provides specific information.</td>
 <dl class="class">
 <dt id="mbgdml.train.MBGDMLTrain">
 <em class="property">class </em><code class="descclassname">mbgdml.train.</code><code class="descname">MBGDMLTrain</code><a class="headerlink" href="#mbgdml.train.MBGDMLTrain" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="method">
 <dt id="mbgdml.train.MBGDMLTrain.load_dataset">
 <code class="descname">load_dataset</code><span class="sig-paren">(</span><em>dataset_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.train.MBGDMLTrain.load_dataset" title="Permalink to this definition">¶</a></dt>
@@ -871,7 +875,7 @@ which categorizes the system and provides specific information.</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dataset_path</strong> (<em>str</em>) – Path to stored numpy arrays representing a GDML dataset of a single
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dataset_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Path to stored numpy arrays representing a GDML dataset of a single
 solvent partition size.</td>
 </tr>
 </tbody>
@@ -887,11 +891,11 @@ solvent partition size.</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>model_dir</strong> (<em>str</em>) – Path to a common directory for GDML models.</li>
-<li><strong>num_train</strong> (<em>int</em>) – The number of training points to sample.</li>
-<li><strong>num_validate</strong> (<em>int</em>) – The number of validation points to sample, without replacement.</li>
-<li><strong>num_test</strong> (<em>int</em>) – The number of test points to test the validated GDML model.</li>
-<li><strong>sigma_range</strong> (<em>str</em><em>, </em><em>optional</em>) – Range of kernel length scales to train and validate GDML values
+<li><strong>model_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Path to a common directory for GDML models.</li>
+<li><strong>num_train</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – The number of training points to sample.</li>
+<li><strong>num_validate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – The number of validation points to sample, without replacement.</li>
+<li><strong>num_test</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – The number of test points to test the validated GDML model.</li>
+<li><strong>sigma_range</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) – Range of kernel length scales to train and validate GDML values
 one. Format is <cite>&lt;start&gt;:&lt;interval&gt;:&lt;stop&gt;</cite>. Note, the more length
 scales the longer the training time. Two is the minimum value.</li>
 </ul>
@@ -921,7 +925,7 @@ atom_list : list</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Contains strings of elemental symbols matching atom_list.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)">list</a></td>
 </tr>
 </tbody>
 </table>
@@ -939,24 +943,24 @@ them.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>package</strong> (<em>str</em>) – Computational chemistry package used for computations.</li>
-<li><strong>forces</strong> (<em>numpy.ndarray</em>) – An array with units of energy and distance matching <cite>e_units_calc</cite>
+<li><strong>package</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Computational chemistry package used for computations.</li>
+<li><strong>forces</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><em>numpy.ndarray</em></a>) – An array with units of energy and distance matching <cite>e_units_calc</cite>
 and <cite>r_units_calc</cite>.</li>
-<li><strong>e_units</strong> (<em>str</em>) – Desired units of energy. Available units are ‘eV’, ‘hartree’,
+<li><strong>e_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Desired units of energy. Available units are ‘eV’, ‘hartree’,
 ‘kcal/mol’, and ‘kJ/mol’.</li>
-<li><strong>r_units</strong> (<em>str</em>) – Desired units of distance. Available units implemented in cclib’s
+<li><strong>r_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Desired units of distance. Available units implemented in cclib’s
 convertor function are ‘Angstrom’ and ‘bohr’.</li>
-<li><strong>e_units_calc</strong> (<em>str</em><em>, </em><em>optional</em>) – Specifies package-specific energy units used in calculation.
+<li><strong>e_units_calc</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) – Specifies package-specific energy units used in calculation.
 Defaults to None.</li>
-<li><strong>r_units_calc</strong> (<em>str</em><em>, </em><em>optional</em>) – Specifies package-specific distance units used in calculation.
+<li><strong>r_units_calc</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) – Specifies package-specific distance units used in calculation.
 Defaults to None.</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
-<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – If the selected energy units are not implemented.</li>
-<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – If the selected distance units are not implemented.</li>
-<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – If calculation package is not defined here for known energy and
+<li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> – If the selected energy units are not implemented.</li>
+<li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> – If the selected distance units are not implemented.</li>
+<li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> – If calculation package is not defined here for known energy and
 distance units.</li>
 </ul>
 </td>
@@ -979,15 +983,15 @@ type, e.g. output or xyz files.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>path</strong> (<em>str</em>) – Specifies the directory to search.</li>
-<li><strong>expression</strong> (<em>str</em>) – Expression to be tested against all file names in ‘path’.</li>
+<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Specifies the directory to search.</li>
+<li><strong>expression</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Expression to be tested against all file names in ‘path’.</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">all absolute paths to files matching the provided expression.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)">list</a></p>
 </td>
 </tr>
 </tbody>
@@ -1004,11 +1008,11 @@ with an added number.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pathFolder</strong> (<em>str</em>) – Path to desired folder.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pathFolder</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Path to desired folder.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Final path of new folder; ends in ‘/’.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -1023,11 +1027,11 @@ methodology.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>unsorted_list</strong> (<em>list</em>) – List of strings.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>unsorted_list</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) – List of strings.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Sorted list of string.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)">list</a></td>
 </tr>
 </tbody>
 </table>
@@ -1041,11 +1045,11 @@ methodology.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>str</em>) – Path to a directory.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Path to a directory.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Normalized path.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -1072,7 +1076,7 @@ Cartesian coordinates in Angstroms are given for the n atoms.</dd>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">all atomic coordinates contained in a string.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></td>
 </tr>
 </tbody>
 </table>

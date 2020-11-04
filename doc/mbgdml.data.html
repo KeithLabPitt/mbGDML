@@ -186,7 +186,7 @@
 <dl class="class">
 <dt id="mbgdml.data.basedata.mbGDMLData">
 <em class="property">class </em><code class="descclassname">mbgdml.data.basedata.</code><code class="descname">mbGDMLData</code><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Parent class for mbGDML data and predict sets.</p>
 <dl class="attribute">
 <dt id="mbgdml.data.basedata.mbGDMLData.system_info">
@@ -196,7 +196,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">dict</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -210,13 +210,13 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dataset</strong> (<em>dict</em>) – Custom data structure that contains all information for a
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dataset</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><em>dict</em></a>) – Custom data structure that contains all information for a
 GDML dataset.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An updated GDML dataset with additional information regarding
 the system.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -233,7 +233,7 @@ is included.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>atoms</strong> (<em>list</em>) – Atomic symbols of all atoms in the system. The atoms
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>atoms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) – Atomic symbols of all atoms in the system. The atoms
 are repeated; for example, water is [‘H’, ‘H’, ‘O’].</td>
 </tr>
 </tbody>
@@ -249,11 +249,11 @@ are repeated; for example, water is [‘H’, ‘H’, ‘O’].</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> (<em>str</em>) – Name of the file to be saved not including the
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Name of the file to be saved not including the
 extension.</li>
-<li><strong>data</strong> (<em>dict</em>) – Base variables for dataset or model.</li>
-<li><strong>save_dir</strong> (<em>str</em>) – Directory to save the file.</li>
-<li><strong>is_dataset</strong> (<em>bool</em>) – Is the file a dataset? Controls whether the md5 of
+<li><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><em>dict</em></a>) – Base variables for dataset or model.</li>
+<li><strong>save_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Directory to save the file.</li>
+<li><strong>is_dataset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a>) – Is the file a dataset? Controls whether the md5 of
 the file is saved.</li>
 </ul>
 </td>
@@ -270,7 +270,7 @@ the file is saved.</li>
 <dl class="class">
 <dt id="mbgdml.data.calculation.PartitionOutput">
 <em class="property">class </em><code class="descclassname">mbgdml.data.calculation.</code><code class="descname">PartitionOutput</code><span class="sig-paren">(</span><em>output_path</em>, <em>cluster_label</em>, <em>partition_label</em>, <em>md_temp</em>, <em>md_iter=0</em>, <em>e_units='kcal/mol'</em>, <em>r_units='Angstrom'</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Quantum chemistry output file for all MD steps of a single partition.</p>
 <p>Output file that contains electronic energies and gradients of the same
 partition from a single MD trajectory. For a single dimer partition of a
@@ -281,25 +281,25 @@ and gradients.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>output_path</strong> (<em>str</em>) – Path to computational chemistry output file that contains energies
+<li><strong>output_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Path to computational chemistry output file that contains energies
 and gradients (preferably ab initio) of all MD steps of a
 single partition.</li>
-<li><strong>cluster_label</strong> (<em>str</em>) – Identifies the cluster where this partition originates from. Specifies
+<li><strong>cluster_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Identifies the cluster where this partition originates from. Specifies
 at least the solvent and size of the parent cluster. For example, if
 this partition is the number 23 structure from ABCluster
 for a four water cluster, this could be ‘4H2O.abc23’.</li>
-<li><strong>partition_label</strong> (<em>str</em>) – Specifies the molecules composing this partition. Typically we use a
+<li><strong>partition_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Specifies the molecules composing this partition. Typically we use a
 single uppercase letter per molecule in the order it appears in the
 xyz coordinates. For example, a partition from a 4H2O cluster with the
 first and third water molecules would be ‘AC’.</li>
-<li><strong>md_temp</strong> (<em>int</em>) – The set point for the MD thermostat. This only affects labeling and
+<li><strong>md_temp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – The set point for the MD thermostat. This only affects labeling and
 directory organization as it has a significant impact on geometry
 sampling.</li>
-<li><strong>md_iter</strong> (<em>int</em><em>, </em><em>optional</em>) – Specifies the MD iteration for labeling and data-tracking purposes.
+<li><strong>md_iter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a><em>, </em><em>optional</em>) – Specifies the MD iteration for labeling and data-tracking purposes.
 Defaults to 0.</li>
-<li><strong>e_units</strong> (<em>str</em><em>, </em><em>optional</em>) – Desired units of energy. Available units implemented are ‘eV’,
+<li><strong>e_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) – Desired units of energy. Available units implemented are ‘eV’,
 ‘hartree’, ‘kcal/mol’, and ‘kJ/mol’. Defaults to ‘kcal/mol’.</li>
-<li><strong>r_units</strong> (<em>str</em><em>, </em><em>optional</em>) – Desired units of distance. Available units implemented in cclib’s
+<li><strong>r_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) – Desired units of distance. Available units implemented in cclib’s
 convertor function are ‘Angstrom’ and ‘bohr’.</li>
 </ul>
 </td>
@@ -321,7 +321,7 @@ single partition.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -338,7 +338,7 @@ for a four water cluster, this could be ‘4H2O.abc23’.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -355,7 +355,7 @@ first and third water molecules would be ‘AC’.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -371,7 +371,7 @@ sampling.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></td>
 </tr>
 </tbody>
 </table>
@@ -386,7 +386,7 @@ Defaults to 0.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int, optional</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a>, optional</td>
 </tr>
 </tbody>
 </table>
@@ -401,7 +401,7 @@ Defaults to 0.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str, optional</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a>, optional</td>
 </tr>
 </tbody>
 </table>
@@ -416,7 +416,7 @@ convertor function are ‘Angstrom’ and ‘bohr’.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str, optional</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a>, optional</td>
 </tr>
 </tbody>
 </table>
@@ -430,7 +430,7 @@ convertor function are ‘Angstrom’ and ‘bohr’.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -444,7 +444,7 @@ convertor function are ‘Angstrom’ and ‘bohr’.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></td>
 </tr>
 </tbody>
 </table>
@@ -472,7 +472,7 @@ convertor function are ‘Angstrom’ and ‘bohr’.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">numpy.ndarray</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)">numpy.ndarray</a></td>
 </tr>
 </tbody>
 </table>
@@ -487,7 +487,7 @@ of n atoms of m MD steps.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">numpy.ndarray</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)">numpy.ndarray</a></td>
 </tr>
 </tbody>
 </table>
@@ -501,7 +501,7 @@ of n atoms of m MD steps.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">numpy.ndarray</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)">numpy.ndarray</a></td>
 </tr>
 </tbody>
 </table>
@@ -516,7 +516,7 @@ steps.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">numpy.ndarray</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)">numpy.ndarray</a></td>
 </tr>
 </tbody>
 </table>
@@ -531,7 +531,7 @@ of n atoms of m MD steps. Simply the negative of grads.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">numpy.ndarray</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)">numpy.ndarray</a></td>
 </tr>
 </tbody>
 </table>
@@ -546,7 +546,7 @@ only ‘solvent’ is implemented.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -562,7 +562,7 @@ about the system and solvent. ‘solvent_name’, ‘solvent_label’,
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">dict</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -601,7 +601,7 @@ about the system and solvent. ‘solvent_name’, ‘solvent_label’,
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – If there is no created or loaded data set.</td>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code></a> – If there is no created or loaded data set.</td>
 </tr>
 </tbody>
 </table>
@@ -617,7 +617,7 @@ structures and n is the number of atoms with 3 positional coordinates.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – If there is no created or loaded data set.</td>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code></a> – If there is no created or loaded data set.</td>
 </tr>
 </tbody>
 </table>
@@ -633,7 +633,7 @@ structures and n is the number of atoms with 3 positional coordinates.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – If there is no created or loaded data set.</td>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code></a> – If there is no created or loaded data set.</td>
 </tr>
 </tbody>
 </table>
@@ -653,7 +653,7 @@ partition size.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>partition_dir</strong> (<em>str</em>) – Path to directory containing GDML datasets. Typically to a
+<li><strong>partition_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Path to directory containing GDML datasets. Typically to a
 directory containing only a single partition size
 of a single solvent.</li>
 <li><strong>(</strong><strong>str</strong><strong>)</strong> (<em>write_dir</em>) – dataset will be written. Usually the cluster directory in the
@@ -667,38 +667,38 @@ gdml-dataset directory.</li>
 
 <dl class="method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.create_dataset">
-<code class="descname">create_dataset</code><span class="sig-paren">(</span><em>gdml_data_dir</em>, <em>dataset_name</em>, <em>z</em>, <em>R</em>, <em>E</em>, <em>F</em>, <em>e_units</em>, <em>r_units</em>, <em>theory='unknown'</em>, <em>e_units_gdml='kcal/mol'</em>, <em>r_units_gdml='Angstrom'</em>, <em>e_units_calc=None</em>, <em>r_units_calc=None</em>, <em>write=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.create_dataset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates and writes GDML dataset.</p>
+<code class="descname">create_dataset</code><span class="sig-paren">(</span><em>save_dir</em>, <em>dataset_name</em>, <em>z</em>, <em>R</em>, <em>E</em>, <em>F</em>, <em>e_units</em>, <em>r_units</em>, <em>theory='unknown'</em>, <em>e_units_gdml='kcal/mol'</em>, <em>r_units_gdml='Angstrom'</em>, <em>e_units_calc=None</em>, <em>r_units_calc=None</em>, <em>write=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.create_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates and writes a data set.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>gdml_data_dir</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Path to common GDML data set directory for a particular cluster.</li>
-<li><strong>dataset_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The name to label the dataset.</li>
-<li><strong>z</strong> (<cite>numpy.ndarray</cite>) – A (n,) array containing atomic numbers of n atoms.</li>
-<li><strong>R</strong> (<cite>numpy.ndarray</cite>) – A (m, n, 3) array containing the atomic coordinates of n atoms of
-m MD steps.</li>
-<li><strong>E</strong> (<cite>numpy.ndarray</cite>) – A (m,) array containing the energies of m MD steps.</li>
-<li><strong>F</strong> (<em>numpy.ndarray</em>) – A (m, n, 3) array containing the atomic forces of n atoms of
+<li><strong>save_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to directory to save data set.</li>
+<li><strong>dataset_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – The name to label the data set.</li>
+<li><strong>z</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A <code class="docutils literal notranslate"><span class="pre">(n,)</span></code> array containing atomic numbers of <code class="docutils literal notranslate"><span class="pre">n</span></code> atoms.</li>
+<li><strong>R</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A <code class="docutils literal notranslate"><span class="pre">(m,</span> <span class="pre">n,</span> <span class="pre">3)</span></code> array containing the atomic coordinates of <code class="docutils literal notranslate"><span class="pre">n</span></code>
+atoms of <code class="docutils literal notranslate"><span class="pre">m</span></code> structures.</li>
+<li><strong>E</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A <code class="docutils literal notranslate"><span class="pre">(m,)</span></code> array containing the energies of <code class="docutils literal notranslate"><span class="pre">m</span></code> structures.</li>
+<li><strong>F</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A <code class="docutils literal notranslate"><span class="pre">(m,</span> <span class="pre">n,</span> <span class="pre">3)</span></code> array containing the atomic forces of n atoms of
 m MD steps. Simply the negative of grads.</li>
-<li><strong>e_units</strong> (<em>str</em>) – The energy units of <cite>energies</cite>.</li>
-<li><strong>r_units</strong> (<em>str</em>) – The distance units of <cite>coords</cite>.</li>
-<li><strong>e_units_calc</strong> (<em>str</em>) – The units of energies reported in the partition calculation output
-file. This is used to convert forces. Options are ‘eV’, ‘hartree’,
-‘kcal/mol’, and ‘kJ/mol’.</li>
-<li><strong>r_units_calc</strong> (<em>str</em>) – The units of the coordinates in the partition calculation output
+<li><strong>e_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Units of energy.</li>
+<li><strong>r_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Units of distance.</li>
+<li><strong>e_units_calc</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – The units of energies reported in the partition calculation output
+file. This is used to convert forces. Options are <code class="docutils literal notranslate"><span class="pre">eV</span></code>,
+<code class="docutils literal notranslate"><span class="pre">hartree</span></code>, <code class="docutils literal notranslate"><span class="pre">kcal/mol</span></code>, and <code class="docutils literal notranslate"><span class="pre">kJ/mol</span></code>.</li>
+<li><strong>r_units_calc</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Units of distance in the partition calculation output
 file. This is only used convert forces if needed.
 Options are ‘Angstrom’ or ‘bohr’.</li>
-<li><strong>theory</strong> (<em>str</em><em>, </em><em>optional</em>) – The level of theory and basis set used for the partition
+<li><strong>theory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – The level of theory and basis set used for the partition
 calculations. For example, ‘MP2.def2TZVP. Defaults to ‘unknown’.</li>
-<li><strong>r_units_gdml</strong> (<em>str</em><em>, </em><em>optional</em>) – Desired coordinate units for the GDML data set. Defaults to ‘Angstrom’.</li>
-<li><strong>e_units_gdml</strong> (<em>str</em><em>, </em><em>optional</em>) – Desired energy units for the GDML dataset. Defaults to ‘kcal/mol’.</li>
-<li><strong>write</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether or not the dataset is written to disk. Defaults to True.</li>
+<li><strong>r_units_gdml</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Desired coordinate units for the GDML data set. Defaults to ‘Angstrom’.</li>
+<li><strong>e_units_gdml</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Desired energy units for the GDML dataset. Defaults to ‘kcal/mol’.</li>
+<li><strong>write</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional) – Whether or not the dataset is written to disk. Defaults to True.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – If units do not match GDML units and no calculation units were
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> – If units do not match GDML units and no calculation units were
 provided.</p>
 </td>
 </tr>
@@ -730,14 +730,14 @@ provided.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>nbody</strong> (<em>int</em>) – Number of n-body contributions to include.</li>
-<li><strong>models_dir</strong> (<em>str</em>) – Path to directory containing GDML files.</li>
+<li><strong>nbody</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – Number of n-body contributions to include.</li>
+<li><strong>models_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Path to directory containing GDML files.</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
-<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – If there is no data set loaded.</li>
-<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – If there are more than one models with the same name.</li>
+<li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code></a> – If there is no data set loaded.</li>
+<li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> – If there are more than one models with the same name.</li>
 </ul>
 </td>
 </tr>
@@ -754,19 +754,19 @@ provided.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>cluster_label</strong> (<em>str</em>) – The label identifying the parent cluster of the partition.
+<li><strong>cluster_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The label identifying the parent cluster of the partition.
 For example, ‘4H2O.abc0’.</li>
-<li><strong>partition_label</strong> (<em>str</em>) – Identifies what solvent molecules are in the partition.
+<li><strong>partition_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Identifies what solvent molecules are in the partition.
 For example, ‘AB’.</li>
-<li><strong>md_temp</strong> (<em>int</em>) – Set point temperautre for the MD thermostat in Kelvin.</li>
-<li><strong>md_iter</strong> (<em>int</em>) – Identifies the iteration of the MD iteration.</li>
+<li><strong>md_temp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – Set point temperautre for the MD thermostat in Kelvin.</li>
+<li><strong>md_iter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – Identifies the iteration of the MD iteration.</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Standardized data set name.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
 </td>
 </tr>
 </tbody>
@@ -781,36 +781,29 @@ For example, ‘AB’.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – If there is no data set loaded.</td>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code></a> – If there is no data set loaded.</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
 <dl class="method">
-<dt id="mbgdml.data.dataset.mbGDMLDataset.read_coordinates">
-<code class="descname">read_coordinates</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.read_coordinates" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reads atomic numbers and coordinates from XYZ file.</p>
+<dt id="mbgdml.data.dataset.mbGDMLDataset.read_xyz">
+<code class="descname">read_xyz</code><span class="sig-paren">(</span><em>file_path</em>, <em>xyz_type</em>, <em>energy_comments=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.read_xyz" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads data from xyz files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_path</strong> (<cite>str</cite>) – Path to xyz file.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to xyz file.</li>
+<li><strong>xyz_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Type of data. Either <code class="docutils literal notranslate"><span class="pre">coords</span></code> or <code class="docutils literal notranslate"><span class="pre">forces</span></code>.</li>
+<li><strong>energy_comments</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If there are comments specifying the energies of the structures.</li>
+</ul>
+</td>
 </tr>
-</tbody>
-</table>
-<p class="rubric">Notes</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="mbgdml.data.dataset.mbGDMLDataset.read_forces">
-<code class="descname">read_forces</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.read_forces" title="Permalink to this definition">¶</a></dt>
-<dd><p>Use cclib to read file (usually xyz format) to assign F attribute.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_path</strong> (<em>str</em>) – Path to file.</td>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> – If <code class="docutils literal notranslate"><span class="pre">xyz_type</span></code> is not <code class="docutils literal notranslate"><span class="pre">coords</span></code> or <code class="docutils literal notranslate"><span class="pre">forces</span></code>.</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -820,13 +813,13 @@ For example, ‘AB’.</li>
 <dt id="mbgdml.data.dataset.mbGDMLDataset.z">
 <code class="descname">z</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.z" title="Permalink to this definition">¶</a></dt>
 <dd><p>Atomic numbers of all atoms in data set structures.</p>
-<p>A (n,) shape array of type numpy.int32 containing atomic numbers of
-atoms in the structures in order as they appear.</p>
+<p>A (n,) shape array of type <code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int32</span></code> containing atomic numbers
+of atoms in the structures in order as they appear.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – If there is no created or loaded data set.</td>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code></a> – If there is no created or loaded data set.</td>
 </tr>
 </tbody>
 </table>
@@ -854,9 +847,9 @@ containing n solvent molecules.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>trajfolder</strong> (<em>str</em>) – Directory containing all MD trajectories to be included in solvent data
+<li><strong>trajfolder</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Directory containing all MD trajectories to be included in solvent data
 sets. Must contain ‘traj’ in filename and have an ‘xyz’ file extension.</li>
-<li><strong>submit</strong> (<em>bool</em><em>, </em><em>optional</em>) – specifies if calculations should be submitted.</li>
+<li><strong>submit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) – specifies if calculations should be submitted.</li>
 </ul>
 </td>
 </tr>
@@ -884,7 +877,7 @@ sets. Must contain ‘traj’ in filename and have an ‘xyz’ file extension.<
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -930,9 +923,9 @@ sets. Must contain ‘traj’ in filename and have an ‘xyz’ file extension.<
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mb_order</strong> (<em>int</em>) – The max order of many-body predictions removed from the dataset.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mb_order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – The max order of many-body predictions removed from the dataset.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – If accessing information when no model is loaded.</td>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code></a> – If accessing information when no model is loaded.</td>
 </tr>
 </tbody>
 </table>
@@ -946,7 +939,7 @@ sets. Must contain ‘traj’ in filename and have an ‘xyz’ file extension.<
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – If accessing information when no model is loaded.</td>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code></a> – If accessing information when no model is loaded.</td>
 </tr>
 </tbody>
 </table>
@@ -960,7 +953,7 @@ sets. Must contain ‘traj’ in filename and have an ‘xyz’ file extension.<
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>log_path</strong> (<em>str</em>) – Path to the log file.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>log_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Path to the log file.</td>
 </tr>
 </tbody>
 </table>
@@ -974,9 +967,9 @@ sets. Must contain ‘traj’ in filename and have an ‘xyz’ file extension.<
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model_path</strong> (<em>str</em>) – Path to GDML model.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Path to GDML model.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – If npz file is not a GDML model.</td>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code></a> – If npz file is not a GDML model.</td>
 </tr>
 </tbody>
 </table>
@@ -1098,7 +1091,7 @@ shape <code class="docutils literal notranslate"><span class="pre">n_z</span></c
 <dl class="attribute">
 <dt id="mbgdml.data.predictset.mbGDMLPredictset.R">
 <code class="descname">R</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.R" title="Permalink to this definition">¶</a></dt>
-<dd><p>Atomic coordinates of every structure with shape (<code class="docutils literal notranslate"><span class="pre">n_R</span></code>, <code class="docutils literal notranslate"><span class="pre">n_z</span></code>, 3).</p>
+<dd><p>Atomic coordinates of every structure with shape <code class="docutils literal notranslate"><span class="pre">(n_R,</span> <span class="pre">n_z,</span> <span class="pre">3)</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1154,7 +1147,7 @@ shape <code class="docutils literal notranslate"><span class="pre">n_z</span></c
 <dl class="attribute">
 <dt id="mbgdml.data.predictset.mbGDMLPredictset.F_true">
 <code class="descname">F_true</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.F_true" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reference atomic forces with shape (<code class="docutils literal notranslate"><span class="pre">n_R</span></code>, <code class="docutils literal notranslate"><span class="pre">n_z</span></code>, 3).</p>
+<dd><p>Reference atomic forces with shape <code class="docutils literal notranslate"><span class="pre">(n_R,</span> <span class="pre">n_z,</span> <span class="pre">3)</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1176,7 +1169,7 @@ shape <code class="docutils literal notranslate"><span class="pre">n_z</span></c
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<cite>str</cite>, optional) – The desired file name for the predict set. Defaults to the name of
 the data set with any occurrence of ‘data’ changed to ‘predict’.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code> – If no data set or GDML models were loaded beforehand.</td>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code></a> – If no data set or GDML models were loaded beforehand.</td>
 </tr>
 </tbody>
 </table>
@@ -1190,7 +1183,7 @@ the data set with any occurrence of ‘data’ changed to ‘predict’.</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>predictset_path</strong> (<em>str</em>) – Path to predict set npz file.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>predictset_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Path to predict set npz file.</td>
 </tr>
 </tbody>
 </table>
@@ -1257,17 +1250,11 @@ up to nbody_order.</td>
 <dl class="class">
 <dt id="mbgdml.data.structure.structure">
 <em class="property">class </em><code class="descclassname">mbgdml.data.structure.</code><code class="descname">structure</code><a class="headerlink" href="#mbgdml.data.structure.structure" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Basics of structures defined by positions of atoms.</p>
 <p>Makes using structures with mbGDML easier by providing a
 simple-to-use class to automate parsing of xyz or calculation files or
 manually specifying atoms and coordinates.</p>
-<dl class="method">
-<dt id="mbgdml.data.structure.structure.parse">
-<code class="descname">parse</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.structure.structure.parse" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parses file using cclib for atomic numbers and xyz coordinates.</p>
-</dd></dl>
-
 <dl class="attribute">
 <dt id="mbgdml.data.structure.structure.z">
 <code class="descname">z</code><a class="headerlink" href="#mbgdml.data.structure.structure.z" title="Permalink to this definition">¶</a></dt>
@@ -1277,7 +1264,7 @@ atoms in the structures in order as they appear.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">numpy.ndarray</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)">numpy.ndarray</a></td>
 </tr>
 </tbody>
 </table>
@@ -1293,7 +1280,7 @@ atoms with 3 positional coordinates.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">numpy.ndarray</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)">numpy.ndarray</a></td>
 </tr>
 </tbody>
 </table>
@@ -1307,7 +1294,7 @@ atoms with 3 positional coordinates.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></td>
 </tr>
 </tbody>
 </table>
@@ -1321,7 +1308,7 @@ atoms with 3 positional coordinates.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></td>
 </tr>
 </tbody>
 </table>
@@ -1342,14 +1329,14 @@ m is the number of atoms with 3 positional coordinates.</p>
 </dd></dl>
 
 <dl class="method">
-<dt>
-<code class="descname">parse</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span></dt>
+<dt id="mbgdml.data.structure.structure.parse">
+<code class="descname">parse</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.structure.structure.parse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parses file using cclib for atomic numbers and xyz coordinates.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_path</strong> (<em>str</em>) – Path to file parsable by cclib.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Path to file parsable by cclib.</td>
 </tr>
 </tbody>
 </table>
