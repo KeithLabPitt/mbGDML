@@ -795,14 +795,11 @@ For example, ‘AB’.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to xyz file.</li>
-<li><strong>xyz_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Type of data. Either <code class="docutils literal notranslate"><span class="pre">coords</span></code> or <code class="docutils literal notranslate"><span class="pre">forces</span></code>.</li>
+<li><strong>xyz_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Type of data. Either <code class="docutils literal notranslate"><span class="pre">'coords'</span></code>, <code class="docutils literal notranslate"><span class="pre">'forces'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'extended'</span></code>.</li>
 <li><strong>energy_comments</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If there are comments specifying the energies of the structures.</li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> – If <code class="docutils literal notranslate"><span class="pre">xyz_type</span></code> is not <code class="docutils literal notranslate"><span class="pre">coords</span></code> or <code class="docutils literal notranslate"><span class="pre">forces</span></code>.</p>
 </td>
 </tr>
 </tbody>
@@ -813,8 +810,8 @@ For example, ‘AB’.</li>
 <dt id="mbgdml.data.dataset.mbGDMLDataset.z">
 <code class="descname">z</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.z" title="Permalink to this definition">¶</a></dt>
 <dd><p>Atomic numbers of all atoms in data set structures.</p>
-<p>A (n,) shape array of type <code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int32</span></code> containing atomic numbers
-of atoms in the structures in order as they appear.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">(n,)</span></code> shape array of type <code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int32</span></code> containing atomic
+numbers of atoms in the structures in order as they appear.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
