@@ -426,8 +426,8 @@ FrozenCore’.</dd>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>xyz_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Path to xyz file of interest.</li>
-<li><strong>solvent</strong> (<em>lst</em>) – Specifies solvents to determine the number of atoms included in a
+<li><strong>xyz_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to xyz file of interest.</li>
+<li><strong>solvent</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>) – Specifies solvents to determine the number of atoms included in a
 molecule.</li>
 </ul>
 </td>
@@ -495,26 +495,39 @@ values the xyz coordinates.</p>
 <dd></dd></dl>
 
 <dl class="function">
-<dt id="mbgdml.parse.parse_gdml_data">
-<code class="descclassname">mbgdml.parse.</code><code class="descname">parse_gdml_data</code><span class="sig-paren">(</span><em>out_file</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.parse.parse_gdml_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parses GDML-relevant data from partition output file.</p>
+<dt id="mbgdml.parse.parse_engrad">
+<code class="descclassname">mbgdml.parse.</code><code class="descname">parse_engrad</code><span class="sig-paren">(</span><em>out_file</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.parse.parse_engrad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses GDML-relevant data (coordinates, energies, and gradients)
+from partition output file.</p>
+<p>Uses <a href="#id1"><span class="problematic" id="id2">:module:`cclib`</span></a> to parse data from computational chemistry calculations
+involving multiple calculations of structures containing same atoms in
+different configurations.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>out_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Path to computational chemistry output file. This should contain all MD
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>out_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to computational chemistry output file. This should contain all MD
 steps for the partition.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Contains all information needed to build GDML data sets. ‘atoms’ is a
-(n) numpy array containing the atomic numbers of the atoms in the
-partition. ‘coords’ is a (m, n, 3) numpy array containing the m MD
-step coordinates of the n atoms in the partition. ‘grads’ is a
-(m, n, 3) numpy array containing the gradients of the m MD steps
-containing the n atoms in the partition. ‘energies’ is a (m, 1) numpy
-array containing the electronic energies of each m MD steps for the
-partition.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">All information needed to build GDML data sets. Contains the following
+keys:<blockquote>
+<div><dl class="docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">'z'</span></code></dt>
+<dd><code class="docutils literal notranslate"><span class="pre">(n,)</span></code> <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> of atomic numbers.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">'R'</span></code></dt>
+<dd><code class="docutils literal notranslate"><span class="pre">(m,</span> <span class="pre">n,</span> <span class="pre">3)</span></code> <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> containing the coordinates of
+<code class="docutils literal notranslate"><span class="pre">m</span></code> calculations of the <code class="docutils literal notranslate"><span class="pre">n</span></code> atoms in the structure.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">'E'</span></code></dt>
+<dd><code class="docutils literal notranslate"><span class="pre">(m,</span> <span class="pre">1)</span></code> <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> containing the energies of
+<code class="docutils literal notranslate"><span class="pre">m</span></code> calculations.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">'G'</span></code></dt>
+<dd><code class="docutils literal notranslate"><span class="pre">(m,</span> <span class="pre">n,</span> <span class="pre">3)</span></code> <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> containing the gradients of
+<code class="docutils literal notranslate"><span class="pre">m</span></code> calculations of the <code class="docutils literal notranslate"><span class="pre">n</span></code> atoms in the structure.</dd>
+</dl>
+</div></blockquote>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)">dict</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></td>
 </tr>
 </tbody>
 </table>
@@ -534,9 +547,10 @@ as extended xyz).</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stringfile_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to string file.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Parsed atoms (as element symbols <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>), comments, and data as
+<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a> from string file.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></a> [<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>]</td>
 </tr>
 </tbody>
 </table>
