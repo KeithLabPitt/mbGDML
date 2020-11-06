@@ -1,0 +1,390 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mbgdml.data.calculation &mdash; mbGDML  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> mbGDML
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../doc/modules.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">mbGDML</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>mbgdml.data.calculation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for mbgdml.data.calculation</h1><div class="highlight"><pre>
+<span></span><span class="c1"># MIT License</span>
+<span class="c1"># </span>
+<span class="c1"># Copyright (c) 2020, Alex M. Maldonado</span>
+<span class="c1"># </span>
+<span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># in the Software without restriction, including without limitation the rights</span>
+<span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
+<span class="c1"># furnished to do so, subject to the following conditions:</span>
+<span class="c1">#</span>
+<span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
+<span class="c1"># copies or substantial portions of the Software.</span>
+<span class="c1"># </span>
+<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class="c1"># LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
+<span class="c1"># SOFTWARE.</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">cclib.io</span> <span class="kn">import</span> <span class="n">ccread</span>
+<span class="kn">from</span> <span class="nn">cclib.parser.utils</span> <span class="kn">import</span> <span class="n">convertor</span>
+<span class="kn">from</span> <span class="nn">mbgdml.utils</span> <span class="kn">import</span> <span class="n">convert_forces</span>
+<span class="kn">import</span> <span class="nn">mbgdml.solvents</span> <span class="k">as</span> <span class="nn">solvents</span>
+
+
+<div class="viewcode-block" id="PartitionOutput"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.calculation.PartitionOutput">[docs]</a><span class="k">class</span> <span class="nc">PartitionOutput</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Quantum chemistry output file for all MD steps of a single partition.</span>
+
+<span class="sd">    Output file that contains electronic energies and gradients of the same</span>
+<span class="sd">    partition from a single MD trajectory. For a single dimer partition of a</span>
+<span class="sd">    n step MD trajectory would have n coordinates, single point energies,</span>
+<span class="sd">    and gradients.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    output_path : :obj:`str`</span>
+<span class="sd">        Path to computational chemistry output file that contains energies</span>
+<span class="sd">        and gradients (preferably ab initio) of all MD steps of a</span>
+<span class="sd">        single partition.</span>
+<span class="sd">    cluster_label : :obj:`str`</span>
+<span class="sd">        Identifies the cluster where this partition originates from. Specifies</span>
+<span class="sd">        at least the solvent and size of the parent cluster. For example, if</span>
+<span class="sd">        this partition is the number 23 structure from ABCluster</span>
+<span class="sd">        for a four water cluster, this could be ``&#39;4H2O.abc23&#39;``.</span>
+<span class="sd">    partition_label : :obj:`str`</span>
+<span class="sd">        Specifies the molecules composing this partition. Typically we use a</span>
+<span class="sd">        single uppercase letter per molecule in the order it appears in the</span>
+<span class="sd">        xyz coordinates. For example, a partition from a 4H2O cluster with the</span>
+<span class="sd">        first and third water molecules would be ``&#39;AC&#39;``.</span>
+<span class="sd">    md_temp : :obj:`int`</span>
+<span class="sd">        The set point for the MD thermostat. This only affects labeling and</span>
+<span class="sd">        directory organization as it has a significant impact on geometry</span>
+<span class="sd">        sampling.</span>
+<span class="sd">    md_iter : :obj:`int`, optional</span>
+<span class="sd">        Specifies the MD iteration for labeling and data-tracking purposes.</span>
+<span class="sd">        Defaults to ``0``.</span>
+<span class="sd">    e_unit : :obj:`str`, optional</span>
+<span class="sd">        Desired units of energy. Available units implemented are ``&#39;eV&#39;``,</span>
+<span class="sd">        ``&#39;hartree&#39;``, ``&#39;kcal/mol&#39;``, and ``&#39;kJ/mol&#39;``. Defaults to</span>
+<span class="sd">        ``&#39;kcal/mol&#39;``.</span>
+<span class="sd">    r_unit : :obj:`str`, optional</span>
+<span class="sd">        Desired units of distance. Available units implemented in cclib&#39;s</span>
+<span class="sd">        convertor function are ``&#39;Angstrom&#39;`` and ``&#39;bohr&#39;``.</span>
+<span class="sd">    theory : :obj:`str`, optional</span>
+<span class="sd">        Level of theory for the calculations. For example, ``&#39;mp2.def2tzvp&#39;``.</span>
+<span class="sd">        Defaults to ``&#39;unknown&#39;``.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Typical GDML units are kcal/mol and kcal/mol/Angstrom for energies</span>
+<span class="sd">    and forces, respectively.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    output_path : :obj:`str`</span>
+<span class="sd">        Path to computational chemistry output file that contains energies</span>
+<span class="sd">        and gradients (preferably ab initio) of all MD steps of a</span>
+<span class="sd">        single partition.</span>
+<span class="sd">    cluster_label : :obj:`str`</span>
+<span class="sd">        Identifies the cluster where this partition originates from. Specifies</span>
+<span class="sd">        at least the solvent and size of the parent cluster. For example, if</span>
+<span class="sd">        this partition is the number 23 structure from ABCluster</span>
+<span class="sd">        for a four water cluster, this could be &#39;4H2O.abc23&#39;.</span>
+<span class="sd">    partition_label : :obj:`str`</span>
+<span class="sd">        Specifies the molecules composing this partition. Typically we use a</span>
+<span class="sd">        single uppercase letter per molecule in the order it appears in the</span>
+<span class="sd">        xyz coordinates. For example, a partition from a 4H2O cluster with the</span>
+<span class="sd">        first and third water molecules would be &#39;AC&#39;.</span>
+<span class="sd">    md_temp : :obj:`int`</span>
+<span class="sd">        The set point for the MD thermostat. This only affects labeling and</span>
+<span class="sd">        directory organization as it has a significant impact on geometry</span>
+<span class="sd">        sampling.</span>
+<span class="sd">    md_iter : :obj:`int`, optional</span>
+<span class="sd">        Specifies the MD iteration for labeling and data-tracking purposes.</span>
+<span class="sd">        Defaults to 0.</span>
+<span class="sd">    e_unit : :obj:`str`, optional</span>
+<span class="sd">        Desired units of energy. Available units implemented are &#39;eV&#39;,</span>
+<span class="sd">        &#39;hartree&#39;, &#39;kcal/mol&#39;, and &#39;kJ/mol&#39;. Defaults to &#39;kcal/mol&#39;.</span>
+<span class="sd">    r_unit : :obj:`str`, optional</span>
+<span class="sd">        Desired units of distance. Available units implemented in cclib&#39;s</span>
+<span class="sd">        convertor function are &#39;Angstrom&#39; and &#39;bohr&#39;.</span>
+<span class="sd">    output_name : :obj:`str`</span>
+<span class="sd">        The name of the quantum chemistry output file (no extension).</span>
+<span class="sd">    partition_size : :obj:`int`</span>
+<span class="sd">        The number of solvent molecules in the partition.</span>
+<span class="sd">    cclib_data : :obj:`cclib.parser.data.ccData``</span>
+<span class="sd">        Contains all data parsed from output file.</span>
+<span class="sd">    z : :obj:`numpy.ndarray`</span>
+<span class="sd">        A (n,) array containing n atomic numbers.</span>
+<span class="sd">    R : :obj:`numpy.ndarray`</span>
+<span class="sd">        A (m, n, 3) array containing the atomic coordinates</span>
+<span class="sd">        of n atoms of m MD steps.</span>
+<span class="sd">    E : :obj:`numpy.ndarray`</span>
+<span class="sd">        A (m,) array containing the energies of m structures.</span>
+<span class="sd">    G : :obj:`numpy.ndarray`</span>
+<span class="sd">        A (m, n, 3) array containing the atomic gradients of n atoms of m MD</span>
+<span class="sd">        steps.</span>
+<span class="sd">    F : :obj:`numpy.ndarray`</span>
+<span class="sd">        A (m, n, 3) array containing the atomic forces</span>
+<span class="sd">        of n atoms of m MD steps. Simply the negative of grads.</span>
+<span class="sd">    system : :obj:`str`</span>
+<span class="sd">        From mbgdml.solvents and designates the system. Currently</span>
+<span class="sd">        only &#39;solvent&#39; is implemented.</span>
+<span class="sd">    solvent_info : :obj:`dict`</span>
+<span class="sd">        If the system is &#39;solvent&#39;, contains information</span>
+<span class="sd">        about the system and solvent. &#39;solvent_name&#39;, &#39;solvent_label&#39;,</span>
+<span class="sd">        &#39;solvent_molec_size&#39;, and &#39;cluster_size&#39;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">output_path</span><span class="p">,</span> <span class="n">cluster_label</span><span class="p">,</span> <span class="n">partition_label</span><span class="p">,</span> <span class="n">md_temp</span><span class="p">,</span> <span class="n">md_iter</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">e_unit</span><span class="o">=</span><span class="s1">&#39;kcal/mol&#39;</span><span class="p">,</span> <span class="n">r_unit</span><span class="o">=</span><span class="s1">&#39;Angstrom&#39;</span><span class="p">,</span> <span class="n">theory</span><span class="o">=</span><span class="s1">&#39;unknown&#39;</span><span class="p">):</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_path</span> <span class="o">=</span> <span class="n">output_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cluster_label</span> <span class="o">=</span> <span class="n">cluster_label</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">partition_label</span> <span class="o">=</span> <span class="n">partition_label</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">partition_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">partition_label</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">md_temp</span> <span class="o">=</span> <span class="n">md_temp</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">md_iter</span> <span class="o">=</span> <span class="n">md_iter</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e_unit</span> <span class="o">=</span> <span class="n">e_unit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">r_unit</span> <span class="o">=</span> <span class="n">r_unit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theory</span> <span class="o">=</span> <span class="n">theory</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">cclib_data</span> <span class="o">=</span> <span class="n">ccread</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_path</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_gdml_data</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">E</span> <span class="o">=</span> <span class="n">convertor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> <span class="s1">&#39;eV&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">e_unit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">G</span> <span class="o">=</span> <span class="n">convert_forces</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cclib_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;package&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">e_unit</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">r_unit</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">negative</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">system_info</span> <span class="o">=</span> <span class="n">solvents</span><span class="o">.</span><span class="n">system_info</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+
+    
+    <span class="k">def</span> <span class="nf">_get_gdml_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parses GDML-relevant data from partition output file.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AttributeError</span>
+<span class="sd">            There were no parse mpenergies or scfenergies attributes.</span>
+<span class="sd">        AttributeError</span>
+<span class="sd">            Not all attributes (atomnos, atomcoords, grads) were</span>
+<span class="sd">            parsed correctly.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cclib_data</span><span class="o">.</span><span class="n">atomnos</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">R</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cclib_data</span><span class="o">.</span><span class="n">atomcoords</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">G</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cclib_data</span><span class="o">.</span><span class="n">grads</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">negative</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cclib_data</span><span class="p">,</span> <span class="s1">&#39;mpenergies&#39;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">E</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cclib_data</span><span class="o">.</span><span class="n">mpenergies</span>
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cclib_data</span><span class="p">,</span> <span class="s1">&#39;scfenergies&#39;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">E</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cclib_data</span><span class="o">.</span><span class="n">scfenergies</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;No energies were found.&#39;</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;Some attributes (atomnos, atomcoords, grads) were&#39;</span>
+                <span class="sa">f</span><span class="s1">&#39;not found in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">output_name</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Alex M. Maldonado
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,478 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mbgdml.predict &mdash; mbGDML  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> mbGDML
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../doc/modules.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">mbGDML</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>mbgdml.predict</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for mbgdml.predict</h1><div class="highlight"><pre>
+<span></span><span class="c1"># MIT License</span>
+<span class="c1"># </span>
+<span class="c1"># Copyright (c) 2020, Alex M. Maldonado</span>
+<span class="c1"># </span>
+<span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># in the Software without restriction, including without limitation the rights</span>
+<span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
+<span class="c1"># furnished to do so, subject to the following conditions:</span>
+<span class="c1">#</span>
+<span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
+<span class="c1"># copies or substantial portions of the Software.</span>
+<span class="c1"># </span>
+<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class="c1"># LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
+<span class="c1"># SOFTWARE.</span>
+
+<span class="kn">import</span> <span class="nn">itertools</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sgdml.predict</span> <span class="kn">import</span> <span class="n">GDMLPredict</span>
+<span class="kn">import</span> <span class="nn">mbgdml.solvents</span> <span class="k">as</span> <span class="nn">solvents</span>
+
+<div class="viewcode-block" id="mbGDMLPredict"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.predict.mbGDMLPredict">[docs]</a><span class="k">class</span> <span class="nc">mbGDMLPredict</span><span class="p">():</span>
+
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">models</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sets GDML models to be used for many-body prediction.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        models : :obj:`list`</span>
+<span class="sd">            Contains paths to either standard or many-body GDML models.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_load_models</span><span class="p">(</span><span class="n">models</span><span class="p">)</span>
+    
+
+    <span class="k">def</span> <span class="nf">_load_models</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">models</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Loads models and preprares GDMLPredict.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        models : :obj:`list`</span>
+<span class="sd">            Contains paths to either standard or many-body GDML models.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gdmls</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">models</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+            <span class="n">loaded</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loaded</span><span class="p">)</span>
+            <span class="n">gdml</span> <span class="o">=</span> <span class="n">GDMLPredict</span><span class="p">(</span><span class="n">loaded</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gdmls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gdml</span><span class="p">)</span>
+
+
+
+    <span class="k">def</span> <span class="nf">_calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">system_size</span><span class="p">,</span> <span class="n">molecule_size</span><span class="p">,</span> <span class="n">gdml</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The actual calculate/predict function for a single GDML model.</span>
+
+<span class="sd">        Predicts the energy and forces of a structure from a single GDML model.</span>
+<span class="sd">        In other words, it predicts the energy and force contribution from a</span>
+<span class="sd">        single many-body (or standard) GDML model.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        z : list</span>
+<span class="sd">            Atomic numbers of all atoms in the system.</span>
+<span class="sd">        R : numpy.ndarray</span>
+<span class="sd">            Cartesian coordinates of all atoms of the structure specified in </span>
+<span class="sd">            the same order as z. The array should have shape (n, 3) where n is </span>
+<span class="sd">            the number of atoms.</span>
+<span class="sd">        system_size : int</span>
+<span class="sd">            Number of molecules of the defined chemical species in the </span>
+<span class="sd">            structure.</span>
+<span class="sd">        molecule_size : int</span>
+<span class="sd">            Number of atoms in the defined chemical species.</span>
+<span class="sd">        gdml : sgdml.predict.GDMLPredict</span>
+<span class="sd">            Object used to predict energies and forces of the structure defined </span>
+<span class="sd">            in R.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        tuple</span>
+<span class="sd">            Dictionaries of contributions and total energies (float) and</span>
+<span class="sd">            forces (np.ndarray) of the structure. Note that forces has</span>
+<span class="sd">            the same shape as R. Each key of the dictionary is the molecule</span>
+<span class="sd">            combination. For example, &#39;01&#39; contains the predictions of</span>
+<span class="sd">            two-body energy and forces of the pair containing molecules 0</span>
+<span class="sd">            and 1. Additionally, each dict has &#39;T&#39; representing the total</span>
+<span class="sd">            energy or forces.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># &#39;T&#39; is for total</span>
+        <span class="n">E_contributions</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">}</span>
+        <span class="n">F_contributions</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">)}</span>
+
+        <span class="n">nbody_order</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">gdml</span><span class="o">.</span><span class="n">n_atoms</span><span class="o">/</span><span class="n">molecule_size</span><span class="p">)</span>
+        
+        <span class="c1"># Getting list of n-body combinations (int).</span>
+        <span class="n">nbody_combinations</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+            <span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">system_size</span><span class="p">)),</span> <span class="n">nbody_order</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Getting all contributions for each molecule combination.</span>
+        <span class="k">for</span> <span class="n">comb</span> <span class="ow">in</span> <span class="n">nbody_combinations</span><span class="p">:</span>
+
+            <span class="c1"># Gets indices of all atoms in the combination of molecules.</span>
+            <span class="n">atoms</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">molecule</span> <span class="ow">in</span> <span class="n">comb</span><span class="p">:</span>
+                <span class="n">atoms</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span>
+                    <span class="n">molecule</span> <span class="o">*</span> <span class="n">molecule_size</span><span class="p">,</span> <span class="p">(</span><span class="n">molecule</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">molecule_size</span>
+                <span class="p">))</span>
+            
+            <span class="c1"># Predicts energies</span>
+            <span class="n">e</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="n">gdml</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">R</span><span class="p">[</span><span class="n">atoms</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+
+            <span class="c1"># Adds contributions prediced from model.</span>
+            <span class="n">comb_label</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">molecule</span><span class="p">)</span> <span class="k">for</span> <span class="n">molecule</span> <span class="ow">in</span> <span class="n">comb</span><span class="p">)</span>
+            <span class="n">E_contributions</span><span class="p">[</span><span class="n">comb_label</span><span class="p">]</span> <span class="o">=</span> <span class="n">e</span>
+            <span class="n">F_contributions</span><span class="p">[</span><span class="n">comb_label</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">atoms</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+
+            <span class="c1"># Adds contributions to total energy and forces.</span>
+            <span class="n">E_contributions</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">E_contributions</span><span class="p">[</span><span class="n">comb_label</span><span class="p">]</span>
+            <span class="n">F_contributions</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">][</span><span class="n">atoms</span><span class="p">]</span> <span class="o">+=</span> <span class="n">F_contributions</span><span class="p">[</span><span class="n">comb_label</span><span class="p">]</span>
+        
+        <span class="k">return</span> <span class="n">E_contributions</span><span class="p">,</span> <span class="n">F_contributions</span>
+
+
+<div class="viewcode-block" id="mbGDMLPredict.decomposed_predict"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.predict.mbGDMLPredict.decomposed_predict">[docs]</a>    <span class="k">def</span> <span class="nf">decomposed_predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">R</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Computes predicted total energy and atomic forces decomposed by</span>
+<span class="sd">        many body order.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        z : list</span>
+<span class="sd">            Atomic numbers of all atoms in the system.</span>
+<span class="sd">        R : numpy.ndarray</span>
+<span class="sd">            Cartesian coordinates of all atoms of the structure specified in </span>
+<span class="sd">            the same order as z. The array should have shape (n, 3) where n is </span>
+<span class="sd">            the number of atoms.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        tuple</span>
+<span class="sd">            Dictionaries of many-body contributions of total energies</span>
+<span class="sd">            (float) and forces (np.ndarray) of the structure. Note that</span>
+<span class="sd">            forces has the same shape as R. Each key of the dictionary is</span>
+<span class="sd">            the order of the many-body model. Within this dictionary is a</span>
+<span class="sd">            total, &#39;T&#39;, and molecule combinations identified in the system</span>
+<span class="sd">            and their contributions.</span>
+<span class="sd">        </span>
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; atoms = [8, 1, 1, 8, 1, 1]</span>
+<span class="sd">        &gt;&gt;&gt; coords = array([[ 1.530147,  1.121901,  0.396232],</span>
+<span class="sd">                            [ 2.350485,  1.1297  , -0.085235],</span>
+<span class="sd">                            [ 0.823842,  1.311077, -0.2846  ],</span>
+<span class="sd">                            [-1.464849, -1.155867, -0.449863],</span>
+<span class="sd">                            [-1.41447 , -1.99605 , -0.917981],</span>
+<span class="sd">                            [-0.868584, -1.275659,  0.32329 ]])</span>
+<span class="sd">        &gt;&gt;&gt; E_predicted, F_predicted = decomposed_predict(atoms, coords)</span>
+<span class="sd">        &gt;&gt;&gt; E_predicted[&#39;T&#39;]  # Units here are kcal/mol</span>
+<span class="sd">        -95775.24328734782</span>
+<span class="sd">        &gt;&gt;&gt; F_predicted[&#39;T&#39;]  # Units here are kcal/(mol A)</span>
+<span class="sd">        array([[-4.06668790e+01,  5.97564871e+00, -1.63273803e+01],</span>
+<span class="sd">               [ 1.10787347e+01,  6.38884805e-01, -9.01790818e+00],</span>
+<span class="sd">               [ 2.82554119e+01, -8.11473944e+00,  2.53684238e+01],</span>
+<span class="sd">               [ 1.45845554e+01, -2.53514310e+00,  1.76065017e+01],</span>
+<span class="sd">               [-3.53967582e-02,  2.91676403e-01,  2.61011071e-01],</span>
+<span class="sd">               [-1.32164262e+01,  3.74366076e+00, -1.78906481e+01]])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO run tests and add more information</span>
+
+        <span class="c1"># Gets system information from dataset.</span>
+        <span class="c1"># This assumes the system is only solvent.</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">list</span><span class="p">:</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">dataset_info</span> <span class="o">=</span> <span class="n">solvents</span><span class="o">.</span><span class="n">system_info</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+        <span class="n">system_size</span> <span class="o">=</span> <span class="n">dataset_info</span><span class="p">[</span><span class="s1">&#39;cluster_size&#39;</span><span class="p">]</span>
+        <span class="n">molecule_size</span> <span class="o">=</span> <span class="n">dataset_info</span><span class="p">[</span><span class="s1">&#39;solvent_molec_size&#39;</span><span class="p">]</span>
+
+        <span class="c1"># &#39;T&#39; is for total</span>
+        <span class="n">E_contributions</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">}</span>
+        <span class="n">F_contributions</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">)}</span>
+
+        <span class="c1"># Adds contributions from all models.</span>
+        <span class="k">for</span> <span class="n">gdml</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">gdmls</span><span class="p">:</span>
+            
+            <span class="n">nbody_order</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">gdml</span><span class="o">.</span><span class="n">n_atoms</span><span class="o">/</span><span class="n">molecule_size</span><span class="p">)</span>
+            <span class="n">E_contributions</span><span class="p">[</span><span class="n">nbody_order</span><span class="p">],</span> <span class="n">F_contributions</span><span class="p">[</span><span class="n">nbody_order</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_calculate</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">system_size</span><span class="p">,</span> <span class="n">molecule_size</span><span class="p">,</span> <span class="n">gdml</span><span class="p">)</span>
+
+            <span class="c1"># Adds contributions to total energy and forces.</span>
+            <span class="n">E_contributions</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">E_contributions</span><span class="p">[</span><span class="n">nbody_order</span><span class="p">][</span><span class="s1">&#39;T&#39;</span><span class="p">]</span>
+            <span class="n">F_contributions</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">F_contributions</span><span class="p">[</span><span class="n">nbody_order</span><span class="p">][</span><span class="s1">&#39;T&#39;</span><span class="p">]</span>
+        
+        <span class="k">return</span> <span class="n">E_contributions</span><span class="p">,</span> <span class="n">F_contributions</span></div>
+
+
+<div class="viewcode-block" id="mbGDMLPredict.predict"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.predict.mbGDMLPredict.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">R</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Predicts total energy and atomic forces using many-body GDML models.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        z : list</span>
+<span class="sd">            Atomic numbers of all atoms in the system.</span>
+<span class="sd">        R : numpy.ndarray</span>
+<span class="sd">            Cartesian coordinates of all atoms of the structure specified in </span>
+<span class="sd">            the same order as z. The array should have shape (n, 3) where n is </span>
+<span class="sd">            the number of atoms.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        tuple</span>
+<span class="sd">            Total energy of the system (float) and atomic forces (numpy.ndarray) </span>
+<span class="sd">            in the units specified by the GDML models. Note that the forces </span>
+<span class="sd">            have the same shape as R.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">e</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decomposed_predict</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">e</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="mbGDMLPredict.remove_nbody"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.predict.mbGDMLPredict.remove_nbody">[docs]</a>    <span class="k">def</span> <span class="nf">remove_nbody</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref_dataset</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Removes mbGDML prediced energies and forces from a reference data</span>
+<span class="sd">        set.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        ref_dataset : :obj:`mbgdml.data.mbGDMLDataset`</span>
+<span class="sd">            Reference data set of structures, energies, and forces. This is the</span>
+<span class="sd">            data where mbGDML predictions will be subtracted from.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">nbody_dataset</span> <span class="o">=</span> <span class="n">ref_dataset</span><span class="o">.</span><span class="n">dataset</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">nbody_dataset</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>
+        <span class="n">R</span> <span class="o">=</span> <span class="n">nbody_dataset</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">]</span>
+        <span class="n">E</span> <span class="o">=</span> <span class="n">nbody_dataset</span><span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">]</span>
+        <span class="n">F</span> <span class="o">=</span> <span class="n">nbody_dataset</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">]</span>
+        <span class="n">num_config</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">system</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">nbody_dataset</span><span class="p">[</span><span class="s1">&#39;system&#39;</span><span class="p">][()])</span>
+        <span class="k">if</span> <span class="n">system</span> <span class="o">==</span> <span class="s1">&#39;solvent&#39;</span><span class="p">:</span>
+            <span class="n">dataset_info</span> <span class="o">=</span> <span class="n">solvents</span><span class="o">.</span><span class="n">system_info</span><span class="p">(</span><span class="n">ref_dataset</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+            <span class="n">system_size</span> <span class="o">=</span> <span class="n">dataset_info</span><span class="p">[</span><span class="s1">&#39;cluster_size&#39;</span><span class="p">]</span>
+        <span class="c1"># Removing all n-body contributions for every configuration.</span>
+        <span class="k">for</span> <span class="n">config</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_config</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">z</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">z_predict</span> <span class="o">=</span> <span class="n">z</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">z_predict</span> <span class="o">=</span> <span class="n">z</span><span class="p">[</span><span class="n">config</span><span class="p">]</span>
+            <span class="n">e</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">z_predict</span><span class="p">,</span> <span class="n">R</span><span class="p">[</span><span class="n">config</span><span class="p">])</span>
+            <span class="n">F</span><span class="p">[</span><span class="n">config</span><span class="p">]</span> <span class="o">-=</span> <span class="n">f</span>
+            <span class="n">E</span><span class="p">[</span><span class="n">config</span><span class="p">]</span> <span class="o">-=</span> <span class="n">e</span>
+                
+
+        <span class="c1"># Updates dataset.</span>
+        <span class="n">nbody_dataset</span><span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
+        <span class="n">nbody_dataset</span><span class="p">[</span><span class="s1">&#39;E_min&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">E</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
+        <span class="n">nbody_dataset</span><span class="p">[</span><span class="s1">&#39;E_max&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">E</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
+        <span class="n">nbody_dataset</span><span class="p">[</span><span class="s1">&#39;E_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">E</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
+        <span class="n">nbody_dataset</span><span class="p">[</span><span class="s1">&#39;E_var&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">E</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
+        <span class="n">nbody_dataset</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
+        <span class="n">nbody_dataset</span><span class="p">[</span><span class="s1">&#39;F_min&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
+        <span class="n">nbody_dataset</span><span class="p">[</span><span class="s1">&#39;F_max&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
+        <span class="n">nbody_dataset</span><span class="p">[</span><span class="s1">&#39;F_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
+        <span class="n">nbody_dataset</span><span class="p">[</span><span class="s1">&#39;F_var&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
+        <span class="n">nbody_dataset</span><span class="p">[</span><span class="s1">&#39;mb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">system_size</span><span class="p">))</span>
+        
+        <span class="c1"># Generating new data set name</span>
+        <span class="n">name_old</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">nbody_dataset</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">][()])</span>
+        <span class="n">nbody_label</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">system_size</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;body&#39;</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">name_old</span><span class="p">,</span> <span class="n">nbody_label</span><span class="p">])</span>
+        <span class="n">nbody_dataset</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">nbody_dataset</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Alex M. Maldonado
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

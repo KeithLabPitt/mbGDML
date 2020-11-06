@@ -1,0 +1,441 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mbgdml.solvents &mdash; mbGDML  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> mbGDML
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../doc/modules.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">mbGDML</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>mbgdml.solvents</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for mbgdml.solvents</h1><div class="highlight"><pre>
+<span></span><span class="c1"># MIT License</span>
+<span class="c1"># </span>
+<span class="c1"># Copyright (c) 2020, Alex M. Maldonado</span>
+<span class="c1"># </span>
+<span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># in the Software without restriction, including without limitation the rights</span>
+<span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
+<span class="c1"># furnished to do so, subject to the following conditions:</span>
+<span class="c1">#</span>
+<span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
+<span class="c1"># copies or substantial portions of the Software.</span>
+<span class="c1"># </span>
+<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class="c1"># LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
+<span class="c1"># SOFTWARE.</span>
+
+<span class="kn">from</span> <span class="nn">periodictable</span> <span class="kn">import</span> <span class="n">elements</span>
+
+<div class="viewcode-block" id="solvent"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.solvents.solvent">[docs]</a><span class="k">class</span> <span class="nc">solvent</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Identifies and describes the solvent for MB-GDML.</span>
+<span class="sd">    </span>
+<span class="sd">    Represents the solvent that makes up the cluster MB-GDML is being trained</span>
+<span class="sd">    from.</span>
+<span class="sd">    </span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    system : str</span>
+<span class="sd">        Designates what kind of system this is. Currently only &#39;solvent&#39; </span>
+<span class="sd">        systems.</span>
+<span class="sd">    solvent_name : str</span>
+<span class="sd">        Name of the solvent.</span>
+<span class="sd">    solvent_label : str</span>
+<span class="sd">        A label for the solvent for filenaming purposes.</span>
+<span class="sd">    solvent_molec_size : int</span>
+<span class="sd">        Total number of atoms in one solvent molecule.</span>
+<span class="sd">    cluster_size : int</span>
+<span class="sd">        Total number of solvent molecules in cluster.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atom_list</span><span class="p">):</span>
+
+        <span class="c1"># Gets available solvents</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">all_solvents</span> <span class="o">=</span> <span class="n">solvent_data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">identify_solvent</span><span class="p">(</span><span class="n">atom_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_solvents</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="solvent.atom_numbers"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.solvents.solvent.atom_numbers">[docs]</a>    <span class="k">def</span> <span class="nf">atom_numbers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chem_formula</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Provides a dictionary of atoms and their quantity from chemical</span>
+<span class="sd">        formula.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        chem_formula : str</span>
+<span class="sd">            The chemical formula of a single solvent  molecule. For example, </span>
+<span class="sd">            &#39;CH3OH&#39; for methanol, &#39;H2O&#39; for water, and &#39;C2H3N&#39; for acetonitrile.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            Contains the atoms as their elemental symbol for keys and their </span>
+<span class="sd">            quantity as values.</span>
+<span class="sd">        </span>
+<span class="sd">        Examples</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; atom_numbers(&#39;CH3OH&#39;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">string_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">chem_formula</span><span class="p">)</span>
+        <span class="n">atom_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">str_index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">str_index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">string_list</span><span class="p">):</span>
+            <span class="n">next_index</span> <span class="o">=</span> <span class="n">str_index</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">string_list</span><span class="p">[</span><span class="n">str_index</span><span class="p">]</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>
+                <span class="c1"># Checks to see if there is more than one of this atom type.</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">string_list</span><span class="p">[</span><span class="n">next_index</span><span class="p">]</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>
+                        <span class="n">number</span> <span class="o">=</span> <span class="mi">1</span>
+                        <span class="n">index_change</span>  <span class="o">=</span> <span class="mi">1</span>
+                    <span class="k">elif</span> <span class="n">string_list</span><span class="p">[</span><span class="n">next_index</span><span class="p">]</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+                        <span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">string_list</span><span class="p">[</span><span class="n">next_index</span><span class="p">])</span>
+                        <span class="n">index_change</span>  <span class="o">=</span> <span class="mi">2</span>
+                <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+                    <span class="n">number</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="n">index_change</span>  <span class="o">=</span> <span class="mi">1</span>
+
+            <span class="c1"># Adds element numbers to atom_dict</span>
+            <span class="k">if</span> <span class="n">string_list</span><span class="p">[</span><span class="n">str_index</span><span class="p">]</span> <span class="ow">in</span> <span class="n">atom_dict</span><span class="p">:</span>
+                <span class="n">atom_dict</span><span class="p">[</span><span class="n">string_list</span><span class="p">[</span><span class="n">str_index</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">number</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">atom_dict</span><span class="p">[</span><span class="n">string_list</span><span class="p">[</span><span class="n">str_index</span><span class="p">]]</span> <span class="o">=</span> <span class="n">number</span>
+            
+            <span class="n">str_index</span> <span class="o">+=</span> <span class="n">index_change</span>
+
+        <span class="k">return</span> <span class="n">atom_dict</span></div>
+
+
+<div class="viewcode-block" id="solvent.identify_solvent"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.solvents.solvent.identify_solvent">[docs]</a>    <span class="k">def</span> <span class="nf">identify_solvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atom_list</span><span class="p">,</span> <span class="n">all_solvents</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Identifies the solvent from a repeated list of elements.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        atom_list : list</span>
+<span class="sd">            Elements as strings. Elements should be repeated. For example, </span>
+<span class="sd">            [&#39;H&#39;, &#39;H&#39;, &#39;O&#39;, &#39;O&#39;, &#39;H&#39;, &#39;H&#39;]. Note that the order does not </span>
+<span class="sd">            matter; only the quantity.</span>
+<span class="sd">        all_solvents : dict</span>
+<span class="sd">            Contains all solvents described in solvents.json. Keys are the name </span>
+<span class="sd">            of the solvent, and the values are dicts &#39;label&#39; and &#39;formula&#39; that </span>
+<span class="sd">            provide a solvent label and chemical formula, respectively.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Converts atoms identified by their atomic number into element symbols</span>
+        <span class="c1"># for human redability.</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">atom_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+            <span class="n">atom_list_elements</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">atom_list</span><span class="p">:</span>
+                <span class="n">atom_list_elements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="n">atom</span><span class="p">]))</span>
+            <span class="n">atom_list</span> <span class="o">=</span> <span class="n">atom_list_elements</span>
+
+        <span class="c1"># Determines quantity of each element in atom list.</span>
+        <span class="c1"># Example: {&#39;H&#39;: 4, &#39;O&#39;: 2}</span>
+        <span class="n">atom_num</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">atom_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">atom_num</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">atom_num</span><span class="p">[</span><span class="n">atom</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">atom_num</span><span class="p">[</span><span class="n">atom</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        
+        <span class="c1"># Identifies solvent by comparing multiples of element numbers for each</span>
+        <span class="c1"># solvent in the json file. Note, this does not differentiate</span>
+        <span class="c1"># between isomers or compounds with the same chemical formula.</span>
+        <span class="c1"># Loops through available solvents and solvent_atoms.</span>
+        <span class="k">for</span> <span class="n">solvent</span> <span class="ow">in</span> <span class="n">all_solvents</span><span class="p">:</span>
+            
+            <span class="n">solvent_atoms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atom_numbers</span><span class="p">(</span><span class="n">all_solvents</span><span class="p">[</span><span class="n">solvent</span><span class="p">][</span><span class="s1">&#39;formula&#39;</span><span class="p">])</span>
+            <span class="c1"># Number of elements in atom_list should equal that of the solvent.</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">atom_num</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">solvent_atoms</span><span class="p">):</span>
+
+                <span class="c1"># Tests all criteria to identify solvent. If this fails, it moves</span>
+                <span class="c1"># onto the next solvent. If all of them fail, it raises an error.</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="c1"># Checks that the number of atoms is a multiple of the solvent.</span>
+                    <span class="c1"># Also checks that the multiples of all the atoms are the same.</span>
+                    <span class="n">solvent_numbers</span> <span class="o">=</span> <span class="p">[]</span>
+
+                    <span class="c1"># Checks that atoms are multiples of a solvent.</span>
+                    <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">solvent_atoms</span><span class="p">:</span>
+                        <span class="n">multiple</span> <span class="o">=</span> <span class="n">atom_num</span><span class="p">[</span><span class="n">atom</span><span class="p">]</span> <span class="o">/</span> <span class="n">solvent_atoms</span><span class="p">[</span><span class="n">atom</span><span class="p">]</span>
+                        <span class="k">if</span> <span class="n">multiple</span><span class="o">.</span><span class="n">is_integer</span><span class="p">():</span>
+                            <span class="n">solvent_numbers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">multiple</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="k">raise</span> <span class="ne">ValueError</span>
+
+                    <span class="c1"># Checks that all multiples are the same.</span>
+                    <span class="n">test_multiple</span> <span class="o">=</span> <span class="n">solvent_numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="k">for</span> <span class="n">multiple</span> <span class="ow">in</span> <span class="n">solvent_numbers</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">multiple</span> <span class="o">!=</span> <span class="n">test_multiple</span><span class="p">:</span>
+                            <span class="k">raise</span> <span class="ne">ValueError</span>
+                    
+                    
+                    <span class="bp">self</span><span class="o">.</span><span class="n">solvent_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">solvent</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">solvent_label</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">all_solvents</span><span class="p">[</span><span class="n">solvent</span><span class="p">][</span><span class="s1">&#39;label&#39;</span><span class="p">])</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">solvent_molec_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">solvent_atoms</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cluster_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">atom_num</span><span class="p">[</span><span class="n">atom</span><span class="p">]</span> \
+                                            <span class="o">/</span> <span class="n">solvent_atoms</span><span class="p">[</span><span class="n">atom</span><span class="p">])</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">system</span> <span class="o">=</span> <span class="s1">&#39;solvent&#39;</span>  <span class="c1"># For future</span>
+                    <span class="c1"># developments that could involve solute-solvent systems.</span>
+                    
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="k">pass</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;solvent_name&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">system</span> <span class="o">=</span> <span class="s1">&#39;unknown&#39;</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The solvent could not be identified.&#39;</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="system_info"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.solvents.system_info">[docs]</a><span class="k">def</span> <span class="nf">system_info</span><span class="p">(</span><span class="n">atoms</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Determines information about the system key to mbGDML.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    atoms : :obj:`list`</span>
+<span class="sd">        Atomic numbers of all atoms in the system.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    :obj:`dict`</span>
+<span class="sd">        System information useful for mbGDML. Always will contain the following</span>
+<span class="sd">        key:</span>
+
+<span class="sd">        ``&#39;system&#39;``</span>
+
+<span class="sd">        If ``&#39;system&#39;`` is equal to ``&#39;solvent&#39;``, then the following keys will</span>
+<span class="sd">        be included:</span>
+
+<span class="sd">        ``&#39;solvent_name&#39;``</span>
+<span class="sd">            Common name for the identified solvent.</span>
+<span class="sd">        ``&#39;solvent_label&#39;``</span>
+<span class="sd">            Standardized shorthand label for the solvent.</span>
+<span class="sd">        ``&#39;solvent_molec_size&#39;``</span>
+<span class="sd">            Number of atoms in a single solvent molecule.</span>
+<span class="sd">        ``&#39;cluster_size&#39;``</span>
+<span class="sd">            Number of solvent molecules in the cluster.</span>
+<span class="sd">    </span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    For a &#39;solvent&#39; system the additional information returned is the</span>
+<span class="sd">    &#39;solvent_name&#39;, &#39;solvent_label&#39;, &#39;solvent_molec_size&#39;, and &#39;cluster_size&#39;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">system_info</span> <span class="o">=</span> <span class="n">solvent</span><span class="p">(</span><span class="n">atoms</span><span class="p">)</span>
+    <span class="n">system_info_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;system&#39;</span><span class="p">:</span> <span class="n">system_info</span><span class="o">.</span><span class="n">system</span><span class="p">}</span>
+    <span class="k">if</span> <span class="n">system_info_dict</span><span class="p">[</span><span class="s1">&#39;system&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="s1">&#39;solvent&#39;</span><span class="p">:</span>
+        <span class="n">system_info_dict</span><span class="p">[</span><span class="s1">&#39;solvent_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">system_info</span><span class="o">.</span><span class="n">solvent_name</span>
+        <span class="n">system_info_dict</span><span class="p">[</span><span class="s1">&#39;solvent_label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">system_info</span><span class="o">.</span><span class="n">solvent_label</span>
+        <span class="n">system_info_dict</span><span class="p">[</span><span class="s1">&#39;solvent_molec_size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">system_info</span><span class="o">.</span><span class="n">solvent_molec_size</span>
+        <span class="n">system_info_dict</span><span class="p">[</span><span class="s1">&#39;cluster_size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">system_info</span><span class="o">.</span><span class="n">cluster_size</span>
+    
+    <span class="k">return</span> <span class="n">system_info_dict</span></div>
+
+<span class="n">solvent_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;water&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;h2o&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;formula&quot;</span><span class="p">:</span> <span class="s2">&quot;H2O&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;acetonitrile&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;mecn&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;formula&quot;</span><span class="p">:</span> <span class="s2">&quot;C2H3N&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;methanol&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;meoh&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;formula&quot;</span><span class="p">:</span> <span class="s2">&quot;CH3OH&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Alex M. Maldonado
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,489 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mbgdml.utils &mdash; mbGDML  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> mbGDML
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../doc/modules.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">mbGDML</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>mbgdml.utils</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for mbgdml.utils</h1><div class="highlight"><pre>
+<span></span><span class="c1"># MIT License</span>
+<span class="c1"># </span>
+<span class="c1"># Copyright (c) 2020, Alex M. Maldonado</span>
+<span class="c1"># </span>
+<span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># in the Software without restriction, including without limitation the rights</span>
+<span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
+<span class="c1"># furnished to do so, subject to the following conditions:</span>
+<span class="c1">#</span>
+<span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
+<span class="c1"># copies or substantial portions of the Software.</span>
+<span class="c1"># </span>
+<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class="c1"># LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
+<span class="c1"># SOFTWARE.</span>
+
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">cclib</span>
+<span class="kn">from</span> <span class="nn">periodictable</span> <span class="kn">import</span> <span class="n">elements</span>
+<span class="kn">from</span> <span class="nn">natsort</span> <span class="kn">import</span> <span class="n">natsorted</span><span class="p">,</span> <span class="n">ns</span>
+
+
+<div class="viewcode-block" id="norm_path"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.utils.norm_path">[docs]</a><span class="k">def</span> <span class="nf">norm_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Normalizes directory paths to be consistent.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    path : str</span>
+<span class="sd">        Path to a directory.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        Normalized path.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">normd_path</span> <span class="o">=</span> <span class="n">path</span>  <span class="c1"># Initializes path variable.</span>
+
+    <span class="c1"># Makes sure path ends with forward slash.</span>
+    <span class="k">if</span> <span class="n">normd_path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
+        <span class="n">normd_path</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span>
+    
+    <span class="k">return</span> <span class="n">normd_path</span></div>
+
+
+<div class="viewcode-block" id="get_files"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.utils.get_files">[docs]</a><span class="k">def</span> <span class="nf">get_files</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">expression</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns paths to all files in a given directory that matches a provided</span>
+<span class="sd">    expression in the file name. Commonly used to find all files of a certain</span>
+<span class="sd">    type, e.g. output or xyz files.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    path : str</span>
+<span class="sd">        Specifies the directory to search.</span>
+<span class="sd">    expression : str</span>
+<span class="sd">        Expression to be tested against all file names in &#39;path&#39;.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">        all absolute paths to files matching the provided expression.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">norm_path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    
+    <span class="n">all_files</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">dirpath</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">filenames</span><span class="p">)</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">filenames</span><span class="p">):</span>
+            <span class="n">filenames</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">norm_path</span><span class="p">(</span><span class="n">dirpath</span><span class="p">)</span> <span class="o">+</span> <span class="n">filenames</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+            <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="n">all_files</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">filenames</span><span class="p">)</span>
+        
+    <span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">all_files</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">expression</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">files</span></div>
+
+
+<div class="viewcode-block" id="make_folder"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.utils.make_folder">[docs]</a><span class="k">def</span> <span class="nf">make_folder</span><span class="p">(</span><span class="n">folder</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Creates folder at specified path.</span>
+<span class="sd">    If the current folder exists, it creates another folder</span>
+<span class="sd">    with an added number.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pathFolder : str</span>
+<span class="sd">        Path to desired folder.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        Final path of new folder; ends in &#39;/&#39;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="c1"># First tries to create the desired directory.</span>
+    <span class="k">try</span><span class="p">:</span>
+
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">folder</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span>
+
+    <span class="c1"># If there is already a directory with the same name,</span>
+    <span class="c1"># append a positive integer until there is no previously existing directory.</span>
+    <span class="k">except</span> <span class="ne">FileExistsError</span><span class="p">:</span>
+
+        <span class="n">indexDir</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">dirExists</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">while</span> <span class="n">dirExists</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">pathFolderIteration</span> <span class="o">=</span> <span class="n">folder</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">indexDir</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">pathFolderIteration</span><span class="p">)</span>
+
+                <span class="n">dirExists</span> <span class="o">=</span> <span class="kc">False</span>
+
+                <span class="k">return</span> <span class="n">pathFolderIteration</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span>
+
+            <span class="c1"># Increments number by 1 until it finds the lowest number.</span>
+            <span class="k">except</span> <span class="ne">FileExistsError</span><span class="p">:</span>
+                <span class="n">indexDir</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+
+<div class="viewcode-block" id="natsort_list"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.utils.natsort_list">[docs]</a><span class="k">def</span> <span class="nf">natsort_list</span><span class="p">(</span><span class="n">unsorted_list</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Basic function that organizes a list based on human (or natural) sorting</span>
+<span class="sd">    methodology.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    unsorted_list : list</span>
+<span class="sd">        List of strings.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">        Sorted list of string.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sorted_list</span> <span class="o">=</span> <span class="n">natsorted</span><span class="p">(</span><span class="n">unsorted_list</span><span class="p">,</span> <span class="n">alg</span><span class="o">=</span><span class="n">ns</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">sorted_list</span></div>
+
+
+<div class="viewcode-block" id="string_coords"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.utils.string_coords">[docs]</a><span class="k">def</span> <span class="nf">string_coords</span><span class="p">(</span><span class="n">atoms</span><span class="p">,</span> <span class="n">coords</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Puts atomic coordinates into a Python string. Typically used for </span>
+<span class="sd">    writing to an input file.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    atoms : numpy.ndarray</span>
+<span class="sd">        A (n, 1) numpy array containing all n elements labled by their atomic </span>
+<span class="sd">        number.</span>
+<span class="sd">    coords : numpy.array</span>
+<span class="sd">        Contains atomic positions in a (n, 3) numpy array where the x, y, and z </span>
+<span class="sd">        Cartesian coordinates in Angstroms are given for the n atoms.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        all atomic coordinates contained in a string.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">atom_coords_string</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="n">atom_index</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">atom_index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">atoms</span><span class="p">):</span>
+        <span class="n">atom_element</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="n">atoms</span><span class="p">[</span><span class="n">atom_index</span><span class="p">]])</span>
+        <span class="n">coords_string</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array2string</span><span class="p">(</span>
+            <span class="n">coords</span><span class="p">[</span><span class="n">atom_index</span><span class="p">],</span>
+            <span class="n">suppress_small</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">separator</span><span class="o">=</span><span class="s1">&#39;   &#39;</span><span class="p">,</span>
+            <span class="n">formatter</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;float_kind&#39;</span><span class="p">:</span><span class="s1">&#39;</span><span class="si">{:0.9f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">}</span>
+        <span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        
+        <span class="n">atom_coords_string</span> <span class="o">+=</span> <span class="p">(</span><span class="n">atom_element</span> <span class="o">+</span> <span class="s1">&#39;   &#39;</span> \
+                               <span class="o">+</span> <span class="n">coords_string</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; -&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+
+        <span class="n">atom_index</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="k">return</span> <span class="n">atom_coords_string</span></div>
+
+
+<div class="viewcode-block" id="convert_forces"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.utils.convert_forces">[docs]</a><span class="k">def</span> <span class="nf">convert_forces</span><span class="p">(</span>
+    <span class="n">package</span><span class="p">,</span> <span class="n">forces</span><span class="p">,</span> <span class="n">e_units</span><span class="p">,</span> <span class="n">r_units</span><span class="p">,</span> <span class="n">e_units_calc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">r_units_calc</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Converts forces (or gradients) to specified units.</span>
+
+<span class="sd">    cclib automatically converts energy units to eV, but does not convert</span>
+<span class="sd">    gradients. GDML needs consistent energy and force units, so we convert</span>
+<span class="sd">    them.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    package : str</span>
+<span class="sd">        Computational chemistry package used for computations.</span>
+<span class="sd">    forces : numpy.ndarray</span>
+<span class="sd">        An array with units of energy and distance matching `e_units_calc`</span>
+<span class="sd">        and `r_units_calc`.</span>
+<span class="sd">    e_units : str</span>
+<span class="sd">        Desired units of energy. Available units are &#39;eV&#39;, &#39;hartree&#39;,</span>
+<span class="sd">        &#39;kcal/mol&#39;, and &#39;kJ/mol&#39;.</span>
+<span class="sd">    r_units : str</span>
+<span class="sd">        Desired units of distance. Available units implemented in cclib&#39;s</span>
+<span class="sd">        convertor function are &#39;Angstrom&#39; and &#39;bohr&#39;.</span>
+<span class="sd">    e_units_calc : str, optional</span>
+<span class="sd">        Specifies package-specific energy units used in calculation.</span>
+<span class="sd">        Defaults to None.</span>
+<span class="sd">    r_units_calc : str, optional</span>
+<span class="sd">        Specifies package-specific distance units used in calculation.</span>
+<span class="sd">        Defaults to None.</span>
+<span class="sd">    </span>
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If the selected energy units are not implemented.</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If the selected distance units are not implemented.</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If calculation package is not defined here for known energy and</span>
+<span class="sd">        distance units.</span>
+<span class="sd">    </span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Only supports &#39;ORCA&#39; for automatically determining calc units.</span>
+<span class="sd">    Otherwise, manually specify `e_units_calc` and `r_units_calc`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">defined_packages</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;ORCA&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;e_unit&#39;</span><span class="p">:</span> <span class="s1">&#39;hartree&#39;</span><span class="p">,</span> <span class="s1">&#39;r_unit&#39;</span><span class="p">:</span> <span class="s1">&#39;bohr&#39;</span><span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="n">e_units</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;eV&#39;</span><span class="p">,</span> <span class="s1">&#39;hartree&#39;</span><span class="p">,</span> <span class="s1">&#39;kcal/mol&#39;</span><span class="p">,</span> <span class="s1">&#39;kJ/mol&#39;</span><span class="p">}:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">e_units</span><span class="si">}</span><span class="s1"> is not an available energy unit.&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">r_units</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;Angstrom&#39;</span><span class="p">,</span> <span class="s1">&#39;bohr&#39;</span><span class="p">}:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">r_units</span><span class="si">}</span><span class="s1"> is not an available distance unit.&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">package</span> <span class="ow">in</span> <span class="n">defined_packages</span><span class="p">:</span>
+        <span class="n">e_units_calc</span> <span class="o">=</span> <span class="n">defined_packages</span><span class="p">[</span><span class="n">package</span><span class="p">][</span><span class="s1">&#39;e_unit&#39;</span><span class="p">]</span>
+        <span class="n">r_units_calc</span> <span class="o">=</span> <span class="n">defined_packages</span><span class="p">[</span><span class="n">package</span><span class="p">][</span><span class="s1">&#39;r_unit&#39;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">e_units_calc</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">r_units_calc</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s1">&#39;Please specify e_units_calc and r_units_calc.&#39;</span>
+            <span class="p">)</span>
+    
+    <span class="n">forces_conv</span> <span class="o">=</span> <span class="n">cclib</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">convertor</span><span class="p">(</span><span class="n">forces</span><span class="p">,</span> <span class="n">e_units_calc</span><span class="p">,</span> <span class="n">e_units</span><span class="p">)</span>
+    <span class="n">forces_conv</span> <span class="o">=</span> <span class="n">cclib</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">convertor</span><span class="p">(</span><span class="n">forces_conv</span><span class="p">,</span> <span class="n">r_units</span><span class="p">,</span> <span class="n">r_units_calc</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">forces_conv</span></div>
+
+
+<div class="viewcode-block" id="atoms_by_element"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.utils.atoms_by_element">[docs]</a><span class="k">def</span> <span class="nf">atoms_by_element</span><span class="p">(</span><span class="n">atom_list</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Converts a list of atoms identified by their atomic number to their</span>
+<span class="sd">    elemental symbol.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    atom_list : list</span>
+<span class="sd">        Contains numbers that represent atomic numbers.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">        Contains strings of elemental symbols matching atom_list.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">atom_list_elements</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">atom_list</span><span class="p">:</span>
+        <span class="n">atom_list_elements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="n">atom</span><span class="p">]))</span>
+
+    <span class="k">return</span> <span class="n">atom_list_elements</span></div>
+
+<div class="viewcode-block" id="atoms_by_number"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.utils.atoms_by_number">[docs]</a><span class="k">def</span> <span class="nf">atoms_by_number</span><span class="p">(</span><span class="n">atom_list</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Converts a list of atoms identified by their elemental symbol to their</span>
+<span class="sd">    atomic number.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    atom_list : :obj:`list`</span>
+<span class="sd">        Contains numbers that represent atomic numbers.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    :obj:`list` [:obj:`int`]</span>
+<span class="sd">        Contains atomic numbers of atoms in atom_list.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">elements</span><span class="o">.</span><span class="n">symbol</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">number</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">atom_list</span><span class="p">]</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Alex M. Maldonado
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,438 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mbgdml.analysis.nbody &mdash; mbGDML  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> mbGDML
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../doc/modules.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">mbGDML</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>mbgdml.analysis.nbody</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for mbgdml.analysis.nbody</h1><div class="highlight"><pre>
+<span></span><span class="c1"># MIT License</span>
+<span class="c1"># </span>
+<span class="c1"># Copyright (c) 2020, Alex M. Maldonado</span>
+<span class="c1"># </span>
+<span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># in the Software without restriction, including without limitation the rights</span>
+<span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
+<span class="c1"># furnished to do so, subject to the following conditions:</span>
+<span class="c1">#</span>
+<span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
+<span class="c1"># copies or substantial portions of the Software.</span>
+<span class="c1"># </span>
+<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class="c1"># LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
+<span class="c1"># SOFTWARE.</span>
+
+<span class="sd">&quot;&quot;&quot;Analyses for mbGDML models.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">mbgdml.utils</span> <span class="kn">import</span> <span class="n">norm_path</span>
+<span class="kn">from</span> <span class="nn">mbgdml.utils</span> <span class="kn">import</span> <span class="n">atoms_by_element</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;matplotlib&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+
+<div class="viewcode-block" id="NBody"><a class="viewcode-back" href="../../../doc/mbgdml.analysis.html#mbgdml.analysis.nbody.NBody">[docs]</a><span class="k">class</span> <span class="nc">NBody</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Probing individual n-body contributions of force fields.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<div class="viewcode-block" id="NBody.force_similarity"><a class="viewcode-back" href="../../../doc/mbgdml.analysis.html#mbgdml.analysis.nbody.NBody.force_similarity">[docs]</a>    <span class="k">def</span> <span class="nf">force_similarity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">predict_force</span><span class="p">,</span> <span class="n">true_force</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute cosine distance of two force vectors.</span>
+
+<span class="sd">        Computes 1 - cosine_similarity. Two exact vectors will thus have a</span>
+<span class="sd">        similarity of 0, orthogal vectors will be 1, and equal but opposite</span>
+<span class="sd">        will be 2.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        predict_force : `numpy.ndarray`</span>
+<span class="sd">            Array of the predicted force vector by GDML.</span>
+<span class="sd">        true_force : `numpy.ndarray`</span>
+<span class="sd">            Array of the true force vector of the same shape as predict_force</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `float`</span>
+<span class="sd">            Similarity (accuracy) of predicted force vector for an atom. 0.0 is </span>
+<span class="sd">            perfect similarity and the further away from zero the less similar </span>
+<span class="sd">            (accurate).</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">similarity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">predict_force</span><span class="p">,</span> <span class="n">true_force</span><span class="p">)</span> <span class="o">/</span> \
+                     <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">predict_force</span><span class="p">)</span> <span class="o">*</span> \
+                      <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">true_force</span><span class="p">))</span>
+        <span class="n">similarity</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">similarity</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">similarity</span></div>
+    
+<div class="viewcode-block" id="NBody.cluster_force_similarity"><a class="viewcode-back" href="../../../doc/mbgdml.analysis.html#mbgdml.analysis.nbody.NBody.cluster_force_similarity">[docs]</a>    <span class="k">def</span> <span class="nf">cluster_force_similarity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">predict_set</span><span class="p">,</span> <span class="n">structure_index</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Computes the cosine distance of each atomic force of a single</span>
+<span class="sd">        structure for all n-body corrections.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        predict_set : `mbgdml.data.mbGDMLPredictset`</span>
+<span class="sd">            Object with loaded predict set.</span>
+<span class="sd">        structure_index : `int`</span>
+<span class="sd">            Index of the structure in the predict set arrays.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `numpy.ndarray`</span>
+<span class="sd">            Cosine similarities of all possible n-body corrections of a single</span>
+<span class="sd">            structure in the shape of ``(n_z, nbodies)`` where ``n_z`` is the</span>
+<span class="sd">            number of atoms in the structure and ``nbodies`` is the number of</span>
+<span class="sd">            n-body corrections in the predict set.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">F</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">F_index</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="sa">f</span><span class="s1">&#39;F_</span><span class="si">{</span><span class="n">F_index</span><span class="si">}</span><span class="s1">&#39;</span> <span class="ow">in</span> <span class="n">predict_set</span><span class="o">.</span><span class="n">predictset</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">F_nbody</span> <span class="o">=</span> <span class="n">predict_set</span><span class="o">.</span><span class="n">nbody_predictions</span><span class="p">(</span><span class="n">F_index</span><span class="p">)</span>
+            <span class="n">F</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;F_</span><span class="si">{</span><span class="n">F_index</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">F_nbody</span><span class="p">[</span><span class="n">structure_index</span><span class="p">]</span>
+            <span class="n">F_index</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">F_true</span> <span class="o">=</span> <span class="n">predict_set</span><span class="o">.</span><span class="n">F_true</span><span class="p">[</span><span class="n">structure_index</span><span class="p">]</span>
+        <span class="n">similarities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">F_true</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">F_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">atom</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">atom</span> <span class="o">&lt;</span> <span class="n">F_true</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="n">F_index</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">while</span> <span class="sa">f</span><span class="s1">&#39;F_</span><span class="si">{</span><span class="n">F_index</span><span class="si">}</span><span class="s1">&#39;</span> <span class="ow">in</span> <span class="n">F</span><span class="p">:</span>
+                <span class="n">similarities</span><span class="p">[</span><span class="n">atom</span><span class="p">][</span><span class="n">F_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">force_similarity</span><span class="p">(</span>
+                    <span class="n">F_true</span><span class="p">[</span><span class="n">atom</span><span class="p">],</span> <span class="n">F</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;F_</span><span class="si">{</span><span class="n">F_index</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">][</span><span class="n">atom</span><span class="p">]</span>
+                <span class="p">)</span>
+                <span class="n">F_index</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">atom</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">similarities</span></div>
+    
+<div class="viewcode-block" id="NBody.average_force_similarity"><a class="viewcode-back" href="../../../doc/mbgdml.analysis.html#mbgdml.analysis.nbody.NBody.average_force_similarity">[docs]</a>    <span class="k">def</span> <span class="nf">average_force_similarity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">predict_set</span><span class="p">,</span> <span class="n">structure_list</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Computes average force similarity over multiple structures.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        predict_set : `mbgdml.data.mbGDMLPredictset`</span>
+<span class="sd">            Object with loaded predict set.</span>
+<span class="sd">        structure_list : `list`</span>
+<span class="sd">            Indices of structures to include in the heatmap. To select all</span>
+<span class="sd">            structures, one could use</span>
+<span class="sd">            ``list(range(0, predict_set.F_true.shape[0]))`` for example.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `numpy.ndarray`</span>
+<span class="sd">            Average cosine distances of all possible n-body corrections over</span>
+<span class="sd">            selected structures in the shape of ``(n_z, nbodies)`` where ``n_z``</span>
+<span class="sd">            is the number of atoms in the structure and ``nbodies`` is the</span>
+<span class="sd">            number of n-body corrections in the predict set.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sim_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">struct</span> <span class="ow">in</span> <span class="n">structure_list</span><span class="p">:</span>
+            <span class="n">sim_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cluster_force_similarity</span><span class="p">(</span>
+                <span class="n">predict_set</span><span class="p">,</span> <span class="n">struct</span>
+            <span class="p">))</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">structure_list</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">sim_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">sim_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sim_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+                <span class="k">for</span> <span class="n">n_body</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sim_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])):</span>
+                    <span class="n">mean_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+                    <span class="k">for</span> <span class="n">struct</span> <span class="ow">in</span> <span class="n">structure_list</span><span class="p">:</span>
+                        <span class="n">mean_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                            <span class="n">mean_array</span><span class="p">,</span>
+                            <span class="n">sim_list</span><span class="p">[</span><span class="n">structure_list</span><span class="p">[</span><span class="n">struct</span><span class="p">]][</span><span class="n">atom</span><span class="p">][</span><span class="n">n_body</span><span class="p">]</span>
+                        <span class="p">)</span>
+                    <span class="n">sim_mean</span><span class="p">[</span><span class="n">atom</span><span class="p">][</span><span class="n">n_body</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mean_array</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sim_mean</span></div></div>
+
+
+<div class="viewcode-block" id="NBodyHeatMaps"><a class="viewcode-back" href="../../../doc/mbgdml.analysis.html#mbgdml.analysis.nbody.NBodyHeatMaps">[docs]</a><span class="k">class</span> <span class="nc">NBodyHeatMaps</span><span class="p">(</span><span class="n">NBody</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Heat maps for n-body contribution accuracy.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<div class="viewcode-block" id="NBodyHeatMaps.create_heatmap"><a class="viewcode-back" href="../../../doc/mbgdml.analysis.html#mbgdml.analysis.nbody.NBodyHeatMaps.create_heatmap">[docs]</a>    <span class="k">def</span> <span class="nf">create_heatmap</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">similarity</span><span class="p">,</span> <span class="n">y_labels</span><span class="p">,</span> <span class="n">num_nbody</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">data_labels</span><span class="p">,</span>
+        <span class="n">save_dir</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generates matplotlib heatmap figure.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        similarity : `numpy.ndarray`</span>
+<span class="sd">            Cosine distances in n x m array where n is the order of n-body</span>
+<span class="sd">            contributions, and m is the number of atoms.</span>
+<span class="sd">        y_labels : `list` [`str`]</span>
+<span class="sd">            Labels of the y axis of the heat map.</span>
+<span class="sd">        num_nbody : `list` [`str`]</span>
+<span class="sd">            Maximum number of n-body contributions to include.</span>
+<span class="sd">        name : `str`</span>
+<span class="sd">            File name to save the heatmap.</span>
+<span class="sd">        data_labels : `bool`</span>
+<span class="sd">            Whether or not to include values of cosine distance inside</span>
+<span class="sd">            heatmap cells.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">heatmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1">#norm = mpl.colors.Normalize(vmin=0, vmax=2.0)</span>
+        <span class="c1">#im = heatmap.imshow(similarity, cmap=&#39;Reds&#39;, vmin=0.0, vmax=2.0, norm=norm)</span>
+        <span class="n">im</span> <span class="o">=</span> <span class="n">heatmap</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">similarity</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
+        <span class="c1"># Customizing plot.</span>
+        <span class="n">heatmap</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">num_nbody</span><span class="p">)))</span>
+        <span class="n">heatmap</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">num_nbody</span><span class="p">)</span>
+        <span class="n">heatmap</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;n-body order&#39;</span><span class="p">)</span>
+        <span class="n">heatmap</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_labels</span><span class="p">)))</span>
+        <span class="n">heatmap</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">y_labels</span><span class="p">)</span>
+        <span class="n">heatmap</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;atoms&#39;</span><span class="p">)</span>
+        <span class="c1"># Customizing colorbar</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">data_labels</span><span class="p">:</span>
+            <span class="c1"># Loop over data dimensions and create text annotations.</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_labels</span><span class="p">)):</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">num_nbody</span><span class="p">)):</span>
+                    <span class="n">num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">similarity</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+                    <span class="n">heatmap</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span>
+                                <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">save_dir</span><span class="si">}{</span><span class="n">name</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+    
+<div class="viewcode-block" id="NBodyHeatMaps.force_heatmap"><a class="viewcode-back" href="../../../doc/mbgdml.analysis.html#mbgdml.analysis.nbody.NBodyHeatMaps.force_heatmap">[docs]</a>    <span class="k">def</span> <span class="nf">force_heatmap</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">predict_set</span><span class="p">,</span> <span class="n">structure_list</span><span class="p">,</span> <span class="n">base_name</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">,</span>
+        <span class="n">data_labels</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Computes and saves force heat map of predict set.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        predict_set : `mbgdml.data.mbGDMLPredictset`</span>
+<span class="sd">            Object with loaded predict set.</span>
+<span class="sd">        structure_list : `list`</span>
+<span class="sd">            Indices of structures to include in the heatmap.</span>
+<span class="sd">        base_name : `str`</span>
+<span class="sd">            First part of saved file name.</span>
+<span class="sd">        save_dir : `str`</span>
+<span class="sd">            Path to save the heatmap to as a png.</span>
+<span class="sd">        data_labels : `bool`, optional</span>
+<span class="sd">            Whether or not to include values of cosine distance inside</span>
+<span class="sd">            heatmap cells.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">save_dir</span> <span class="o">=</span> <span class="n">norm_path</span><span class="p">(</span><span class="n">save_dir</span><span class="p">)</span>
+        <span class="n">sim_mean</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">average_force_similarity</span><span class="p">(</span><span class="n">predict_set</span><span class="p">,</span> <span class="n">structure_list</span><span class="p">)</span>
+        <span class="n">atoms</span> <span class="o">=</span> <span class="n">atoms_by_element</span><span class="p">(</span><span class="n">predict_set</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+        <span class="n">num_nbody</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">sim_mean</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">num_nbody</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">num_nbody</span><span class="p">]</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">base_name</span><span class="si">}</span><span class="s1">-average&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">create_heatmap</span><span class="p">(</span>
+            <span class="n">sim_mean</span><span class="p">,</span>
+            <span class="n">atoms</span><span class="p">,</span>
+            <span class="n">num_nbody</span><span class="p">,</span>
+            <span class="n">name</span><span class="p">,</span>
+            <span class="n">data_labels</span><span class="p">,</span>
+            <span class="n">save_dir</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="NBodyMD"><a class="viewcode-back" href="../../../doc/mbgdml.analysis.html#mbgdml.analysis.nbody.NBodyMD">[docs]</a><span class="k">class</span> <span class="nc">NBodyMD</span><span class="p">(</span><span class="n">NBody</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+    
+    
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Alex M. Maldonado
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

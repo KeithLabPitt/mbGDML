@@ -186,12 +186,12 @@
 <p>Analyses for mbGDML models.</p>
 <dl class="class">
 <dt id="mbgdml.analysis.nbody.NBody">
-<em class="property">class </em><code class="descclassname">mbgdml.analysis.nbody.</code><code class="descname">NBody</code><a class="headerlink" href="#mbgdml.analysis.nbody.NBody" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mbgdml.analysis.nbody.</code><code class="descname">NBody</code><a class="reference internal" href="../_modules/mbgdml/analysis/nbody.html#NBody"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.analysis.nbody.NBody" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Probing individual n-body contributions of force fields.</p>
 <dl class="method">
 <dt id="mbgdml.analysis.nbody.NBody.average_force_similarity">
-<code class="descname">average_force_similarity</code><span class="sig-paren">(</span><em>predict_set</em>, <em>structure_list</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.analysis.nbody.NBody.average_force_similarity" title="Permalink to this definition">¶</a></dt>
+<code class="descname">average_force_similarity</code><span class="sig-paren">(</span><em>predict_set</em>, <em>structure_list</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/analysis/nbody.html#NBody.average_force_similarity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.analysis.nbody.NBody.average_force_similarity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes average force similarity over multiple structures.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -220,7 +220,7 @@ number of n-body corrections in the predict set.</p>
 
 <dl class="method">
 <dt id="mbgdml.analysis.nbody.NBody.cluster_force_similarity">
-<code class="descname">cluster_force_similarity</code><span class="sig-paren">(</span><em>predict_set</em>, <em>structure_index</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.analysis.nbody.NBody.cluster_force_similarity" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cluster_force_similarity</code><span class="sig-paren">(</span><em>predict_set</em>, <em>structure_index</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/analysis/nbody.html#NBody.cluster_force_similarity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.analysis.nbody.NBody.cluster_force_similarity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the cosine distance of each atomic force of a single
 structure for all n-body corrections.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -248,7 +248,7 @@ n-body corrections in the predict set.</p>
 
 <dl class="method">
 <dt id="mbgdml.analysis.nbody.NBody.force_similarity">
-<code class="descname">force_similarity</code><span class="sig-paren">(</span><em>predict_force</em>, <em>true_force</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.analysis.nbody.NBody.force_similarity" title="Permalink to this definition">¶</a></dt>
+<code class="descname">force_similarity</code><span class="sig-paren">(</span><em>predict_force</em>, <em>true_force</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/analysis/nbody.html#NBody.force_similarity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.analysis.nbody.NBody.force_similarity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute cosine distance of two force vectors.</p>
 <p>Computes 1 - cosine_similarity. Two exact vectors will thus have a
 similarity of 0, orthogal vectors will be 1, and equal but opposite
@@ -279,12 +279,12 @@ perfect similarity and the further away from zero the less similar
 
 <dl class="class">
 <dt id="mbgdml.analysis.nbody.NBodyHeatMaps">
-<em class="property">class </em><code class="descclassname">mbgdml.analysis.nbody.</code><code class="descname">NBodyHeatMaps</code><a class="headerlink" href="#mbgdml.analysis.nbody.NBodyHeatMaps" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mbgdml.analysis.nbody.</code><code class="descname">NBodyHeatMaps</code><a class="reference internal" href="../_modules/mbgdml/analysis/nbody.html#NBodyHeatMaps"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.analysis.nbody.NBodyHeatMaps" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mbgdml.analysis.nbody.NBody" title="mbgdml.analysis.nbody.NBody"><code class="xref py py-class docutils literal notranslate"><span class="pre">mbgdml.analysis.nbody.NBody</span></code></a></p>
 <p>Heat maps for n-body contribution accuracy.</p>
 <dl class="method">
 <dt id="mbgdml.analysis.nbody.NBodyHeatMaps.create_heatmap">
-<code class="descname">create_heatmap</code><span class="sig-paren">(</span><em>similarity</em>, <em>y_labels</em>, <em>num_nbody</em>, <em>name</em>, <em>data_labels</em>, <em>save_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.analysis.nbody.NBodyHeatMaps.create_heatmap" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_heatmap</code><span class="sig-paren">(</span><em>similarity</em>, <em>y_labels</em>, <em>num_nbody</em>, <em>name</em>, <em>data_labels</em>, <em>save_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/analysis/nbody.html#NBodyHeatMaps.create_heatmap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.analysis.nbody.NBodyHeatMaps.create_heatmap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates matplotlib heatmap figure.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -307,7 +307,7 @@ heatmap cells.</li>
 
 <dl class="method">
 <dt id="mbgdml.analysis.nbody.NBodyHeatMaps.force_heatmap">
-<code class="descname">force_heatmap</code><span class="sig-paren">(</span><em>predict_set</em>, <em>structure_list</em>, <em>base_name</em>, <em>save_dir</em>, <em>data_labels=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.analysis.nbody.NBodyHeatMaps.force_heatmap" title="Permalink to this definition">¶</a></dt>
+<code class="descname">force_heatmap</code><span class="sig-paren">(</span><em>predict_set</em>, <em>structure_list</em>, <em>base_name</em>, <em>save_dir</em>, <em>data_labels=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/analysis/nbody.html#NBodyHeatMaps.force_heatmap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.analysis.nbody.NBodyHeatMaps.force_heatmap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes and saves force heat map of predict set.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -331,7 +331,7 @@ heatmap cells.</li>
 
 <dl class="class">
 <dt id="mbgdml.analysis.nbody.NBodyMD">
-<em class="property">class </em><code class="descclassname">mbgdml.analysis.nbody.</code><code class="descname">NBodyMD</code><a class="headerlink" href="#mbgdml.analysis.nbody.NBodyMD" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mbgdml.analysis.nbody.</code><code class="descname">NBodyMD</code><a class="reference internal" href="../_modules/mbgdml/analysis/nbody.html#NBodyMD"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.analysis.nbody.NBodyMD" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mbgdml.analysis.nbody.NBody" title="mbgdml.analysis.nbody.NBody"><code class="xref py py-class docutils literal notranslate"><span class="pre">mbgdml.analysis.nbody.NBody</span></code></a></p>
 </dd></dl>
 
@@ -341,16 +341,16 @@ heatmap cells.</li>
 <p>Analyses for mbGDML models.</p>
 <dl class="class">
 <dt id="mbgdml.analysis.similarity.similarity">
-<em class="property">class </em><code class="descclassname">mbgdml.analysis.similarity.</code><code class="descname">similarity</code><a class="headerlink" href="#mbgdml.analysis.similarity.similarity" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mbgdml.analysis.similarity.</code><code class="descname">similarity</code><a class="reference internal" href="../_modules/mbgdml/analysis/similarity.html#similarity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.analysis.similarity.similarity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="method">
 <dt id="mbgdml.analysis.similarity.similarity.initialize_soap">
-<code class="descname">initialize_soap</code><span class="sig-paren">(</span><em>atoms</em>, <em>rcut</em>, <em>nmax</em>, <em>lmax</em>, <em>sigma</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.analysis.similarity.similarity.initialize_soap" title="Permalink to this definition">¶</a></dt>
+<code class="descname">initialize_soap</code><span class="sig-paren">(</span><em>atoms</em>, <em>rcut</em>, <em>nmax</em>, <em>lmax</em>, <em>sigma</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/analysis/similarity.html#similarity.initialize_soap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.analysis.similarity.similarity.initialize_soap" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="mbgdml.analysis.similarity.similarity.prepare_structures">
-<code class="descname">prepare_structures</code><span class="sig-paren">(</span><em>z</em>, <em>R</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.analysis.similarity.similarity.prepare_structures" title="Permalink to this definition">¶</a></dt>
+<code class="descname">prepare_structures</code><span class="sig-paren">(</span><em>z</em>, <em>R</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/analysis/similarity.html#similarity.prepare_structures"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.analysis.similarity.similarity.prepare_structures" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

@@ -1,0 +1,355 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mbgdml.train &mdash; mbGDML  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> mbGDML
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../doc/modules.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">mbGDML</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>mbgdml.train</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for mbgdml.train</h1><div class="highlight"><pre>
+<span></span><span class="c1"># MIT License</span>
+<span class="c1"># </span>
+<span class="c1"># Copyright (c) 2020, Alex M. Maldonado</span>
+<span class="c1"># </span>
+<span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># in the Software without restriction, including without limitation the rights</span>
+<span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
+<span class="c1"># furnished to do so, subject to the following conditions:</span>
+<span class="c1">#</span>
+<span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
+<span class="c1"># copies or substantial portions of the Software.</span>
+<span class="c1"># </span>
+<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class="c1"># LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
+<span class="c1"># SOFTWARE.</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">mbgdml</span> <span class="kn">import</span> <span class="n">utils</span>
+<span class="kn">from</span> <span class="nn">mbgdml.data</span> <span class="kn">import</span> <span class="n">mbGDMLModel</span>
+
+<div class="viewcode-block" id="MBGDMLTrain"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.train.MBGDMLTrain">[docs]</a><span class="k">class</span> <span class="nc">MBGDMLTrain</span><span class="p">():</span>
+
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<div class="viewcode-block" id="MBGDMLTrain.load_dataset"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.train.MBGDMLTrain.load_dataset">[docs]</a>    <span class="k">def</span> <span class="nf">load_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Loads a GDML dataset from npz format from specified path.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        dataset_path : str</span>
+<span class="sd">            Path to stored numpy arrays representing a GDML dataset of a single </span>
+<span class="sd">            solvent partition size.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset_path</span> <span class="o">=</span> <span class="n">dataset_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">)</span></div>
+    
+
+    <span class="k">def</span> <span class="nf">_organization_dirs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_dir</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Determines where a model should be saved.</span>
+
+<span class="sd">        The model will be written in a directory that depends on the</span>
+<span class="sd">        parent solvent cluster (e.g. 4MeOH).</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model_dir : str</span>
+<span class="sd">            Path to a common directory for GDML models.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Requires the &#39;dataset&#39; attribute. Sets the &#39;model_dir&#39; attribute for </span>
+<span class="sd">        writing GDML models.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">model_dir</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">norm_path</span><span class="p">(</span><span class="n">model_dir</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;dataset&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;There is currently no dataset loaded.&#39;</span><span class="p">)</span>
+        
+        <span class="c1"># Parsing information from the dataset_name.</span>
+        <span class="n">parent_cluster</span><span class="p">,</span> <span class="n">partition_size</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">[()]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Preparing directories.</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">system</span><span class="p">[()])</span> <span class="o">==</span> <span class="s1">&#39;solvent&#39;</span><span class="p">:</span>
+            <span class="n">model_solvent_dir</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">norm_path</span><span class="p">(</span>
+                <span class="n">model_dir</span> <span class="o">+</span> <span class="n">parent_cluster</span>
+            <span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">model_solvent_dir</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">FileExistsError</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">model_solvent_dir</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_dir</span> <span class="o">=</span> <span class="n">model_solvent_dir</span>
+    
+
+<div class="viewcode-block" id="MBGDMLTrain.train_GDML"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.train.MBGDMLTrain.train_GDML">[docs]</a>    <span class="k">def</span> <span class="nf">train_GDML</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_dir</span><span class="p">,</span> <span class="n">num_train</span><span class="p">,</span> <span class="n">num_validate</span><span class="p">,</span> <span class="n">num_test</span><span class="p">,</span>
+                   <span class="n">sigma_range</span><span class="o">=</span><span class="s1">&#39;2:10:100&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Trains a GDML model through the command line interface.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model_dir : str</span>
+<span class="sd">            Path to a common directory for GDML models.</span>
+<span class="sd">        num_train : int</span>
+<span class="sd">            The number of training points to sample.</span>
+<span class="sd">        num_validate : int</span>
+<span class="sd">            The number of validation points to sample, without replacement.</span>
+<span class="sd">        num_test : int</span>
+<span class="sd">            The number of test points to test the validated GDML model.</span>
+<span class="sd">        sigma_range : str, optional</span>
+<span class="sd">            Range of kernel length scales to train and validate GDML values </span>
+<span class="sd">            one. Format is `&lt;start&gt;:&lt;interval&gt;:&lt;stop&gt;`. Note, the more length </span>
+<span class="sd">            scales the longer the training time. Two is the minimum value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO add remaining options for CLI sGDML as optional arguments.</span>
+
+        <span class="c1"># Makes log file name.</span>
+        <span class="n">dataset_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">log_name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">dataset_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;dataset&#39;</span><span class="p">,</span> <span class="s1">&#39;model&#39;</span><span class="p">),</span>
+                            <span class="s1">&#39;-train.log&#39;</span><span class="p">])</span>
+
+        <span class="c1"># Prepares directory to save in</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_organization_dirs</span><span class="p">(</span><span class="n">model_dir</span><span class="p">)</span>
+
+        <span class="n">sGDML_command</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;sgdml&#39;</span><span class="p">,</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span>
+            <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset_path</span><span class="p">),</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">num_train</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">num_test</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">num_validate</span><span class="p">),</span>
+            <span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">sigma_range</span><span class="p">)</span>
+        <span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Running sGDML training on &#39;</span> <span class="o">+</span> <span class="n">dataset_name</span> <span class="o">+</span> <span class="s1">&#39; ...&#39;</span><span class="p">)</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="n">sGDML_command</span><span class="p">,</span>
+            <span class="n">stdout</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">log_name</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">),</span>
+            <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;unicode&#39;</span><span class="p">,</span>
+            <span class="n">bufsize</span><span class="o">=</span><span class="mi">1</span>
+        <span class="p">)</span> <span class="c1"># TODO Fix encoding</span>
+
+        <span class="c1"># Adding input information to log file</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">log_name</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">log</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1"> The following command was used for this file: &#39;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sGDML_command</span><span class="p">))</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> Note, the model name will have &quot;model&quot; instead&#39;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39; of &quot;dataset&quot;.&#39;</span><span class="p">)</span>
+        
+        <span class="c1"># Adding additional mbGDML info to the model.</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">mbGDMLModel</span><span class="p">()</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">get_model_name</span><span class="p">(</span><span class="n">log_name</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;.npz&#39;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;.npz&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Changing model name.</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-dataset-&#39;</span><span class="p">,</span> <span class="s1">&#39;-model-&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Adding system info.</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">add_system_info</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">base_vars</span><span class="p">)</span>
+
+        <span class="c1"># Adding many-body information if present in dataset.</span>
+        <span class="k">if</span> <span class="s1">&#39;mb&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">add_manybody_info</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">mb</span><span class="p">[()]))</span>
+
+        <span class="c1"># Saving model.</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">base_vars</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_dir</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span></div></div>
+
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Alex M. Maldonado
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

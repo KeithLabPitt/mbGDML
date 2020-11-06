@@ -209,36 +209,36 @@
 <span id="mbgdml-calculate-module"></span><h2>mbgdml.calculate module<a class="headerlink" href="#module-mbgdml.calculate" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="mbgdml.calculate.CalcTemplate">
-<em class="property">class </em><code class="descclassname">mbgdml.calculate.</code><code class="descname">CalcTemplate</code><a class="headerlink" href="#mbgdml.calculate.CalcTemplate" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mbgdml.calculate.</code><code class="descname">CalcTemplate</code><a class="reference internal" href="../_modules/mbgdml/calculate.html#CalcTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.CalcTemplate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Contains all quantum chemistry calculations templates for mako.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="mbgdml.calculate.ORCA">
-<em class="property">class </em><code class="descclassname">mbgdml.calculate.</code><code class="descname">ORCA</code><a class="headerlink" href="#mbgdml.calculate.ORCA" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mbgdml.calculate.</code><code class="descname">ORCA</code><a class="reference internal" href="../_modules/mbgdml/calculate.html#ORCA"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.ORCA" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Prepares, writes, and submits ORCA 4.2.0 calculations.</p>
 <dl class="method">
 <dt id="mbgdml.calculate.ORCA.input_corrections">
-<code class="descname">input_corrections</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.ORCA.input_corrections" title="Permalink to this definition">¶</a></dt>
+<code class="descname">input_corrections</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#ORCA.input_corrections"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.ORCA.input_corrections" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="mbgdml.calculate.ORCA.write_input">
-<code class="descname">write_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.ORCA.write_input" title="Permalink to this definition">¶</a></dt>
+<code class="descname">write_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#ORCA.write_input"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.ORCA.write_input" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="mbgdml.calculate.ORCA.write_submit">
-<code class="descname">write_submit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.ORCA.write_submit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">write_submit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#ORCA.write_submit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.ORCA.write_submit" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="mbgdml.calculate.mbGDMLCalculator">
-<em class="property">class </em><code class="descclassname">mbgdml.calculate.</code><code class="descname">mbGDMLCalculator</code><span class="sig-paren">(</span><em>elements</em>, <em>model_paths</em>, <em>e_unit_model='kcal/mol'</em>, <em>r_unit_model='Angstrom'</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLCalculator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mbgdml.calculate.</code><code class="descname">mbGDMLCalculator</code><span class="sig-paren">(</span><em>elements</em>, <em>model_paths</em>, <em>e_unit_model='kcal/mol'</em>, <em>r_unit_model='Angstrom'</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#mbGDMLCalculator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.mbGDMLCalculator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ase.calculators.calculator.Calculator</span></code></p>
 <p>Initializes mbGDML calculator with models and units.</p>
 <dl class="docutils">
@@ -252,18 +252,18 @@ to ‘kcal/mol’.</dd>
 </dl>
 <dl class="method">
 <dt id="mbgdml.calculate.mbGDMLCalculator.load_models">
-<code class="descname">load_models</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLCalculator.load_models" title="Permalink to this definition">¶</a></dt>
+<code class="descname">load_models</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#mbGDMLCalculator.load_models"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.mbGDMLCalculator.load_models" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads models for GDML prediction.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mbgdml.calculate.mbGDMLCalculator.calculate">
-<code class="descname">calculate</code><span class="sig-paren">(</span><em>atoms=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLCalculator.calculate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">calculate</code><span class="sig-paren">(</span><em>atoms=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#mbGDMLCalculator.calculate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.mbGDMLCalculator.calculate" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt>
-<code class="descname">calculate</code><span class="sig-paren">(</span><em>atoms=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<code class="descname">calculate</code><span class="sig-paren">(</span><em>atoms=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#mbGDMLCalculator.calculate"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Predicts energy and forces using many-body GDML models.</p>
 </dd></dl>
 
@@ -274,7 +274,7 @@ to ‘kcal/mol’.</dd>
 
 <dl class="method">
 <dt>
-<code class="descname">load_models</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span></dt>
+<code class="descname">load_models</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#mbGDMLCalculator.load_models"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Loads models for GDML prediction.</p>
 <dl class="docutils">
 <dt>model_paths <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
@@ -287,7 +287,7 @@ will be used during the MD run.</dd>
 
 <dl class="class">
 <dt id="mbgdml.calculate.mbGDMLMD">
-<em class="property">class </em><code class="descclassname">mbgdml.calculate.</code><code class="descname">mbGDMLMD</code><span class="sig-paren">(</span><em>structure_name</em>, <em>structure_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mbgdml.calculate.</code><code class="descname">mbGDMLMD</code><span class="sig-paren">(</span><em>structure_name</em>, <em>structure_path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#mbGDMLMD"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="mbgdml.data.html#mbgdml.data.basedata.mbGDMLData" title="mbgdml.data.basedata.mbGDMLData"><code class="xref py py-class docutils literal notranslate"><span class="pre">mbgdml.data.basedata.mbGDMLData</span></code></a></p>
 <p>Molecular dynamics through ASE with many-body GDML models.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -304,7 +304,7 @@ will be used during the MD run.</dd>
 </table>
 <dl class="method">
 <dt id="mbgdml.calculate.mbGDMLMD.load_calculator">
-<code class="descname">load_calculator</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD.load_calculator" title="Permalink to this definition">¶</a></dt>
+<code class="descname">load_calculator</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#mbGDMLMD.load_calculator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD.load_calculator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads the many-body GDML ASE calculator.</p>
 <dl class="docutils">
 <dt>model_paths <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
@@ -314,7 +314,7 @@ will be used during the MD run.</dd>
 
 <dl class="method">
 <dt id="mbgdml.calculate.mbGDMLMD.printenergy">
-<code class="descname">printenergy</code><span class="sig-paren">(</span><em>a</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD.printenergy" title="Permalink to this definition">¶</a></dt>
+<code class="descname">printenergy</code><span class="sig-paren">(</span><em>a</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#mbGDMLMD.printenergy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD.printenergy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Quick function to print MD information during simulation.</p>
 <dl class="docutils">
 <dt>a <span class="classifier-delimiter">:</span> <span class="classifier"><cite>ase.atoms</cite></span></dt>
@@ -324,7 +324,7 @@ will be used during the MD run.</dd>
 
 <dl class="method">
 <dt id="mbgdml.calculate.mbGDMLMD.relax">
-<code class="descname">relax</code><span class="sig-paren">(</span><em>max_force=0.0001</em>, <em>steps=100</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD.relax" title="Permalink to this definition">¶</a></dt>
+<code class="descname">relax</code><span class="sig-paren">(</span><em>max_force=0.0001</em>, <em>steps=100</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#mbGDMLMD.relax"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD.relax" title="Permalink to this definition">¶</a></dt>
 <dd><p>Short relaxation of structure.</p>
 <dl class="docutils">
 <dt>max_force <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
@@ -344,7 +344,7 @@ will be used during the MD run.</dd>
 
 <dl class="method">
 <dt id="mbgdml.calculate.mbGDMLMD.run">
-<code class="descname">run</code><span class="sig-paren">(</span><em>steps</em>, <em>t_step</em>, <em>temp</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD.run" title="Permalink to this definition">¶</a></dt>
+<code class="descname">run</code><span class="sig-paren">(</span><em>steps</em>, <em>t_step</em>, <em>temp</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#mbGDMLMD.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.mbGDMLMD.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs a MD simulation using the Verlet algorithm in ASE.</p>
 <dl class="docutils">
 <dt>steps <span class="classifier-delimiter">:</span> <span class="classifier"><cite>int</cite></span></dt>
@@ -368,7 +368,7 @@ will be used during the MD run.</dd>
 
 <dl class="function">
 <dt id="mbgdml.calculate.partition_engrad">
-<code class="descclassname">mbgdml.calculate.</code><code class="descname">partition_engrad</code><span class="sig-paren">(</span><em>package</em>, <em>partition_dict</em>, <em>temperature</em>, <em>md_iteration</em>, <em>calc_dir='.'</em>, <em>calc_name='partition-engrad'</em>, <em>theory_level_engrad='MP2'</em>, <em>basis_set_engrad='def2-TZVP'</em>, <em>options_engrad='TightSCF FrozenCore'</em>, <em>control_blocks_engrad='%scf\n    ConvForced true\nend\n%maxcore 8000\n'</em>, <em>submit=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.calculate.partition_engrad" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mbgdml.calculate.</code><code class="descname">partition_engrad</code><span class="sig-paren">(</span><em>package</em>, <em>partition_dict</em>, <em>temperature</em>, <em>md_iteration</em>, <em>calc_dir='.'</em>, <em>calc_name='partition-engrad'</em>, <em>theory_level_engrad='MP2'</em>, <em>basis_set_engrad='def2-TZVP'</em>, <em>options_engrad='TightSCF FrozenCore'</em>, <em>control_blocks_engrad='%scf\n    ConvForced true\nend\n%maxcore 8000\n'</em>, <em>submit=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#partition_engrad"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.partition_engrad" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets up a partition ORCA 4.2.0 EnGrad calculation for trajectory.</p>
 <p>Can be submitted or just have the input files prepared.</p>
 <dl class="docutils">
@@ -419,7 +419,7 @@ FrozenCore’.</dd>
 <span id="mbgdml-parse-module"></span><h2>mbgdml.parse module<a class="headerlink" href="#module-mbgdml.parse" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="mbgdml.parse.cluster_size">
-<code class="descclassname">mbgdml.parse.</code><code class="descname">cluster_size</code><span class="sig-paren">(</span><em>xyz_path</em>, <em>solvent</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.parse.cluster_size" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mbgdml.parse.</code><code class="descname">cluster_size</code><span class="sig-paren">(</span><em>xyz_path</em>, <em>solvent</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/parse.html#cluster_size"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.parse.cluster_size" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determines number of solvent molecules in a xyz file.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -444,7 +444,7 @@ molecule.</li>
 
 <dl class="function">
 <dt id="mbgdml.parse.parse_cluster">
-<code class="descclassname">mbgdml.parse.</code><code class="descname">parse_cluster</code><span class="sig-paren">(</span><em>cluster_data</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.parse.parse_cluster" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mbgdml.parse.</code><code class="descname">parse_cluster</code><span class="sig-paren">(</span><em>cluster_data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/parse.html#parse_cluster"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.parse.parse_cluster" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates dictionary of all solvent molecules in solvent cluster from a
 cluster_data dictionary.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -491,12 +491,12 @@ values the xyz coordinates.</p>
 
 <dl class="function">
 <dt id="mbgdml.parse.parse_coords">
-<code class="descclassname">mbgdml.parse.</code><code class="descname">parse_coords</code><span class="sig-paren">(</span><em>fileName</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.parse.parse_coords" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mbgdml.parse.</code><code class="descname">parse_coords</code><span class="sig-paren">(</span><em>fileName</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/parse.html#parse_coords"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.parse.parse_coords" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="mbgdml.parse.parse_engrad">
-<code class="descclassname">mbgdml.parse.</code><code class="descname">parse_engrad</code><span class="sig-paren">(</span><em>out_file</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.parse.parse_engrad" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mbgdml.parse.</code><code class="descname">parse_engrad</code><span class="sig-paren">(</span><em>out_file</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/parse.html#parse_engrad"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.parse.parse_engrad" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parses GDML-relevant data (coordinates, energies, and gradients)
 from partition output file.</p>
 <p>Uses <a href="#id1"><span class="problematic" id="id2">:module:`cclib`</span></a> to parse data from computational chemistry calculations
@@ -535,7 +535,7 @@ keys:<blockquote>
 
 <dl class="function">
 <dt id="mbgdml.parse.parse_stringfile">
-<code class="descclassname">mbgdml.parse.</code><code class="descname">parse_stringfile</code><span class="sig-paren">(</span><em>stringfile_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.parse.parse_stringfile" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mbgdml.parse.</code><code class="descname">parse_stringfile</code><span class="sig-paren">(</span><em>stringfile_path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/parse.html#parse_stringfile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.parse.parse_stringfile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parses data from string file.</p>
 <p>A string file is data presented as consecutive xyz data. The data could be
 three Cartesian coordinates for each atom, three atomic force vector
@@ -558,7 +558,7 @@ as extended xyz).</p>
 
 <dl class="function">
 <dt id="mbgdml.parse.struct_dict">
-<code class="descclassname">mbgdml.parse.</code><code class="descname">struct_dict</code><span class="sig-paren">(</span><em>origin</em>, <em>struct_list</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.parse.struct_dict" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mbgdml.parse.</code><code class="descname">struct_dict</code><span class="sig-paren">(</span><em>origin</em>, <em>struct_list</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/parse.html#struct_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.parse.struct_dict" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -566,7 +566,7 @@ as extended xyz).</p>
 <span id="mbgdml-partition-module"></span><h2>mbgdml.partition module<a class="headerlink" href="#module-mbgdml.partition" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="mbgdml.partition.partition_cluster">
-<code class="descclassname">mbgdml.partition.</code><code class="descname">partition_cluster</code><span class="sig-paren">(</span><em>cluster</em>, <em>nbody</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.partition.partition_cluster" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mbgdml.partition.</code><code class="descname">partition_cluster</code><span class="sig-paren">(</span><em>cluster</em>, <em>nbody</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/partition.html#partition_cluster"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.partition.partition_cluster" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates dictionary with all possible n-body combinations of solvent
 cluster.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -595,7 +595,7 @@ string of coordinates.</p>
 
 <dl class="function">
 <dt id="mbgdml.partition.partition_trajectory">
-<code class="descclassname">mbgdml.partition.</code><code class="descname">partition_trajectory</code><span class="sig-paren">(</span><em>traj_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.partition.partition_trajectory" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mbgdml.partition.</code><code class="descname">partition_trajectory</code><span class="sig-paren">(</span><em>traj_path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/partition.html#partition_trajectory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.partition.partition_trajectory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Partitions MD trajectory into separate trajectories for each possible
 segment.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -619,11 +619,11 @@ string of coordinates.</td>
 <span id="mbgdml-predict-module"></span><h2>mbgdml.predict module<a class="headerlink" href="#module-mbgdml.predict" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="mbgdml.predict.mbGDMLPredict">
-<em class="property">class </em><code class="descclassname">mbgdml.predict.</code><code class="descname">mbGDMLPredict</code><span class="sig-paren">(</span><em>models</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.predict.mbGDMLPredict" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mbgdml.predict.</code><code class="descname">mbGDMLPredict</code><span class="sig-paren">(</span><em>models</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/predict.html#mbGDMLPredict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.predict.mbGDMLPredict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="method">
 <dt id="mbgdml.predict.mbGDMLPredict.decomposed_predict">
-<code class="descname">decomposed_predict</code><span class="sig-paren">(</span><em>z</em>, <em>R</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.predict.mbGDMLPredict.decomposed_predict" title="Permalink to this definition">¶</a></dt>
+<code class="descname">decomposed_predict</code><span class="sig-paren">(</span><em>z</em>, <em>R</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/predict.html#mbGDMLPredict.decomposed_predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.predict.mbGDMLPredict.decomposed_predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes predicted total energy and atomic forces decomposed by
 many body order.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -675,7 +675,7 @@ and their contributions.</p>
 
 <dl class="method">
 <dt id="mbgdml.predict.mbGDMLPredict.predict">
-<code class="descname">predict</code><span class="sig-paren">(</span><em>z</em>, <em>R</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.predict.mbGDMLPredict.predict" title="Permalink to this definition">¶</a></dt>
+<code class="descname">predict</code><span class="sig-paren">(</span><em>z</em>, <em>R</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/predict.html#mbGDMLPredict.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.predict.mbGDMLPredict.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predicts total energy and atomic forces using many-body GDML models.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -703,18 +703,15 @@ have the same shape as R.</p>
 
 <dl class="method">
 <dt id="mbgdml.predict.mbGDMLPredict.remove_nbody">
-<code class="descname">remove_nbody</code><span class="sig-paren">(</span><em>dataset</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.predict.mbGDMLPredict.remove_nbody" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates GDML dataset with GDML predicted n-body predictions
-removed.</p>
-<p>To employ the many body expansion, we need GDML models that predict
-n-body corrections/contributions. This provides the appropriate dataset
-for training an (n+1)-body mbGDML model.</p>
+<code class="descname">remove_nbody</code><span class="sig-paren">(</span><em>ref_dataset</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/predict.html#mbGDMLPredict.remove_nbody"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.predict.mbGDMLPredict.remove_nbody" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes mbGDML prediced energies and forces from a reference data
+set.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>base_vars</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><em>dict</em></a>) – GDML dataset converted to a dict containing n-body contributions to
-be removed.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ref_dataset</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">mbgdml.data.mbGDMLDataset</span></code>) – Reference data set of structures, energies, and forces. This is the
+data where mbGDML predictions will be subtracted from.</td>
 </tr>
 </tbody>
 </table>
@@ -727,7 +724,7 @@ be removed.</td>
 <span id="mbgdml-solvents-module"></span><h2>mbgdml.solvents module<a class="headerlink" href="#module-mbgdml.solvents" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="mbgdml.solvents.solvent">
-<em class="property">class </em><code class="descclassname">mbgdml.solvents.</code><code class="descname">solvent</code><span class="sig-paren">(</span><em>atom_list</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.solvents.solvent" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mbgdml.solvents.</code><code class="descname">solvent</code><span class="sig-paren">(</span><em>atom_list</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/solvents.html#solvent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.solvents.solvent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Identifies and describes the solvent for MB-GDML.</p>
 <p>Represents the solvent that makes up the cluster MB-GDML is being trained
@@ -805,7 +802,7 @@ systems.</p>
 
 <dl class="method">
 <dt id="mbgdml.solvents.solvent.atom_numbers">
-<code class="descname">atom_numbers</code><span class="sig-paren">(</span><em>chem_formula</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.solvents.solvent.atom_numbers" title="Permalink to this definition">¶</a></dt>
+<code class="descname">atom_numbers</code><span class="sig-paren">(</span><em>chem_formula</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/solvents.html#solvent.atom_numbers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.solvents.solvent.atom_numbers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provides a dictionary of atoms and their quantity from chemical
 formula.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -830,7 +827,7 @@ quantity as values.</td>
 
 <dl class="method">
 <dt id="mbgdml.solvents.solvent.identify_solvent">
-<code class="descname">identify_solvent</code><span class="sig-paren">(</span><em>atom_list</em>, <em>all_solvents</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.solvents.solvent.identify_solvent" title="Permalink to this definition">¶</a></dt>
+<code class="descname">identify_solvent</code><span class="sig-paren">(</span><em>atom_list</em>, <em>all_solvents</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/solvents.html#solvent.identify_solvent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.solvents.solvent.identify_solvent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Identifies the solvent from a repeated list of elements.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -854,18 +851,31 @@ provide a solvent label and chemical formula, respectively.</li>
 
 <dl class="function">
 <dt id="mbgdml.solvents.system_info">
-<code class="descclassname">mbgdml.solvents.</code><code class="descname">system_info</code><span class="sig-paren">(</span><em>atoms</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.solvents.system_info" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mbgdml.solvents.</code><code class="descname">system_info</code><span class="sig-paren">(</span><em>atoms</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/solvents.html#system_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.solvents.system_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determines information about the system key to mbGDML.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>atoms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) – Atomic numbers of all atoms in the system.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>atoms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>) – Atomic numbers of all atoms in the system.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">System information useful for mbGDML. Information includes ‘system’
-which categorizes the system and provides specific information.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">System information useful for mbGDML. Always will contain the following
+key:<p><code class="docutils literal notranslate"><span class="pre">'system'</span></code></p>
+<p>If <code class="docutils literal notranslate"><span class="pre">'system'</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">'solvent'</span></code>, then the following keys will
+be included:</p>
+<dl class="docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">'solvent_name'</span></code></dt>
+<dd>Common name for the identified solvent.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">'solvent_label'</span></code></dt>
+<dd>Standardized shorthand label for the solvent.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">'solvent_molec_size'</span></code></dt>
+<dd>Number of atoms in a single solvent molecule.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">'cluster_size'</span></code></dt>
+<dd>Number of solvent molecules in the cluster.</dd>
+</dl>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)">dict</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></td>
 </tr>
 </tbody>
 </table>
@@ -879,11 +889,11 @@ which categorizes the system and provides specific information.</td>
 <span id="mbgdml-train-module"></span><h2>mbgdml.train module<a class="headerlink" href="#module-mbgdml.train" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="mbgdml.train.MBGDMLTrain">
-<em class="property">class </em><code class="descclassname">mbgdml.train.</code><code class="descname">MBGDMLTrain</code><a class="headerlink" href="#mbgdml.train.MBGDMLTrain" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mbgdml.train.</code><code class="descname">MBGDMLTrain</code><a class="reference internal" href="../_modules/mbgdml/train.html#MBGDMLTrain"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.train.MBGDMLTrain" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="method">
 <dt id="mbgdml.train.MBGDMLTrain.load_dataset">
-<code class="descname">load_dataset</code><span class="sig-paren">(</span><em>dataset_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.train.MBGDMLTrain.load_dataset" title="Permalink to this definition">¶</a></dt>
+<code class="descname">load_dataset</code><span class="sig-paren">(</span><em>dataset_path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/train.html#MBGDMLTrain.load_dataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.train.MBGDMLTrain.load_dataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads a GDML dataset from npz format from specified path.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -898,7 +908,7 @@ solvent partition size.</td>
 
 <dl class="method">
 <dt id="mbgdml.train.MBGDMLTrain.train_GDML">
-<code class="descname">train_GDML</code><span class="sig-paren">(</span><em>model_dir</em>, <em>num_train</em>, <em>num_validate</em>, <em>num_test</em>, <em>sigma_range='2:10:100'</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.train.MBGDMLTrain.train_GDML" title="Permalink to this definition">¶</a></dt>
+<code class="descname">train_GDML</code><span class="sig-paren">(</span><em>model_dir</em>, <em>num_train</em>, <em>num_validate</em>, <em>num_test</em>, <em>sigma_range='2:10:100'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/train.html#MBGDMLTrain.train_GDML"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.train.MBGDMLTrain.train_GDML" title="Permalink to this definition">¶</a></dt>
 <dd><p>Trains a GDML model through the command line interface.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -926,7 +936,7 @@ scales the longer the training time. Two is the minimum value.</li>
 <span id="mbgdml-utils-module"></span><h2>mbgdml.utils module<a class="headerlink" href="#module-mbgdml.utils" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="mbgdml.utils.atoms_by_element">
-<code class="descclassname">mbgdml.utils.</code><code class="descname">atoms_by_element</code><span class="sig-paren">(</span><em>atom_list</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.utils.atoms_by_element" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mbgdml.utils.</code><code class="descname">atoms_by_element</code><span class="sig-paren">(</span><em>atom_list</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/utils.html#atoms_by_element"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.utils.atoms_by_element" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a list of atoms identified by their atomic number to their
 elemental symbol.</p>
 <p>Parameters
@@ -947,7 +957,7 @@ atom_list : list</p>
 
 <dl class="function">
 <dt id="mbgdml.utils.atoms_by_number">
-<code class="descclassname">mbgdml.utils.</code><code class="descname">atoms_by_number</code><span class="sig-paren">(</span><em>atom_list</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.utils.atoms_by_number" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mbgdml.utils.</code><code class="descname">atoms_by_number</code><span class="sig-paren">(</span><em>atom_list</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/utils.html#atoms_by_number"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.utils.atoms_by_number" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a list of atoms identified by their elemental symbol to their
 atomic number.</p>
 <p>Parameters
@@ -968,7 +978,7 @@ atom_list : <a class="reference external" href="https://docs.python.org/3/librar
 
 <dl class="function">
 <dt id="mbgdml.utils.convert_forces">
-<code class="descclassname">mbgdml.utils.</code><code class="descname">convert_forces</code><span class="sig-paren">(</span><em>package</em>, <em>forces</em>, <em>e_units</em>, <em>r_units</em>, <em>e_units_calc=None</em>, <em>r_units_calc=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.utils.convert_forces" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mbgdml.utils.</code><code class="descname">convert_forces</code><span class="sig-paren">(</span><em>package</em>, <em>forces</em>, <em>e_units</em>, <em>r_units</em>, <em>e_units_calc=None</em>, <em>r_units_calc=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/utils.html#convert_forces"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.utils.convert_forces" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts forces (or gradients) to specified units.</p>
 <p>cclib automatically converts energy units to eV, but does not convert
 gradients. GDML needs consistent energy and force units, so we convert
@@ -1009,7 +1019,7 @@ Otherwise, manually specify <cite>e_units_calc</cite> and <cite>r_units_calc</ci
 
 <dl class="function">
 <dt id="mbgdml.utils.get_files">
-<code class="descclassname">mbgdml.utils.</code><code class="descname">get_files</code><span class="sig-paren">(</span><em>path</em>, <em>expression</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.utils.get_files" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mbgdml.utils.</code><code class="descname">get_files</code><span class="sig-paren">(</span><em>path</em>, <em>expression</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/utils.html#get_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.utils.get_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns paths to all files in a given directory that matches a provided
 expression in the file name. Commonly used to find all files of a certain
 type, e.g. output or xyz files.</p>
@@ -1035,7 +1045,7 @@ type, e.g. output or xyz files.</p>
 
 <dl class="function">
 <dt id="mbgdml.utils.make_folder">
-<code class="descclassname">mbgdml.utils.</code><code class="descname">make_folder</code><span class="sig-paren">(</span><em>folder</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.utils.make_folder" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mbgdml.utils.</code><code class="descname">make_folder</code><span class="sig-paren">(</span><em>folder</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/utils.html#make_folder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.utils.make_folder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates folder at specified path.
 If the current folder exists, it creates another folder
 with an added number.</p>
@@ -1055,7 +1065,7 @@ with an added number.</p>
 
 <dl class="function">
 <dt id="mbgdml.utils.natsort_list">
-<code class="descclassname">mbgdml.utils.</code><code class="descname">natsort_list</code><span class="sig-paren">(</span><em>unsorted_list</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.utils.natsort_list" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mbgdml.utils.</code><code class="descname">natsort_list</code><span class="sig-paren">(</span><em>unsorted_list</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/utils.html#natsort_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.utils.natsort_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Basic function that organizes a list based on human (or natural) sorting
 methodology.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1074,7 +1084,7 @@ methodology.</p>
 
 <dl class="function">
 <dt id="mbgdml.utils.norm_path">
-<code class="descclassname">mbgdml.utils.</code><code class="descname">norm_path</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.utils.norm_path" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mbgdml.utils.</code><code class="descname">norm_path</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/utils.html#norm_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.utils.norm_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Normalizes directory paths to be consistent.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1092,7 +1102,7 @@ methodology.</p>
 
 <dl class="function">
 <dt id="mbgdml.utils.string_coords">
-<code class="descclassname">mbgdml.utils.</code><code class="descname">string_coords</code><span class="sig-paren">(</span><em>atoms</em>, <em>coords</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.utils.string_coords" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mbgdml.utils.</code><code class="descname">string_coords</code><span class="sig-paren">(</span><em>atoms</em>, <em>coords</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/utils.html#string_coords"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.utils.string_coords" title="Permalink to this definition">¶</a></dt>
 <dd><p>Puts atomic coordinates into a Python string. Typically used for
 writing to an input file.</p>
 <p>Parameters
