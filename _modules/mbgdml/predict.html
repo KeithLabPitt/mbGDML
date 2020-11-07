@@ -382,11 +382,10 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        ref_dataset : :obj:`mbgdml.data.mbGDMLDataset`</span>
-<span class="sd">            Reference data set of structures, energies, and forces. This is the</span>
-<span class="sd">            data where mbGDML predictions will be subtracted from.</span>
+<span class="sd">        ref_dataset : :obj:`dict`</span>
+<span class="sd">            Contains all data as :obj:`numpy.ndarray` objects.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">nbody_dataset</span> <span class="o">=</span> <span class="n">ref_dataset</span><span class="o">.</span><span class="n">dataset</span>
+        <span class="n">nbody_dataset</span> <span class="o">=</span> <span class="n">ref_dataset</span>
         <span class="n">z</span> <span class="o">=</span> <span class="n">nbody_dataset</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>
         <span class="n">R</span> <span class="o">=</span> <span class="n">nbody_dataset</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">]</span>
         <span class="n">E</span> <span class="o">=</span> <span class="n">nbody_dataset</span><span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">]</span>
@@ -394,7 +393,7 @@
         <span class="n">num_config</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">system</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">nbody_dataset</span><span class="p">[</span><span class="s1">&#39;system&#39;</span><span class="p">][()])</span>
         <span class="k">if</span> <span class="n">system</span> <span class="o">==</span> <span class="s1">&#39;solvent&#39;</span><span class="p">:</span>
-            <span class="n">dataset_info</span> <span class="o">=</span> <span class="n">solvents</span><span class="o">.</span><span class="n">system_info</span><span class="p">(</span><span class="n">ref_dataset</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+            <span class="n">dataset_info</span> <span class="o">=</span> <span class="n">solvents</span><span class="o">.</span><span class="n">system_info</span><span class="p">(</span><span class="n">ref_dataset</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
             <span class="n">system_size</span> <span class="o">=</span> <span class="n">dataset_info</span><span class="p">[</span><span class="s1">&#39;cluster_size&#39;</span><span class="p">]</span>
         <span class="c1"># Removing all n-body contributions for every configuration.</span>
         <span class="k">for</span> <span class="n">config</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_config</span><span class="p">):</span>

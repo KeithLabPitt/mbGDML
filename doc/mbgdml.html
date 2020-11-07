@@ -710,8 +710,7 @@ set.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ref_dataset</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">mbgdml.data.mbGDMLDataset</span></code>) – Reference data set of structures, energies, and forces. This is the
-data where mbGDML predictions will be subtracted from.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ref_dataset</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a>) – Contains all data as <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> objects.</td>
 </tr>
 </tbody>
 </table>
@@ -978,43 +977,28 @@ atom_list : <a class="reference external" href="https://docs.python.org/3/librar
 
 <dl class="function">
 <dt id="mbgdml.utils.convert_forces">
-<code class="descclassname">mbgdml.utils.</code><code class="descname">convert_forces</code><span class="sig-paren">(</span><em>package</em>, <em>forces</em>, <em>e_units</em>, <em>r_units</em>, <em>e_units_calc=None</em>, <em>r_units_calc=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/utils.html#convert_forces"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.utils.convert_forces" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mbgdml.utils.</code><code class="descname">convert_forces</code><span class="sig-paren">(</span><em>forces</em>, <em>e_units_calc</em>, <em>r_units_calc</em>, <em>e_units</em>, <em>r_units</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/utils.html#convert_forces"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.utils.convert_forces" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts forces (or gradients) to specified units.</p>
-<p>cclib automatically converts energy units to eV, but does not convert
-gradients. GDML needs consistent energy and force units, so we convert
-them.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>package</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Computational chemistry package used for computations.</li>
-<li><strong>forces</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><em>numpy.ndarray</em></a>) – An array with units of energy and distance matching <cite>e_units_calc</cite>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>forces</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – An array with units of energy and distance matching <cite>e_units_calc</cite>
 and <cite>r_units_calc</cite>.</li>
-<li><strong>e_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Desired units of energy. Available units are ‘eV’, ‘hartree’,
-‘kcal/mol’, and ‘kJ/mol’.</li>
-<li><strong>r_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Desired units of distance. Available units implemented in cclib’s
-convertor function are ‘Angstrom’ and ‘bohr’.</li>
-<li><strong>e_units_calc</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) – Specifies package-specific energy units used in calculation.
-Defaults to None.</li>
-<li><strong>r_units_calc</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) – Specifies package-specific distance units used in calculation.
-Defaults to None.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> – If the selected energy units are not implemented.</li>
-<li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> – If the selected distance units are not implemented.</li>
-<li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> – If calculation package is not defined here for known energy and
-distance units.</li>
+<li><strong>e_units_calc</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Specifies package-specific energy units used in calculation. Available
+units are <code class="docutils literal notranslate"><span class="pre">'eV'</span></code>, <code class="docutils literal notranslate"><span class="pre">'hartree'</span></code>, <code class="docutils literal notranslate"><span class="pre">'kcal/mol'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'kJ/mol'</span></code>.</li>
+<li><strong>r_units_calc</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Specifies package-specific distance units used in calculation. Available
+units are <code class="docutils literal notranslate"><span class="pre">'Angstrom'</span></code> and <code class="docutils literal notranslate"><span class="pre">'bohr'</span></code>.</li>
+<li><strong>e_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Desired units of energy. Available units are <code class="docutils literal notranslate"><span class="pre">'eV'</span></code>, <code class="docutils literal notranslate"><span class="pre">'hartree'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'kcal/mol'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'kJ/mol'</span></code>.</li>
+<li><strong>r_units</strong> (obj:<cite>str</cite>) – Desired units of distance. Available units are <code class="docutils literal notranslate"><span class="pre">'Angstrom'</span></code> and
+<code class="docutils literal notranslate"><span class="pre">'bohr'</span></code>.</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Notes</p>
-<p>Only supports ‘ORCA’ for automatically determining calc units.
-Otherwise, manually specify <cite>e_units_calc</cite> and <cite>r_units_calc</cite>.</p>
 </dd></dl>
 
 <dl class="function">

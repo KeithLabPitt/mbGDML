@@ -190,20 +190,6 @@
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span>
-
-
-<div class="viewcode-block" id="mbGDMLData.get_system_info"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.basedata.mbGDMLData.get_system_info">[docs]</a>    <span class="k">def</span> <span class="nf">get_system_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atoms</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Describes the data set system.</span>
-<span class="sd">        </span>
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        atoms : :obj:`list`</span>
-<span class="sd">            Atomic symbols of all atoms in the system. The atoms</span>
-<span class="sd">            are repeated; for example, water is [&#39;H&#39;, &#39;H&#39;, &#39;O&#39;].</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">system_info</span> <span class="o">=</span> <span class="n">solvents</span><span class="o">.</span><span class="n">system_info</span><span class="p">(</span><span class="n">atoms</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">system_info</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">system_info</span><span class="p">[</span><span class="n">key</span><span class="p">])</span></div>
     
 
 <div class="viewcode-block" id="mbGDMLData.add_system_info"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.basedata.mbGDMLData.add_system_info">[docs]</a>    <span class="k">def</span> <span class="nf">add_system_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dict_data</span><span class="p">):</span>
@@ -225,16 +211,15 @@
 <span class="sd">        If the system is a solvent, the &#39;solvent&#39; name and &#39;cluster_size&#39;</span>
 <span class="sd">        is included.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;system_info&#39;</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">get_system_info</span><span class="p">(</span><span class="n">dict_data</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
-        <span class="n">dict_data</span><span class="p">[</span><span class="s1">&#39;system&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">system_info</span><span class="p">[</span><span class="s1">&#39;system&#39;</span><span class="p">])</span>
+        <span class="n">z_symbols</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">atoms_by_element</span><span class="p">(</span><span class="n">dict_data</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+        <span class="n">system_info</span> <span class="o">=</span> <span class="n">solvents</span><span class="o">.</span><span class="n">system_info</span><span class="p">(</span><span class="n">z_symbols</span><span class="p">)</span>
+        <span class="n">dict_data</span><span class="p">[</span><span class="s1">&#39;system&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">system_info</span><span class="p">[</span><span class="s1">&#39;system&#39;</span><span class="p">])</span>
         <span class="k">if</span> <span class="n">dict_data</span><span class="p">[</span><span class="s1">&#39;system&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;solvent&#39;</span><span class="p">:</span>
             <span class="n">dict_data</span><span class="p">[</span><span class="s1">&#39;solvent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">system_info</span><span class="p">[</span><span class="s1">&#39;solvent_name&#39;</span><span class="p">]</span>
+                <span class="n">system_info</span><span class="p">[</span><span class="s1">&#39;solvent_name&#39;</span><span class="p">]</span>
             <span class="p">)</span>
             <span class="n">dict_data</span><span class="p">[</span><span class="s1">&#39;cluster_size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">system_info</span><span class="p">[</span><span class="s1">&#39;cluster_size&#39;</span><span class="p">]</span>
+                <span class="n">system_info</span><span class="p">[</span><span class="s1">&#39;cluster_size&#39;</span><span class="p">]</span>
             <span class="p">)</span>
         <span class="k">return</span> <span class="n">dict_data</span></div>
 
