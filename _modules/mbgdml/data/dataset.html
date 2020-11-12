@@ -199,11 +199,6 @@
 <span class="sd">        Contains all data as :obj:`numpy.ndarray` objects.</span>
 <span class="sd">    name : :obj:`str`</span>
 <span class="sd">        Name of the data set. Defaults to ``&#39;dataset&#39;``.</span>
-<span class="sd">    r_unit : :obj:`str`</span>
-<span class="sd">        Units of distance. Options are ``&#39;Angstrom&#39;`` or ``&#39;bohr&#39;``.</span>
-<span class="sd">    e_unit : :obj:`str`</span>
-<span class="sd">        Units of energy. Options are ``&#39;eV&#39;``, ``&#39;hartree&#39;``,</span>
-<span class="sd">            ``&#39;kcal/mol&#39;``, and ``&#39;kJ/mol&#39;``.</span>
 <span class="sd">    code_verstion</span>
 <span class="sd">        The version of :mod:`sgdml`.</span>
 <span class="sd">    theory : :obj:`str`</span>
@@ -221,6 +216,15 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;dataset&#39;</span>
         <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">md5</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Unique MD5 hash of data set. Encoded with UTF-8.</span>
+
+<span class="sd">        :type: :obj:`bytes`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">sgdml_io</span><span class="o">.</span><span class="n">dataset_md5</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">)</span>
 
 
     <span class="k">def</span> <span class="nf">_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
@@ -237,8 +241,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_R</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_E</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_F</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">r_unit</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;r_unit&#39;</span><span class="p">][()])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">e_unit</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;e_unit&#39;</span><span class="p">][()])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_r_unit</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;r_unit&#39;</span><span class="p">][()])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_e_unit</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;e_unit&#39;</span><span class="p">][()])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">code_version</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;code_version&#39;</span><span class="p">][()])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">][()])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">theory</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;theory&#39;</span><span class="p">][()])</span>
@@ -341,223 +345,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">code_version</span> <span class="o">=</span> <span class="n">__version__</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">theory</span> <span class="o">=</span> <span class="n">partcalc</span><span class="o">.</span><span class="n">theory</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">()</span></div>
-
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">z</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Atomic numbers of all atoms in data set structures.</span>
-<span class="sd">        </span>
-<span class="sd">        A ``(n,)`` shape array of type :obj:`numpy.int32` containing atomic</span>
-<span class="sd">        numbers of atoms in the structures in order as they appear.</span>
-
-<span class="sd">        :type: :obj:`numpy.ndarray`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_z</span>
-    
-
-    <span class="nd">@z</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">z</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">=</span> <span class="n">var</span>
-
-    
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">system_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">z_symbols</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">atoms_by_element</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
-            <span class="k">return</span> <span class="n">solvents</span><span class="o">.</span><span class="n">system_info</span><span class="p">(</span><span class="n">z_symbols</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;system&#39;</span><span class="p">:</span> <span class="s1">&#39;unknown&#39;</span><span class="p">}</span>
-    
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">R</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Atomic coordinates of structure(s).</span>
-<span class="sd">        </span>
-<span class="sd">        A :obj:`numpy.ndarray` with shape of ``(m, n, 3)`` where ``m`` is the</span>
-<span class="sd">        number of calculations and ``n`` is the number of atoms with three </span>
-<span class="sd">        Cartesian components.</span>
-
-<span class="sd">        :type: :obj:`numpy.ndarray`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_R</span>
-    
-
-    <span class="nd">@R</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">R</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_R</span> <span class="o">=</span> <span class="n">var</span>
-    
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">F</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Atomic forces of atoms in structure(s).</span>
-<span class="sd">        </span>
-<span class="sd">        A :obj:`numpy.ndarray` with shape of ``(m, n, 3)`` where ``m`` is the</span>
-<span class="sd">        number of calculations and ``n`` is the number of atoms with three </span>
-<span class="sd">        Cartesian components.</span>
-
-<span class="sd">        :type: :obj:`numpy.ndarray`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_F</span>
-    
-
-    <span class="nd">@F</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">F</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_F</span> <span class="o">=</span> <span class="n">var</span>
-    
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">E</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;The energies of structure(s).</span>
-<span class="sd">        </span>
-<span class="sd">        A :obj:`numpy.ndarray` with shape of ``(n,)`` where ``n`` is the number</span>
-<span class="sd">        of atoms.</span>
-
-<span class="sd">        :type: :obj:`numpy.ndarray`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_E&#39;</span><span class="p">):</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_E</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;No energies were provided in data set.&#39;</span><span class="p">)</span>
-    
-
-    <span class="nd">@E</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">E</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_E</span> <span class="o">=</span> <span class="n">var</span>
-    
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">E_min</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Minimum energy of all structures.</span>
-
-<span class="sd">        :type: :obj:`float`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">E</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
-    
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">E_max</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Maximum energy of all structures.</span>
-
-<span class="sd">        :type: :obj:`float`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">E</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
-    
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">E_var</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Energy variance.</span>
-
-<span class="sd">        :type: :obj:`float`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">E</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
-        
-    
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">E_mean</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Mean of all energies.</span>
-
-<span class="sd">        :type: :obj:`float`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">E</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
-    
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">F_min</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Minimum atomic force in all structures.</span>
-
-<span class="sd">        :type: :obj:`float`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
-    
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">F_max</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Maximum atomic force in all structures.</span>
-
-<span class="sd">        :type: :obj:`float`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
-    
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">F_var</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Force variance.</span>
-
-<span class="sd">        :type: :obj:`float`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
-    
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">F_mean</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Mean of all forces.</span>
-
-<span class="sd">        :type: :obj:`float`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
-    
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">md5</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Unique MD5 hash of data set. Encoded with UTF-8.</span>
-
-<span class="sd">        :type: :obj:`bytes`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">sgdml_io</span><span class="o">.</span><span class="n">dataset_md5</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">)</span>
-    
-
-<div class="viewcode-block" id="mbGDMLDataset.convertE"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.convertE">[docs]</a>    <span class="k">def</span> <span class="nf">convertE</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">E_units</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert energies and updates :attr:`e_unit`.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        E_units : :obj:`str`</span>
-<span class="sd">            Desired units of energy. Options are ``&#39;eV&#39;``, ``&#39;hartree&#39;``,</span>
-<span class="sd">            ``&#39;kcal/mol&#39;``, and ``&#39;kJ/mol&#39;``.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_E</span> <span class="o">=</span> <span class="n">convertor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">e_unit</span><span class="p">,</span> <span class="n">E_units</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">e_unit</span> <span class="o">=</span> <span class="n">E_units</span></div>
-    
-    
-<div class="viewcode-block" id="mbGDMLDataset.convertR"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.convertR">[docs]</a>    <span class="k">def</span> <span class="nf">convertR</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">R_units</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert coordinates and updates :attr:`r_unit`.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        R_units : :obj:`str`</span>
-<span class="sd">            Desired units of coordinates. Options are ``&#39;Angstrom&#39;`` or</span>
-<span class="sd">            ``&#39;bohr&#39;``.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_R</span> <span class="o">=</span> <span class="n">convertor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">r_unit</span><span class="p">,</span> <span class="n">R_units</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">r_unit</span> <span class="o">=</span> <span class="n">R_units</span></div>
-
-
-<div class="viewcode-block" id="mbGDMLDataset.convertF"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.convertF">[docs]</a>    <span class="k">def</span> <span class="nf">convertF</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force_e_units</span><span class="p">,</span> <span class="n">force_r_units</span><span class="p">,</span> <span class="n">e_units</span><span class="p">,</span> <span class="n">r_units</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert forces.</span>
-
-<span class="sd">        Does not change :attr:`e_unit` or :attr:`r_unit`.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        force_e_units : :obj:`str`</span>
-<span class="sd">            Specifies package-specific energy units used in calculation.</span>
-<span class="sd">            Available units are ``&#39;eV&#39;``, ``&#39;hartree&#39;``, ``&#39;kcal/mol&#39;``, and</span>
-<span class="sd">            ``&#39;kJ/mol&#39;``.</span>
-<span class="sd">        force_r_units : :obj:`str`</span>
-<span class="sd">            Specifies package-specific distance units used in calculation.</span>
-<span class="sd">            Available units are ``&#39;Angstrom&#39;`` and ``&#39;bohr&#39;``.</span>
-<span class="sd">        e_units : :obj:`str`</span>
-<span class="sd">            Desired units of energy. Available units are ``&#39;eV&#39;``,</span>
-<span class="sd">            ``&#39;hartree&#39;``, ``&#39;kcal/mol&#39;``, and ``&#39;kJ/mol&#39;``.</span>
-<span class="sd">        r_units : obj:`str`</span>
-<span class="sd">            Desired units of distance. Available units are ``&#39;Angstrom&#39;`` and</span>
-<span class="sd">            ``&#39;bohr&#39;``.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_F</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">convert_forces</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="p">,</span> <span class="n">force_e_units</span><span class="p">,</span> <span class="n">force_r_units</span><span class="p">,</span> <span class="n">e_units</span><span class="p">,</span> <span class="n">r_units</span>
-        <span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="mbGDMLDataset.name_partition"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.name_partition">[docs]</a>    <span class="k">def</span> <span class="nf">name_partition</span><span class="p">(</span>

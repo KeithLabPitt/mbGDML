@@ -375,16 +375,17 @@
 
 <div class="viewcode-block" id="atoms_by_element"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.utils.atoms_by_element">[docs]</a><span class="k">def</span> <span class="nf">atoms_by_element</span><span class="p">(</span><span class="n">atom_list</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Converts a list of atoms identified by their atomic number to their</span>
-<span class="sd">    elemental symbol.</span>
+<span class="sd">    elemental symbol in the same order.</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
-<span class="sd">    atom_list : list</span>
-<span class="sd">        Contains numbers that represent atomic numbers.</span>
+<span class="sd">    ----------</span>
+<span class="sd">    atom_list : :obj:`list` [:obj:`int`]</span>
+<span class="sd">        Atomic numbers of atoms within a structure.</span>
 <span class="sd">    </span>
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    list</span>
-<span class="sd">        Contains strings of elemental symbols matching atom_list.</span>
+<span class="sd">    :obj:`list` [:obj:`str`]</span>
+<span class="sd">        Element symbols of atoms within a structure.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">atom_list_elements</span> <span class="o">=</span> <span class="p">[]</span>
@@ -398,13 +399,14 @@
 <span class="sd">    atomic number.</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
-<span class="sd">    atom_list : :obj:`list`</span>
-<span class="sd">        Contains numbers that represent atomic numbers.</span>
+<span class="sd">    ----------</span>
+<span class="sd">    atom_list : :obj:`list` [:obj:`str`]</span>
+<span class="sd">        Element symbols of atoms within a structure.</span>
 <span class="sd">    </span>
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    :obj:`list` [:obj:`int`]</span>
-<span class="sd">        Contains atomic numbers of atoms in atom_list.</span>
+<span class="sd">        Atomic numbers of atoms within a structure.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">elements</span><span class="o">.</span><span class="n">symbol</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">number</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">atom_list</span><span class="p">]</span></div>
 </pre></div>

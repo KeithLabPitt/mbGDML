@@ -192,7 +192,7 @@
 <div class="viewcode-block" id="mbGDMLCalculator"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.calculate.mbGDMLCalculator">[docs]</a><span class="k">class</span> <span class="nc">mbGDMLCalculator</span><span class="p">(</span><span class="n">Calculator</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Initializes mbGDML calculator with models and units.</span>
 <span class="sd">    </span>
-<span class="sd">    Parameteres</span>
+<span class="sd">    Parameters</span>
 <span class="sd">    -----------</span>
 <span class="sd">    model_paths : list</span>
 <span class="sd">        Paths of all models to be used for GDML prediction.</span>
@@ -241,7 +241,7 @@
 <div class="viewcode-block" id="mbGDMLCalculator.load_models"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.calculate.mbGDMLCalculator.load_models">[docs]</a>    <span class="k">def</span> <span class="nf">load_models</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_paths</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Loads models for GDML prediction.</span>
 <span class="sd">        </span>
-<span class="sd">        Parameteres</span>
+<span class="sd">        Parameters</span>
 <span class="sd">        -----------</span>
 <span class="sd">        model_paths : list</span>
 <span class="sd">            Contains paths of all GDML models to be loaded. All of these models </span>
@@ -304,7 +304,7 @@
     <span class="k">def</span> <span class="nf">_load_structure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">structure_name</span><span class="p">,</span> <span class="n">structure_path</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Sets the appropriate attributes for structure information.</span>
 <span class="sd">        </span>
-<span class="sd">        Parameteres</span>
+<span class="sd">        Parameters</span>
 <span class="sd">        -----------</span>
 <span class="sd">        structure_name : str</span>
 <span class="sd">            Name of the structure. Mainly for file naming.</span>
@@ -319,7 +319,7 @@
 <div class="viewcode-block" id="mbGDMLMD.load_calculator"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.calculate.mbGDMLMD.load_calculator">[docs]</a>    <span class="k">def</span> <span class="nf">load_calculator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_paths</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Loads the many-body GDML ASE calculator.</span>
 <span class="sd">        </span>
-<span class="sd">        Parameteres</span>
+<span class="sd">        Parameters</span>
 <span class="sd">        -----------</span>
 <span class="sd">        model_paths : list</span>
 <span class="sd">            Paths to all many-body GDML models to be used.</span>
@@ -331,7 +331,7 @@
 <div class="viewcode-block" id="mbGDMLMD.relax"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.calculate.mbGDMLMD.relax">[docs]</a>    <span class="k">def</span> <span class="nf">relax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_force</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Short relaxation of structure.</span>
 <span class="sd">        </span>
-<span class="sd">        Parameteres</span>
+<span class="sd">        Parameters</span>
 <span class="sd">        -----------</span>
 <span class="sd">        max_force : float, optional</span>
 <span class="sd">            Maximum force. Defaults to 1e-4.</span>
@@ -353,7 +353,7 @@
 <div class="viewcode-block" id="mbGDMLMD.printenergy"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.calculate.mbGDMLMD.printenergy">[docs]</a>    <span class="k">def</span> <span class="nf">printenergy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Quick function to print MD information during simulation.</span>
 <span class="sd">        </span>
-<span class="sd">        Parameteres</span>
+<span class="sd">        Parameters</span>
 <span class="sd">        -----------</span>
 <span class="sd">        a : `ase.atoms`</span>
 <span class="sd">            Atoms object from ASE.</span>
@@ -368,7 +368,7 @@
 <div class="viewcode-block" id="mbGDMLMD.run"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.calculate.mbGDMLMD.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">steps</span><span class="p">,</span> <span class="n">t_step</span><span class="p">,</span> <span class="n">temp</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Runs a MD simulation using the Verlet algorithm in ASE.</span>
 <span class="sd">        </span>
-<span class="sd">        Parameteres</span>
+<span class="sd">        Parameters</span>
 <span class="sd">        -----------</span>
 <span class="sd">        steps : `int`</span>
 <span class="sd">            Number of steps for the MD simulation.</span>
@@ -588,7 +588,7 @@
 <span class="sd">    </span>
 <span class="sd">    Can be submitted or just have the input files prepared.</span>
 <span class="sd">    </span>
-<span class="sd">    Parameteres</span>
+<span class="sd">    Parameters</span>
 <span class="sd">    -----------</span>
 <span class="sd">    package : `str`</span>
 <span class="sd">        Specifies the quantum chemistry program to be used. ORCA is currently</span>

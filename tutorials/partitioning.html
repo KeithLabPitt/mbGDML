@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Basic concepts &mdash; mbGDML  documentation</title>
+  <title>Partitioning &mdash; mbGDML  documentation</title>
   
 
   
@@ -36,8 +36,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Partitioning" href="partitioning.html" />
-    <link rel="prev" title="Tutorials" href="tutorials.html" /> 
+    <link rel="next" title="Data sets" href="datasets.html" />
+    <link rel="prev" title="Basic concepts" href="basics.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -85,16 +85,8 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="tutorials.html">Tutorials</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Basic concepts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#typical-workflow">Typical workflow</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#geometric-sampling">Geometric sampling</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#preparing-data-sets-and-training">Preparing data sets and training</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#using-mbgdml-force-fields">Using mbGDML force fields</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="partitioning.html">Partitioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html">Basic concepts</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Partitioning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datasets.html">Data sets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="predictions.html">Predictions</a></li>
 </ul>
@@ -149,13 +141,13 @@
         
           <li><a href="tutorials.html">Tutorials</a> &raquo;</li>
         
-      <li>Basic concepts</li>
+      <li>Partitioning</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/tutorials/basics.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/tutorials/partitioning.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -168,53 +160,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="basic-concepts">
-<h1>Basic concepts<a class="headerlink" href="#basic-concepts" title="Permalink to this headline">¶</a></h1>
-<p>This tutorial covers, well, the basics of many-body gradient domain machine
-learning (mbGDML) force fields.
-Please read through this before moving to other tutorials.</p>
-<div class="section" id="typical-workflow">
-<h2>Typical workflow<a class="headerlink" href="#typical-workflow" title="Permalink to this headline">¶</a></h2>
-<p>This section will walk through the various steps involved in creating a 3-body
-GDML force field for water.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">A 3-body GDML force field is the combination of 1-body, 2-body, and 3-body
-GDML models.</p>
-</div>
-<div class="section" id="geometric-sampling">
-<h3>Geometric sampling<a class="headerlink" href="#geometric-sampling" title="Permalink to this headline">¶</a></h3>
-<p>Machine learning methods are data driven and rely on diverse sampling of the
-potential energy surface (PES) regions of interest.
-Ultimately, a 3-body GDML force field requires <strong>structures</strong>, <strong>energies</strong>, and
-<strong>atomic forces</strong> for water monomers (1mers), dimers (2mers), and trimers
-(3mers).
-Molecular dynamics (MD) is one convenient and quick technique to sample
-physically-relevant equilibrium and nonequilibrium configurations.</p>
-<p>How you generate these data is up to you and what is best for your system.
-For this example, one approach is to partition the various sized water clusters
-from a set of tetramer (4mer) MD simulations.
-That is, running several 4mer MD simulations, carving all possible 1mer,
-2mer, and 3mer structures, and recalculating energies and forces.
-This procedure would provide a total of four 1mer, six 2mer, and four 3mer
-structures per MD time step.</p>
+  <div class="section" id="partitioning">
+<h1>Partitioning<a class="headerlink" href="#partitioning" title="Permalink to this headline">¶</a></h1>
 <p>TODO</p>
-</div>
-<div class="section" id="preparing-data-sets-and-training">
-<h3>Preparing data sets and training<a class="headerlink" href="#preparing-data-sets-and-training" title="Permalink to this headline">¶</a></h3>
-<p>TODO</p>
-</div>
-<div class="section" id="using-mbgdml-force-fields">
-<h3>Using mbGDML force fields<a class="headerlink" href="#using-mbgdml-force-fields" title="Permalink to this headline">¶</a></h3>
-<p>TODO</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Each additional mbGDML model is dependent on the ones before it.
-For example, a 3-body GDML model can only be used with the 1-body and 2-body
-models used to create it.</p>
-</div>
-</div>
-</div>
 </div>
 
 
@@ -225,10 +173,10 @@ models used to create it.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="partitioning.html" class="btn btn-neutral float-right" title="Partitioning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="datasets.html" class="btn btn-neutral float-right" title="Data sets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="tutorials.html" class="btn btn-neutral float-left" title="Tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="basics.html" class="btn btn-neutral float-left" title="Basic concepts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
