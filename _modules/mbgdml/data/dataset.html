@@ -191,12 +191,10 @@
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    dataset_path : :obj:`str`, optional</span>
-<span class="sd">        Path to a saved :obj:`numpy.lib.npyio.NpzFile`.</span>
+<span class="sd">        Path to a saved :obj:`numpy.NpzFile`.</span>
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
-<span class="sd">    dataset : :obj:`dict`</span>
-<span class="sd">        Contains all data as :obj:`numpy.ndarray` objects.</span>
 <span class="sd">    name : :obj:`str`</span>
 <span class="sd">        Name of the data set. Defaults to ``&#39;dataset&#39;``.</span>
 <span class="sd">    code_verstion</span>
@@ -235,23 +233,21 @@
 <span class="sd">        dataset : :obj:`dict`</span>
 <span class="sd">            Contains all information and arrays stored in data set.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">dataset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_system_info</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_R</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_E</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_F</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_r_unit</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;r_unit&#39;</span><span class="p">][()])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_e_unit</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;e_unit&#39;</span><span class="p">][()])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">code_version</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;code_version&#39;</span><span class="p">][()])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">][()])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">theory</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;theory&#39;</span><span class="p">][()])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_R</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_E</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_F</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_r_unit</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;r_unit&#39;</span><span class="p">][()])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_e_unit</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;e_unit&#39;</span><span class="p">][()])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">code_version</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;code_version&#39;</span><span class="p">][()])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">][()])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theory</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;theory&#39;</span><span class="p">][()])</span>
         <span class="c1"># mbGDML added data set information.</span>
-        <span class="k">if</span> <span class="s1">&#39;mb&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">mb</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;mb&#39;</span><span class="p">][()])</span>
+        <span class="k">if</span> <span class="s1">&#39;mb&#39;</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mb</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;mb&#39;</span><span class="p">][()])</span>
 
-<div class="viewcode-block" id="mbGDMLDataset.load"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset_path</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Uses :func:``numpy.load`` to read data set.</span>
+<div class="viewcode-block" id="mbGDMLDataset.load"><a class="viewcode-back" href="../../../tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Read data set.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -266,7 +262,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">dataset_npz</span><span class="p">))</span></div>
     
 
-<div class="viewcode-block" id="mbGDMLDataset.read_xyz"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.read_xyz">[docs]</a>    <span class="k">def</span> <span class="nf">read_xyz</span><span class="p">(</span>
+<div class="viewcode-block" id="mbGDMLDataset.read_xyz"><a class="viewcode-back" href="../../../tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.read_xyz">[docs]</a>    <span class="k">def</span> <span class="nf">read_xyz</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">xyz_type</span><span class="p">,</span> <span class="n">r_unit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">e_unit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">energy_comments</span><span class="o">=</span><span class="kc">False</span>
     <span class="p">):</span>
@@ -291,7 +287,8 @@
 <span class="sd">        Notes</span>
 <span class="sd">        -----</span>
 <span class="sd">        If ``xyz_type`` is ``&#39;grads&#39;``, it will take the negative and store as</span>
-<span class="sd">        forces.</span>
+<span class="sd">        forces. If it is ``&#39;extended&#39;`` the three rightmost data will be stored</span>
+<span class="sd">        as forces.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_user_data</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="n">z</span><span class="p">,</span> <span class="n">comments</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">parse_stringfile</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
@@ -328,12 +325,12 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">e_unit</span> <span class="o">=</span> <span class="n">e_unit</span></div>
     
 
-<div class="viewcode-block" id="mbGDMLDataset.from_partitioncalc"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.from_partitioncalc">[docs]</a>    <span class="k">def</span> <span class="nf">from_partitioncalc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">partcalc</span><span class="p">):</span>
+<div class="viewcode-block" id="mbGDMLDataset.from_partitioncalc"><a class="viewcode-back" href="../../../tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.from_partitioncalc">[docs]</a>    <span class="k">def</span> <span class="nf">from_partitioncalc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">partcalc</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Creates data set from partition calculations.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        partcalc : :obj:`mbgdml.data.PartitionOutput`</span>
+<span class="sd">        partcalc : :obj:`~mbgdml.data.calculation.PartitionOutput`</span>
 <span class="sd">            Data from energy and gradient calculations of same partition.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">=</span> <span class="n">partcalc</span><span class="o">.</span><span class="n">z</span>
@@ -343,8 +340,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">r_unit</span> <span class="o">=</span> <span class="n">partcalc</span><span class="o">.</span><span class="n">r_unit</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">e_unit</span> <span class="o">=</span> <span class="n">partcalc</span><span class="o">.</span><span class="n">e_unit</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">code_version</span> <span class="o">=</span> <span class="n">__version__</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">theory</span> <span class="o">=</span> <span class="n">partcalc</span><span class="o">.</span><span class="n">theory</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">()</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theory</span> <span class="o">=</span> <span class="n">partcalc</span><span class="o">.</span><span class="n">theory</span></div>
 
 
 <div class="viewcode-block" id="mbGDMLDataset.name_partition"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.name_partition">[docs]</a>    <span class="k">def</span> <span class="nf">name_partition</span><span class="p">(</span>
@@ -370,13 +366,15 @@
             <span class="s1">&#39;dataset&#39;</span>
         <span class="p">])</span></div>
 
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Contains all data as :obj:`numpy.ndarray` objects.</span>
 
-<div class="viewcode-block" id="mbGDMLDataset.create"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Creates and writes a data set.</span>
+<span class="sd">        :type: :obj:`dict`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># sGDML variables.</span>
         <span class="n">dataset</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">),</span>  <span class="c1"># Designates dataset or model.</span>
+            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">),</span>  <span class="c1"># Designates dataset.</span>
             <span class="s1">&#39;code_version&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">__version__</span><span class="p">),</span>  <span class="c1"># sGDML version.</span>
             <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">),</span>  <span class="c1"># Name of the output file.</span>
             <span class="s1">&#39;theory&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">theory</span><span class="p">),</span>  <span class="c1"># Theory used to calculate the data.</span>
@@ -398,21 +396,21 @@
         <span class="c1"># mbGDML variables.</span>
         <span class="n">dataset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_system_info</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
         <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;md5&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sgdml_io</span><span class="o">.</span><span class="n">dataset_md5</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span></div>
+        <span class="k">return</span> <span class="n">dataset</span>
      
 
-<div class="viewcode-block" id="mbGDMLDataset.from_combined"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.from_combined">[docs]</a>    <span class="k">def</span> <span class="nf">from_combined</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset_paths</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="mbGDMLDataset.from_combined"><a class="viewcode-back" href="../../../tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.from_combined">[docs]</a>    <span class="k">def</span> <span class="nf">from_combined</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset_paths</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Combines multiple data sets into one.</span>
 <span class="sd">        </span>
-<span class="sd">        Finds all files labeled with &#39;dataset.npz&#39; (defined in </span>
-<span class="sd">        PartitionCalcOutput.create_dataset) in a user specified directory</span>
-<span class="sd">        and combines them. Typically used on a single partition size (e.g.,</span>
-<span class="sd">        monomer, dimer, trimer, etc.) to represent the complete dataset.</span>
+<span class="sd">        Typically used on a single partition size (e.g., monomer, dimer, trimer,</span>
+<span class="sd">        etc.) to represent the complete dataset.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        dataset_paths : :obj:`list` [:obj:`str`]</span>
 <span class="sd">            Paths to data sets to combine.</span>
+<span class="sd">        name : :obj:`str`, optional</span>
+<span class="sd">            Name for the combined data set.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Prepares initial combined dataset from the first dataset.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">dataset_paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -450,8 +448,7 @@
             <span class="c1"># Concatenating relevant arrays.</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">,</span> <span class="n">dataset_add</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">R</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_E</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> <span class="n">dataset_add</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">E</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="p">,</span> <span class="n">dataset_add</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">F</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">()</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="p">,</span> <span class="n">dataset_add</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">F</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="mbGDMLDataset.print"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.print">[docs]</a>    <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -464,7 +461,7 @@
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Forces:</span><span class="se">\n</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="p">[</span><span class="n">config</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
 
     
-<div class="viewcode-block" id="mbGDMLDataset.create_mb"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.create_mb">[docs]</a>    <span class="k">def</span> <span class="nf">create_mb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref_dataset</span><span class="p">,</span> <span class="n">model_paths</span><span class="p">):</span>
+<div class="viewcode-block" id="mbGDMLDataset.create_mb"><a class="viewcode-back" href="../../../tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.create_mb">[docs]</a>    <span class="k">def</span> <span class="nf">create_mb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref_dataset</span><span class="p">,</span> <span class="n">model_paths</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Creates a many-body data set.</span>
 
 <span class="sd">        Removes energy and force predictions from the reference data set using</span>
@@ -472,17 +469,17 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        ref_dataset : :obj:`mbgdml.data.mbGDMLDataset`</span>
+<span class="sd">        ref_dataset : :obj:`~mbgdml.data.dataset.mbGDMLDataset`</span>
 <span class="sd">            Reference data set of structures, energies, and forces. This is the</span>
 <span class="sd">            data where mbGDML predictions will be subtracted from.</span>
 <span class="sd">        model_paths : :obj:`list` [:obj:`str`]</span>
 <span class="sd">            Paths to saved many-body GDML models in the form of</span>
-<span class="sd">            :obj:`numpy.lib.npyio.NpzFile`.</span>
+<span class="sd">            :obj:`numpy.NpzFile`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Removing /contributions ...&#39;</span><span class="p">)</span>
         <span class="n">predict</span> <span class="o">=</span> <span class="n">mbGDMLPredict</span><span class="p">(</span><span class="n">model_paths</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">predict</span><span class="o">.</span><span class="n">remove_nbody</span><span class="p">(</span><span class="n">ref_dataset</span><span class="o">.</span><span class="n">dataset</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">)</span></div></div>
+        <span class="n">dataset</span> <span class="o">=</span> <span class="n">predict</span><span class="o">.</span><span class="n">remove_nbody</span><span class="p">(</span><span class="n">ref_dataset</span><span class="o">.</span><span class="n">dataset</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

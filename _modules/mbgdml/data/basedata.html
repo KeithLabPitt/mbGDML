@@ -225,7 +225,7 @@
         <span class="sd">&quot;&quot;&quot;Atomic coordinates of structure(s).</span>
 <span class="sd">        </span>
 <span class="sd">        A :obj:`numpy.ndarray` with shape of ``(m, n, 3)`` where ``m`` is the</span>
-<span class="sd">        number of calculations and ``n`` is the number of atoms with three </span>
+<span class="sd">        number of structures and ``n`` is the number of atoms with three </span>
 <span class="sd">        Cartesian components.</span>
 
 <span class="sd">        :type: :obj:`numpy.ndarray`</span>
@@ -257,7 +257,7 @@
         <span class="sd">&quot;&quot;&quot;Atomic forces of atoms in structure(s).</span>
 <span class="sd">        </span>
 <span class="sd">        A :obj:`numpy.ndarray` with shape of ``(m, n, 3)`` where ``m`` is the</span>
-<span class="sd">        number of calculations and ``n`` is the number of atoms with three </span>
+<span class="sd">        number of structures and ``n`` is the number of atoms with three </span>
 <span class="sd">        Cartesian components.</span>
 
 <span class="sd">        :type: :obj:`numpy.ndarray`</span>
@@ -420,7 +420,7 @@
 <span class="sd">        e_units : :obj:`str`</span>
 <span class="sd">            Desired units of energy. Available units are ``&#39;eV&#39;``,</span>
 <span class="sd">            ``&#39;hartree&#39;``, ``&#39;kcal/mol&#39;``, and ``&#39;kJ/mol&#39;``.</span>
-<span class="sd">        r_units : obj:`str`</span>
+<span class="sd">        r_units : :obj:`str`</span>
 <span class="sd">            Desired units of distance. Available units are ``&#39;Angstrom&#39;`` and</span>
 <span class="sd">            ``&#39;bohr&#39;``.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -466,13 +466,12 @@
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        name : str</span>
-<span class="sd">            Name of the file to be saved not including the</span>
-<span class="sd">            extension.</span>
-<span class="sd">        data : dict</span>
-<span class="sd">            Base variables for dataset or model.</span>
-<span class="sd">        save_dir : str</span>
-<span class="sd">            Directory to save the file.</span>
+<span class="sd">        name : :obj:`str`</span>
+<span class="sd">            Name of the file to be saved not including the ``npz`` extension.</span>
+<span class="sd">        data : :obj:`dict`</span>
+<span class="sd">            Data to be saved to ``npz`` file.</span>
+<span class="sd">        save_dir : :obj:`str`</span>
+<span class="sd">            Directory to save the file (with or without the ``&#39;/&#39;`` suffix).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">save_dir</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">norm_path</span><span class="p">(</span><span class="n">save_dir</span><span class="p">)</span>
         <span class="n">save_path</span> <span class="o">=</span> <span class="n">save_dir</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;.npz&#39;</span>
