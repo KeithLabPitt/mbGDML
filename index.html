@@ -153,6 +153,30 @@
             
   <div class="section" id="mbgdml">
 <h1>mbGDML<a class="headerlink" href="#mbgdml" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="https://travis-ci.com/keithgroup/mbGDML"><img alt="https://travis-ci.com/keithgroup/mbGDML.svg?branch=master" src="https://travis-ci.com/keithgroup/mbGDML.svg?branch=master" /></a>
+<a class="reference external image-reference" href="https://codecov.io/gh/keithgroup/mbGDML"><img alt="https://codecov.io/gh/keithgroup/mbGDML/branch/master/graph/badge.svg" src="https://codecov.io/gh/keithgroup/mbGDML/branch/master/graph/badge.svg" /></a>
+<a class="reference external image-reference" href="https://lgtm.com/projects/g/keithgroup/mbGDML/context:python"><img alt="https://img.shields.io/lgtm/grade/python/g/keithgroup/mbGDML.svg?logo=lgtm&amp;logoWidth=18" src="https://img.shields.io/lgtm/grade/python/g/keithgroup/mbGDML.svg?logo=lgtm&amp;logoWidth=18" /></a>
+<a class="reference external image-reference" href="https://github.com/keithgroup/mbGDML/blob/master/LICENSE"><img alt="https://img.shields.io/github/license/keithgroup/mbGDML" src="https://img.shields.io/github/license/keithgroup/mbGDML" /></a>
+<p>Many-body gradient domain machine learning (mbGDML) is a Python package that
+assists with creating, using, and analyzing sGDML force
+fields for many-body interactions.</p>
+<p><strong>Disclaimer:</strong> This package is still under active development and is not ready
+for production.</p>
+</div>
+<div class="section" id="why">
+<h1>Why?<a class="headerlink" href="#why" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://quantum-machine.org/gdml/">Symmetric gradient domain machine learning (sGDML)</a> force fields are trained with the
+gradient of a kernel ridge estimator on interatomic forces. While this provides
+efficient reconstruction of potential energy surfaces with only hundreds of data
+points they are nontransferable to systems with differing number of atoms.
+Thus, any attempt to model arbitrarily sized systems—say a solvent—would be
+futile. Breaking the <em>n</em>-sized system into many-body contributions provides
+a route to circumvent these limitations. For example, this system of 17 water
+molecules could be effectively represented as a combination of 1-, 2-, and
+3-body contributions. mbGDML provides the framework to do just that.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/solvent-explicit.nbody.svg"><img alt="_images/solvent-explicit.nbody.svg" src="_images/solvent-explicit.nbody.svg" width="300px" /></a>
+</div>
 <div class="toctree-wrapper compound">
 </div>
 </div>
