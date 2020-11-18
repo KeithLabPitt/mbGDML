@@ -174,16 +174,17 @@
 <span class="kn">import</span> <span class="nn">itertools</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">mbgdml</span> <span class="kn">import</span> <span class="n">parse</span>
+<span class="kn">from</span> <span class="nn">mbgdml</span> <span class="kn">import</span> <span class="n">utils</span>
 <span class="kn">from</span> <span class="nn">mbgdml</span> <span class="kn">import</span> <span class="n">solvents</span>
 
-<div class="viewcode-block" id="partition_cluster"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.partition.partition_cluster">[docs]</a><span class="k">def</span> <span class="nf">partition_cluster</span><span class="p">(</span><span class="n">cluster</span><span class="p">,</span> <span class="n">nbody</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Creates dictionary with all possible n-body combinations of solvent</span>
-<span class="sd">    cluster.</span>
+<span class="k">def</span> <span class="nf">_partition_cluster</span><span class="p">(</span><span class="n">cluster</span><span class="p">,</span> <span class="n">nbody</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;All possible n-body combinations from a cluster.</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    cluster : :obj:`dict`</span>
-<span class="sd">        Dictionary of solvent molecules in cluster from parse_cluster</span>
+<span class="sd">        Dictionary of solvent molecules in cluster from</span>
+<span class="sd">        :func:`~mbgdml.parse.parse_cluster`.</span>
 <span class="sd">    nbody : :obj:`int`</span>
 <span class="sd">        Desired number of solvent molecules in combination.</span>
 <span class="sd">    </span>
@@ -191,25 +192,32 @@
 <span class="sd">    -------</span>
 <span class="sd">    :obj:`dict`</span>
 <span class="sd">        All nonrepeating solvent molecule combinations from cluster with keys </span>
-<span class="sd">        being uppercase concatenations of molecule labels and values being the </span>
-<span class="sd">        string of coordinates.</span>
+<span class="sd">        being ``&#39;#,#,#&#39;`` where each ``#`` represents a molecule index. For</span>
+<span class="sd">        example, ``&#39;0,11,19&#39;`` would be a cluster with molecules 0, 11, and 19</span>
+<span class="sd">        from the super cluster. Each value is a dictionary containing</span>
+
+<span class="sd">        ``&#39;z&#39;``</span>
+<span class="sd">            A ``(n,)`` shape array of type :obj:`numpy.int32` containing atomic</span>
+<span class="sd">            numbers of atoms in the structures in order as they appear.</span>
+<span class="sd">        </span>
+<span class="sd">        ``&#39;R&#39;``</span>
+<span class="sd">            A :obj:`numpy.ndarray` with shape of ``(n, 3)`` where ``n`` is the</span>
+<span class="sd">            number of atoms with three Cartesian components.</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    ABC is considered the same as BAC and only included once.</span>
+<span class="sd">    0,1,2 is considered the same as 2,1,3 and only included once.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="n">segments</span> <span class="o">=</span> <span class="p">{}</span>
 
-    <span class="c1"># Creates list of combinations of cluster dictionary keys</span>
-    <span class="c1"># comb_list is a list of tuples,</span>
-    <span class="c1"># e.g. [(&#39;A&#39;, &#39;B&#39;), (&#39;A&#39;, &#39;C&#39;), (&#39;A&#39;, &#39;D&#39;), (&#39;B&#39;, &#39;C&#39;), (&#39;B&#39;, &#39;D&#39;), (&#39;C&#39;, &#39;D&#39;)].</span>
+    <span class="c1"># Creates list of combinations of cluster dictionary keys.</span>
+    <span class="c1"># comb_list is a list of tuples, </span>
+    <span class="c1"># e.g. [(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)].</span>
     <span class="n">comb_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">cluster</span><span class="p">,</span> <span class="n">nbody</span><span class="p">))</span>
-    
     <span class="c1"># Adds each solvent molecule coordinates in each combination</span>
     <span class="c1"># to a dictionary.</span>
     <span class="k">for</span> <span class="n">combination</span> <span class="ow">in</span> <span class="n">comb_list</span><span class="p">:</span>
-        <span class="c1"># Combination is tuple of solvent solvent molecules, e.g. (&#39;B&#39;, &#39;C&#39;).</span>
+        <span class="c1"># Combination is tuple of solvent solvent molecules, e.g. (0, 1).</span>
         
         <span class="k">for</span> <span class="n">molecule</span> <span class="ow">in</span> <span class="n">combination</span><span class="p">:</span>
             <span class="c1"># Molecule is the letter assigned to the solvent molecule, e.g. &#39;A&#39;.</span>
@@ -217,27 +225,35 @@
             <span class="c1"># Tries to concatenate two molecules; if it fails it initializes</span>
             <span class="c1"># the variable.</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="n">combined_atoms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">combined_atoms</span><span class="p">,</span>
-                                                 <span class="n">cluster</span><span class="p">[</span><span class="n">molecule</span><span class="p">][</span><span class="s1">&#39;atoms&#39;</span><span class="p">]))</span>
-                <span class="n">combined_coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">combined_coords</span><span class="p">,</span>
-                                                 <span class="n">cluster</span><span class="p">[</span><span class="n">molecule</span><span class="p">][</span><span class="s1">&#39;coords&#39;</span><span class="p">]))</span>
+                <span class="n">combined_atoms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+                    <span class="p">(</span><span class="n">combined_atoms</span><span class="p">,</span> <span class="n">cluster</span><span class="p">[</span><span class="n">molecule</span><span class="p">][</span><span class="s1">&#39;z&#39;</span><span class="p">])</span>
+                <span class="p">)</span>
+                <span class="n">combined_coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+                    <span class="p">(</span><span class="n">combined_coords</span><span class="p">,</span> <span class="n">cluster</span><span class="p">[</span><span class="n">molecule</span><span class="p">][</span><span class="s1">&#39;R&#39;</span><span class="p">])</span>
+                <span class="p">)</span>
             <span class="k">except</span> <span class="ne">UnboundLocalError</span><span class="p">:</span>
-                <span class="n">combined_atoms</span> <span class="o">=</span> <span class="n">cluster</span><span class="p">[</span><span class="n">molecule</span><span class="p">][</span><span class="s1">&#39;atoms&#39;</span><span class="p">]</span>
-                <span class="n">combined_coords</span> <span class="o">=</span> <span class="n">cluster</span><span class="p">[</span><span class="n">molecule</span><span class="p">][</span><span class="s1">&#39;coords&#39;</span><span class="p">]</span>
+                <span class="n">combined_atoms</span> <span class="o">=</span> <span class="n">cluster</span><span class="p">[</span><span class="n">molecule</span><span class="p">][</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>
+                <span class="n">combined_coords</span> <span class="o">=</span> <span class="n">cluster</span><span class="p">[</span><span class="n">molecule</span><span class="p">][</span><span class="s1">&#39;R&#39;</span><span class="p">]</span>
 
         <span class="c1"># Adds the segment to the dict.</span>
-        <span class="n">segments</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">combination</span><span class="p">)]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;atoms&#39;</span><span class="p">:</span> <span class="n">combined_atoms</span><span class="p">,</span>
-                                          <span class="s1">&#39;coords&#39;</span><span class="p">:</span> <span class="n">combined_coords</span><span class="p">}</span>
+        <span class="n">comb_key</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">combination</span><span class="p">])</span>
+        <span class="n">segments</span><span class="p">[</span><span class="n">comb_key</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="n">combined_atoms</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">:</span> <span class="n">combined_coords</span>
+        <span class="p">}</span>
 
         <span class="c1"># Clears segment variables for the next one.</span>
         <span class="k">del</span> <span class="n">combined_atoms</span><span class="p">,</span> <span class="n">combined_coords</span>
 
-    <span class="k">return</span> <span class="n">segments</span></div>
+    <span class="k">return</span> <span class="n">segments</span>
 
 
-<div class="viewcode-block" id="partition_trajectory"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.partition.partition_trajectory">[docs]</a><span class="k">def</span> <span class="nf">partition_trajectory</span><span class="p">(</span><span class="n">traj_path</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Partitions MD trajectory into separate trajectories for each possible</span>
-<span class="sd">    segment.</span>
+<div class="viewcode-block" id="partition_stringfile"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.partition.partition_stringfile">[docs]</a><span class="k">def</span> <span class="nf">partition_stringfile</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Partitions an XYZ file.</span>
+
+<span class="sd">    Takes a cluster of molecules and separates into individual partitions. A</span>
+<span class="sd">    partition being a monomer, dimer, trimer, etc. from the original cluster.</span>
+<span class="sd">    For example, a structure of three solvent molecules will provide three</span>
+<span class="sd">    individual partitions of monomers, three dimers, and one trimer.</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -247,64 +263,61 @@
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    :obj:`dict`</span>
-<span class="sd">        All nonrepeating solvent molecule combinations from cluster with keys </span>
+<span class="sd">        All nonrepeating molecule combinations from original cluster with keys </span>
 <span class="sd">        being uppercase concatenations of molecule labels and values being the </span>
 <span class="sd">        string of coordinates.</span>
+<span class="sd">    </span>
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If any structure has a different order of atoms.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># Parses trajectory.</span>
-    <span class="n">parsed_traj</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">parse_coords</span><span class="p">(</span><span class="n">traj_path</span><span class="p">)</span>
+    <span class="n">z_all</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">R_list</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">parse_stringfile</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">z_all</span><span class="p">))</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s1"> contains atoms in different order.&#39;</span><span class="p">)</span>
+    <span class="n">z_elements</span> <span class="o">=</span> <span class="n">z_all</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">R_list</span><span class="p">)</span>
+    <span class="c1"># Gets system information</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">atoms_by_number</span><span class="p">(</span><span class="n">z_elements</span><span class="p">))</span>
+    <span class="n">sys_info</span> <span class="o">=</span> <span class="n">solvents</span><span class="o">.</span><span class="n">system_info</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
 
-    <span class="c1"># Gets length of trajectory.</span>
-    <span class="n">traj_steps</span> <span class="o">=</span> <span class="n">parsed_traj</span><span class="p">[</span><span class="s1">&#39;coords&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-    <span class="c1"># Gets solvent information.</span>
-    <span class="n">solvent_info</span> <span class="o">=</span> <span class="n">solvents</span><span class="o">.</span><span class="n">system_info</span><span class="p">(</span><span class="n">parsed_traj</span><span class="p">[</span><span class="s1">&#39;atoms&#39;</span><span class="p">])</span>
-
-    <span class="c1"># Directory containing all partitions atoms and coords.</span>
-    <span class="n">traj_partition</span> <span class="o">=</span> <span class="p">{}</span>  
-    <span class="c1"># Loops through each step in the MD trajectory.</span>
-    <span class="n">step_index</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">while</span> <span class="n">step_index</span> <span class="o">&lt;</span> <span class="n">traj_steps</span><span class="p">:</span>
-        <span class="n">cluster</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">parse_cluster</span><span class="p">(</span>
-            <span class="p">{</span><span class="s1">&#39;atoms&#39;</span><span class="p">:</span> <span class="n">parsed_traj</span><span class="p">[</span><span class="s1">&#39;atoms&#39;</span><span class="p">],</span>
-             <span class="s1">&#39;coords&#39;</span><span class="p">:</span> <span class="n">parsed_traj</span><span class="p">[</span><span class="s1">&#39;coords&#39;</span><span class="p">][</span><span class="n">step_index</span><span class="p">]}</span>
-        <span class="p">)</span>
-
+    <span class="c1"># Gets </span>
+    <span class="n">all_partitions</span> <span class="o">=</span> <span class="p">{}</span>  
+    <span class="k">for</span> <span class="n">coords</span> <span class="ow">in</span> <span class="n">R</span><span class="p">:</span>
+        <span class="n">cluster</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">parse_cluster</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">coords</span><span class="p">)</span>
         <span class="c1"># Loops through all possible n-body partitions and adds the atoms once</span>
         <span class="c1"># and adds each step traj_partition.</span>
-        <span class="n">nbody_index</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="k">while</span> <span class="n">nbody_index</span> <span class="o">&lt;=</span> <span class="n">solvent_info</span><span class="p">[</span><span class="s1">&#39;cluster_size&#39;</span><span class="p">]:</span>
-            <span class="n">partitions</span> <span class="o">=</span> <span class="n">partition_cluster</span><span class="p">(</span><span class="n">cluster</span><span class="p">,</span> <span class="n">nbody_index</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i_nbody</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sys_info</span><span class="p">[</span><span class="s1">&#39;cluster_size&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">partitions</span> <span class="o">=</span> <span class="n">_partition_cluster</span><span class="p">(</span><span class="n">cluster</span><span class="p">,</span> <span class="n">i_nbody</span><span class="p">)</span>
             <span class="n">partition_labels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">partitions</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-            
             <span class="c1"># Tries to add the next trajectory step to &#39;coords&#39;; if it fails it</span>
             <span class="c1"># initializes &#39;atoms&#39; and &#39;coords&#39; for that partition.</span>
             <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">partition_labels</span><span class="p">:</span>
                 <span class="n">partition_info</span> <span class="o">=</span> <span class="n">solvents</span><span class="o">.</span><span class="n">system_info</span><span class="p">(</span>
-                    <span class="n">partitions</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s1">&#39;atoms&#39;</span><span class="p">]</span>
+                    <span class="n">partitions</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s1">&#39;z&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
                 <span class="p">)</span>
 
                 <span class="k">try</span><span class="p">:</span>
-                    <span class="n">traj_partition</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s1">&#39;coords&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                        <span class="n">traj_partition</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s1">&#39;coords&#39;</span><span class="p">],</span>
-                        <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">partitions</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s1">&#39;coords&#39;</span><span class="p">]]),</span>
+                    <span class="n">all_partitions</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s1">&#39;R&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">all_partitions</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s1">&#39;R&#39;</span><span class="p">],</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">partitions</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s1">&#39;R&#39;</span><span class="p">]]),</span>
                         <span class="n">axis</span><span class="o">=</span><span class="mi">0</span>
                     <span class="p">)</span>
                 <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-                    <span class="n">traj_partition</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="n">all_partitions</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
                         <span class="s1">&#39;solvent_label&#39;</span><span class="p">:</span> <span class="n">partition_info</span><span class="p">[</span><span class="s1">&#39;solvent_label&#39;</span><span class="p">],</span>
-                        <span class="s1">&#39;cluster_size&#39;</span><span class="p">:</span> <span class="n">solvent_info</span><span class="p">[</span><span class="s1">&#39;cluster_size&#39;</span><span class="p">],</span>
+                        <span class="s1">&#39;cluster_size&#39;</span><span class="p">:</span> <span class="n">sys_info</span><span class="p">[</span><span class="s1">&#39;cluster_size&#39;</span><span class="p">],</span>
                         <span class="s1">&#39;partition_label&#39;</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span>
                         <span class="s1">&#39;partition_size&#39;</span><span class="p">:</span> <span class="n">partition_info</span><span class="p">[</span><span class="s1">&#39;cluster_size&#39;</span><span class="p">],</span>
-                        <span class="s1">&#39;atoms&#39;</span><span class="p">:</span> <span class="n">partitions</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s1">&#39;atoms&#39;</span><span class="p">],</span>
-                        <span class="s1">&#39;coords&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">partitions</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s1">&#39;coords&#39;</span><span class="p">]])</span>
+                        <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="n">partitions</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s1">&#39;z&#39;</span><span class="p">],</span>
+                        <span class="s1">&#39;R&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">partitions</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s1">&#39;R&#39;</span><span class="p">]])</span>
                     <span class="p">}</span>
-            
-            <span class="n">nbody_index</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">step_index</span> <span class="o">+=</span> <span class="mi">1</span>
-    
-    <span class="k">return</span> <span class="n">traj_partition</span></div>
+
+    <span class="k">return</span> <span class="n">all_partitions</span></div>
 </pre></div>
 
            </div>
