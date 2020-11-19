@@ -194,23 +194,13 @@
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
 <span class="sd">    -----------</span>
-<span class="sd">    model_paths : list</span>
+<span class="sd">    model_paths : :obj:`list`</span>
 <span class="sd">        Paths of all models to be used for GDML prediction.</span>
-<span class="sd">    e_unit_model : str, optional</span>
+<span class="sd">    e_unit_model : :obj:`str`, optional</span>
 <span class="sd">        Specifies the units of energy prediction for the GDML models. Defaults</span>
 <span class="sd">        to &#39;kcal/mol&#39;.</span>
-<span class="sd">    r_unit_model : str, optional</span>
+<span class="sd">    r_unit_model : :obj:`str`, optional</span>
 <span class="sd">        Specifies the distance units for GDML models. Defaults to &#39;Angstrom&#39;.</span>
-<span class="sd">    </span>
-<span class="sd">    Attributes</span>
-<span class="sd">    ----------</span>
-
-
-<span class="sd">    Methods</span>
-<span class="sd">    -------</span>
-<span class="sd">    load_models(model_paths)</span>
-<span class="sd">        Loads models for GDML prediction.</span>
-<span class="sd">    calculate(atoms=None, *args, **kwargs)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">implemented_properties</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;energy&#39;</span><span class="p">,</span> <span class="s1">&#39;forces&#39;</span><span class="p">]</span>
@@ -243,7 +233,7 @@
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        model_paths : list</span>
+<span class="sd">        model_paths : :obj:`list` [:obj:`str`]</span>
 <span class="sd">            Contains paths of all GDML models to be loaded. All of these models </span>
 <span class="sd">            will be used during the MD run. </span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -260,7 +250,6 @@
 
 <div class="viewcode-block" id="mbGDMLCalculator.calculate"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.calculate.mbGDMLCalculator.calculate">[docs]</a>    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atoms</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Predicts energy and forces using many-body GDML models.</span>
-
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="nb">super</span><span class="p">(</span><span class="n">mbGDMLCalculator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">calculate</span><span class="p">(</span>
@@ -285,17 +274,10 @@
 <span class="sd">        </span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    structure_name : str</span>
+<span class="sd">    structure_name : :obj:`str`</span>
 <span class="sd">        Name of the structure. Mainly for file naming.</span>
-<span class="sd">    structure_path : str</span>
+<span class="sd">    structure_path : :obj:`str`</span>
 <span class="sd">        Path to the structure file.</span>
-
-<span class="sd">    Attributes</span>
-<span class="sd">    ----------</span>
-
-<span class="sd">    Methods</span>
-<span class="sd">    -------</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">structure_name</span><span class="p">,</span> <span class="n">structure_path</span><span class="p">):</span>
@@ -306,9 +288,9 @@
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        structure_name : str</span>
+<span class="sd">        structure_name : :obj:`str`</span>
 <span class="sd">            Name of the structure. Mainly for file naming.</span>
-<span class="sd">        structure_path : str</span>
+<span class="sd">        structure_path : :obj:`str`</span>
 <span class="sd">            Path to the structure file.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">structure_name</span> <span class="o">=</span> <span class="n">structure_name</span>
@@ -321,7 +303,7 @@
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        model_paths : list</span>
+<span class="sd">        model_paths : :obj:`list`</span>
 <span class="sd">            Paths to all many-body GDML models to be used.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
@@ -333,10 +315,10 @@
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        max_force : float, optional</span>
-<span class="sd">            Maximum force. Defaults to 1e-4.</span>
-<span class="sd">        steps : int, optional</span>
-<span class="sd">            Maximum allowable steps. Defaults to 100.</span>
+<span class="sd">        max_force : :obj:`float`, optional</span>
+<span class="sd">            Maximum force. Defaults to ``1e-4``.</span>
+<span class="sd">        steps : :obj:`int`, optional</span>
+<span class="sd">            Maximum allowable steps. Defaults to ``100``.</span>
 <span class="sd">        </span>
 <span class="sd">        Raises</span>
 <span class="sd">        ------</span>
@@ -355,7 +337,7 @@
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        a : `ase.atoms`</span>
+<span class="sd">        a : :obj:`ase.atoms`</span>
 <span class="sd">            Atoms object from ASE.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># function to print the potential, kinetic and total energy</span>
@@ -370,11 +352,11 @@
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        steps : `int`</span>
+<span class="sd">        steps : :obj:`int`</span>
 <span class="sd">            Number of steps for the MD simulation.</span>
-<span class="sd">        t_step : `float`</span>
+<span class="sd">        t_step : :obj:`float`</span>
 <span class="sd">            Time step in femtoseconds.</span>
-<span class="sd">        temp : `float`</span>
+<span class="sd">        temp : :obj:`float`</span>
 <span class="sd">            Temperature in Kelvin used for initializing velocities.</span>
 <span class="sd">        </span>
 <span class="sd">        Raises</span>
@@ -405,296 +387,428 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">printenergy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">structure</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="CalcTemplate"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.calculate.CalcTemplate">[docs]</a><span class="k">class</span> <span class="nc">CalcTemplate</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Contains all quantum chemistry calculations templates for mako.</span>
+    <span class="sd">&quot;&quot;&quot;Contains all quantum chemistry templates for mako.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    package : :obj:`str`</span>
+<span class="sd">        Computational chemistry package to perform calculations.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">orca_input_template</span> <span class="o">=</span> \
-<span class="s1">&#39;</span><span class="se">\</span>
-<span class="s1"># $</span><span class="si">{nameJob}</span><span class="se">\n\</span>
-<span class="s1">$</span><span class="si">{commandSignal}</span><span class="s1"> $</span><span class="si">{theoryLevel}</span><span class="s1"> $</span><span class="si">{basisSet}</span><span class="s1"> $</span><span class="si">{calcType}</span><span class="s1"> $</span><span class="si">{options}</span><span class="se">\n\</span>
-<span class="se">\n\</span>
-<span class="s1">$</span><span class="si">{control_signal}</span><span class="s1">pal</span><span class="se">\n\</span>
-<span class="s1">nprocs $</span><span class="si">{numCores}</span><span class="se">\n\</span>
-<span class="s1">end</span><span class="se">\n\</span>
-<span class="se">\n\</span>
-<span class="s1">$</span><span class="si">{controlBlocks}</span><span class="se">\n\</span>
-<span class="se">\n\</span>
-<span class="s1">*xyz $</span><span class="si">{charge}</span><span class="s1"> $</span><span class="si">{multiplicity}</span><span class="se">\n\</span>
-<span class="s1">$</span><span class="si">{coords}</span><span class="se">\</span>
-<span class="s1">*</span><span class="se">\n\</span>
-<span class="s1">&#39;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">package</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">package</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;orca&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">input</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="s2">&quot;# $</span><span class="si">{job_name}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;$</span><span class="si">{command_signal}</span><span class="s2"> $</span><span class="si">{theory}</span><span class="s2"> $</span><span class="si">{basis_set}</span><span class="s2"> $</span><span class="si">{calc_type}</span><span class="s2"> $</span><span class="si">{options}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;$</span><span class="si">{control_signal}</span><span class="s2">pal</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;    nprocs $</span><span class="si">{cores}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;end</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;$</span><span class="si">{control_blocks}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;*xyz $</span><span class="si">{charge}</span><span class="s2"> $</span><span class="si">{multiplicity}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;$</span><span class="si">{coords}</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;*</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">orca_submit_template</span> <span class="o">=</span> \
-<span class="s1">&#39;</span><span class="se">\</span>
-<span class="s1">#!/bin/bash</span><span class="se">\n\</span>
-<span class="s1">#SBATCH --job-name=$</span><span class="si">{nameJob}</span><span class="se">\n\</span>
-<span class="s1">#SBATCH --output=$</span><span class="si">{nameOutput}</span><span class="s1">.out</span><span class="se">\n\</span>
-<span class="s1">#SBATCH --nodes=$</span><span class="si">{numNodes}</span><span class="se">\n\</span>
-<span class="s1">#SBATCH --ntasks-per-node=$</span><span class="si">{numCores}</span><span class="se">\n\</span>
-<span class="s1">#SBATCH --time=$</span><span class="si">{timeDays}</span><span class="s1">-$</span><span class="si">{timeHours}</span><span class="s1">:00:00</span><span class="se">\n\</span>
-<span class="s1">#SBATCH --cluster=$</span><span class="si">{nameCluster}</span><span class="se">\n\</span>
-<span class="se">\n\</span>
-<span class="s1">cd $SBATCH_O_WORKDIR</span><span class="se">\n\</span>
-<span class="s1">module purge</span><span class="se">\n\</span>
-<span class="s1">module load openmpi/3.1.4</span><span class="se">\n\</span>
-<span class="s1">module load orca/4.2.0</span><span class="se">\n\</span>
-<span class="se">\n\</span>
-<span class="s1">cp $SLURM_SUBMIT_DIR/*.inp $SLURM_SCRATCH</span><span class="se">\n\</span>
-<span class="se">\n\</span>
-<span class="s1">export LD_LIBRARY_PATH=/usr/lib64/openmpi/lib:$LD_LIBRARY_PATH</span><span class="se">\n\</span>
-<span class="s1"># Suppresses OpenFabrics (openib) absence nonfatal error.</span><span class="se">\n\</span>
-<span class="s1">export OMPI_MCA_btl_base_warn_component_unused=0</span><span class="se">\n\</span>
-<span class="s1"># Makes all error messages print.</span><span class="se">\n\</span>
-<span class="s1">export OMPI_MCA_orte_base_help_aggregate=0</span><span class="se">\n\</span>
-<span class="se">\n\</span>
-<span class="s1">cd $SLURM_SCRATCH</span><span class="se">\n\</span>
-<span class="s1">$(which orca) *.inp</span><span class="se">\n\</span>
-<span class="se">\n\</span>
-<span class="s1">&#39;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">orca_add_job</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\</span>
-<span class="se">\n\n</span><span class="s1">$new_job</span><span class="se">\n\n\</span>
-<span class="s1">&#39;</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submit</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="s2">&quot;#!/bin/bash</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;#SBATCH --job-name=$</span><span class="si">{job_name}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;#SBATCH --output=$</span><span class="si">{output_name}</span><span class="s2">.out</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;#SBATCH --nodes=$</span><span class="si">{nodes}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;#SBATCH --ntasks-per-node=$</span><span class="si">{cores}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;#SBATCH --time=$</span><span class="si">{days}</span><span class="s2">-$</span><span class="si">{hours}</span><span class="s2">:00:00</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;#SBATCH --cluster=$</span><span class="si">{cluster}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;$</span><span class="si">{submit_script}</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_job</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">$new_job</span><span class="se">\n\n</span><span class="s2">&quot;</span></div>
 
 <div class="viewcode-block" id="ORCA"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.calculate.ORCA">[docs]</a><span class="k">class</span> <span class="nc">ORCA</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Prepares, writes, and submits ORCA 4.2.0 calculations.</span>
+    <span class="sd">&quot;&quot;&quot;Prepares, writes, and submits ORCA 4 calculations.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        
-        <span class="n">templates</span> <span class="o">=</span> <span class="n">CalcTemplate</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">commandSignal</span> <span class="o">=</span> <span class="s1">&#39;!&#39;</span>  <span class="c1"># Command for ORCA</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">job_name</span><span class="p">,</span>
+        <span class="n">input_name</span><span class="p">,</span>
+        <span class="n">output_name</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        job_name : :obj:`str`</span>
+<span class="sd">            Name of the job for SLURM input file.</span>
+<span class="sd">        input_name : :obj:`str`</span>
+<span class="sd">            File name for the input file.</span>
+<span class="sd">        output_name : :obj:`str`</span>
+<span class="sd">            File name for the output file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">templates</span> <span class="o">=</span> <span class="n">CalcTemplate</span><span class="p">(</span><span class="s1">&#39;orca&#39;</span><span class="p">)</span>
+
+        <span class="c1"># ORCA properties</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">command_signal</span> <span class="o">=</span> <span class="s1">&#39;!&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">control_signal</span> <span class="o">=</span> <span class="s1">&#39;%&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fileExtension</span> <span class="o">=</span> <span class="s1">&#39;inp&#39;</span>  <span class="c1"># Defines file extension for ORCA input files</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_extension</span> <span class="o">=</span> <span class="s1">&#39;inp&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">progression_parameters</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">template_orca_string</span> <span class="o">=</span> <span class="n">templates</span><span class="o">.</span><span class="n">orca_input_template</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">template_orca_submit_string</span> <span class="o">=</span> <span class="n">templates</span><span class="o">.</span><span class="n">orca_submit_template</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">template_input</span> <span class="o">=</span> <span class="n">templates</span><span class="o">.</span><span class="n">input</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">template_submit</span> <span class="o">=</span> <span class="n">templates</span><span class="o">.</span><span class="n">submit</span>
 
         <span class="c1"># Calculation properties</span>
-        <span class="c1"># Required properties are None type, whereas optionals are blank strings</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">nameJob</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Name of the job for record keeping</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">nameOutput</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Name of the output file (for verification and</span>
-                                <span class="c1"># progression).</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">nameInput</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Name of the input file</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">inputFiles</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Name of all input files</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">theoryLevel</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Level of theory</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">basisSet</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Basis sets</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">calcType</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># ORCA calculation type</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1"># ORCA calculation options e.g. solvation models</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">nameCluster</span> <span class="o">=</span> <span class="s1">&#39;smp&#39;</span>  <span class="c1"># CRC cluster; default is smp</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">numNodes</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>  <span class="c1"># Number of nodes; smp default is 1</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">numCores</span> <span class="o">=</span> <span class="s1">&#39;12&#39;</span>   <span class="c1"># Number of cores to use; default is 12</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">timeDays</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Requested days of runtime</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">timeHours</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Requested hours of runtime</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">controlBlocks</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1"># Additional control for different </span>
-
-        <span class="c1"># System Properties</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">charge</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Overall charge of the system</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">multiplicity</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Multiplicity of the system</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">coordsString</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># String of coordinates; each atom coordinate separated by &#39;\n&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">job_name</span> <span class="o">=</span> <span class="n">job_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_name</span> <span class="o">=</span> <span class="n">input_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_name</span> <span class="o">=</span> <span class="n">output_name</span>
 
 
-<div class="viewcode-block" id="ORCA.write_input"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.calculate.ORCA.write_input">[docs]</a>    <span class="k">def</span> <span class="nf">write_input</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ORCA.input"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.calculate.ORCA.input">[docs]</a>    <span class="k">def</span> <span class="nf">input</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">calc_type</span><span class="p">,</span>
+        <span class="n">coords</span><span class="p">,</span>
+        <span class="n">theory</span><span class="p">,</span>
+        <span class="n">basis_set</span><span class="p">,</span>
+        <span class="n">charge</span><span class="p">,</span>
+        <span class="n">multiplicity</span><span class="p">,</span>
+        <span class="n">cores</span><span class="p">,</span>
+        <span class="n">options</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="n">control_blocks</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="n">write</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">write_dir</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span>
+        <span class="n">input_extension</span><span class="o">=</span><span class="s1">&#39;inp&#39;</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Rendered input file as string.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        calc_type : :obj:`str`</span>
+<span class="sd">            Type of calculation. Options are ``&#39;SP&#39;``, ``&#39;ENGRAD&#39;``, ``&#39;OPT&#39;``,</span>
+<span class="sd">            ``&#39;FREQ&#39;``, ``&#39;NUMFREQ&#39;``. Note that analytical frequency</span>
+<span class="sd">            calculation is called with ``&#39;FREQ&#39;``.</span>
+<span class="sd">        coords : :obj:`str`</span>
+<span class="sd">            XYZ atomic coordinates as a string. A water molecule for example,</span>
+<span class="sd">            ``&#39;O          0.00000        0.00000        0.11779\nH         </span>
+<span class="sd">            0.00000        0.75545       -0.47116\nH          0.00000      </span>
+<span class="sd">            -0.75545       -0.47116&#39;``.</span>
+<span class="sd">        theory : :obj:`str`</span>
+<span class="sd">            The level of theory for the calculations. For example, ``&#39;B3LYP&#39;``</span>
+<span class="sd">            or ``&#39;MP2&#39;``.</span>
+<span class="sd">        basis_set : :obj:`str`</span>
+<span class="sd">            The basis set to be used in the calculations. For example,</span>
+<span class="sd">            ``&#39;def2-TZVP&#39;``.</span>
+<span class="sd">        charge : :obj:`int`</span>
+<span class="sd">            System charge.</span>
+<span class="sd">        multiplicity : :obj:`int`</span>
+<span class="sd">            System multiplicity.</span>
+<span class="sd">        cores : :obj:`int`</span>
+<span class="sd">            Number of requested cores per node.</span>
+<span class="sd">        options : :obj:`str`</span>
+<span class="sd">            Other calculations options such as implicit solvents, convergence </span>
+<span class="sd">            criteria, etc. For example, ``&#39;CPCM(water) Grid4 TightSCF&#39;``.</span>
+<span class="sd">        control_blocks : :obj:`str`, optional</span>
+<span class="sd">            All options that control the calculation. For example</span>
+<span class="sd">            ``&#39;%scf\n    ConvForced true\nend\n%maxcore 8000\n&#39;``.</span>
+<span class="sd">        write : :obj:`bool`, optional</span>
+<span class="sd">            Whether or not to write the file. Defaults to ``True``.</span>
+<span class="sd">        write_dir : :obj:`str`, optional</span>
+<span class="sd">            Directory to write the input file. Defaults to ``&#39;.&#39;``</span>
+<span class="sd">        input_extension: :obj:`str`, optional</span>
+<span class="sd">            File extension for ORCA input. Defaults to ``&#39;inp&#39;``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">calc_type</span> <span class="o">=</span> <span class="n">calc_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">charge</span> <span class="o">=</span> <span class="n">charge</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">multiplicity</span> <span class="o">=</span> <span class="n">multiplicity</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coords</span> <span class="o">=</span> <span class="n">coords</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">theory</span> <span class="o">=</span> <span class="n">theory</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">basis_set</span> <span class="o">=</span> <span class="n">basis_set</span>
+        <span class="k">if</span> <span class="n">calc_type</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;sp&#39;</span><span class="p">,</span> <span class="s1">&#39;engrad&#39;</span><span class="p">,</span> <span class="s1">&#39;opt&#39;</span><span class="p">,</span> <span class="s1">&#39;freq&#39;</span><span class="p">,</span> <span class="s1">&#39;numfreq&#39;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">calc_type</span> <span class="o">=</span> <span class="n">calc_type</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">calc_type</span><span class="si">}</span><span class="s1"> is unsupported.&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="n">options</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">control_blocks</span> <span class="o">=</span> <span class="n">control_blocks</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cores</span> <span class="o">=</span> <span class="n">cores</span>
+        <span class="n">templateOrca</span> <span class="o">=</span> <span class="n">Template</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">template_input</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_check</span><span class="p">()</span>
+
+        <span class="n">rendered</span> <span class="o">=</span> <span class="n">templateOrca</span><span class="o">.</span><span class="n">render</span><span class="p">(</span>
+            <span class="n">job_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_name</span><span class="p">,</span> <span class="n">command_signal</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">command_signal</span><span class="p">,</span>
+            <span class="n">control_signal</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">control_signal</span><span class="p">,</span> <span class="n">theory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">theory</span><span class="p">,</span>
+            <span class="n">basis_set</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">basis_set</span><span class="p">,</span> <span class="n">calc_type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">calc_type</span><span class="p">,</span>
+            <span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">cores</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cores</span><span class="p">),</span> <span class="n">charge</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">charge</span><span class="p">),</span>
+            <span class="n">multiplicity</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">multiplicity</span><span class="p">),</span>
+            <span class="n">control_blocks</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">control_blocks</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">coords</span>
+        <span class="p">)</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_name</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span> \
+                   <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_extension</span>
+        <span class="k">if</span> <span class="n">write</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">write_dir</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
+                <span class="n">write_dir</span> <span class="o">+=</span> <span class="s1">&#39;/&#39;</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">write_dir</span> <span class="o">+</span> <span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">inputFile</span><span class="p">:</span>
+                <span class="n">inputFile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">rendered</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">filename</span><span class="p">,</span> <span class="n">rendered</span></div>
+    
+<div class="viewcode-block" id="ORCA.submit"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.calculate.ORCA.submit">[docs]</a>    <span class="k">def</span> <span class="nf">submit</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">cluster</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="p">,</span>
+        <span class="n">cores</span><span class="p">,</span>
+        <span class="n">days</span><span class="p">,</span>
+        <span class="n">hours</span><span class="p">,</span>
+        <span class="n">submit_script</span><span class="p">,</span>
+        <span class="n">write</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">write_dir</span><span class="o">=</span><span class="s1">&#39;.&#39;</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Prepare submission script.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cluster : :obj:`str`</span>
+<span class="sd">            Name of cluster for calculations. For example, ``&#39;smp&#39;``.</span>
+<span class="sd">        nodes : :obj:`int`</span>
+<span class="sd">            Number of requested nodes.</span>
+<span class="sd">        cores : :obj:`int`</span>
+<span class="sd">            Number of requested cores per node.</span>
+<span class="sd">        days : :obj:`int`</span>
+<span class="sd">            Requested run time days.</span>
+<span class="sd">        hours : :obj:`int`</span>
+<span class="sd">            Requested run time hours.</span>
+<span class="sd">        write : :obj:`bool`, optional</span>
+<span class="sd">            Whether or not to write the file. Defaults to ``True``.</span>
+<span class="sd">        write_dir : :obj:`str`, optional</span>
+<span class="sd">            Directory to write the input file. Defaults to ``&#39;.&#39;``</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :obj:`str`</span>
+<span class="sd">            File name (with extension) of the submission script.</span>
+<span class="sd">        :obj:`str`</span>
+<span class="sd">            Rendered submission script.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Run options</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cluster</span> <span class="o">=</span> <span class="n">cluster</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span> <span class="o">=</span> <span class="n">nodes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cores</span> <span class="o">=</span> <span class="n">cores</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">days</span> <span class="o">=</span> <span class="n">days</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hours</span> <span class="o">=</span> <span class="n">hours</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">submit_script</span> <span class="o">=</span> <span class="n">submit_script</span>
         
-        <span class="n">templateOrca</span> <span class="o">=</span> <span class="n">Template</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">template_orca_string</span><span class="p">)</span>
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">input_corrections</span><span class="p">()</span>
+        <span class="n">templateOrcaSubmit</span> <span class="o">=</span> <span class="n">Template</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">template_submit</span><span class="p">)</span>
 
-        <span class="n">renderedOrca</span> <span class="o">=</span> <span class="n">templateOrca</span><span class="o">.</span><span class="n">render</span><span class="p">(</span>
-            <span class="n">nameJob</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nameJob</span><span class="p">,</span> <span class="n">commandSignal</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">commandSignal</span><span class="p">,</span>
-            <span class="n">control_signal</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">control_signal</span><span class="p">,</span> <span class="n">theoryLevel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">theoryLevel</span><span class="p">,</span>
-            <span class="n">basisSet</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">basisSet</span><span class="p">,</span> <span class="n">calcType</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">calcType</span><span class="p">,</span>
-            <span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">numCores</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">numCores</span><span class="p">,</span> <span class="n">charge</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">charge</span><span class="p">,</span>
-            <span class="n">multiplicity</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">multiplicity</span><span class="p">,</span> <span class="n">controlBlocks</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">controlBlocks</span><span class="p">,</span>
-            <span class="n">coords</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">coordsString</span>
+        <span class="n">rendered</span> <span class="o">=</span> <span class="n">templateOrcaSubmit</span><span class="o">.</span><span class="n">render</span><span class="p">(</span>
+            <span class="n">job_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">job_name</span><span class="p">,</span> <span class="n">output_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_name</span><span class="p">,</span>
+            <span class="n">cluster</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cluster</span><span class="p">,</span> <span class="n">nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">,</span>
+            <span class="n">cores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cores</span><span class="p">,</span> <span class="n">days</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">days</span><span class="p">),</span>
+            <span class="n">hours</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hours</span><span class="p">),</span> <span class="n">input_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_name</span><span class="p">,</span>
+            <span class="n">submit_script</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">submit_script</span>
         <span class="p">)</span>
 
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nameJob</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileExtension</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">inputFile</span><span class="p">:</span>
-            <span class="n">inputFile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">renderedOrca</span><span class="p">)</span>
+        <span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;submit-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_name</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.slurm&#39;</span>
 
-        <span class="k">return</span> <span class="kc">None</span></div>
-    
-<div class="viewcode-block" id="ORCA.write_submit"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.calculate.ORCA.write_submit">[docs]</a>    <span class="k">def</span> <span class="nf">write_submit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        
-        <span class="n">templateOrcaSubmit</span> <span class="o">=</span> <span class="n">Template</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">template_orca_submit_string</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">write</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">write_dir</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
+                <span class="n">write_dir</span> <span class="o">+=</span> <span class="s1">&#39;/&#39;</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">write_dir</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">inputFile</span><span class="p">:</span>
+                <span class="n">inputFile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">rendered</span><span class="p">)</span>
 
-        <span class="c1"># Guesses default calculation run time based on type is not already specified</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeDays</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeHours</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">calcType</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;opt&#39;</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">timeDays</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">timeHours</span> <span class="o">=</span> <span class="s1">&#39;00&#39;</span>
-            <span class="k">elif</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">calcType</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;spe&#39;</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">timeDays</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">timeHours</span> <span class="o">=</span> <span class="s1">&#39;12&#39;</span>
-            <span class="k">elif</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">calcType</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;freq&#39;</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">timeDays</span> <span class="o">=</span> <span class="s1">&#39;3&#39;</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">timeHours</span> <span class="o">=</span> <span class="s1">&#39;00&#39;</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">timeDays</span> <span class="o">=</span> <span class="s1">&#39;3&#39;</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">timeHours</span> <span class="o">=</span> <span class="s1">&#39;00&#39;</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">input_corrections</span><span class="p">()</span>
-
-        <span class="n">renderedOrcaSubmit</span> <span class="o">=</span> <span class="n">templateOrcaSubmit</span><span class="o">.</span><span class="n">render</span><span class="p">(</span>
-            <span class="n">nameJob</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nameJob</span><span class="p">,</span> <span class="n">nameOutput</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nameOutput</span><span class="p">,</span>
-            <span class="n">nameCluster</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nameCluster</span><span class="p">,</span> <span class="n">numNodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numNodes</span><span class="p">,</span>
-            <span class="n">numCores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numCores</span><span class="p">,</span> <span class="n">timeDays</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeDays</span><span class="p">,</span>
-            <span class="n">timeHours</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeHours</span><span class="p">,</span> <span class="n">varBash</span> <span class="o">=</span> <span class="s1">&#39;$&#39;</span><span class="p">,</span>
-            <span class="n">nameInput</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nameInput</span><span class="p">,</span> <span class="n">calcType</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">calcType</span><span class="p">,</span>
-            <span class="n">inputFiles</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nameInput</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileExtension</span><span class="p">,</span>
-            <span class="n">progression_parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">progression_parameters</span>
-        <span class="p">)</span>
-
-        <span class="n">slurm_file</span> <span class="o">=</span> <span class="s1">&#39;submit-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nameJob</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.slurm&#39;</span>
-
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">slurm_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">inputFile</span><span class="p">:</span>
-            <span class="n">inputFile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">renderedOrcaSubmit</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">slurm_file</span></div>
+        <span class="k">return</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">rendered</span></div>
     
 
-<div class="viewcode-block" id="ORCA.input_corrections"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.calculate.ORCA.input_corrections">[docs]</a>    <span class="k">def</span> <span class="nf">input_corrections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        
-        <span class="c1"># Ensures correct spe keyword for ORCA.</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">calcType</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;spe&#39;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">calcType</span> <span class="o">=</span> <span class="s1">&#39;SP&#39;</span>
+<div class="viewcode-block" id="ORCA.input_check"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.calculate.ORCA.input_check">[docs]</a>    <span class="k">def</span> <span class="nf">input_check</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Performs checks on input specifications.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="c1"># Forces numerical frequencies if using frozencore and MP2.</span>
-        <span class="k">if</span> <span class="s1">&#39; frozencore&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">calcType</span> <span class="o">==</span> <span class="s1">&#39;freq&#39;</span> \
-           <span class="ow">and</span> <span class="s1">&#39;mp2&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">theoryLevel</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">calcType</span> <span class="o">=</span> <span class="s1">&#39;NumFreq&#39;</span>
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">nameInput</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nameJob</span>
-        <span class="c1"># File corrections.</span>
-
-        <span class="k">return</span> <span class="kc">None</span></div></div>
+        <span class="c1"># ORCA requires numerical frequencies if using frozencore and MP2.</span>
+        <span class="k">if</span> <span class="s1">&#39; frozencore&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">calc_type</span> <span class="o">==</span> <span class="s1">&#39;freq&#39;</span> \
+           <span class="ow">and</span> <span class="s1">&#39;mp2&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">theory</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">calc_type</span> <span class="o">=</span> <span class="s1">&#39;NumFreq&#39;</span></div></div>
 
 
 <div class="viewcode-block" id="partition_engrad"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.calculate.partition_engrad">[docs]</a><span class="k">def</span> <span class="nf">partition_engrad</span><span class="p">(</span>
     <span class="n">package</span><span class="p">,</span>
-    <span class="n">partition_dict</span><span class="p">,</span>
-    <span class="n">temperature</span><span class="p">,</span>
-    <span class="n">md_iteration</span><span class="p">,</span>
+    <span class="n">z</span><span class="p">,</span>
+    <span class="n">R</span><span class="p">,</span>
+    <span class="n">job_name</span><span class="p">,</span>
+    <span class="n">input_name</span><span class="p">,</span>
+    <span class="n">output_name</span><span class="p">,</span>
+    <span class="n">theory</span><span class="p">,</span>
+    <span class="n">basis_set</span><span class="p">,</span>
+    <span class="n">charge</span><span class="p">,</span>
+    <span class="n">multiplicity</span><span class="p">,</span>
+    <span class="n">cluster</span><span class="p">,</span>
+    <span class="n">nodes</span><span class="p">,</span>
+    <span class="n">cores</span><span class="p">,</span>
+    <span class="n">days</span><span class="p">,</span>
+    <span class="n">hours</span><span class="p">,</span>
     <span class="n">calc_dir</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span>
-    <span class="n">calc_name</span><span class="o">=</span><span class="s1">&#39;partition-engrad&#39;</span><span class="p">,</span>
-    <span class="n">theory_level_engrad</span><span class="o">=</span><span class="s1">&#39;MP2&#39;</span><span class="p">,</span>
-    <span class="n">basis_set_engrad</span><span class="o">=</span><span class="s1">&#39;def2-TZVP&#39;</span><span class="p">,</span>
-    <span class="n">options_engrad</span><span class="o">=</span><span class="s1">&#39;TightSCF FrozenCore&#39;</span><span class="p">,</span>
-    <span class="n">control_blocks_engrad</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">cf</span><span class="se">\n</span><span class="s1">    ConvForced true</span><span class="se">\n</span><span class="s1">end</span><span class="se">\n</span><span class="s1">%maxcore 8000</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">options</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">control_blocks</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">submit_script</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">write</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">submit</span><span class="o">=</span><span class="kc">False</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Sets up a partition ORCA 4.2.0 EnGrad calculation for trajectory.</span>
+    <span class="sd">&quot;&quot;&quot;Partition ORCA 4 EnGrad calculation for trajectory.</span>
 <span class="sd">    </span>
-<span class="sd">    Can be submitted or just have the input files prepared.</span>
+<span class="sd">    Can be submitted using ``sbatch`` or just have the input files prepared.</span>
+<span class="sd">    Default submission script is set for University of Pittsburgh&#39;s Center for</span>
+<span class="sd">    Research Computing cluster.</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    package : `str`</span>
-<span class="sd">        Specifies the quantum chemistry program to be used. ORCA is currently</span>
-<span class="sd">        the only package directly supported.</span>
-<span class="sd">    partition_dict : `dict`</span>
-<span class="sd">        Contains all information for the partition including &#39;solvent_label&#39;,</span>
-<span class="sd">        &#39;partition_size&#39;, &#39;atoms&#39;, and &#39;coords&#39;.</span>
-<span class="sd">    temperature : `int`</span>
-<span class="sd">        Used for labeling and identifying the thermostat temperature for the </span>
-<span class="sd">        molecular dynamics simulation.</span>
-<span class="sd">    md_iteration : `int`</span>
-<span class="sd">        Used for labeling and identifying the iteration of the molecular </span>
-<span class="sd">        dynamics simulation.</span>
-<span class="sd">    calc_dir : `str`, optional</span>
-<span class="sd">        Path to write calculation. Defaults to current directory (&#39;./&#39;).</span>
-<span class="sd">    calc_name : `str`, optional</span>
-<span class="sd">        Name for the calculation. Defaults to &#39;partition-engrad&#39;.</span>
-<span class="sd">    theory_level_engrad : `str`, optional</span>
+<span class="sd">    package : :obj:`str`</span>
+<span class="sd">        Specifies the quantum chemistry program to be used. ``&#39;ORCA&#39;`` is</span>
+<span class="sd">        currently the only package directly supported.</span>
+<span class="sd">    z : :obj:`numpy.ndarray`</span>
+<span class="sd">        A ``(n,)`` or ``(m, n)`` shape array of type :obj:`numpy.int32`</span>
+<span class="sd">        containing atomic numbers of atoms in the structures in order as they</span>
+<span class="sd">        appear for every ``m`` structure.</span>
+<span class="sd">    R : :obj:`numpy.ndarray`</span>
+<span class="sd">        A :obj:`numpy.ndarray` with shape of ``(n, 3)`` or ``(m, n, 3)`` where</span>
+<span class="sd">        ``m`` is the number of structures and ``n`` is the number of atoms with</span>
+<span class="sd">        three Cartesian components.</span>
+<span class="sd">    job_name : :obj:`str`</span>
+<span class="sd">            Name of the job for SLURM input file.</span>
+<span class="sd">    input_name : :obj:`str`</span>
+<span class="sd">        File name for the input file.</span>
+<span class="sd">    output_name : :obj:`str`</span>
+<span class="sd">        File name for the output file.</span>
+<span class="sd">    theory : :obj:`str`, optional</span>
 <span class="sd">        Keword that specifies the level of theory (e.g., MP2, BP86, B3LYP, </span>
 <span class="sd">        etc.) used for calculations. Defaults to &#39;MP2&#39; for ORCA 4.2.0.</span>
-<span class="sd">    basis_set_engrad : `str`, optional</span>
+<span class="sd">    basis_set : :obj:`str`, optional</span>
 <span class="sd">        Keyword that specifies the basis set (e.g., def2-SVP, def2-TZVP, etc.). </span>
 <span class="sd">        Defaults to &#39;def2-TZVP&#39;.</span>
-<span class="sd">    options_engrad : `str`, optional</span>
+<span class="sd">    charge : :obj:`int`, optional</span>
+<span class="sd">        System charge. Defaults to ``0``.</span>
+<span class="sd">    multiplicity : :obj:`int`, optional</span>
+<span class="sd">        System multiplicity. Defaults to ``1``.</span>
+<span class="sd">    cluster : :obj:`str`</span>
+<span class="sd">        Name of cluster for calculations. For example, ``&#39;smp&#39;``.</span>
+<span class="sd">    nodes : :obj:`int`</span>
+<span class="sd">        Number of requested nodes.</span>
+<span class="sd">    cores : :obj:`int`</span>
+<span class="sd">        Number of processing cores for the calculation.</span>
+<span class="sd">    days : :obj:`int`</span>
+<span class="sd">        Requested run time days.</span>
+<span class="sd">    hours : :obj:`int`</span>
+<span class="sd">        Requested run time hours.</span>
+<span class="sd">    calc_dir : :obj:`str`, optional</span>
+<span class="sd">        Path to write calculation. Defaults to current directory (``&#39;.&#39;``).</span>
+<span class="sd">    options : :obj:`str`, optional</span>
 <span class="sd">        All options specifically for the EnGrad calculation (e.g., SCF </span>
-<span class="sd">        convergence criteria, algorithms, etc.) Defaults to &#39;TightSCF </span>
-<span class="sd">        FrozenCore&#39;.</span>
-<span class="sd">    control_blocks_engrad : `str`, optional</span>
-<span class="sd">        All options that control the calculation. Defaults to</span>
-<span class="sd">        &#39;%scf    ConvForced true end&#39;.</span>
-<span class="sd">    submit : `bool`, optional</span>
-<span class="sd">        Controls whether the calculation is submitted. Defaults to False.</span>
+<span class="sd">        convergence criteria, algorithms, etc.).</span>
+<span class="sd">    control_blocks : :obj:`str`, optional</span>
+<span class="sd">        All options that control the calculation.</span>
+<span class="sd">    submit_script : :obj:`str`, optional</span>
+<span class="sd">        The SLURM submission script content. Defaults to</span>
+<span class="sd">        ``pitt_crc_orca_submit``.</span>
+<span class="sd">    write : :obj:`bool`, optional</span>
+<span class="sd">        Whether or not to write the file. Defaults to ``True``.</span>
+<span class="sd">    submit : :obj:`bool`, optional</span>
+<span class="sd">        Controls whether the calculation is submitted. Defaults to ``False``.</span>
 <span class="sd">    </span>
-<span class="sd">    Examples</span>
-<span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; calculate.partition_engrad(&#39;orca&#39;, &#39;/path/to/dir/&#39;, partition_dict, </span>
-<span class="sd">    temp, iteration)</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    :obj:`str`</span>
+<span class="sd">        The SLURM submission script.</span>
+<span class="sd">    :obj:`str`</span>
+<span class="sd">        The input file.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">calc_dir</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
+        <span class="n">calc_dir</span> <span class="o">+=</span> <span class="s1">&#39;/&#39;</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">calc_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">calc_dir</span><span class="p">)</span>
 
-
-    <span class="c1"># Normalizes path</span>
-    <span class="n">calc_path</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">norm_path</span><span class="p">(</span><span class="n">calc_dir</span><span class="p">)</span>
-
-    <span class="c1"># Gets solvent information</span>
-    <span class="c1">#solvent_info = solvents.system_info(parsed_traj[&#39;atoms&#39;])</span>
-
-    <span class="c1"># Moves into MD step calculation folder.</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">calc_path</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">calc_path</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">z</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">z</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">R</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">R</span><span class="p">])</span>
     
-    <span class="c1"># Creates calculation object</span>
+    <span class="c1"># Prepares calculation</span>
     <span class="k">if</span> <span class="n">package</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;orca&#39;</span><span class="p">:</span>
-        <span class="n">engrad</span> <span class="o">=</span> <span class="n">ORCA</span><span class="p">()</span>
-
-    <span class="c1"># Calculation properties</span>
-    <span class="n">engrad</span><span class="o">.</span><span class="n">theoryLevel</span> <span class="o">=</span> <span class="n">theory_level_engrad</span>
-    <span class="n">engrad</span><span class="o">.</span><span class="n">basisSet</span> <span class="o">=</span> <span class="n">basis_set_engrad</span>
-    <span class="n">engrad</span><span class="o">.</span><span class="n">calcType</span> <span class="o">=</span> <span class="s1">&#39;engrad&#39;</span>
-    <span class="n">engrad</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="n">options_engrad</span>
-    <span class="n">engrad</span><span class="o">.</span><span class="n">controlBlocks</span> <span class="o">=</span> <span class="n">control_blocks_engrad</span>
-    <span class="n">engrad</span><span class="o">.</span><span class="n">charge</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span>
-    <span class="n">engrad</span><span class="o">.</span><span class="n">multiplicity</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
-    <span class="n">engrad</span><span class="o">.</span><span class="n">numCores</span> <span class="o">=</span> <span class="s1">&#39;6&#39;</span>
-    <span class="n">engrad</span><span class="o">.</span><span class="n">timeDays</span> <span class="o">=</span> <span class="s1">&#39;01&#39;</span>
-    <span class="n">engrad</span><span class="o">.</span><span class="n">timeHours</span> <span class="o">=</span> <span class="s1">&#39;00&#39;</span>
-
-    <span class="c1"># We want to skip the first step because this will be the same </span>
-    <span class="c1"># for every temperature and iteration.</span>
-    <span class="n">templates</span> <span class="o">=</span> <span class="n">CalcTemplate</span><span class="p">()</span>
-    <span class="n">step_index</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">while</span> <span class="n">step_index</span> <span class="o">&lt;</span> <span class="n">partition_dict</span><span class="p">[</span><span class="s1">&#39;coords&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-
-        <span class="c1"># If this is the first step, we need to write the submission file.</span>
-        <span class="k">if</span> <span class="n">step_index</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">engrad</span><span class="o">.</span><span class="n">nameJob</span> <span class="o">=</span> <span class="n">calc_name</span>
-            <span class="n">output_file</span> <span class="o">=</span> <span class="s1">&#39;out-&#39;</span> <span class="o">+</span> <span class="n">engrad</span><span class="o">.</span><span class="n">nameJob</span> <span class="o">+</span> <span class="s1">&#39;.out&#39;</span>
-            <span class="n">engrad</span><span class="o">.</span><span class="n">nameOutput</span> <span class="o">=</span> <span class="n">output_file</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span>
-            <span class="n">engrad</span><span class="o">.</span><span class="n">template_orca_submit_string</span> <span class="o">=</span> <span class="n">templates</span><span class="o">.</span><span class="n">orca_submit_template</span>
-            <span class="n">slurm_file</span> <span class="o">=</span> <span class="n">engrad</span><span class="o">.</span><span class="n">write_submit</span><span class="p">()</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">engrad</span><span class="o">.</span><span class="n">template_orca_string</span> <span class="o">=</span> <span class="n">templates</span><span class="o">.</span><span class="n">orca_add_job</span> \
-                                        <span class="o">+</span> <span class="n">templates</span><span class="o">.</span><span class="n">orca_input_template</span>
-
-        <span class="n">engrad</span><span class="o">.</span><span class="n">nameJob</span> <span class="o">=</span> <span class="n">calc_name</span> <span class="o">+</span> <span class="s1">&#39;-step&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">step_index</span><span class="p">)</span>
-        <span class="n">engrad</span><span class="o">.</span><span class="n">coordsString</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">string_coords</span><span class="p">(</span>
-            <span class="n">partition_dict</span><span class="p">[</span><span class="s1">&#39;atoms&#39;</span><span class="p">],</span>
-            <span class="n">partition_dict</span><span class="p">[</span><span class="s1">&#39;coords&#39;</span><span class="p">][</span><span class="n">step_index</span><span class="p">]</span>
+        <span class="n">engrad</span> <span class="o">=</span> <span class="n">ORCA</span><span class="p">(</span>
+            <span class="n">job_name</span><span class="p">,</span>
+            <span class="n">input_name</span><span class="p">,</span>
+            <span class="n">output_name</span>
         <span class="p">)</span>
-        <span class="n">engrad</span><span class="o">.</span><span class="n">write_input</span><span class="p">()</span>
-        
-        
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">calc_name</span> <span class="o">+</span> <span class="s1">&#39;.inp&#39;</span><span class="p">,</span> <span class="s1">&#39;a+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">engrad</span><span class="o">.</span><span class="n">nameJob</span> <span class="o">+</span> <span class="s1">&#39;.inp&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">infile</span><span class="p">:</span>
-                    <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">engrad</span><span class="o">.</span><span class="n">nameJob</span> <span class="o">+</span> <span class="s1">&#39;.inp&#39;</span><span class="p">)</span>
-        
-        <span class="n">step_index</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">templates</span> <span class="o">=</span> <span class="n">CalcTemplate</span><span class="p">(</span><span class="s1">&#39;orca&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Writes initial files</span>
+    <span class="n">input_file_string</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">submit_script</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+        <span class="n">submit_script</span> <span class="o">=</span> <span class="n">pitt_crc_orca_submit</span>
+    <span class="n">slurm_file_name</span><span class="p">,</span> <span class="n">slurm_file</span> <span class="o">=</span> <span class="n">engrad</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span>
+        <span class="n">cluster</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="p">,</span>
+        <span class="n">cores</span><span class="p">,</span>
+        <span class="n">days</span><span class="p">,</span>
+        <span class="n">hours</span><span class="p">,</span>
+        <span class="n">submit_script</span><span class="p">,</span>
+        <span class="n">write</span><span class="o">=</span><span class="n">write</span><span class="p">,</span>
+        <span class="n">write_dir</span><span class="o">=</span><span class="n">calc_dir</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">step_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="n">z</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">step_z</span> <span class="o">=</span> <span class="n">z</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">step_z</span> <span class="o">=</span> <span class="n">z</span><span class="p">[</span><span class="n">step_index</span><span class="p">]</span>
+        <span class="n">step_R</span> <span class="o">=</span> <span class="n">R</span><span class="p">[</span><span class="n">step_index</span><span class="p">]</span>
+        <span class="n">engrad</span><span class="o">.</span><span class="n">template_input</span> <span class="o">=</span> <span class="n">templates</span><span class="o">.</span><span class="n">add_job</span> \
+                                    <span class="o">+</span> <span class="n">templates</span><span class="o">.</span><span class="n">input</span>
+
+        <span class="n">step_R_string</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">string_coords</span><span class="p">(</span><span class="n">step_z</span><span class="p">,</span> <span class="n">step_R</span><span class="p">)</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">calc_string</span> <span class="o">=</span> <span class="n">engrad</span><span class="o">.</span><span class="n">input</span><span class="p">(</span>
+            <span class="s1">&#39;EnGrad&#39;</span><span class="p">,</span>
+            <span class="n">step_R_string</span><span class="p">,</span>
+            <span class="n">theory</span><span class="p">,</span>
+            <span class="n">basis_set</span><span class="p">,</span>
+            <span class="n">charge</span><span class="p">,</span>
+            <span class="n">multiplicity</span><span class="p">,</span>
+            <span class="n">cores</span><span class="p">,</span>
+            <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span>
+            <span class="n">control_blocks</span><span class="o">=</span><span class="n">control_blocks</span><span class="p">,</span>
+            <span class="n">write</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">input_file_string</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+            <span class="n">input_file_string</span> <span class="o">=</span> <span class="n">calc_string</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">input_file_string</span> <span class="o">+=</span> <span class="n">calc_string</span>
     
-    <span class="n">bash_command</span> <span class="o">=</span> <span class="s1">&#39;sbatch &#39;</span> <span class="o">+</span> <span class="n">slurm_file</span>
+    <span class="k">if</span> <span class="n">write</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">input_name</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">engrad</span><span class="o">.</span><span class="n">input_extension</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">input_file_string</span><span class="p">)</span>
+    
     <span class="k">if</span> <span class="n">submit</span><span class="p">:</span>
+        <span class="n">bash_command</span> <span class="o">=</span> <span class="s1">&#39;sbatch &#39;</span> <span class="o">+</span> <span class="n">slurm_file_name</span>
         <span class="n">submit_process</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span>
             <span class="n">bash_command</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span>
             <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span>
         <span class="p">)</span>
-        <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">submit_process</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span></div>
+        <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">submit_process</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">slurm_file</span><span class="p">,</span> <span class="n">input_file_string</span></div>
+
+
+<span class="n">pitt_crc_orca_submit</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;cd $SBATCH_O_WORKDIR</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="s2">&quot;module purge</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="s2">&quot;module load openmpi/3.1.4</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="s2">&quot;module load orca/4.2.0</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="s2">&quot;cp $SLURM_SUBMIT_DIR/*.inp $SLURM_SCRATCH</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="s2">&quot;export LD_LIBRARY_PATH=/usr/lib64/openmpi/lib:$LD_LIBRARY_PATH</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="s2">&quot;# Suppresses OpenFabrics (openib) absence nonfatal error.</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="s2">&quot;export OMPI_MCA_btl_base_warn_component_unused=0</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="s2">&quot;# Makes all error messages print.</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="s2">&quot;export OMPI_MCA_orte_base_help_aggregate=0</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="s2">&quot;cd $SLURM_SCRATCH</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="s2">&quot;$(which orca) *.inp</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="p">)</span>
 </pre></div>
 
            </div>

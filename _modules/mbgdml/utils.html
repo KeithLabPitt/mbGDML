@@ -299,38 +299,34 @@
     <span class="k">return</span> <span class="n">sorted_list</span></div>
 
 
-<div class="viewcode-block" id="string_coords"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.utils.string_coords">[docs]</a><span class="k">def</span> <span class="nf">string_coords</span><span class="p">(</span><span class="n">atoms</span><span class="p">,</span> <span class="n">coords</span><span class="p">):</span>
+<div class="viewcode-block" id="string_coords"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.utils.string_coords">[docs]</a><span class="k">def</span> <span class="nf">string_coords</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">R</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Puts atomic coordinates into a Python string. Typically used for </span>
 <span class="sd">    writing to an input file.</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
-<span class="sd">    atoms : numpy.ndarray</span>
-<span class="sd">        A (n, 1) numpy array containing all n elements labled by their atomic </span>
+<span class="sd">    atoms : :obj:`numpy.ndarray`</span>
+<span class="sd">        A (n,) numpy array containing all ``n`` elements labled by their atomic </span>
 <span class="sd">        number.</span>
-<span class="sd">    coords : numpy.array</span>
+<span class="sd">    coords : :obj:`numpy.array`</span>
 <span class="sd">        Contains atomic positions in a (n, 3) numpy array where the x, y, and z </span>
 <span class="sd">        Cartesian coordinates in Angstroms are given for the n atoms.</span>
 <span class="sd">    </span>
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    str</span>
-<span class="sd">        all atomic coordinates contained in a string.</span>
+<span class="sd">    :obj:`str`</span>
+<span class="sd">        XYZ atomic coordinates as a string.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="n">atom_coords_string</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-
     <span class="n">atom_index</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">while</span> <span class="n">atom_index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">atoms</span><span class="p">):</span>
-        <span class="n">atom_element</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="n">atoms</span><span class="p">[</span><span class="n">atom_index</span><span class="p">]])</span>
+    <span class="k">while</span> <span class="n">atom_index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+        <span class="n">atom_element</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="n">z</span><span class="p">[</span><span class="n">atom_index</span><span class="p">]])</span>
         <span class="n">coords_string</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array2string</span><span class="p">(</span>
-            <span class="n">coords</span><span class="p">[</span><span class="n">atom_index</span><span class="p">],</span>
+            <span class="n">R</span><span class="p">[</span><span class="n">atom_index</span><span class="p">],</span>
             <span class="n">suppress_small</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">separator</span><span class="o">=</span><span class="s1">&#39;   &#39;</span><span class="p">,</span>
             <span class="n">formatter</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;float_kind&#39;</span><span class="p">:</span><span class="s1">&#39;</span><span class="si">{:0.9f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">}</span>
         <span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-        
         <span class="n">atom_coords_string</span> <span class="o">+=</span> <span class="p">(</span><span class="n">atom_element</span> <span class="o">+</span> <span class="s1">&#39;   &#39;</span> \
                                <span class="o">+</span> <span class="n">coords_string</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; -&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
-
         <span class="n">atom_index</span> <span class="o">+=</span> <span class="mi">1</span>
     
     <span class="k">return</span> <span class="n">atom_coords_string</span></div>

@@ -209,30 +209,120 @@
 <span id="mbgdml-calculate-module"></span><h2>mbgdml.calculate module<a class="headerlink" href="#module-mbgdml.calculate" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="mbgdml.calculate.CalcTemplate">
-<em class="property">class </em><code class="descclassname">mbgdml.calculate.</code><code class="descname">CalcTemplate</code><a class="reference internal" href="../_modules/mbgdml/calculate.html#CalcTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.CalcTemplate" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mbgdml.calculate.</code><code class="descname">CalcTemplate</code><span class="sig-paren">(</span><em>package</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#CalcTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.CalcTemplate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Contains all quantum chemistry calculations templates for mako.</p>
+<p>Contains all quantum chemistry templates for mako.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>package</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Computational chemistry package to perform calculations.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="class">
 <dt id="mbgdml.calculate.ORCA">
-<em class="property">class </em><code class="descclassname">mbgdml.calculate.</code><code class="descname">ORCA</code><a class="reference internal" href="../_modules/mbgdml/calculate.html#ORCA"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.ORCA" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mbgdml.calculate.</code><code class="descname">ORCA</code><span class="sig-paren">(</span><em>job_name</em>, <em>input_name</em>, <em>output_name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#ORCA"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.ORCA" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Prepares, writes, and submits ORCA 4.2.0 calculations.</p>
+<p>Prepares, writes, and submits ORCA 4 calculations.</p>
 <dl class="method">
-<dt id="mbgdml.calculate.ORCA.input_corrections">
-<code class="descname">input_corrections</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#ORCA.input_corrections"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.ORCA.input_corrections" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="mbgdml.calculate.ORCA.input">
+<code class="descname">input</code><span class="sig-paren">(</span><em>calc_type</em>, <em>coords</em>, <em>theory</em>, <em>basis_set</em>, <em>charge</em>, <em>multiplicity</em>, <em>cores</em>, <em>options=''</em>, <em>control_blocks=''</em>, <em>write=True</em>, <em>write_dir='.'</em>, <em>input_extension='inp'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#ORCA.input"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.ORCA.input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rendered input file as string.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>calc_type <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt>
+<dd>Type of calculation. Options are <code class="docutils literal notranslate"><span class="pre">'SP'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ENGRAD'</span></code>, <code class="docutils literal notranslate"><span class="pre">'OPT'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'FREQ'</span></code>, <code class="docutils literal notranslate"><span class="pre">'NUMFREQ'</span></code>. Note that analytical frequency
+calculation is called with <code class="docutils literal notranslate"><span class="pre">'FREQ'</span></code>.</dd>
+<dt>coords <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt>
+<dd>XYZ atomic coordinates as a string. A water molecule for example,
+<a href="#id1"><span class="problematic" id="id2">``</span></a>’O          0.00000        0.00000        0.11779</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt>H</dt>
+<dd>0.00000        0.75545       -0.47116</dd>
+<dt>H          0.00000</dt>
+<dd><blockquote class="first">
+<div><blockquote>
+<div>-0.75545       -0.47116’<a href="#id3"><span class="problematic" id="id4">``</span></a>.</div></blockquote>
+<dl class="docutils">
+<dt>theory <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt>
+<dd>The level of theory for the calculations. For example, <code class="docutils literal notranslate"><span class="pre">'B3LYP'</span></code>
+or <code class="docutils literal notranslate"><span class="pre">'MP2'</span></code>.</dd>
+<dt>basis_set <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt>
+<dd>The basis set to be used in the calculations. For example,
+<code class="docutils literal notranslate"><span class="pre">'def2-TZVP'</span></code>.</dd>
+<dt>charge <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></span></dt>
+<dd>System charge.</dd>
+<dt>multiplicity <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></span></dt>
+<dd>System multiplicity.</dd>
+<dt>cores <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></span></dt>
+<dd>Number of requested cores per node.</dd>
+<dt>options <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt>
+<dd>Other calculations options such as implicit solvents, convergence
+criteria, etc. For example, <code class="docutils literal notranslate"><span class="pre">'CPCM(water)</span> <span class="pre">Grid4</span> <span class="pre">TightSCF'</span></code>.</dd>
+<dt>control_blocks <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</span></dt>
+<dd>All options that control the calculation. For example
+<a href="#id5"><span class="problematic" id="id6">``</span></a>’%scf</dd>
+</dl>
+</div></blockquote>
+<p class="last">ConvForced true</p>
+</dd>
+</dl>
+<p>end
+%maxcore 8000
+‘<a href="#id7"><span class="problematic" id="id8">``</span></a>.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>write <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional</span></dt>
+<dd>Whether or not to write the file. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</dd>
+<dt>write_dir <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</span></dt>
+<dd>Directory to write the input file. Defaults to <code class="docutils literal notranslate"><span class="pre">'.'</span></code></dd>
+<dt>input_extension: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</dt>
+<dd>File extension for ORCA input. Defaults to <code class="docutils literal notranslate"><span class="pre">'inp'</span></code>.</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
 
 <dl class="method">
-<dt id="mbgdml.calculate.ORCA.write_input">
-<code class="descname">write_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#ORCA.write_input"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.ORCA.write_input" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="mbgdml.calculate.ORCA.input_check">
+<code class="descname">input_check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#ORCA.input_check"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.ORCA.input_check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs checks on input specifications.</p>
+</dd></dl>
 
 <dl class="method">
-<dt id="mbgdml.calculate.ORCA.write_submit">
-<code class="descname">write_submit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#ORCA.write_submit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.ORCA.write_submit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="mbgdml.calculate.ORCA.submit">
+<code class="descname">submit</code><span class="sig-paren">(</span><em>cluster</em>, <em>nodes</em>, <em>cores</em>, <em>days</em>, <em>hours</em>, <em>submit_script</em>, <em>write=True</em>, <em>write_dir='.'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#ORCA.submit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.ORCA.submit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepare submission script.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cluster</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Name of cluster for calculations. For example, <code class="docutils literal notranslate"><span class="pre">'smp'</span></code>.</li>
+<li><strong>nodes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Number of requested nodes.</li>
+<li><strong>cores</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Number of requested cores per node.</li>
+<li><strong>days</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Requested run time days.</li>
+<li><strong>hours</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Requested run time hours.</li>
+<li><strong>write</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional) – Whether or not to write the file. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</li>
+<li><strong>write_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Directory to write the input file. Defaults to <code class="docutils literal notranslate"><span class="pre">'.'</span></code></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> – File name (with extension) of the submission script.</li>
+<li><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> – Rendered submission script.</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 
@@ -246,29 +336,18 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>model_paths</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) – Paths of all models to be used for GDML prediction.</li>
-<li><strong>e_unit_model</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) – Specifies the units of energy prediction for the GDML models. Defaults
+<li><strong>model_paths</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>) – Paths of all models to be used for GDML prediction.</li>
+<li><strong>e_unit_model</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Specifies the units of energy prediction for the GDML models. Defaults
 to ‘kcal/mol’.</li>
-<li><strong>r_unit_model</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) – Specifies the distance units for GDML models. Defaults to ‘Angstrom’.</li>
+<li><strong>r_unit_model</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Specifies the distance units for GDML models. Defaults to ‘Angstrom’.</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
-<dt id="mbgdml.calculate.mbGDMLCalculator.load_models">
-<code class="descname">load_models</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#mbGDMLCalculator.load_models"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.mbGDMLCalculator.load_models" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loads models for GDML prediction.</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="mbgdml.calculate.mbGDMLCalculator.calculate">
 <code class="descname">calculate</code><span class="sig-paren">(</span><em>atoms=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#mbGDMLCalculator.calculate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.mbGDMLCalculator.calculate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt>
-<code class="descname">calculate</code><span class="sig-paren">(</span><em>atoms=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#mbGDMLCalculator.calculate"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Predicts energy and forces using many-body GDML models.</p>
 </dd></dl>
 
@@ -278,14 +357,14 @@ to ‘kcal/mol’.</li>
 <dd></dd></dl>
 
 <dl class="method">
-<dt>
-<code class="descname">load_models</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#mbGDMLCalculator.load_models"><span class="viewcode-link">[source]</span></a></dt>
+<dt id="mbgdml.calculate.mbGDMLCalculator.load_models">
+<code class="descname">load_models</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#mbGDMLCalculator.load_models"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.mbGDMLCalculator.load_models" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads models for GDML prediction.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model_paths</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) – Contains paths of all GDML models to be loaded. All of these models
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model_paths</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> [<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>]) – Contains paths of all GDML models to be loaded. All of these models
 will be used during the MD run.</td>
 </tr>
 </tbody>
@@ -304,8 +383,8 @@ will be used during the MD run.</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>structure_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Name of the structure. Mainly for file naming.</li>
-<li><strong>structure_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Path to the structure file.</li>
+<li><strong>structure_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Name of the structure. Mainly for file naming.</li>
+<li><strong>structure_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to the structure file.</li>
 </ul>
 </td>
 </tr>
@@ -319,7 +398,7 @@ will be used during the MD run.</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model_paths</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) – Paths to all many-body GDML models to be used.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model_paths</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>) – Paths to all many-body GDML models to be used.</td>
 </tr>
 </tbody>
 </table>
@@ -333,7 +412,7 @@ will be used during the MD run.</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>a</strong> (<cite>ase.atoms</cite>) – Atoms object from ASE.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>a</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">ase.atoms</span></code>) – Atoms object from ASE.</td>
 </tr>
 </tbody>
 </table>
@@ -348,8 +427,8 @@ will be used during the MD run.</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>max_force</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><em>float</em></a><em>, </em><em>optional</em>) – Maximum force. Defaults to 1e-4.</li>
-<li><strong>steps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a><em>, </em><em>optional</em>) – Maximum allowable steps. Defaults to 100.</li>
+<li><strong>max_force</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>, optional) – Maximum force. Defaults to <code class="docutils literal notranslate"><span class="pre">1e-4</span></code>.</li>
+<li><strong>steps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional) – Maximum allowable steps. Defaults to <code class="docutils literal notranslate"><span class="pre">100</span></code>.</li>
 </ul>
 </td>
 </tr>
@@ -369,9 +448,9 @@ will be used during the MD run.</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>steps</strong> (<cite>int</cite>) – Number of steps for the MD simulation.</li>
-<li><strong>t_step</strong> (<cite>float</cite>) – Time step in femtoseconds.</li>
-<li><strong>temp</strong> (<cite>float</cite>) – Temperature in Kelvin used for initializing velocities.</li>
+<li><strong>steps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Number of steps for the MD simulation.</li>
+<li><strong>t_step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>) – Time step in femtoseconds.</li>
+<li><strong>temp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>) – Temperature in Kelvin used for initializing velocities.</li>
 </ul>
 </td>
 </tr>
@@ -386,44 +465,58 @@ will be used during the MD run.</td>
 
 <dl class="function">
 <dt id="mbgdml.calculate.partition_engrad">
-<code class="descclassname">mbgdml.calculate.</code><code class="descname">partition_engrad</code><span class="sig-paren">(</span><em>package</em>, <em>partition_dict</em>, <em>temperature</em>, <em>md_iteration</em>, <em>calc_dir='.'</em>, <em>calc_name='partition-engrad'</em>, <em>theory_level_engrad='MP2'</em>, <em>basis_set_engrad='def2-TZVP'</em>, <em>options_engrad='TightSCF FrozenCore'</em>, <em>control_blocks_engrad='%scf\n    ConvForced true\nend\n%maxcore 8000\n'</em>, <em>submit=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#partition_engrad"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.partition_engrad" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets up a partition ORCA 4.2.0 EnGrad calculation for trajectory.</p>
-<p>Can be submitted or just have the input files prepared.</p>
+<code class="descclassname">mbgdml.calculate.</code><code class="descname">partition_engrad</code><span class="sig-paren">(</span><em>package</em>, <em>z</em>, <em>R</em>, <em>job_name</em>, <em>input_name</em>, <em>output_name</em>, <em>theory</em>, <em>basis_set</em>, <em>charge</em>, <em>multiplicity</em>, <em>cluster</em>, <em>nodes</em>, <em>cores</em>, <em>days</em>, <em>hours</em>, <em>calc_dir='.'</em>, <em>options=''</em>, <em>control_blocks=''</em>, <em>submit_script=''</em>, <em>write=True</em>, <em>submit=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/calculate.html#partition_engrad"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.calculate.partition_engrad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Partition ORCA 4 EnGrad calculation for trajectory.</p>
+<p>Can be submitted using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> or just have the input files prepared.
+Default submission script is set for University of Pittsburgh’s Center for
+Research Computing cluster.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>package</strong> (<cite>str</cite>) – Specifies the quantum chemistry program to be used. ORCA is currently
-the only package directly supported.</li>
-<li><strong>partition_dict</strong> (<cite>dict</cite>) – Contains all information for the partition including ‘solvent_label’,
-‘partition_size’, ‘atoms’, and ‘coords’.</li>
-<li><strong>temperature</strong> (<cite>int</cite>) – Used for labeling and identifying the thermostat temperature for the
-molecular dynamics simulation.</li>
-<li><strong>md_iteration</strong> (<cite>int</cite>) – Used for labeling and identifying the iteration of the molecular
-dynamics simulation.</li>
-<li><strong>calc_dir</strong> (<cite>str</cite>, optional) – Path to write calculation. Defaults to current directory (‘./’).</li>
-<li><strong>calc_name</strong> (<cite>str</cite>, optional) – Name for the calculation. Defaults to ‘partition-engrad’.</li>
-<li><strong>theory_level_engrad</strong> (<cite>str</cite>, optional) – Keword that specifies the level of theory (e.g., MP2, BP86, B3LYP,
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>package</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Specifies the quantum chemistry program to be used. <code class="docutils literal notranslate"><span class="pre">'ORCA'</span></code> is
+currently the only package directly supported.</li>
+<li><strong>z</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A <code class="docutils literal notranslate"><span class="pre">(n,)</span></code> or <code class="docutils literal notranslate"><span class="pre">(m,</span> <span class="pre">n)</span></code> shape array of type <code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int32</span></code>
+containing atomic numbers of atoms in the structures in order as they
+appear for every <code class="docutils literal notranslate"><span class="pre">m</span></code> structure.</li>
+<li><strong>R</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> with shape of <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">3)</span></code> or <code class="docutils literal notranslate"><span class="pre">(m,</span> <span class="pre">n,</span> <span class="pre">3)</span></code> where
+<code class="docutils literal notranslate"><span class="pre">m</span></code> is the number of structures and <code class="docutils literal notranslate"><span class="pre">n</span></code> is the number of atoms with
+three Cartesian components.</li>
+<li><strong>job_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Name of the job for SLURM input file.</li>
+<li><strong>input_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – File name for the input file.</li>
+<li><strong>output_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – File name for the output file.</li>
+<li><strong>theory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Keword that specifies the level of theory (e.g., MP2, BP86, B3LYP,
 etc.) used for calculations. Defaults to ‘MP2’ for ORCA 4.2.0.</li>
-<li><strong>basis_set_engrad</strong> (<cite>str</cite>, optional) – Keyword that specifies the basis set (e.g., def2-SVP, def2-TZVP, etc.).
+<li><strong>basis_set</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Keyword that specifies the basis set (e.g., def2-SVP, def2-TZVP, etc.).
 Defaults to ‘def2-TZVP’.</li>
-<li><strong>options_engrad</strong> (<cite>str</cite>, optional) – All options specifically for the EnGrad calculation (e.g., SCF
-convergence criteria, algorithms, etc.) Defaults to ‘TightSCF
-FrozenCore’.</li>
-<li><strong>control_blocks_engrad</strong> (<cite>str</cite>, optional) – All options that control the calculation. Defaults to
-‘%scf    ConvForced true end’.</li>
-<li><strong>submit</strong> (<cite>bool</cite>, optional) – Controls whether the calculation is submitted. Defaults to False.</li>
+<li><strong>charge</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional) – System charge. Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</li>
+<li><strong>multiplicity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional) – System multiplicity. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</li>
+<li><strong>cluster</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Name of cluster for calculations. For example, <code class="docutils literal notranslate"><span class="pre">'smp'</span></code>.</li>
+<li><strong>nodes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Number of requested nodes.</li>
+<li><strong>cores</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Number of processing cores for the calculation.</li>
+<li><strong>days</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Requested run time days.</li>
+<li><strong>hours</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Requested run time hours.</li>
+<li><strong>calc_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Path to write calculation. Defaults to current directory (<code class="docutils literal notranslate"><span class="pre">'.'</span></code>).</li>
+<li><strong>options</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – All options specifically for the EnGrad calculation (e.g., SCF
+convergence criteria, algorithms, etc.).</li>
+<li><strong>control_blocks</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – All options that control the calculation.</li>
+<li><strong>submit_script</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – The SLURM submission script content. Defaults to
+<code class="docutils literal notranslate"><span class="pre">pitt_crc_orca_submit</span></code>.</li>
+<li><strong>write</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional) – Whether or not to write the file. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</li>
+<li><strong>submit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional) – Controls whether the calculation is submitted. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</li>
 </ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> – The SLURM submission script.</li>
+<li><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> – The input file.</li>
+</ul>
+</p>
 </td>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">calculate</span><span class="o">.</span><span class="n">partition_engrad</span><span class="p">(</span><span class="s1">&#39;orca&#39;</span><span class="p">,</span> <span class="s1">&#39;/path/to/dir/&#39;</span><span class="p">,</span> <span class="n">partition_dict</span><span class="p">,</span>
-<span class="go">temp, iteration)</span>
-</pre></div>
-</div>
 </dd></dl>
 
 </div>
@@ -1065,16 +1158,16 @@ methodology.</p>
 
 <dl class="function">
 <dt id="mbgdml.utils.string_coords">
-<code class="descclassname">mbgdml.utils.</code><code class="descname">string_coords</code><span class="sig-paren">(</span><em>atoms</em>, <em>coords</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/utils.html#string_coords"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.utils.string_coords" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mbgdml.utils.</code><code class="descname">string_coords</code><span class="sig-paren">(</span><em>z</em>, <em>R</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/utils.html#string_coords"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.utils.string_coords" title="Permalink to this definition">¶</a></dt>
 <dd><p>Puts atomic coordinates into a Python string. Typically used for
 writing to an input file.</p>
 <p>Parameters
-atoms : numpy.ndarray</p>
+atoms : <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
 <blockquote>
-<div>A (n, 1) numpy array containing all n elements labled by their atomic
+<div>A (n,) numpy array containing all <code class="docutils literal notranslate"><span class="pre">n</span></code> elements labled by their atomic
 number.</div></blockquote>
 <dl class="docutils">
-<dt>coords <span class="classifier-delimiter">:</span> <span class="classifier">numpy.array</span></dt>
+<dt>coords <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.array</span></code></a></span></dt>
 <dd>Contains atomic positions in a (n, 3) numpy array where the x, y, and z
 Cartesian coordinates in Angstroms are given for the n atoms.</dd>
 </dl>
@@ -1082,9 +1175,9 @@ Cartesian coordinates in Angstroms are given for the n atoms.</dd>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">all atomic coordinates contained in a string.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">XYZ atomic coordinates as a string.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
 </tr>
 </tbody>
 </table>
