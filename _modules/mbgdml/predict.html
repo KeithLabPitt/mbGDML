@@ -209,7 +209,7 @@
 
 
 
-    <span class="k">def</span> <span class="nf">_calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">system_size</span><span class="p">,</span> <span class="n">molecule_size</span><span class="p">,</span> <span class="n">gdml</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">system_size</span><span class="p">,</span> <span class="n">molecule_size</span><span class="p">,</span> <span class="n">gdml</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;The actual calculate/predict function for a single GDML model.</span>
 
 <span class="sd">        Predicts the energy and forces of a structure from a single GDML model.</span>
@@ -218,8 +218,6 @@
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        z : list</span>
-<span class="sd">            Atomic numbers of all atoms in the system.</span>
 <span class="sd">        R : numpy.ndarray</span>
 <span class="sd">            Cartesian coordinates of all atoms of the structure specified in </span>
 <span class="sd">            the same order as z. The array should have shape (n, 3) where n is </span>
@@ -287,12 +285,13 @@
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        z : list</span>
-<span class="sd">            Atomic numbers of all atoms in the system.</span>
-<span class="sd">        R : numpy.ndarray</span>
-<span class="sd">            Cartesian coordinates of all atoms of the structure specified in </span>
-<span class="sd">            the same order as z. The array should have shape (n, 3) where n is </span>
-<span class="sd">            the number of atoms.</span>
+<span class="sd">        z : :obj:`numpy.ndarray`</span>
+<span class="sd">            A ``(n,)`` shape array of type :obj:`numpy.int32` containing atomic</span>
+<span class="sd">            numbers of atoms in the structures in order as they appear.</span>
+<span class="sd">        R : :obj:`numpy.ndarray`</span>
+<span class="sd">            A :obj:`numpy.ndarray` with shape of ``(m, n, 3)`` where ``m`` is</span>
+<span class="sd">            the number of structures and ``n`` is the number of atoms with three </span>
+<span class="sd">            Cartesian components.</span>
 <span class="sd">        </span>
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -343,7 +342,7 @@
             
             <span class="n">nbody_order</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">gdml</span><span class="o">.</span><span class="n">n_atoms</span><span class="o">/</span><span class="n">molecule_size</span><span class="p">)</span>
             <span class="n">E_contributions</span><span class="p">[</span><span class="n">nbody_order</span><span class="p">],</span> <span class="n">F_contributions</span><span class="p">[</span><span class="n">nbody_order</span><span class="p">]</span> <span class="o">=</span> \
-                <span class="bp">self</span><span class="o">.</span><span class="n">_calculate</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">system_size</span><span class="p">,</span> <span class="n">molecule_size</span><span class="p">,</span> <span class="n">gdml</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_calculate</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">system_size</span><span class="p">,</span> <span class="n">molecule_size</span><span class="p">,</span> <span class="n">gdml</span><span class="p">)</span>
 
             <span class="c1"># Adds contributions to total energy and forces.</span>
             <span class="n">E_contributions</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">E_contributions</span><span class="p">[</span><span class="n">nbody_order</span><span class="p">][</span><span class="s1">&#39;T&#39;</span><span class="p">]</span>

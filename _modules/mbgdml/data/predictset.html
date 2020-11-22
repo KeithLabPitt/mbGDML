@@ -198,177 +198,26 @@
 <span class="sd">        File name of the predict set.</span>
 <span class="sd">    theory : `str`</span>
 <span class="sd">        Specifies the level of theory used for GDML training.</span>
-<span class="sd">    n_z : `int`</span>
-<span class="sd">        Number of atoms in each structure.</span>
-<span class="sd">    z : `numpy.ndarray`</span>
-<span class="sd">        Atomic numbers of all atoms in every structure (same in each one) with</span>
-<span class="sd">        shape ``n_z``.</span>
-<span class="sd">    n_R : `int`</span>
-<span class="sd">        Number of structures in the predict set.</span>
-<span class="sd">    R : `numpy.ndarray`</span>
-<span class="sd">        Atomic coordinates of every structure with shape ``(n_R, n_z, 3)``.</span>
-<span class="sd">    r_unit : `str`</span>
-<span class="sd">        Units of space for the structures&#39; coordinates.</span>
-<span class="sd">    e_unit : `str`</span>
-<span class="sd">        Units of energy.</span>
-<span class="sd">    E_true : `numpy.ndarray`</span>
-<span class="sd">        Reference energies with shape ``n_R``.</span>
-<span class="sd">    F_true : `numpy.ndarray`</span>
-<span class="sd">        Reference atomic forces with shape ``(n_R, n_z, 3)``.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;predictset&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="s1">&#39;p&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_loaded</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_predicted</span> <span class="o">=</span> <span class="kc">False</span>
     
-<div class="viewcode-block" id="mbGDMLPredictset.load"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.predictset.mbGDMLPredictset.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">predictset_path</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reads predict data set and loads data.</span>
-<span class="sd">        </span>
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        predictset_path : str</span>
-<span class="sd">            Path to predict set npz file.</span>
+
+    <span class="k">def</span> <span class="nf">_calc_contributions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">predictset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">predictset_path</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">predictset</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">predictset</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sgdml_version</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">predictset</span><span class="p">[</span><span class="s1">&#39;code_version&#39;</span><span class="p">][()])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">predictset</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">][()])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">theory</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">predictset</span><span class="p">[</span><span class="s1">&#39;theory&#39;</span><span class="p">][()])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">predictset</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">n_z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">R</span> <span class="o">=</span> <span class="n">predictset</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">n_R</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">r_unit</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">predictset</span><span class="p">[</span><span class="s1">&#39;r_unit&#39;</span><span class="p">][()])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">e_unit</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">predictset</span><span class="p">[</span><span class="s1">&#39;e_unit&#39;</span><span class="p">][()])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">E_true</span> <span class="o">=</span> <span class="n">predictset</span><span class="p">[</span><span class="s1">&#39;E_true&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">F_true</span> <span class="o">=</span> <span class="n">predictset</span><span class="p">[</span><span class="s1">&#39;F_true&#39;</span><span class="p">]</span></div>
-    
-    <span class="k">def</span> <span class="nf">_get_total_contributions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbody_order</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;N-body energy and atomic forces contributions of all structures.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        structure : `int`</span>
-<span class="sd">            The index of the desired structure.</span>
-<span class="sd">        nbody_order : `int`</span>
-<span class="sd">            Desired n-body order contributions.</span>
-<span class="sd">        </span>
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        tuple : (`numpy.ndarray`)</span>
-<span class="sd">            Energies, shape of ``n_R``, and atomic forces, shape of</span>
-<span class="sd">            (``n_R``, ``n_z``, 3), contributions of all structures. </span>
-<span class="sd">        </span>
-<span class="sd">        Raises</span>
-<span class="sd">        ------</span>
-<span class="sd">        AttributeError</span>
-<span class="sd">            If there is no predict set.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;Please load or create a predict set first.&#39;</span>
-            <span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">E_cont</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predictset</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;E_</span><span class="si">{</span><span class="n">nbody_order</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">][()][</span><span class="s1">&#39;T&#39;</span><span class="p">]</span>
-            <span class="n">F_cont</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predictset</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;F_</span><span class="si">{</span><span class="n">nbody_order</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">][()][</span><span class="s1">&#39;T&#39;</span><span class="p">]</span>
-            <span class="k">return</span> <span class="n">E_cont</span><span class="p">,</span> <span class="n">F_cont</span>
-
-<div class="viewcode-block" id="mbGDMLPredictset.nbody_predictions"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.predictset.mbGDMLPredictset.nbody_predictions">[docs]</a>    <span class="k">def</span> <span class="nf">nbody_predictions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_nbody_order</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Energies and forces of all structures up to and including a specific</span>
-<span class="sd">        n-body order.</span>
-
-<span class="sd">        Predict sets have data that is broken down into many-body contributions.</span>
-<span class="sd">        This function sums the many-body contributions up to the specified</span>
-<span class="sd">        level; for example, `3` returns the energy and force predictions when</span>
-<span class="sd">        including one, two, and three body contributions/corrections.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        max_nbody_order : `int`</span>
-<span class="sd">            Highest many-body order corrections to include.</span>
-<span class="sd">        </span>
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        tuple (`numpy.ndarray`)</span>
-<span class="sd">            Energies and forces of all structures with all many-body corrections</span>
-<span class="sd">            up to nbody_order.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">nbody_index</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="k">while</span> <span class="n">nbody_index</span> <span class="o">&lt;=</span> <span class="n">max_nbody_order</span><span class="p">:</span>
-            <span class="n">E_cont</span><span class="p">,</span> <span class="n">F_cont</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_total_contributions</span><span class="p">(</span><span class="n">nbody_index</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">nbody_index</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">E</span> <span class="o">=</span> <span class="n">E_cont</span>
-                <span class="n">F</span> <span class="o">=</span> <span class="n">F_cont</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">E</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">E_cont</span><span class="p">)</span>
-                <span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">F_cont</span><span class="p">)</span>
-            <span class="n">nbody_index</span> <span class="o">+=</span> <span class="mi">1</span>  
-        <span class="k">return</span> <span class="n">E</span><span class="p">,</span> <span class="n">F</span></div>
-
-<div class="viewcode-block" id="mbGDMLPredictset.load_dataset"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.predictset.mbGDMLPredictset.load_dataset">[docs]</a>    <span class="k">def</span> <span class="nf">load_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset_path</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Loads data set in preparation to create a predict set.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        dataset_path : `str`</span>
-<span class="sd">            Path to data set.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dataset_path</span> <span class="o">=</span> <span class="n">dataset_path</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">))</span></div>
-    
-<div class="viewcode-block" id="mbGDMLPredictset.load_models"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.predictset.mbGDMLPredictset.load_models">[docs]</a>    <span class="k">def</span> <span class="nf">load_models</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_paths</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Loads model(s) in preparation to create a predict set.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        model_paths : `list` [`str`]</span>
-<span class="sd">            Paths to GDML models in assending order of n-body corrections, e.g.,</span>
-<span class="sd">            [&#39;/path/to/1body-model.npz&#39;, &#39;/path/to/2body-model.npz&#39;].</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model_paths</span> <span class="o">=</span> <span class="n">model_paths</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mbgdml</span> <span class="o">=</span> <span class="n">mbGDMLPredict</span><span class="p">(</span><span class="n">model_paths</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="mbGDMLPredictset.create_predictset"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.predictset.mbGDMLPredictset.create_predictset">[docs]</a>    <span class="k">def</span> <span class="nf">create_predictset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Creates a predict set from loaded data set and models.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        name : `str`, optional</span>
-<span class="sd">            The desired file name for the predict set. Defaults to the name of</span>
-<span class="sd">            the data set with any occurrence of &#39;data&#39; changed to &#39;predict&#39;.</span>
-<span class="sd">        </span>
-<span class="sd">        Raises</span>
-<span class="sd">        ------</span>
-<span class="sd">        AttributeError</span>
-<span class="sd">            If no data set or GDML models were loaded beforehand.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;dataset&#39;</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;Please load a data set.&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;mbgdml&#39;</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;Please load GDML models.&#39;</span><span class="p">)</span>
-        <span class="n">num_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
-            <span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">][()])</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;predict&#39;</span>
-            <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">predictset</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span>  <span class="c1"># Designates predictions.</span>
-            <span class="s1">&#39;code_version&#39;</span><span class="p">:</span> <span class="n">__version__</span><span class="p">,</span>  <span class="c1"># sGDML version.</span>
-            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
-            <span class="s1">&#39;theory&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;theory&#39;</span><span class="p">],</span>
-            <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">],</span>
-            <span class="s1">&#39;R&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">],</span>
-            <span class="s1">&#39;r_unit&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;r_unit&#39;</span><span class="p">],</span>
-            <span class="s1">&#39;E_true&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">],</span>
-            <span class="s1">&#39;e_unit&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;e_unit&#39;</span><span class="p">],</span>
-            <span class="s1">&#39;F_true&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">],</span>
-        <span class="p">}</span>
-        <span class="c1"># Predicts and stores energy and forces.</span>
         <span class="n">all_E</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">all_F</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_config</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Predicting structure </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> out of </span><span class="si">{</span><span class="n">num_config</span> <span class="o">-</span> <span class="mi">1</span><span class="si">}</span><span class="s1"> ...&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_R</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Predicting structure </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> out of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">n_R</span><span class="si">}</span><span class="s1"> ...&#39;</span><span class="p">)</span>
             <span class="n">e</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mbgdml</span><span class="o">.</span><span class="n">decomposed_predict</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
             <span class="p">)</span>
             <span class="k">for</span> <span class="n">order</span> <span class="ow">in</span> <span class="n">e</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -404,14 +253,179 @@
                                  <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">f</span><span class="p">[</span><span class="n">order</span><span class="p">][</span><span class="n">combo</span><span class="p">]])),</span>
                                  <span class="n">axis</span><span class="o">=</span><span class="mi">0</span>
                             <span class="p">)</span>
-        <span class="c1"># Loop through all_E and all_F and add their keys to dataset</span>
-        <span class="k">for</span> <span class="n">order</span> <span class="ow">in</span> <span class="n">all_E</span><span class="p">:</span>
-            <span class="n">E_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;E_</span><span class="si">{</span><span class="n">order</span><span class="si">}</span><span class="s1">&#39;</span>
-            <span class="n">F_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;F_</span><span class="si">{</span><span class="n">order</span><span class="si">}</span><span class="s1">&#39;</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">predictset</span><span class="p">[</span><span class="n">E_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_E</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">predictset</span><span class="p">[</span><span class="n">F_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_F</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>
-        <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">predictset</span><span class="p">:</span>
-            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">predictset</span><span class="p">[</span><span class="n">data</span><span class="p">])</span></div></div>
+        <span class="k">return</span> <span class="n">all_E</span><span class="p">,</span> <span class="n">all_F</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">predictset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="n">predictset</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">,</span>
+            <span class="c1">#&#39;code_version&#39;: self.sgdml_version,</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="s1">&#39;theory&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">theory</span><span class="p">,</span>
+            <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">,</span>
+            <span class="s1">&#39;R&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">,</span>
+            <span class="s1">&#39;r_unit&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">r_unit</span><span class="p">,</span>
+            <span class="s1">&#39;E_true&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_true</span><span class="p">,</span>
+            <span class="s1">&#39;e_unit&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">e_unit</span><span class="p">,</span>
+            <span class="s1">&#39;F_true&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">F_true</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loaded</span> <span class="o">==</span> <span class="kc">False</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predicted</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;dataset&#39;</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;Please load a data set.&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;mbgdml&#39;</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;Please load GDML models.&#39;</span><span class="p">)</span>
+            <span class="n">all_E</span><span class="p">,</span> <span class="n">all_F</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calc_contributions</span><span class="p">()</span>
+        
+            <span class="k">for</span> <span class="n">order</span> <span class="ow">in</span> <span class="n">all_E</span><span class="p">:</span>
+                <span class="n">E_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;E_</span><span class="si">{</span><span class="n">order</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="n">F_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;F_</span><span class="si">{</span><span class="n">order</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;_</span><span class="si">{</span><span class="n">E_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">all_E</span><span class="p">[</span><span class="n">order</span><span class="p">])</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;_</span><span class="si">{</span><span class="n">F_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">all_F</span><span class="p">[</span><span class="n">order</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sgdml_version</span> <span class="o">=</span> <span class="n">__version__</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_predicted</span> <span class="o">=</span> <span class="kc">True</span>
+        
+        <span class="n">predictset</span><span class="p">[</span><span class="s1">&#39;sgdml_version&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sgdml_version</span>
+
+        <span class="n">n_index</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;_E_</span><span class="si">{</span><span class="n">n_index</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">):</span>
+            <span class="n">predictset</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;E_</span><span class="si">{</span><span class="n">n_index</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;_E_</span><span class="si">{</span><span class="n">n_index</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">predictset</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;F_</span><span class="si">{</span><span class="n">n_index</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;_F_</span><span class="si">{</span><span class="n">n_index</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">n_index</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+        <span class="k">return</span> <span class="n">predictset</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">E_true</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;True energies from data set.</span>
+
+<span class="sd">        :type: :obj:`numpy.ndarray`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_E_true</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">F_true</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;True forces from data set.</span>
+
+<span class="sd">        :type: :obj:`numpy.ndarray`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_F_true</span>
+
+    
+<div class="viewcode-block" id="mbGDMLPredictset.load"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.predictset.mbGDMLPredictset.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">predictset_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reads predict data set and loads data.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        predictset_path : :obj:`str`</span>
+<span class="sd">            Path to predict set ``.npz`` file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">predictset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">predictset_path</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sgdml_version</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">predictset</span><span class="p">[</span><span class="s1">&#39;code_version&#39;</span><span class="p">][()])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">predictset</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">][()])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theory</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">predictset</span><span class="p">[</span><span class="s1">&#39;theory&#39;</span><span class="p">][()])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">=</span> <span class="n">predictset</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_R</span> <span class="o">=</span> <span class="n">predictset</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_r_unit</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">predictset</span><span class="p">[</span><span class="s1">&#39;r_unit&#39;</span><span class="p">][()])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_e_unit</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">predictset</span><span class="p">[</span><span class="s1">&#39;e_unit&#39;</span><span class="p">][()])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_E_true</span> <span class="o">=</span> <span class="n">predictset</span><span class="p">[</span><span class="s1">&#39;E_true&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_F_true</span> <span class="o">=</span> <span class="n">predictset</span><span class="p">[</span><span class="s1">&#39;F_true&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_loaded</span> <span class="o">=</span> <span class="kc">True</span></div>
+    
+    
+    <span class="k">def</span> <span class="nf">_get_total_contributions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbody_order</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;N-body energy and atomic forces contributions of all structures.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        structure : :obj:`int`</span>
+<span class="sd">            The index of the desired structure.</span>
+<span class="sd">        nbody_order : :obj:`int`</span>
+<span class="sd">            Desired n-body order contributions.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :obj:`numpy.ndarray`</span>
+<span class="sd">            Energy n-order corrections of structures.</span>
+<span class="sd">        :obj:`numpy.ndarray`</span>
+<span class="sd">            Forces n-order corrections of structures.</span>
+<span class="sd">        </span>
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AttributeError</span>
+<span class="sd">            If there is no predict set.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;Please load or create a predict set first.&#39;</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">E_cont</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predictset</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;E_</span><span class="si">{</span><span class="n">nbody_order</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">][()][</span><span class="s1">&#39;T&#39;</span><span class="p">]</span>
+            <span class="n">F_cont</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predictset</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;F_</span><span class="si">{</span><span class="n">nbody_order</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">][()][</span><span class="s1">&#39;T&#39;</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">E_cont</span><span class="p">,</span> <span class="n">F_cont</span>
+
+<div class="viewcode-block" id="mbGDMLPredictset.nbody_predictions"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.predictset.mbGDMLPredictset.nbody_predictions">[docs]</a>    <span class="k">def</span> <span class="nf">nbody_predictions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbody_order</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Energies and forces of all structures up to and including a specific</span>
+<span class="sd">        n-body order.</span>
+
+<span class="sd">        Predict sets have data that is broken down into many-body contributions.</span>
+<span class="sd">        This function sums the many-body contributions up to the specified</span>
+<span class="sd">        level; for example, ``3`` returns the energy and force predictions when</span>
+<span class="sd">        including one, two, and three body contributions/corrections.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        nbody_order : `int`</span>
+<span class="sd">            Highest many-body order corrections to include.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :obj:`numpy.ndarray`</span>
+<span class="sd">            Energy of structures up to and including n-order corrections.</span>
+<span class="sd">        :obj:`numpy.ndarray`</span>
+<span class="sd">            Forces of structures up to an including n-order corrections.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">nbody_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nbody_order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">E_cont</span><span class="p">,</span> <span class="n">F_cont</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_total_contributions</span><span class="p">(</span><span class="n">nbody_index</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nbody_index</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">E</span> <span class="o">=</span> <span class="n">E_cont</span>
+                <span class="n">F</span> <span class="o">=</span> <span class="n">F_cont</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">E</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">E_cont</span><span class="p">)</span>
+                <span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">F_cont</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">E</span><span class="p">,</span> <span class="n">F</span></div>
+
+<div class="viewcode-block" id="mbGDMLPredictset.load_dataset"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.predictset.mbGDMLPredictset.load_dataset">[docs]</a>    <span class="k">def</span> <span class="nf">load_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Loads data set in preparation to create a predict set.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        dataset_path : :obj:`str`</span>
+<span class="sd">            Path to data set.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset_path</span> <span class="o">=</span> <span class="n">dataset_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theory</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;theory&#39;</span><span class="p">][()])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_R</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_r_unit</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;r_unit&#39;</span><span class="p">][()])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_e_unit</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;e_unit&#39;</span><span class="p">][()])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_E_true</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_F_true</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">]</span></div>
+    
+<div class="viewcode-block" id="mbGDMLPredictset.load_models"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.predictset.mbGDMLPredictset.load_models">[docs]</a>    <span class="k">def</span> <span class="nf">load_models</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_paths</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Loads model(s) in preparation to create a predict set.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model_paths : :obj:`list` [:obj:`str`]</span>
+<span class="sd">            Paths to GDML models in assending order of n-body corrections, e.g.,</span>
+<span class="sd">            [&#39;/path/to/1body-model.npz&#39;, &#39;/path/to/2body-model.npz&#39;].</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_paths</span> <span class="o">=</span> <span class="n">model_paths</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mbgdml</span> <span class="o">=</span> <span class="n">mbGDMLPredict</span><span class="p">(</span><span class="n">model_paths</span><span class="p">)</span></div></div>
 
 </pre></div>
 
