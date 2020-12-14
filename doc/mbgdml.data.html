@@ -1216,20 +1216,6 @@ instead of training data.</p>
 predict all many-body contributions once and then analyze the stored data.
 The predict set accomplishes just this.</p>
 <dl class="attribute">
-<dt id="mbgdml.data.predictset.mbGDMLPredictset.predictset">
-<code class="descname">predictset</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.predictset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dictionary of loaded npz predict set file.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><cite>dict</cite></td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
 <dt id="mbgdml.data.predictset.mbGDMLPredictset.sgdml_version">
 <code class="descname">sgdml_version</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.sgdml_version" title="Permalink to this definition">¶</a></dt>
 <dd><p>The sGDML Python package version used for predictions.</p>
@@ -1237,7 +1223,7 @@ The predict set accomplishes just this.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><cite>str</cite></td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
 </tr>
 </tbody>
 </table>
@@ -1251,7 +1237,7 @@ The predict set accomplishes just this.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><cite>str</cite></td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
 </tr>
 </tbody>
 </table>
@@ -1265,7 +1251,7 @@ The predict set accomplishes just this.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><cite>str</cite></td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
 </tr>
 </tbody>
 </table>
@@ -1355,7 +1341,7 @@ including one, two, and three body contributions/corrections.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nbody_order</strong> (<cite>int</cite>) – Highest many-body order corrections to include.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nbody_order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Highest many-body order corrections to include.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
 <li><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> – Energy of structures up to and including n-order corrections.</li>
@@ -1368,9 +1354,18 @@ including one, two, and three body contributions/corrections.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt>
-<code class="descname">predictset</code></dt>
-<dd></dd></dl>
+<dt id="mbgdml.data.predictset.mbGDMLPredictset.predictset">
+<code class="descname">predictset</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.predictset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains all data as <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> objects.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 

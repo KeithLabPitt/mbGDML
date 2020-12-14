@@ -697,11 +697,12 @@ string of coordinates.</td>
 <dt id="mbgdml.predict.mbGDMLPredict">
 <em class="property">class </em><code class="descclassname">mbgdml.predict.</code><code class="descname">mbGDMLPredict</code><span class="sig-paren">(</span><em>models</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/predict.html#mbGDMLPredict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.predict.mbGDMLPredict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Predict energies and forces of structures using GDML models.</p>
 <dl class="method">
 <dt id="mbgdml.predict.mbGDMLPredict.decomposed_predict">
 <code class="descname">decomposed_predict</code><span class="sig-paren">(</span><em>z</em>, <em>R</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/predict.html#mbGDMLPredict.decomposed_predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.predict.mbGDMLPredict.decomposed_predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes predicted total energy and atomic forces decomposed by
-many body order.</p>
+many-body order.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -759,19 +760,18 @@ and their contributions.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>z</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) – Atomic numbers of all atoms in the system.</li>
-<li><strong>R</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><em>numpy.ndarray</em></a>) – Cartesian coordinates of all atoms of the structure specified in
-the same order as z. The array should have shape (n, 3) where n is
-the number of atoms.</li>
+<li><strong>z</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – Atomic numbers of all atoms in the system.</li>
+<li><strong>R</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – Cartesian coordinates of all atoms of the structure specified in
+the same order as <code class="docutils literal notranslate"><span class="pre">z</span></code>. The array should have shape <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">3)</span></code>
+where <code class="docutils literal notranslate"><span class="pre">n</span></code> is the number of atoms.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Total energy of the system (float) and atomic forces (numpy.ndarray)
-in the units specified by the GDML models. Note that the forces
-have the same shape as R.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.9)">tuple</a></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a> – Total energy of the system.</li>
+<li>obj:<cite>numpy.ndarray – Atomic forces of the system in the same shape as ``R`</cite>.</li>
+</ul>
+</p>
 </td>
 </tr>
 </tbody>

@@ -178,14 +178,15 @@
 <span class="kn">import</span> <span class="nn">mbgdml.solvents</span> <span class="k">as</span> <span class="nn">solvents</span>
 
 <div class="viewcode-block" id="mbGDMLPredict"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.predict.mbGDMLPredict">[docs]</a><span class="k">class</span> <span class="nc">mbGDMLPredict</span><span class="p">():</span>
-
+    <span class="sd">&quot;&quot;&quot;Predict energies and forces of structures using GDML models.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">models</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sets GDML models to be used for many-body prediction.</span>
+        <span class="sd">&quot;&quot;&quot;Sets GDML models to be used for many-body predictions.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        models : :obj:`list`</span>
+<span class="sd">        models : :obj:`list` [:obj:`str`]</span>
 <span class="sd">            Contains paths to either standard or many-body GDML models.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_load_models</span><span class="p">(</span><span class="n">models</span><span class="p">)</span>
@@ -196,7 +197,7 @@
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        models : :obj:`list`</span>
+<span class="sd">        models : :obj:`list` [:obj:`str`]</span>
 <span class="sd">            Contains paths to either standard or many-body GDML models.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gdmls</span> <span class="o">=</span> <span class="p">[]</span>
@@ -212,35 +213,38 @@
     <span class="k">def</span> <span class="nf">_calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">system_size</span><span class="p">,</span> <span class="n">molecule_size</span><span class="p">,</span> <span class="n">gdml</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;The actual calculate/predict function for a single GDML model.</span>
 
-<span class="sd">        Predicts the energy and forces of a structure from a single GDML model.</span>
-<span class="sd">        In other words, it predicts the energy and force contribution from a</span>
-<span class="sd">        single many-body (or standard) GDML model.</span>
+<span class="sd">        Predicts the energy and force contribution from a single many-body</span>
+<span class="sd">        (or standard) GDML model.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        R : numpy.ndarray</span>
+<span class="sd">        R : :obj:`numpy.ndarray`</span>
 <span class="sd">            Cartesian coordinates of all atoms of the structure specified in </span>
 <span class="sd">            the same order as z. The array should have shape (n, 3) where n is </span>
 <span class="sd">            the number of atoms.</span>
-<span class="sd">        system_size : int</span>
+<span class="sd">        system_size : :obj:`int`</span>
 <span class="sd">            Number of molecules of the defined chemical species in the </span>
 <span class="sd">            structure.</span>
-<span class="sd">        molecule_size : int</span>
+<span class="sd">        molecule_size : :obj:`int`</span>
 <span class="sd">            Number of atoms in the defined chemical species.</span>
-<span class="sd">        gdml : sgdml.predict.GDMLPredict</span>
+<span class="sd">        gdml : :obj:`sgdml.predict.GDMLPredict`</span>
 <span class="sd">            Object used to predict energies and forces of the structure defined </span>
-<span class="sd">            in R.</span>
+<span class="sd">            in ``R``.</span>
 <span class="sd">        </span>
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        tuple</span>
-<span class="sd">            Dictionaries of contributions and total energies (float) and</span>
-<span class="sd">            forces (np.ndarray) of the structure. Note that forces has</span>
-<span class="sd">            the same shape as R. Each key of the dictionary is the molecule</span>
-<span class="sd">            combination. For example, &#39;01&#39; contains the predictions of</span>
-<span class="sd">            two-body energy and forces of the pair containing molecules 0</span>
-<span class="sd">            and 1. Additionally, each dict has &#39;T&#39; representing the total</span>
-<span class="sd">            energy or forces.</span>
+<span class="sd">        :obj:`dict`</span>
+<span class="sd">            Energy contributions of the structure. Dictionary keys specify the</span>
+<span class="sd">            molecule combination. For example, ``&#39;0,2&#39;`` contains the</span>
+<span class="sd">            predictions of two-body energy of the dimer containing molecules</span>
+<span class="sd">            ``0`` and ``2``. Also contains a ``&#39;T&#39;`` key representing the total</span>
+<span class="sd">            n-body contribution for the whole system.</span>
+<span class="sd">        :obj:`dict`</span>
+<span class="sd">            Force contributions of the structure. Dictionary keys specify the</span>
+<span class="sd">            molecule combination. For example, ``&#39;1,2,5&#39;`` contains the</span>
+<span class="sd">            predictions of three-body energy of the trimer containing molecules</span>
+<span class="sd">            ``1``, ``2``, and ``5``. Also contains a ``&#39;T&#39;`` key representing</span>
+<span class="sd">            the total n-body contribution for the whole system.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c1"># &#39;T&#39; is for total</span>
@@ -281,7 +285,7 @@
 
 <div class="viewcode-block" id="mbGDMLPredict.decomposed_predict"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.predict.mbGDMLPredict.decomposed_predict">[docs]</a>    <span class="k">def</span> <span class="nf">decomposed_predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">R</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Computes predicted total energy and atomic forces decomposed by</span>
-<span class="sd">        many body order.</span>
+<span class="sd">        many-body order.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -356,19 +360,19 @@
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        z : list</span>
+<span class="sd">        z : :obj:`numpy.ndarray`</span>
 <span class="sd">            Atomic numbers of all atoms in the system.</span>
-<span class="sd">        R : numpy.ndarray</span>
+<span class="sd">        R : :obj:`numpy.ndarray`</span>
 <span class="sd">            Cartesian coordinates of all atoms of the structure specified in </span>
-<span class="sd">            the same order as z. The array should have shape (n, 3) where n is </span>
-<span class="sd">            the number of atoms.</span>
+<span class="sd">            the same order as ``z``. The array should have shape ``(n, 3)``</span>
+<span class="sd">            where ``n`` is the number of atoms.</span>
 <span class="sd">        </span>
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        tuple</span>
-<span class="sd">            Total energy of the system (float) and atomic forces (numpy.ndarray) </span>
-<span class="sd">            in the units specified by the GDML models. Note that the forces </span>
-<span class="sd">            have the same shape as R.</span>
+<span class="sd">        :obj:`float`</span>
+<span class="sd">            Total energy of the system.</span>
+<span class="sd">        :obj:`numpy.ndarray</span>
+<span class="sd">            Atomic forces of the system in the same shape as ``R``.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">e</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decomposed_predict</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
         
