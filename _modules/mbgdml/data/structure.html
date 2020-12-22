@@ -171,10 +171,12 @@
 <span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
 <span class="c1"># SOFTWARE.</span>
 
-
+<span class="kn">from</span> <span class="nn">mbgdml.parse</span> <span class="kn">import</span> <span class="n">parse_stringfile</span><span class="p">,</span><span class="n">parse_cluster</span>
+<span class="kn">from</span> <span class="nn">mbgdml.partition</span> <span class="kn">import</span> <span class="n">partition_cluster</span>
+<span class="kn">from</span> <span class="nn">mbgdml.solvents</span> <span class="kn">import</span> <span class="n">system_info</span>
+<span class="kn">from</span> <span class="nn">mbgdml.utils</span> <span class="kn">import</span> <span class="n">atoms_by_number</span><span class="p">,</span> <span class="n">string_coords</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">cclib.io</span> <span class="kn">import</span> <span class="n">ccread</span>
-
 
 <div class="viewcode-block" id="structure"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.structure.structure">[docs]</a><span class="k">class</span> <span class="nc">structure</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Basics of structures defined by positions of atoms.</span>
@@ -182,52 +184,56 @@
 <span class="sd">    Makes using structures with mbGDML easier by providing a</span>
 <span class="sd">    simple-to-use class to automate parsing of xyz or calculation files or</span>
 <span class="sd">    manually specifying atoms and coordinates.</span>
-<span class="sd">    </span>
-<span class="sd">    Attributes</span>
+
+<span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    z : numpy.ndarray</span>
-<span class="sd">        A (n,) shape array of type numpy.int32 containing atomic numbers of</span>
-<span class="sd">        atoms in the structures in order as they appear.</span>
-<span class="sd">    R : numpy.ndarray</span>
-<span class="sd">        The atomic positions of structure(s) in a np.ndarray. Has a shape of</span>
-<span class="sd">        (n, m, 3) where n is the number of structures and m is the number of</span>
-<span class="sd">        atoms with 3 positional coordinates.</span>
-<span class="sd">    z_num : int</span>
-<span class="sd">        The number of atoms stored in z.</span>
-<span class="sd">    R_num : int</span>
-<span class="sd">        The number of structures stored in R.</span>
+<span class="sd">    file_path : :obj:`str`</span>
+<span class="sd">        Path to xyz file.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span>
-
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
 <div class="viewcode-block" id="structure.parse"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.structure.structure.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Parses file using cclib for atomic numbers and xyz coordinates.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        file_path : str</span>
-<span class="sd">            Path to file parsable by cclib.</span>
+<span class="sd">        file_path : :obj:`str`</span>
+<span class="sd">            Path to xyz file.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">_ccdata</span> <span class="o">=</span> <span class="n">ccread</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ccdata</span><span class="o">.</span><span class="n">atomnos</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">R</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ccdata</span><span class="o">.</span><span class="n">atomcoords</span></div>
-    
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ccdata</span> <span class="o">=</span> <span class="n">ccread</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ccdata</span><span class="o">.</span><span class="n">atomnos</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ccdata</span><span class="o">.</span><span class="n">atomcoords</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_R</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ccdata</span><span class="o">.</span><span class="n">atomcoords</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">()</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">z</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">parse_stringfile</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">atoms_by_number</span><span class="p">(</span><span class="n">z</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s1"> contains more than one structure.&#39;</span>
+                <span class="p">)</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">z</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Array of atoms&#39; atomic numbers in the same number as in</span>
-<span class="sd">        the coordinate file.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Atomic numbers of all atoms.</span>
+<span class="sd">        </span>
+<span class="sd">        A ``(n,)`` shape array of type :obj:`numpy.int32` containing atomic</span>
+<span class="sd">        numbers of atoms in the structures in order as they appear.</span>
 
+<span class="sd">        :type: :obj:`numpy.ndarray`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_z</span>
     
-
     <span class="nd">@z</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">z</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atoms</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Ensures z has type numpy.ndarray</span>
+        <span class="sd">&quot;&quot;&quot;Ensures ``z`` has type :obj:`numpy.ndarray`</span>
 
 <span class="sd">        Raises</span>
 <span class="sd">        ------</span>
@@ -237,28 +243,27 @@
 <span class="sd">            Coordinates should have at least two dimensions but not more than</span>
 <span class="sd">            three.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">atoms</span><span class="p">)</span> <span class="o">!=</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s1">&#39;Atomic coordinates must be in np.ndarray format&#39;</span>
             <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">=</span> <span class="n">atoms</span>
-    
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">R</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;The atomic positions of structure(s) in a np.ndarray.</span>
+        <span class="sd">&quot;&quot;&quot;Atomic coordinates of structure(s).</span>
 <span class="sd">        </span>
-<span class="sd">        R has a shape of (n, m, 3) where n is the number of structures and</span>
-<span class="sd">        m is the number of atoms with 3 positional coordinates.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        A :obj:`numpy.ndarray` with shape of ``(m, n, 3)`` where ``m`` is the</span>
+<span class="sd">        number of structures and ``n`` is the number of atoms with three </span>
+<span class="sd">        Cartesian components.</span>
 
+<span class="sd">        :type: :obj:`numpy.ndarray`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_R</span>
     
-
     <span class="nd">@R</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">R</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coords</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Standardizes R array to always have (n, m, 3) shape.</span>
+        <span class="sd">&quot;&quot;&quot;Standardizes ``R`` array to always have (n, m, 3) shape.</span>
 
 <span class="sd">        Raises</span>
 <span class="sd">        ------</span>
@@ -268,7 +273,6 @@
 <span class="sd">            Coordinates should have at least two dimensions but not more than</span>
 <span class="sd">            three.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span> <span class="o">!=</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s1">&#39;Atomic coordinates must be in numpy.ndarray format&#39;</span>
@@ -282,13 +286,11 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unusual R dimension of </span><span class="si">{</span><span class="n">coords</span><span class="o">.</span><span class="n">ndim</span><span class="si">}</span><span class="s1">; &#39;</span>
                               <span class="s1">&#39;should be two or three.&#39;</span><span class="p">)</span>
     
-
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">z_num</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;The number of atoms.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_z</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">R_num</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -304,8 +306,101 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;The coordinates have an unusual dimension of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="o">.</span><span class="n">ndim</span><span class="si">}</span><span class="s2">.&quot;</span>
-            <span class="p">)</span></div>
+            <span class="p">)</span>
     
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">molecules</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Molecules in structure.</span>
+
+<span class="sd">        :obj:`int` keys specifying the molecule number starting from 0 with </span>
+<span class="sd">        nested :obj:`dict` as values which contain</span>
+
+<span class="sd">        ``&#39;z&#39;``</span>
+<span class="sd">            A ``(n,)`` shape array of type :obj:`numpy.int32` containing</span>
+<span class="sd">            atomic numbers of atoms in the structures in order as they</span>
+<span class="sd">            appear.</span>
+<span class="sd">        </span>
+<span class="sd">        ``&#39;R&#39;``</span>
+<span class="sd">            A :obj:`numpy.ndarray` with shape of ``(n, 3)`` where ``n`` is</span>
+<span class="sd">            the number of atoms with three Cartesian components.</span>
+<span class="sd">        </span>
+<span class="sd">        :type: :obj:`dict`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">parse_cluster</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">)</span>
+    
+<div class="viewcode-block" id="structure.partitions"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.structure.structure.partitions">[docs]</a>    <span class="k">def</span> <span class="nf">partitions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_nbody</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Partitions of the structure.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        max_nbody: :obj:`int`, optional</span>
+<span class="sd">            Highest order of n-body structure to include.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :obj:`dict`</span>
+<span class="sd">            All nonrepeating molecule combinations from original cluster with</span>
+<span class="sd">            keys being uppercase concatenations of molecule labels and values</span>
+<span class="sd">            being the string of coordinates.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    
+        <span class="n">sys_info</span> <span class="o">=</span> <span class="n">system_info</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+        <span class="n">all_partitions</span> <span class="o">=</span> <span class="p">{}</span>  
+        
+        <span class="c1"># Loops through all possible n-body partitions and adds the atoms</span>
+        <span class="c1"># once and adds each step traj_partition.</span>
+        <span class="n">i_nbody</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">i_nbody</span> <span class="o">&lt;=</span> <span class="n">sys_info</span><span class="p">[</span><span class="s1">&#39;cluster_size&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">i_nbody</span> <span class="o">&lt;=</span> <span class="n">max_nbody</span><span class="p">:</span>
+            <span class="n">partitions</span> <span class="o">=</span> <span class="n">partition_cluster</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">molecules</span><span class="p">,</span> <span class="n">i_nbody</span><span class="p">)</span>
+            <span class="n">partition_labels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">partitions</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="c1"># Tries to add the next trajectory step to &#39;coords&#39;; if it fails it</span>
+            <span class="c1"># initializes &#39;atoms&#39; and &#39;coords&#39; for that partition.</span>
+            <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">partition_labels</span><span class="p">:</span>
+                <span class="n">partition_info</span> <span class="o">=</span> <span class="n">system_info</span><span class="p">(</span>
+                    <span class="n">partitions</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s1">&#39;z&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+                <span class="p">)</span>
+
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">all_partitions</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s1">&#39;R&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">all_partitions</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s1">&#39;R&#39;</span><span class="p">],</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">partitions</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s1">&#39;R&#39;</span><span class="p">]]),</span>
+                        <span class="n">axis</span><span class="o">=</span><span class="mi">0</span>
+                    <span class="p">)</span>
+                <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                    <span class="n">all_partitions</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                        <span class="s1">&#39;solvent_label&#39;</span><span class="p">:</span> <span class="n">partition_info</span><span class="p">[</span><span class="s1">&#39;solvent_label&#39;</span><span class="p">],</span>
+                        <span class="s1">&#39;cluster_size&#39;</span><span class="p">:</span> <span class="n">sys_info</span><span class="p">[</span><span class="s1">&#39;cluster_size&#39;</span><span class="p">],</span>
+                        <span class="s1">&#39;partition_label&#39;</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span>
+                        <span class="s1">&#39;partition_size&#39;</span><span class="p">:</span> <span class="n">partition_info</span><span class="p">[</span><span class="s1">&#39;cluster_size&#39;</span><span class="p">],</span>
+                        <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="n">partitions</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s1">&#39;z&#39;</span><span class="p">],</span>
+                        <span class="s1">&#39;R&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">partitions</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s1">&#39;R&#39;</span><span class="p">]])</span>
+                    <span class="p">}</span>
+            <span class="n">i_nbody</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">all_partitions</span></div>
+
+<div class="viewcode-block" id="structure.write_xyz"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.structure.structure.write_xyz">[docs]</a>    <span class="k">def</span> <span class="nf">write_xyz</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">save_dir</span><span class="o">=</span><span class="s1">&#39;./&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Writes xyz file of structure</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : :obj:`str`</span>
+<span class="sd">            File name.</span>
+<span class="sd">        save_dir : :obj:`str`</span>
+<span class="sd">            Path to directory to save file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">R_string</span> <span class="o">=</span> <span class="n">string_coords</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">R_string</span> <span class="o">=</span> <span class="n">string_coords</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;More than one structure.&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">save_dir</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
+            <span class="n">save_dir</span> <span class="o">+=</span> <span class="s1">&#39;/&#39;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">save_dir</span><span class="si">}{</span><span class="n">name</span><span class="si">}</span><span class="s1">.xyz&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span>
+                <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">R_string</span><span class="p">]</span>
+            <span class="p">)</span></div></div>
+
 </pre></div>
 
            </div>

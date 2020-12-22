@@ -203,12 +203,10 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_z</span>
     
-
     <span class="nd">@z</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">z</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">=</span> <span class="n">var</span>
     
-
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">n_z</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Number of atoms.</span>
@@ -219,7 +217,6 @@
             <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-
     
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">system_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -230,7 +227,6 @@
             <span class="k">return</span> <span class="n">solvents</span><span class="o">.</span><span class="n">system_info</span><span class="p">(</span><span class="n">z_symbols</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;system&#39;</span><span class="p">:</span> <span class="s1">&#39;unknown&#39;</span><span class="p">}</span>
-    
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">R</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -243,12 +239,10 @@
 <span class="sd">        :type: :obj:`numpy.ndarray`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_R</span>
-    
 
     <span class="nd">@R</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">R</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_R</span> <span class="o">=</span> <span class="n">var</span>
-    
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">n_R</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -260,7 +254,6 @@
             <span class="k">return</span> <span class="mi">1</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">r_unit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -270,11 +263,9 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_r_unit</span>
     
-
     <span class="nd">@r_unit</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">r_unit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_r_unit</span> <span class="o">=</span> <span class="n">var</span>
-    
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">e_unit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -284,12 +275,10 @@
 <span class="sd">        :type: :obj:`str`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_e_unit</span>
-    
 
     <span class="nd">@e_unit</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">e_unit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_e_unit</span> <span class="o">=</span> <span class="n">var</span>
-    
 
 <div class="viewcode-block" id="mbGDMLData.add_system_info"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.basedata.mbGDMLData.add_system_info">[docs]</a>    <span class="k">def</span> <span class="nf">add_system_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dict_data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Adds information about the system to the model.</span>
@@ -321,7 +310,6 @@
                 <span class="n">system_info</span><span class="p">[</span><span class="s1">&#39;cluster_size&#39;</span><span class="p">]</span>
             <span class="p">)</span>
         <span class="k">return</span> <span class="n">dict_data</span></div>
-
 
 <div class="viewcode-block" id="mbGDMLData.save"><a class="viewcode-back" href="../../../doc/mbgdml.data.html#mbgdml.data.basedata.mbGDMLData.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;General save function for GDML data sets and models.</span>

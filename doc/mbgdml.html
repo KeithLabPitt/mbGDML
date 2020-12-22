@@ -665,8 +665,49 @@ as extended xyz).</p>
 <div class="section" id="module-mbgdml.partition">
 <span id="mbgdml-partition-module"></span><h2>mbgdml.partition module<a class="headerlink" href="#module-mbgdml.partition" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
+<dt id="mbgdml.partition.partition_cluster">
+<code class="descclassname">mbgdml.partition.</code><code class="descname">partition_cluster</code><span class="sig-paren">(</span><em>cluster</em>, <em>nbody</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/partition.html#partition_cluster"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.partition.partition_cluster" title="Permalink to this definition">¶</a></dt>
+<dd><p>All possible n-body combinations from a cluster.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cluster</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a>) – Dictionary of solvent molecules in cluster from
+<a class="reference internal" href="#mbgdml.parse.parse_cluster" title="mbgdml.parse.parse_cluster"><code class="xref py py-func docutils literal notranslate"><span class="pre">parse_cluster()</span></code></a>.</li>
+<li><strong>nbody</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Desired number of solvent molecules in combination.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><p>All nonrepeating solvent molecule combinations from cluster with keys
+being <code class="docutils literal notranslate"><span class="pre">'#,#,#'</span></code> where each <code class="docutils literal notranslate"><span class="pre">#</span></code> represents a molecule index. For
+example, <code class="docutils literal notranslate"><span class="pre">'0,11,19'</span></code> would be a cluster with molecules 0, 11, and 19
+from the super cluster. Each value is a dictionary containing</p>
+<dl class="docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">'z'</span></code></dt>
+<dd><p class="first last">A <code class="docutils literal notranslate"><span class="pre">(n,)</span></code> shape array of type <code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int32</span></code> containing atomic
+numbers of atoms in the structures in order as they appear.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">'R'</span></code></dt>
+<dd><p class="first last">A <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> with shape of <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">3)</span></code> where <code class="docutils literal notranslate"><span class="pre">n</span></code> is the
+number of atoms with three Cartesian components.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>0,1,2 is considered the same as 2,1,0 and only included once.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="mbgdml.partition.partition_stringfile">
-<code class="descclassname">mbgdml.partition.</code><code class="descname">partition_stringfile</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/partition.html#partition_stringfile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.partition.partition_stringfile" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mbgdml.partition.</code><code class="descname">partition_stringfile</code><span class="sig-paren">(</span><em>file_path</em>, <em>max_nbody=4</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/partition.html#partition_stringfile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.partition.partition_stringfile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Partitions an XYZ file.</p>
 <p>Takes a cluster of molecules and separates into individual partitions. A
 partition being a monomer, dimer, trimer, etc. from the original cluster.
@@ -676,15 +717,22 @@ individual partitions of monomers, three dimers, and one trimer.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>traj_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to trajectory with xyz coordinates.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>traj_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to trajectory with xyz coordinates.</li>
+<li><strong>max_nbody</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional) – Highest order of n-body structure to include.</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">All nonrepeating molecule combinations from original cluster with keys
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">All nonrepeating molecule combinations from original cluster with keys
 being uppercase concatenations of molecule labels and values being the
-string of coordinates.</td>
+string of coordinates.</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> – If any structure has a different order of atoms.</td>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> – If any structure has a different order of atoms.</p>
+</td>
 </tr>
 </tbody>
 </table>

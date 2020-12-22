@@ -756,8 +756,9 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">step_z</span> <span class="o">=</span> <span class="n">z</span><span class="p">[</span><span class="n">step_index</span><span class="p">]</span>
         <span class="n">step_R</span> <span class="o">=</span> <span class="n">R</span><span class="p">[</span><span class="n">step_index</span><span class="p">]</span>
-        <span class="n">engrad</span><span class="o">.</span><span class="n">template_input</span> <span class="o">=</span> <span class="n">templates</span><span class="o">.</span><span class="n">add_job</span> \
-                                    <span class="o">+</span> <span class="n">templates</span><span class="o">.</span><span class="n">input</span>
+        <span class="k">if</span> <span class="n">step_index</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">engrad</span><span class="o">.</span><span class="n">template_input</span> <span class="o">=</span> <span class="n">templates</span><span class="o">.</span><span class="n">add_job</span> \
+                                        <span class="o">+</span> <span class="n">templates</span><span class="o">.</span><span class="n">input</span>
 
         <span class="n">step_R_string</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">string_coords</span><span class="p">(</span><span class="n">step_z</span><span class="p">,</span> <span class="n">step_R</span><span class="p">)</span>
         <span class="n">_</span><span class="p">,</span> <span class="n">calc_string</span> <span class="o">=</span> <span class="n">engrad</span><span class="o">.</span><span class="n">input</span><span class="p">(</span>

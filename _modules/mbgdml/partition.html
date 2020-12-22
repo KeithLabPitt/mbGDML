@@ -177,7 +177,7 @@
 <span class="kn">from</span> <span class="nn">mbgdml</span> <span class="kn">import</span> <span class="n">utils</span>
 <span class="kn">from</span> <span class="nn">mbgdml</span> <span class="kn">import</span> <span class="n">solvents</span>
 
-<span class="k">def</span> <span class="nf">_partition_cluster</span><span class="p">(</span><span class="n">cluster</span><span class="p">,</span> <span class="n">nbody</span><span class="p">):</span>
+<div class="viewcode-block" id="partition_cluster"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.partition.partition_cluster">[docs]</a><span class="k">def</span> <span class="nf">partition_cluster</span><span class="p">(</span><span class="n">cluster</span><span class="p">,</span> <span class="n">nbody</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;All possible n-body combinations from a cluster.</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
@@ -206,7 +206,7 @@
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    0,1,2 is considered the same as 2,1,3 and only included once.</span>
+<span class="sd">    0,1,2 is considered the same as 2,1,0 and only included once.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">segments</span> <span class="o">=</span> <span class="p">{}</span>
 
@@ -244,10 +244,10 @@
         <span class="c1"># Clears segment variables for the next one.</span>
         <span class="k">del</span> <span class="n">combined_atoms</span><span class="p">,</span> <span class="n">combined_coords</span>
 
-    <span class="k">return</span> <span class="n">segments</span>
+    <span class="k">return</span> <span class="n">segments</span></div>
 
 
-<div class="viewcode-block" id="partition_stringfile"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.partition.partition_stringfile">[docs]</a><span class="k">def</span> <span class="nf">partition_stringfile</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+<div class="viewcode-block" id="partition_stringfile"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.partition.partition_stringfile">[docs]</a><span class="k">def</span> <span class="nf">partition_stringfile</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">max_nbody</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Partitions an XYZ file.</span>
 
 <span class="sd">    Takes a cluster of molecules and separates into individual partitions. A</span>
@@ -259,6 +259,8 @@
 <span class="sd">    ----------</span>
 <span class="sd">    traj_path : :obj:`str`</span>
 <span class="sd">        Path to trajectory with xyz coordinates.</span>
+<span class="sd">    max_nbody: :obj:`int`, optional</span>
+<span class="sd">        Highest order of n-body structure to include.</span>
 <span class="sd">    </span>
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -291,8 +293,9 @@
         <span class="n">cluster</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">parse_cluster</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">coords</span><span class="p">)</span>
         <span class="c1"># Loops through all possible n-body partitions and adds the atoms once</span>
         <span class="c1"># and adds each step traj_partition.</span>
-        <span class="k">for</span> <span class="n">i_nbody</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sys_info</span><span class="p">[</span><span class="s1">&#39;cluster_size&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-            <span class="n">partitions</span> <span class="o">=</span> <span class="n">_partition_cluster</span><span class="p">(</span><span class="n">cluster</span><span class="p">,</span> <span class="n">i_nbody</span><span class="p">)</span>
+        <span class="n">i_nbody</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">i_nbody</span> <span class="o">&lt;=</span> <span class="n">sys_info</span><span class="p">[</span><span class="s1">&#39;cluster_size&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">i_nbody</span> <span class="o">&lt;=</span> <span class="n">max_nbody</span><span class="p">:</span>
+            <span class="n">partitions</span> <span class="o">=</span> <span class="n">partition_cluster</span><span class="p">(</span><span class="n">cluster</span><span class="p">,</span> <span class="n">i_nbody</span><span class="p">)</span>
             <span class="n">partition_labels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">partitions</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
             <span class="c1"># Tries to add the next trajectory step to &#39;coords&#39;; if it fails it</span>
             <span class="c1"># initializes &#39;atoms&#39; and &#39;coords&#39; for that partition.</span>
@@ -316,6 +319,7 @@
                         <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="n">partitions</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s1">&#39;z&#39;</span><span class="p">],</span>
                         <span class="s1">&#39;R&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">partitions</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s1">&#39;R&#39;</span><span class="p">]])</span>
                     <span class="p">}</span>
+            <span class="n">i_nbody</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="k">return</span> <span class="n">all_partitions</span></div>
 </pre></div>

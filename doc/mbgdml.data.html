@@ -1374,52 +1374,32 @@ including one, two, and three body contributions/corrections.</p>
 <span id="mbgdml-data-structure-module"></span><h2>mbgdml.data.structure module<a class="headerlink" href="#module-mbgdml.data.structure" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="mbgdml.data.structure.structure">
-<em class="property">class </em><code class="descclassname">mbgdml.data.structure.</code><code class="descname">structure</code><a class="reference internal" href="../_modules/mbgdml/data/structure.html#structure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.structure.structure" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mbgdml.data.structure.</code><code class="descname">structure</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/structure.html#structure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.structure.structure" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Basics of structures defined by positions of atoms.</p>
 <p>Makes using structures with mbGDML easier by providing a
 simple-to-use class to automate parsing of xyz or calculation files or
 manually specifying atoms and coordinates.</p>
-<dl class="attribute">
-<dt id="mbgdml.data.structure.structure.z">
-<code class="descname">z</code><a class="headerlink" href="#mbgdml.data.structure.structure.z" title="Permalink to this definition">¶</a></dt>
-<dd><p>A (n,) shape array of type numpy.int32 containing atomic numbers of
-atoms in the structures in order as they appear.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)">numpy.ndarray</a></td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to xyz file.</td>
 </tr>
 </tbody>
 </table>
-</dd></dl>
-
 <dl class="attribute">
 <dt id="mbgdml.data.structure.structure.R">
 <code class="descname">R</code><a class="headerlink" href="#mbgdml.data.structure.structure.R" title="Permalink to this definition">¶</a></dt>
-<dd><p>The atomic positions of structure(s) in a np.ndarray. Has a shape of
-(n, m, 3) where n is the number of structures and m is the number of
-atoms with 3 positional coordinates.</p>
+<dd><p>Atomic coordinates of structure(s).</p>
+<p>A <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> with shape of <code class="docutils literal notranslate"><span class="pre">(m,</span> <span class="pre">n,</span> <span class="pre">3)</span></code> where <code class="docutils literal notranslate"><span class="pre">m</span></code> is the
+number of structures and <code class="docutils literal notranslate"><span class="pre">n</span></code> is the number of atoms with three
+Cartesian components.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)">numpy.ndarray</a></td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="mbgdml.data.structure.structure.z_num">
-<code class="descname">z_num</code><a class="headerlink" href="#mbgdml.data.structure.structure.z_num" title="Permalink to this definition">¶</a></dt>
-<dd><p>The number of atoms stored in z.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></td>
 </tr>
 </tbody>
 </table>
@@ -1428,29 +1408,32 @@ atoms with 3 positional coordinates.</p>
 <dl class="attribute">
 <dt id="mbgdml.data.structure.structure.R_num">
 <code class="descname">R_num</code><a class="headerlink" href="#mbgdml.data.structure.structure.R_num" title="Permalink to this definition">¶</a></dt>
-<dd><p>The number of structures stored in R.</p>
+<dd><p>The number of structures.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mbgdml.data.structure.structure.molecules">
+<code class="descname">molecules</code><a class="headerlink" href="#mbgdml.data.structure.structure.molecules" title="Permalink to this definition">¶</a></dt>
+<dd><p>Molecules in structure.</p>
+<p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> keys specifying the molecule number starting from 0 with
+nested <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a> as values which contain</p>
+<dl class="docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">'z'</span></code></dt>
+<dd>A <code class="docutils literal notranslate"><span class="pre">(n,)</span></code> shape array of type <code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int32</span></code> containing
+atomic numbers of atoms in the structures in order as they
+appear.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">'R'</span></code></dt>
+<dd>A <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> with shape of <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">3)</span></code> where <code class="docutils literal notranslate"><span class="pre">n</span></code> is
+the number of atoms with three Cartesian components.</dd>
+</dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></td>
 </tr>
 </tbody>
 </table>
-</dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="descname">R</code></dt>
-<dd><p>The atomic positions of structure(s) in a np.ndarray.</p>
-<p>R has a shape of (n, m, 3) where n is the number of structures and
-m is the number of atoms with 3 positional coordinates.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="descname">R_num</code></dt>
-<dd><p>The number of structures.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1461,22 +1444,69 @@ m is the number of atoms with 3 positional coordinates.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Path to file parsable by cclib.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to xyz file.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.data.structure.structure.partitions">
+<code class="descname">partitions</code><span class="sig-paren">(</span><em>max_nbody=4</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/structure.html#structure.partitions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.structure.structure.partitions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Partitions of the structure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>max_nbody</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional) – Highest order of n-body structure to include.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">All nonrepeating molecule combinations from original cluster with
+keys being uppercase concatenations of molecule labels and values
+being the string of coordinates.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mbgdml.data.structure.structure.write_xyz">
+<code class="descname">write_xyz</code><span class="sig-paren">(</span><em>name</em>, <em>save_dir='./'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/structure.html#structure.write_xyz"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.structure.structure.write_xyz" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes xyz file of structure</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – File name.</li>
+<li><strong>save_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to directory to save file.</li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
 <dl class="attribute">
-<dt>
-<code class="descname">z</code></dt>
-<dd><p>Array of atoms’ atomic numbers in the same number as in
-the coordinate file.</p>
+<dt id="mbgdml.data.structure.structure.z">
+<code class="descname">z</code><a class="headerlink" href="#mbgdml.data.structure.structure.z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Atomic numbers of all atoms.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">(n,)</span></code> shape array of type <code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int32</span></code> containing atomic
+numbers of atoms in the structures in order as they appear.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
-<dt>
-<code class="descname">z_num</code></dt>
+<dt id="mbgdml.data.structure.structure.z_num">
+<code class="descname">z_num</code><a class="headerlink" href="#mbgdml.data.structure.structure.z_num" title="Permalink to this definition">¶</a></dt>
 <dd><p>The number of atoms.</p>
 </dd></dl>
 
