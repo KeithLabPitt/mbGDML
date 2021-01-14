@@ -156,7 +156,7 @@
   <h1>Source code for mbgdml.calculate</h1><div class="highlight"><pre>
 <span></span><span class="c1"># MIT License</span>
 <span class="c1"># </span>
-<span class="c1"># Copyright (c) 2020, Alex M. Maldonado</span>
+<span class="c1"># Copyright (c) 2020-2021, Alex M. Maldonado</span>
 <span class="c1"># </span>
 <span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
 <span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
@@ -725,7 +725,6 @@
     <span class="k">if</span> <span class="n">calc_dir</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
         <span class="n">calc_dir</span> <span class="o">+=</span> <span class="s1">&#39;/&#39;</span>
     <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">calc_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">calc_dir</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">z</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">z</span><span class="p">])</span>
@@ -777,6 +776,7 @@
             <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span>
             <span class="n">control_blocks</span><span class="o">=</span><span class="n">control_blocks</span><span class="p">,</span>
             <span class="n">write</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">write_dir</span><span class="o">=</span><span class="n">calc_dir</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="n">input_file_string</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
             <span class="n">input_file_string</span> <span class="o">=</span> <span class="n">calc_string</span>
@@ -784,7 +784,7 @@
             <span class="n">input_file_string</span> <span class="o">+=</span> <span class="n">calc_string</span>
     
     <span class="k">if</span> <span class="n">write</span><span class="p">:</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">input_name</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">engrad</span><span class="o">.</span><span class="n">input_extension</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">calc_dir</span> <span class="o">+</span> <span class="n">input_name</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">engrad</span><span class="o">.</span><span class="n">input_extension</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">input_file_string</span><span class="p">)</span>
     
     <span class="k">if</span> <span class="n">submit</span><span class="p">:</span>

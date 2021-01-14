@@ -156,7 +156,7 @@
   <h1>Source code for mbgdml.data.dataset</h1><div class="highlight"><pre>
 <span></span><span class="c1"># MIT License</span>
 <span class="c1"># </span>
-<span class="c1"># Copyright (c) 2020, Alex M. Maldonado</span>
+<span class="c1"># Copyright (c) 2020-2021, Alex M. Maldonado</span>
 <span class="c1"># </span>
 <span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
 <span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
@@ -181,10 +181,10 @@
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">cclib.parser.utils</span> <span class="kn">import</span> <span class="n">convertor</span>
-<span class="kn">from</span> <span class="nn">sgdml</span> <span class="kn">import</span> <span class="n">__version__</span>
 <span class="kn">from</span> <span class="nn">sgdml.utils</span> <span class="kn">import</span> <span class="n">io</span> <span class="k">as</span> <span class="n">sgdml_io</span>
 <span class="kn">from</span> <span class="nn">mbgdml.data</span> <span class="kn">import</span> <span class="n">mbGDMLData</span>
 <span class="kn">import</span> <span class="nn">mbgdml.solvents</span> <span class="k">as</span> <span class="nn">solvents</span>
+<span class="kn">from</span> <span class="nn">mbgdml</span> <span class="kn">import</span> <span class="n">__version__</span>
 <span class="kn">from</span> <span class="nn">mbgdml.parse</span> <span class="kn">import</span> <span class="n">parse_stringfile</span>
 <span class="kn">from</span> <span class="nn">mbgdml</span> <span class="kn">import</span> <span class="n">utils</span>
 <span class="kn">from</span> <span class="nn">mbgdml.predict</span> <span class="kn">import</span> <span class="n">mbGDMLPredict</span>
@@ -202,8 +202,6 @@
 <span class="sd">    ----------</span>
 <span class="sd">    name : :obj:`str`</span>
 <span class="sd">        Name of the data set. Defaults to ``&#39;dataset&#39;``.</span>
-<span class="sd">    code_verstion</span>
-<span class="sd">        The version of :mod:`sgdml`.</span>
 <span class="sd">    theory : :obj:`str`</span>
 <span class="sd">        The level of theory used to compute energy and gradients of the data</span>
 <span class="sd">        set.</span>
@@ -214,12 +212,11 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;dataset&#39;</span>
-        <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-    
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">F</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -406,7 +403,12 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_F</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_r_unit</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;r_unit&#39;</span><span class="p">][()])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_e_unit</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;e_unit&#39;</span><span class="p">][()])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">code_version</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;code_version&#39;</span><span class="p">][()])</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mbgdml_version</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;mbgdml_version&#39;</span><span class="p">][()])</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="c1"># Some old data sets do not have this information.</span>
+            <span class="c1"># This is unessential, so we will just ignore this.</span>
+            <span class="k">pass</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">][()])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">theory</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;theory&#39;</span><span class="p">][()])</span>
         <span class="c1"># mbGDML added data set information.</span>
@@ -506,7 +508,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_F</span> <span class="o">=</span> <span class="n">partcalc</span><span class="o">.</span><span class="n">F</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">r_unit</span> <span class="o">=</span> <span class="n">partcalc</span><span class="o">.</span><span class="n">r_unit</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">e_unit</span> <span class="o">=</span> <span class="n">partcalc</span><span class="o">.</span><span class="n">e_unit</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">code_version</span> <span class="o">=</span> <span class="n">__version__</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mbgdml_version</span> <span class="o">=</span> <span class="n">__version__</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">theory</span> <span class="o">=</span> <span class="n">partcalc</span><span class="o">.</span><span class="n">theory</span></div>
 
 
@@ -542,7 +544,7 @@
         <span class="c1"># sGDML variables.</span>
         <span class="n">dataset</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">),</span>  <span class="c1"># Designates dataset.</span>
-            <span class="s1">&#39;code_version&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">__version__</span><span class="p">),</span>  <span class="c1"># sGDML version.</span>
+            <span class="s1">&#39;mbgdml_version&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">__version__</span><span class="p">),</span>  <span class="c1"># sGDML version.</span>
             <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">),</span>  <span class="c1"># Name of the output file.</span>
             <span class="s1">&#39;theory&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">theory</span><span class="p">),</span>  <span class="c1"># Theory used to calculate the data.</span>
             <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">),</span>  <span class="c1"># Atomic numbers of all atoms in system.</span>
@@ -643,7 +645,6 @@
 <span class="sd">            Paths to saved many-body GDML models in the form of</span>
 <span class="sd">            :obj:`numpy.NpzFile`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Removing /contributions ...&#39;</span><span class="p">)</span>
         <span class="n">predict</span> <span class="o">=</span> <span class="n">mbGDMLPredict</span><span class="p">(</span><span class="n">model_paths</span><span class="p">)</span>
         <span class="n">dataset</span> <span class="o">=</span> <span class="n">predict</span><span class="o">.</span><span class="n">remove_nbody</span><span class="p">(</span><span class="n">ref_dataset</span><span class="o">.</span><span class="n">dataset</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span></div></div>

@@ -156,7 +156,7 @@
   <h1>Source code for mbgdml.utils</h1><div class="highlight"><pre>
 <span></span><span class="c1"># MIT License</span>
 <span class="c1"># </span>
-<span class="c1"># Copyright (c) 2020, Alex M. Maldonado</span>
+<span class="c1"># Copyright (c) 2020-2021, Alex M. Maldonado</span>
 <span class="c1"># </span>
 <span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
 <span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
@@ -207,83 +207,48 @@
     <span class="k">return</span> <span class="n">normd_path</span></div>
 
 
-<div class="viewcode-block" id="get_files"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.utils.get_files">[docs]</a><span class="k">def</span> <span class="nf">get_files</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">expression</span><span class="p">):</span>
+<div class="viewcode-block" id="get_files"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.utils.get_files">[docs]</a><span class="k">def</span> <span class="nf">get_files</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">expression</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns paths to all files in a given directory that matches a provided</span>
 <span class="sd">    expression in the file name. Commonly used to find all files of a certain</span>
 <span class="sd">    type, e.g. output or xyz files.</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    path : str</span>
+<span class="sd">    path : :obj:`str`</span>
 <span class="sd">        Specifies the directory to search.</span>
-<span class="sd">    expression : str</span>
+<span class="sd">    expression : :obj:`str`</span>
 <span class="sd">        Expression to be tested against all file names in &#39;path&#39;.</span>
+<span class="sd">    recursive :obj:`bool`, optional</span>
+<span class="sd">        Recursively find all files in all subdirectories.</span>
 <span class="sd">    </span>
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    list</span>
-<span class="sd">        all absolute paths to files matching the provided expression.</span>
+<span class="sd">    :obj:`list` [:obj:`str`]</span>
+<span class="sd">        All absolute paths to files matching the provided expression.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">norm_path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-    
-    <span class="n">all_files</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">dirpath</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">filenames</span><span class="p">)</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-        <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">while</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">filenames</span><span class="p">):</span>
-            <span class="n">filenames</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">norm_path</span><span class="p">(</span><span class="n">dirpath</span><span class="p">)</span> <span class="o">+</span> <span class="n">filenames</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
-            <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
-
-        <span class="n">all_files</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">filenames</span><span class="p">)</span>
-        
-    <span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">all_files</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">expression</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
-            <span class="n">files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
-
+    <span class="k">if</span> <span class="n">path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
+        <span class="n">path</span> <span class="o">+=</span> <span class="s1">&#39;/&#39;</span>
+    <span class="k">if</span> <span class="n">recursive</span><span class="p">:</span>
+        <span class="n">all_files</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">dirpath</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">filenames</span><span class="p">)</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">while</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">filenames</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">dirpath</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
+                    <span class="n">dirpath</span> <span class="o">+=</span> <span class="s1">&#39;/&#39;</span>
+                <span class="n">filenames</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">dirpath</span> <span class="o">+</span> <span class="n">filenames</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+                <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">all_files</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">filenames</span><span class="p">)</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">all_files</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">expression</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">expression</span> <span class="ow">in</span> <span class="n">filename</span><span class="p">:</span>
+                <span class="n">files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">files</span></div>
-
-
-<div class="viewcode-block" id="make_folder"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.utils.make_folder">[docs]</a><span class="k">def</span> <span class="nf">make_folder</span><span class="p">(</span><span class="n">folder</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Creates folder at specified path.</span>
-<span class="sd">    If the current folder exists, it creates another folder</span>
-<span class="sd">    with an added number.</span>
-<span class="sd">    </span>
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    pathFolder : str</span>
-<span class="sd">        Path to desired folder.</span>
-<span class="sd">    </span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    str</span>
-<span class="sd">        Final path of new folder; ends in &#39;/&#39;.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    
-    <span class="c1"># First tries to create the desired directory.</span>
-    <span class="k">try</span><span class="p">:</span>
-
-        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">folder</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span>
-
-    <span class="c1"># If there is already a directory with the same name,</span>
-    <span class="c1"># append a positive integer until there is no previously existing directory.</span>
-    <span class="k">except</span> <span class="ne">FileExistsError</span><span class="p">:</span>
-
-        <span class="n">indexDir</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="n">dirExists</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="k">while</span> <span class="n">dirExists</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">pathFolderIteration</span> <span class="o">=</span> <span class="n">folder</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">indexDir</span><span class="p">)</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">pathFolderIteration</span><span class="p">)</span>
-
-                <span class="n">dirExists</span> <span class="o">=</span> <span class="kc">False</span>
-
-                <span class="k">return</span> <span class="n">pathFolderIteration</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span>
-
-            <span class="c1"># Increments number by 1 until it finds the lowest number.</span>
-            <span class="k">except</span> <span class="ne">FileExistsError</span><span class="p">:</span>
-                <span class="n">indexDir</span> <span class="o">+=</span> <span class="mi">1</span></div>
-
 
 <div class="viewcode-block" id="natsort_list"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.utils.natsort_list">[docs]</a><span class="k">def</span> <span class="nf">natsort_list</span><span class="p">(</span><span class="n">unsorted_list</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Basic function that organizes a list based on human (or natural) sorting</span>
@@ -302,7 +267,6 @@
     <span class="n">sorted_list</span> <span class="o">=</span> <span class="n">natsorted</span><span class="p">(</span><span class="n">unsorted_list</span><span class="p">,</span> <span class="n">alg</span><span class="o">=</span><span class="n">ns</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">sorted_list</span></div>
-
 
 <div class="viewcode-block" id="string_coords"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.utils.string_coords">[docs]</a><span class="k">def</span> <span class="nf">string_coords</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">R</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Puts atomic coordinates into a Python string. Typically used for </span>
@@ -336,6 +300,35 @@
     
     <span class="k">return</span> <span class="n">atom_coords_string</span></div>
 
+<div class="viewcode-block" id="write_xyz"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.utils.write_xyz">[docs]</a><span class="k">def</span> <span class="nf">write_xyz</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">,</span> <span class="n">file_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Write XYZ file given atomic numbers and Cartesian coordinates.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    z : :obj:`numpy.ndarray`</span>
+<span class="sd">        A ``(n,)`` shape array of type :obj:`numpy.int32` containing atomic</span>
+<span class="sd">        numbers of atoms in the structures in order as they appear.</span>
+<span class="sd">    R : :obj:`numpy.ndarray`</span>
+<span class="sd">        A :obj:`numpy.ndarray` with shape of ``(m, n, 3)`` where ``m`` is the</span>
+<span class="sd">        number of structures and ``n`` is the number of atoms with three </span>
+<span class="sd">        Cartesian components.</span>
+<span class="sd">    save_dir : :obj:`str`</span>
+<span class="sd">        Path to directory to save XYZ file.</span>
+<span class="sd">    file_name : :obj:`str`</span>
+<span class="sd">        Name to save the file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">R</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">R</span><span class="p">])</span>
+    
+    <span class="k">if</span> <span class="n">save_dir</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
+        <span class="n">save_dir</span> <span class="o">+=</span> <span class="s1">&#39;/&#39;</span>
+    
+    <span class="n">num_atoms</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">save_dir</span><span class="si">}{</span><span class="n">file_name</span><span class="si">}</span><span class="s1">.xyz&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">structure</span> <span class="ow">in</span> <span class="n">R</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span>
+                <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">num_atoms</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">string_coords</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">structure</span><span class="p">)]</span>
+            <span class="p">)</span></div>
 
 <div class="viewcode-block" id="convert_forces"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.utils.convert_forces">[docs]</a><span class="k">def</span> <span class="nf">convert_forces</span><span class="p">(</span>
     <span class="n">forces</span><span class="p">,</span> <span class="n">e_units_calc</span><span class="p">,</span> <span class="n">r_units_calc</span><span class="p">,</span> <span class="n">e_units</span><span class="p">,</span> <span class="n">r_units</span>

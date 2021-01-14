@@ -156,7 +156,7 @@
   <h1>Source code for mbgdml.partition</h1><div class="highlight"><pre>
 <span></span><span class="c1"># MIT License</span>
 <span class="c1"># </span>
-<span class="c1"># Copyright (c) 2020, Alex M. Maldonado</span>
+<span class="c1"># Copyright (c) 2020-2021, Alex M. Maldonado</span>
 <span class="c1"># </span>
 <span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
 <span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
@@ -251,9 +251,8 @@
 
     <span class="k">return</span> <span class="n">segments</span></div>
 
-
-<div class="viewcode-block" id="partition_stringfile"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.partition.partition_stringfile">[docs]</a><span class="k">def</span> <span class="nf">partition_stringfile</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">max_nbody</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Partitions an XYZ file.</span>
+<div class="viewcode-block" id="partition_structures"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.partition.partition_structures">[docs]</a><span class="k">def</span> <span class="nf">partition_structures</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">max_nbody</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Creates all partitions from given atoms and coordinates.</span>
 
 <span class="sd">    Takes a cluster of molecules and separates into individual partitions. A</span>
 <span class="sd">    partition being a monomer, dimer, trimer, etc. from the original cluster.</span>
@@ -262,37 +261,39 @@
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    traj_path : :obj:`str`</span>
-<span class="sd">        Path to trajectory with xyz coordinates.</span>
-<span class="sd">    max_nbody: :obj:`int`, optional</span>
-<span class="sd">        Highest order of n-body structure to include.</span>
+<span class="sd">    z : :obj:`numpy.ndarray`</span>
+<span class="sd">        A ``(n,)`` shape array of type :obj:`numpy.int32` containing atomic</span>
+<span class="sd">        numbers of atoms in the structures in order as they appear.</span>
+<span class="sd">    R: :obj:`numpy.ndarray`</span>
+<span class="sd">        A :obj:`numpy.ndarray` with shape of ``(m, n, 3)`` where ``m`` is the</span>
+<span class="sd">        number of structures and ``n`` is the number of atoms with three </span>
+<span class="sd">        Cartesian components.</span>
 <span class="sd">    </span>
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    :obj:`dict`</span>
-<span class="sd">        All nonrepeating molecule combinations from original cluster with keys </span>
-<span class="sd">        being uppercase concatenations of molecule labels and values being the </span>
-<span class="sd">        string of coordinates.</span>
+<span class="sd">        All nonrepeating solvent molecule combinations from cluster with keys </span>
+<span class="sd">        being ``&#39;#,#,#&#39;`` where each ``#`` represents a molecule index. For</span>
+<span class="sd">        example, ``&#39;0,11,19&#39;`` would be a cluster with molecules 0, 11, and 19</span>
+<span class="sd">        from the super cluster. Each value is a dictionary containing</span>
+
+<span class="sd">        ``&#39;z&#39;``</span>
+<span class="sd">            A ``(n,)`` shape array of type :obj:`numpy.int32` containing atomic</span>
+<span class="sd">            numbers of atoms in the structures in order as they appear.</span>
+<span class="sd">        </span>
+<span class="sd">        ``&#39;R&#39;``</span>
+<span class="sd">            A :obj:`numpy.ndarray` with shape of ``(n, 3)`` where ``n`` is the</span>
+<span class="sd">            number of atoms with three Cartesian components.</span>
 <span class="sd">    </span>
 <span class="sd">    Raises</span>
 <span class="sd">    ------</span>
 <span class="sd">    ValueError</span>
 <span class="sd">        If any structure has a different order of atoms.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">R</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span>
 
-    <span class="c1"># Parses trajectory.</span>
-    <span class="n">z_all</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">R_list</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">parse_stringfile</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">z_all</span><span class="p">))</span> <span class="o">==</span> <span class="mi">1</span>
-    <span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s1"> contains atoms in different order.&#39;</span><span class="p">)</span>
-    <span class="n">z_elements</span> <span class="o">=</span> <span class="n">z_all</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">R_list</span><span class="p">)</span>
-    <span class="c1"># Gets system information</span>
-    <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">atoms_by_number</span><span class="p">(</span><span class="n">z_elements</span><span class="p">))</span>
     <span class="n">sys_info</span> <span class="o">=</span> <span class="n">solvents</span><span class="o">.</span><span class="n">system_info</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
 
-    <span class="c1"># Gets </span>
     <span class="n">all_partitions</span> <span class="o">=</span> <span class="p">{}</span>  
     <span class="k">for</span> <span class="n">coords</span> <span class="ow">in</span> <span class="n">R</span><span class="p">:</span>
         <span class="n">cluster</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">parse_cluster</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">coords</span><span class="p">)</span>
@@ -325,6 +326,44 @@
                         <span class="s1">&#39;R&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">partitions</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s1">&#39;R&#39;</span><span class="p">]])</span>
                     <span class="p">}</span>
             <span class="n">i_nbody</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">all_partitions</span></div>
+
+<div class="viewcode-block" id="partition_stringfile"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.partition.partition_stringfile">[docs]</a><span class="k">def</span> <span class="nf">partition_stringfile</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">max_nbody</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Partitions an XYZ file.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    file_path : :obj:`str`</span>
+<span class="sd">        Path to trajectory with xyz coordinates.</span>
+<span class="sd">    max_nbody: :obj:`int`, optional</span>
+<span class="sd">        Highest order of n-body structure to include.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    :obj:`dict`</span>
+<span class="sd">        All nonrepeating molecule combinations from original cluster with keys </span>
+<span class="sd">        being uppercase concatenations of molecule labels and values being the </span>
+<span class="sd">        string of coordinates.</span>
+<span class="sd">    </span>
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If any structure has a different order of atoms.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Parses trajectory.</span>
+    <span class="n">z_all</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">R_list</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">parse_stringfile</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">z_all</span><span class="p">))</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s1"> contains atoms in different order.&#39;</span><span class="p">)</span>
+    <span class="n">z_elements</span> <span class="o">=</span> <span class="n">z_all</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">R_list</span><span class="p">)</span>
+    <span class="c1"># Gets system information</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">atoms_by_number</span><span class="p">(</span><span class="n">z_elements</span><span class="p">))</span>
+
+    <span class="n">all_partitions</span> <span class="o">=</span> <span class="n">partition_structures</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">max_nbody</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">all_partitions</span></div>
 </pre></div>

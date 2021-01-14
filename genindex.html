@@ -182,12 +182,14 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="doc/mbgdml.data.html#mbgdml.data.model.mbGDMLModel.add_manybody_info">add_manybody_info() (mbgdml.data.model.mbGDMLModel method)</a>
 </li>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.basedata.mbGDMLData.add_system_info">add_system_info() (mbgdml.data.basedata.mbGDMLData method)</a>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.model.mbGDMLModel.add_modifications">add_modifications() (mbgdml.data.model.mbGDMLModel method)</a>
 </li>
-      <li><a href="doc/mbgdml.html#mbgdml.solvents.solvent.atom_numbers">atom_numbers() (mbgdml.solvents.solvent method)</a>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.basedata.mbGDMLData.add_system_info">add_system_info() (mbgdml.data.basedata.mbGDMLData method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="doc/mbgdml.html#mbgdml.solvents.solvent.atom_numbers">atom_numbers() (mbgdml.solvents.solvent method)</a>
+</li>
       <li><a href="doc/mbgdml.html#mbgdml.utils.atoms_by_element">atoms_by_element() (in module mbgdml.utils)</a>
 </li>
       <li><a href="doc/mbgdml.html#mbgdml.utils.atoms_by_number">atoms_by_number() (in module mbgdml.utils)</a>
@@ -226,8 +228,6 @@
 </li>
       <li><a href="doc/mbgdml.data.html#mbgdml.data.model.mbGDMLModel.code_version">code_version (mbgdml.data.model.mbGDMLModel attribute)</a>
 </li>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.code_verstion">code_verstion (mbgdml.data.dataset.mbGDMLDataset attribute)</a>
-</li>
       <li><a href="doc/mbgdml.html#mbgdml.utils.convert_forces">convert_forces() (in module mbgdml.utils)</a>
 </li>
       <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.convertE">convertE() (mbgdml.data.dataset.mbGDMLDataset method)</a>, <a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.convertE">[1]</a>
@@ -248,9 +248,17 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="doc/mbgdml.data.html#mbgdml.data.generate.data_sets">data_sets() (in module mbgdml.data.generate)</a>
 </li>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.dataset">dataset (mbgdml.data.dataset.mbGDMLDataset attribute)</a>
+
+      <ul>
+        <li><a href="doc/mbgdml.html#mbgdml.train.mbGDMLTrain.dataset">(mbgdml.train.mbGDMLTrain attribute)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.dataset">dataset (mbgdml.data.dataset.mbGDMLDataset attribute)</a>
+      <li><a href="doc/mbgdml.html#mbgdml.train.mbGDMLTrain.dataset_name">dataset_name (mbgdml.train.mbGDMLTrain attribute)</a>
+</li>
+      <li><a href="doc/mbgdml.html#mbgdml.train.mbGDMLTrain.dataset_path">dataset_path (mbgdml.train.mbGDMLTrain attribute)</a>
 </li>
       <li><a href="doc/mbgdml.html#mbgdml.predict.mbGDMLPredict.decomposed_predict">decomposed_predict() (mbgdml.predict.mbGDMLPredict method)</a>
 </li>
@@ -340,8 +348,6 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="doc/mbgdml.html#mbgdml.utils.get_files">get_files() (in module mbgdml.utils)</a>
 </li>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.model.mbGDMLModel.get_model_name">get_model_name() (mbgdml.data.model.mbGDMLModel method)</a>
-</li>
   </ul></td>
 </tr></table>
 
@@ -381,7 +387,7 @@
       <li><a href="doc/mbgdml.data.html#mbgdml.data.predictset.mbGDMLPredictset.load_dataset">load_dataset() (mbgdml.data.predictset.mbGDMLPredictset method)</a>
 
       <ul>
-        <li><a href="doc/mbgdml.html#mbgdml.train.MBGDMLTrain.load_dataset">(mbgdml.train.MBGDMLTrain method)</a>
+        <li><a href="doc/mbgdml.html#mbgdml.train.mbGDMLTrain.load_dataset">(mbgdml.train.mbGDMLTrain method)</a>
 </li>
       </ul></li>
       <li><a href="doc/mbgdml.html#mbgdml.calculate.mbGDMLCalculator.load_models">load_models() (mbgdml.calculate.mbGDMLCalculator method)</a>
@@ -396,8 +402,6 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="doc/mbgdml.html#mbgdml.utils.make_folder">make_folder() (in module mbgdml.utils)</a>
-</li>
       <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.mb">mb (mbgdml.data.dataset.mbGDMLDataset attribute)</a>
 </li>
       <li><a href="doc/mbgdml.html#module-mbgdml">mbgdml (module)</a>
@@ -456,7 +460,7 @@
 </li>
       <li><a href="doc/mbgdml.data.html#mbgdml.data.predictset.mbGDMLPredictset">mbGDMLPredictset (class in mbgdml.data.predictset)</a>
 </li>
-      <li><a href="doc/mbgdml.html#mbgdml.train.MBGDMLTrain">MBGDMLTrain (class in mbgdml.train)</a>
+      <li><a href="doc/mbgdml.html#mbgdml.train.mbGDMLTrain">mbGDMLTrain (class in mbgdml.train)</a>
 </li>
       <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.md5">md5 (mbgdml.data.dataset.mbGDMLDataset attribute)</a>, <a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.md5">[1]</a>
 </li>
@@ -567,6 +571,8 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="doc/mbgdml.html#mbgdml.partition.partition_stringfile">partition_stringfile() (in module mbgdml.partition)</a>
+</li>
+      <li><a href="doc/mbgdml.html#mbgdml.partition.partition_structures">partition_structures() (in module mbgdml.partition)</a>
 </li>
       <li><a href="doc/mbgdml.data.html#mbgdml.data.calculation.PartitionOutput">PartitionOutput (class in mbgdml.data.calculation)</a>
 </li>
@@ -690,7 +696,7 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="doc/mbgdml.html#mbgdml.train.MBGDMLTrain.train_GDML">train_GDML() (mbgdml.train.MBGDMLTrain method)</a>
+      <li><a href="doc/mbgdml.html#mbgdml.train.mbGDMLTrain.train_GDML">train_GDML() (mbgdml.train.mbGDMLTrain method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -698,8 +704,12 @@
 <h2 id="W">W</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.structure.structure.write_xyz">write_xyz() (mbgdml.data.structure.structure method)</a>
+      <li><a href="doc/mbgdml.html#mbgdml.utils.write_xyz">write_xyz() (in module mbgdml.utils)</a>
+
+      <ul>
+        <li><a href="doc/mbgdml.data.html#mbgdml.data.structure.structure.write_xyz">(mbgdml.data.structure.structure method)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
