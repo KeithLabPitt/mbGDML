@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   
@@ -29,10 +29,9 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -184,8 +183,8 @@ tutorials.</p>
 <p>This section will walk through the various steps involved in creating a 3-body
 GDML force field for water.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">A 3-body GDML force field is the combination of 1-body, 2-body, and 3-body
+<p class="admonition-title">Note</p>
+<p>A 3-body GDML force field is the combination of 1-body, 2-body, and 3-body
 GDML models.</p>
 </div>
 <div class="section" id="geometric-sampling">
@@ -203,8 +202,8 @@ simulations, carving all possible 1mer, 2mer, and 3mer structures, and
 recalculating energies and forces. This procedure would provide a total of four
 1mer, six 2mer, and four 3mer structures per MD time step.</p>
 <div class="admonition tip">
-<p class="first admonition-title">Tip</p>
-<p class="last">Any package can be used to run MD simulations or calculate energies and
+<p class="admonition-title">Tip</p>
+<p>Any package can be used to run MD simulations or calculate energies and
 forces. The data just needs to be in <a class="reference internal" href="datasets.html#output-data-sets"><span class="std std-ref">output files parsable by cclib</span></a> or in <a class="reference internal" href="datasets.html#xyz-data-sets"><span class="std std-ref">xyz format</span></a>.</p>
 </div>
 </div>

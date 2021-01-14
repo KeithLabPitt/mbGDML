@@ -1,8 +1,7 @@
 
 
-
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   
@@ -30,10 +29,9 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -226,7 +224,7 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="doc/mbgdml.html#mbgdml.parse.cluster_size">cluster_size() (in module mbgdml.parse)</a>
 </li>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.model.mbGDMLModel.code_version">code_version (mbgdml.data.model.mbGDMLModel attribute)</a>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.model.mbGDMLModel.code_version">code_version() (mbgdml.data.model.mbGDMLModel property)</a>
 </li>
       <li><a href="doc/mbgdml.html#mbgdml.utils.convert_forces">convert_forces() (in module mbgdml.utils)</a>
 </li>
@@ -248,12 +246,10 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="doc/mbgdml.data.html#mbgdml.data.generate.data_sets">data_sets() (in module mbgdml.data.generate)</a>
 </li>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.dataset">dataset (mbgdml.data.dataset.mbGDMLDataset attribute)</a>
-
-      <ul>
-        <li><a href="doc/mbgdml.html#mbgdml.train.mbGDMLTrain.dataset">(mbgdml.train.mbGDMLTrain attribute)</a>
+      <li><a href="doc/mbgdml.html#mbgdml.train.mbGDMLTrain.dataset">dataset (mbgdml.train.mbGDMLTrain attribute)</a>
 </li>
-      </ul></li>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.dataset">dataset() (mbgdml.data.dataset.mbGDMLDataset property)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="doc/mbgdml.html#mbgdml.train.mbGDMLTrain.dataset_name">dataset_name (mbgdml.train.mbGDMLTrain attribute)</a>
@@ -273,30 +269,40 @@
       <ul>
         <li><a href="doc/mbgdml.data.html#mbgdml.data.calculation.PartitionOutput.E">(mbgdml.data.calculation.PartitionOutput attribute)</a>
 </li>
-        <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.E">(mbgdml.data.dataset.mbGDMLDataset attribute)</a>, <a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.E">[1]</a>
+        <li><a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.E">(mbgdml.data.dataset.mbGDMLDataset attribute)</a>
 </li>
       </ul></li>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.E_max">E_max (mbgdml.data.dataset.mbGDMLDataset attribute)</a>, <a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.E_max">[1]</a>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.E">E() (mbgdml.data.dataset.mbGDMLDataset property)</a>
 </li>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.E_mean">E_mean (mbgdml.data.dataset.mbGDMLDataset attribute)</a>, <a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.E_mean">[1]</a>
+      <li><a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.E_max">E_max (mbgdml.data.dataset.mbGDMLDataset attribute)</a>
 </li>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.E_min">E_min (mbgdml.data.dataset.mbGDMLDataset attribute)</a>, <a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.E_min">[1]</a>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.E_max">E_max() (mbgdml.data.dataset.mbGDMLDataset property)</a>
+</li>
+      <li><a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.E_mean">E_mean (mbgdml.data.dataset.mbGDMLDataset attribute)</a>
+</li>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.E_mean">E_mean() (mbgdml.data.dataset.mbGDMLDataset property)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.predictset.mbGDMLPredictset.E_true">E_true (mbgdml.data.predictset.mbGDMLPredictset attribute)</a>
+      <li><a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.E_min">E_min (mbgdml.data.dataset.mbGDMLDataset attribute)</a>
+</li>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.E_min">E_min() (mbgdml.data.dataset.mbGDMLDataset property)</a>
+</li>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.predictset.mbGDMLPredictset.E_true">E_true() (mbgdml.data.predictset.mbGDMLPredictset property)</a>
 </li>
       <li><a href="tutorials/partitioning.html#mbgdml.data.e_unit">e_unit (in module mbgdml.data)</a>
 
       <ul>
-        <li><a href="doc/mbgdml.data.html#mbgdml.data.basedata.mbGDMLData.e_unit">(mbgdml.data.basedata.mbGDMLData attribute)</a>
-</li>
         <li><a href="doc/mbgdml.data.html#mbgdml.data.calculation.PartitionOutput.e_unit">(mbgdml.data.calculation.PartitionOutput attribute)</a>
 </li>
         <li><a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.e_unit">(mbgdml.data.dataset.mbGDMLDataset attribute)</a>
 </li>
       </ul></li>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.E_var">E_var (mbgdml.data.dataset.mbGDMLDataset attribute)</a>, <a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.E_var">[1]</a>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.basedata.mbGDMLData.e_unit">e_unit() (mbgdml.data.basedata.mbGDMLData property)</a>
+</li>
+      <li><a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.E_var">E_var (mbgdml.data.dataset.mbGDMLDataset attribute)</a>
+</li>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.E_var">E_var() (mbgdml.data.dataset.mbGDMLDataset property)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -309,20 +315,30 @@
       <ul>
         <li><a href="doc/mbgdml.data.html#mbgdml.data.calculation.PartitionOutput.F">(mbgdml.data.calculation.PartitionOutput attribute)</a>
 </li>
-        <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.F">(mbgdml.data.dataset.mbGDMLDataset attribute)</a>, <a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.F">[1]</a>
+        <li><a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.F">(mbgdml.data.dataset.mbGDMLDataset attribute)</a>
 </li>
       </ul></li>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.F_max">F_max (mbgdml.data.dataset.mbGDMLDataset attribute)</a>, <a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.F_max">[1]</a>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.F">F() (mbgdml.data.dataset.mbGDMLDataset property)</a>
 </li>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.F_mean">F_mean (mbgdml.data.dataset.mbGDMLDataset attribute)</a>, <a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.F_mean">[1]</a>
+      <li><a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.F_max">F_max (mbgdml.data.dataset.mbGDMLDataset attribute)</a>
 </li>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.F_min">F_min (mbgdml.data.dataset.mbGDMLDataset attribute)</a>, <a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.F_min">[1]</a>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.F_max">F_max() (mbgdml.data.dataset.mbGDMLDataset property)</a>
+</li>
+      <li><a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.F_mean">F_mean (mbgdml.data.dataset.mbGDMLDataset attribute)</a>
+</li>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.F_mean">F_mean() (mbgdml.data.dataset.mbGDMLDataset property)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.predictset.mbGDMLPredictset.F_true">F_true (mbgdml.data.predictset.mbGDMLPredictset attribute)</a>
+      <li><a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.F_min">F_min (mbgdml.data.dataset.mbGDMLDataset attribute)</a>
 </li>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.F_var">F_var (mbgdml.data.dataset.mbGDMLDataset attribute)</a>, <a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.F_var">[1]</a>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.F_min">F_min() (mbgdml.data.dataset.mbGDMLDataset property)</a>
+</li>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.predictset.mbGDMLPredictset.F_true">F_true() (mbgdml.data.predictset.mbGDMLPredictset property)</a>
+</li>
+      <li><a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.F_var">F_var (mbgdml.data.dataset.mbGDMLDataset attribute)</a>
+</li>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.F_var">F_var() (mbgdml.data.dataset.mbGDMLDataset property)</a>
 </li>
       <li><a href="doc/mbgdml.analysis.html#mbgdml.analysis.nbody.NBodyHeatMaps.force_heatmap">force_heatmap() (mbgdml.analysis.nbody.NBodyHeatMaps method)</a>
 </li>
@@ -404,48 +420,141 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.mb">mb (mbgdml.data.dataset.mbGDMLDataset attribute)</a>
 </li>
-      <li><a href="doc/mbgdml.html#module-mbgdml">mbgdml (module)</a>
+      <li>
+    mbgdml
+
+      <ul>
+        <li><a href="doc/mbgdml.html#module-mbgdml">module</a>
 </li>
-      <li><a href="doc/mbgdml.analysis.html#module-mbgdml.analysis">mbgdml.analysis (module)</a>
+      </ul></li>
+      <li>
+    mbgdml.analysis
+
+      <ul>
+        <li><a href="doc/mbgdml.analysis.html#module-mbgdml.analysis">module</a>
 </li>
-      <li><a href="doc/mbgdml.analysis.html#module-mbgdml.analysis.nbody">mbgdml.analysis.nbody (module)</a>
+      </ul></li>
+      <li>
+    mbgdml.analysis.nbody
+
+      <ul>
+        <li><a href="doc/mbgdml.analysis.html#module-mbgdml.analysis.nbody">module</a>
 </li>
-      <li><a href="doc/mbgdml.analysis.html#module-mbgdml.analysis.similarity">mbgdml.analysis.similarity (module)</a>
+      </ul></li>
+      <li>
+    mbgdml.analysis.similarity
+
+      <ul>
+        <li><a href="doc/mbgdml.analysis.html#module-mbgdml.analysis.similarity">module</a>
 </li>
-      <li><a href="doc/mbgdml.html#module-mbgdml.calculate">mbgdml.calculate (module)</a>
+      </ul></li>
+      <li>
+    mbgdml.calculate
+
+      <ul>
+        <li><a href="doc/mbgdml.html#module-mbgdml.calculate">module</a>
 </li>
-      <li><a href="doc/mbgdml.html#module-mbgdml.cli">mbgdml.cli (module)</a>
+      </ul></li>
+      <li>
+    mbgdml.data
+
+      <ul>
+        <li><a href="doc/mbgdml.data.html#module-mbgdml.data">module</a>
 </li>
-      <li><a href="doc/mbgdml.data.html#module-mbgdml.data">mbgdml.data (module)</a>
+      </ul></li>
+      <li>
+    mbgdml.data.basedata
+
+      <ul>
+        <li><a href="doc/mbgdml.data.html#module-mbgdml.data.basedata">module</a>
 </li>
-      <li><a href="doc/mbgdml.data.html#module-mbgdml.data.basedata">mbgdml.data.basedata (module)</a>
+      </ul></li>
+      <li>
+    mbgdml.data.calculation
+
+      <ul>
+        <li><a href="doc/mbgdml.data.html#module-mbgdml.data.calculation">module</a>
 </li>
-      <li><a href="doc/mbgdml.data.html#module-mbgdml.data.calculation">mbgdml.data.calculation (module)</a>
+      </ul></li>
+      <li>
+    mbgdml.data.dataset
+
+      <ul>
+        <li><a href="doc/mbgdml.data.html#module-mbgdml.data.dataset">module</a>
 </li>
-      <li><a href="doc/mbgdml.data.html#module-mbgdml.data.dataset">mbgdml.data.dataset (module)</a>
+      </ul></li>
+      <li>
+    mbgdml.data.generate
+
+      <ul>
+        <li><a href="doc/mbgdml.data.html#module-mbgdml.data.generate">module</a>
 </li>
-      <li><a href="doc/mbgdml.data.html#module-mbgdml.data.generate">mbgdml.data.generate (module)</a>
+      </ul></li>
+      <li>
+    mbgdml.data.model
+
+      <ul>
+        <li><a href="doc/mbgdml.data.html#module-mbgdml.data.model">module</a>
 </li>
-      <li><a href="doc/mbgdml.data.html#module-mbgdml.data.model">mbgdml.data.model (module)</a>
+      </ul></li>
+      <li>
+    mbgdml.data.predictset
+
+      <ul>
+        <li><a href="doc/mbgdml.data.html#module-mbgdml.data.predictset">module</a>
 </li>
-      <li><a href="doc/mbgdml.data.html#module-mbgdml.data.predictset">mbgdml.data.predictset (module)</a>
+      </ul></li>
+      <li>
+    mbgdml.data.structure
+
+      <ul>
+        <li><a href="doc/mbgdml.data.html#module-mbgdml.data.structure">module</a>
 </li>
-      <li><a href="doc/mbgdml.data.html#module-mbgdml.data.structure">mbgdml.data.structure (module)</a>
+      </ul></li>
+      <li>
+    mbgdml.parse
+
+      <ul>
+        <li><a href="doc/mbgdml.html#module-mbgdml.parse">module</a>
 </li>
-      <li><a href="doc/mbgdml.html#module-mbgdml.parse">mbgdml.parse (module)</a>
+      </ul></li>
+      <li>
+    mbgdml.partition
+
+      <ul>
+        <li><a href="doc/mbgdml.html#module-mbgdml.partition">module</a>
 </li>
-      <li><a href="doc/mbgdml.html#module-mbgdml.partition">mbgdml.partition (module)</a>
+      </ul></li>
+      <li>
+    mbgdml.predict
+
+      <ul>
+        <li><a href="doc/mbgdml.html#module-mbgdml.predict">module</a>
 </li>
-      <li><a href="doc/mbgdml.html#module-mbgdml.predict">mbgdml.predict (module)</a>
+      </ul></li>
+      <li>
+    mbgdml.solvents
+
+      <ul>
+        <li><a href="doc/mbgdml.html#module-mbgdml.solvents">module</a>
 </li>
+      </ul></li>
+      <li>
+    mbgdml.train
+
+      <ul>
+        <li><a href="doc/mbgdml.html#module-mbgdml.train">module</a>
+</li>
+      </ul></li>
+      <li>
+    mbgdml.utils
+
+      <ul>
+        <li><a href="doc/mbgdml.html#module-mbgdml.utils">module</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="doc/mbgdml.html#module-mbgdml.solvents">mbgdml.solvents (module)</a>
-</li>
-      <li><a href="doc/mbgdml.html#module-mbgdml.train">mbgdml.train (module)</a>
-</li>
-      <li><a href="doc/mbgdml.html#module-mbgdml.utils">mbgdml.utils (module)</a>
-</li>
       <li><a href="doc/mbgdml.html#mbgdml.calculate.mbGDMLCalculator">mbGDMLCalculator (class in mbgdml.calculate)</a>
 </li>
       <li><a href="doc/mbgdml.data.html#mbgdml.data.basedata.mbGDMLData">mbGDMLData (class in mbgdml.data.basedata)</a>
@@ -462,7 +571,9 @@
 </li>
       <li><a href="doc/mbgdml.html#mbgdml.train.mbGDMLTrain">mbGDMLTrain (class in mbgdml.train)</a>
 </li>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.md5">md5 (mbgdml.data.dataset.mbGDMLDataset attribute)</a>, <a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.md5">[1]</a>
+      <li><a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.md5">md5 (mbgdml.data.dataset.mbGDMLDataset attribute)</a>
+</li>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.md5">md5() (mbgdml.data.dataset.mbGDMLDataset property)</a>
 </li>
       <li><a href="tutorials/partitioning.html#mbgdml.data.md_iter">md_iter (in module mbgdml.data)</a>
 
@@ -480,7 +591,50 @@
 </li>
       <li><a href="doc/mbgdml.data.html#mbgdml.data.model.mbGDMLModel.model_path">model_path (mbgdml.data.model.mbGDMLModel attribute)</a>
 </li>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.structure.structure.molecules">molecules (mbgdml.data.structure.structure attribute)</a>
+      <li>
+    module
+
+      <ul>
+        <li><a href="doc/mbgdml.html#module-mbgdml">mbgdml</a>
+</li>
+        <li><a href="doc/mbgdml.analysis.html#module-mbgdml.analysis">mbgdml.analysis</a>
+</li>
+        <li><a href="doc/mbgdml.analysis.html#module-mbgdml.analysis.nbody">mbgdml.analysis.nbody</a>
+</li>
+        <li><a href="doc/mbgdml.analysis.html#module-mbgdml.analysis.similarity">mbgdml.analysis.similarity</a>
+</li>
+        <li><a href="doc/mbgdml.html#module-mbgdml.calculate">mbgdml.calculate</a>
+</li>
+        <li><a href="doc/mbgdml.data.html#module-mbgdml.data">mbgdml.data</a>
+</li>
+        <li><a href="doc/mbgdml.data.html#module-mbgdml.data.basedata">mbgdml.data.basedata</a>
+</li>
+        <li><a href="doc/mbgdml.data.html#module-mbgdml.data.calculation">mbgdml.data.calculation</a>
+</li>
+        <li><a href="doc/mbgdml.data.html#module-mbgdml.data.dataset">mbgdml.data.dataset</a>
+</li>
+        <li><a href="doc/mbgdml.data.html#module-mbgdml.data.generate">mbgdml.data.generate</a>
+</li>
+        <li><a href="doc/mbgdml.data.html#module-mbgdml.data.model">mbgdml.data.model</a>
+</li>
+        <li><a href="doc/mbgdml.data.html#module-mbgdml.data.predictset">mbgdml.data.predictset</a>
+</li>
+        <li><a href="doc/mbgdml.data.html#module-mbgdml.data.structure">mbgdml.data.structure</a>
+</li>
+        <li><a href="doc/mbgdml.html#module-mbgdml.parse">mbgdml.parse</a>
+</li>
+        <li><a href="doc/mbgdml.html#module-mbgdml.partition">mbgdml.partition</a>
+</li>
+        <li><a href="doc/mbgdml.html#module-mbgdml.predict">mbgdml.predict</a>
+</li>
+        <li><a href="doc/mbgdml.html#module-mbgdml.solvents">mbgdml.solvents</a>
+</li>
+        <li><a href="doc/mbgdml.html#module-mbgdml.train">mbgdml.train</a>
+</li>
+        <li><a href="doc/mbgdml.html#module-mbgdml.utils">mbgdml.utils</a>
+</li>
+      </ul></li>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.structure.structure.molecules">molecules() (mbgdml.data.structure.structure property)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -488,9 +642,9 @@
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.basedata.mbGDMLData.n_R">n_R (mbgdml.data.basedata.mbGDMLData attribute)</a>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.basedata.mbGDMLData.n_R">n_R() (mbgdml.data.basedata.mbGDMLData property)</a>
 </li>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.basedata.mbGDMLData.n_z">n_z (mbgdml.data.basedata.mbGDMLData attribute)</a>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.basedata.mbGDMLData.n_z">n_z() (mbgdml.data.basedata.mbGDMLData property)</a>
 </li>
       <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.name">name (mbgdml.data.dataset.mbGDMLDataset attribute)</a>
 
@@ -582,7 +736,7 @@
 </li>
       <li><a href="doc/mbgdml.html#mbgdml.predict.mbGDMLPredict.predict">predict() (mbgdml.predict.mbGDMLPredict method)</a>
 </li>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.predictset.mbGDMLPredictset.predictset">predictset (mbgdml.data.predictset.mbGDMLPredictset attribute)</a>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.predictset.mbGDMLPredictset.predictset">predictset() (mbgdml.data.predictset.mbGDMLPredictset property)</a>
 </li>
       <li><a href="doc/mbgdml.analysis.html#mbgdml.analysis.similarity.similarity.prepare_structures">prepare_structures() (mbgdml.analysis.similarity.similarity method)</a>
 </li>
@@ -599,22 +753,22 @@
       <li><a href="tutorials/partitioning.html#mbgdml.data.R">R (in module mbgdml.data)</a>
 
       <ul>
-        <li><a href="doc/mbgdml.data.html#mbgdml.data.basedata.mbGDMLData.R">(mbgdml.data.basedata.mbGDMLData attribute)</a>
-</li>
         <li><a href="doc/mbgdml.data.html#mbgdml.data.calculation.PartitionOutput.R">(mbgdml.data.calculation.PartitionOutput attribute)</a>
 </li>
         <li><a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.R">(mbgdml.data.dataset.mbGDMLDataset attribute)</a>
 </li>
-        <li><a href="doc/mbgdml.data.html#mbgdml.data.structure.structure.R">(mbgdml.data.structure.structure attribute)</a>
+      </ul></li>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.basedata.mbGDMLData.R">R() (mbgdml.data.basedata.mbGDMLData property)</a>
+
+      <ul>
+        <li><a href="doc/mbgdml.data.html#mbgdml.data.structure.structure.R">(mbgdml.data.structure.structure property)</a>
 </li>
       </ul></li>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.structure.structure.R_num">R_num (mbgdml.data.structure.structure attribute)</a>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.structure.structure.R_num">R_num() (mbgdml.data.structure.structure property)</a>
 </li>
       <li><a href="tutorials/partitioning.html#mbgdml.data.r_unit">r_unit (in module mbgdml.data)</a>
 
       <ul>
-        <li><a href="doc/mbgdml.data.html#mbgdml.data.basedata.mbGDMLData.r_unit">(mbgdml.data.basedata.mbGDMLData attribute)</a>
-</li>
         <li><a href="doc/mbgdml.data.html#mbgdml.data.calculation.PartitionOutput.r_unit">(mbgdml.data.calculation.PartitionOutput attribute)</a>
 </li>
         <li><a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.r_unit">(mbgdml.data.dataset.mbGDMLDataset attribute)</a>
@@ -622,6 +776,8 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.basedata.mbGDMLData.r_unit">r_unit() (mbgdml.data.basedata.mbGDMLData property)</a>
+</li>
       <li><a href="doc/mbgdml.data.html#mbgdml.data.dataset.mbGDMLDataset.read_xyz">read_xyz() (mbgdml.data.dataset.mbGDMLDataset method)</a>, <a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.read_xyz">[1]</a>
 </li>
       <li><a href="doc/mbgdml.html#mbgdml.calculate.mbGDMLMD.relax">relax() (mbgdml.calculate.mbGDMLMD method)</a>
@@ -658,10 +814,10 @@
 </li>
       <li><a href="doc/mbgdml.html#mbgdml.solvents.solvent.solvent_molec_size">solvent_molec_size (mbgdml.solvents.solvent attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="doc/mbgdml.html#mbgdml.solvents.solvent.solvent_name">solvent_name (mbgdml.solvents.solvent attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="doc/mbgdml.html#mbgdml.utils.string_coords">string_coords() (in module mbgdml.utils)</a>
 </li>
       <li><a href="doc/mbgdml.html#mbgdml.parse.struct_dict">struct_dict() (in module mbgdml.parse)</a>
@@ -678,10 +834,14 @@
         <li><a href="doc/mbgdml.html#mbgdml.solvents.solvent.system">(mbgdml.solvents.solvent attribute)</a>
 </li>
       </ul></li>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.basedata.mbGDMLData.system_info">system_info (mbgdml.data.basedata.mbGDMLData attribute)</a>, <a href="doc/mbgdml.data.html#mbgdml.data.basedata.mbGDMLData.system_info">[1]</a>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.basedata.mbGDMLData.system_info">system_info (mbgdml.data.basedata.mbGDMLData attribute)</a>
 </li>
       <li><a href="doc/mbgdml.html#mbgdml.solvents.system_info">system_info() (in module mbgdml.solvents)</a>
+
+      <ul>
+        <li><a href="doc/mbgdml.data.html#id0">(mbgdml.data.basedata.mbGDMLData property)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -719,18 +879,20 @@
       <li><a href="tutorials/partitioning.html#mbgdml.data.z">z (in module mbgdml.data)</a>
 
       <ul>
-        <li><a href="doc/mbgdml.data.html#mbgdml.data.basedata.mbGDMLData.z">(mbgdml.data.basedata.mbGDMLData attribute)</a>
-</li>
         <li><a href="doc/mbgdml.data.html#mbgdml.data.calculation.PartitionOutput.z">(mbgdml.data.calculation.PartitionOutput attribute)</a>
 </li>
         <li><a href="tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.z">(mbgdml.data.dataset.mbGDMLDataset attribute)</a>
 </li>
-        <li><a href="doc/mbgdml.data.html#mbgdml.data.structure.structure.z">(mbgdml.data.structure.structure attribute)</a>
-</li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="doc/mbgdml.data.html#mbgdml.data.structure.structure.z_num">z_num (mbgdml.data.structure.structure attribute)</a>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.basedata.mbGDMLData.z">z() (mbgdml.data.basedata.mbGDMLData property)</a>
+
+      <ul>
+        <li><a href="doc/mbgdml.data.html#mbgdml.data.structure.structure.z">(mbgdml.data.structure.structure property)</a>
+</li>
+      </ul></li>
+      <li><a href="doc/mbgdml.data.html#mbgdml.data.structure.structure.z_num">z_num() (mbgdml.data.structure.structure property)</a>
 </li>
   </ul></td>
 </tr></table>

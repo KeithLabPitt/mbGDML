@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   
@@ -29,10 +29,9 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -176,7 +175,7 @@
 <span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
 <span class="c1"># SOFTWARE.</span>
 
-<span class="kn">from</span> <span class="nn">periodictable</span> <span class="kn">import</span> <span class="n">elements</span>
+<span class="kn">from</span> <span class="nn">mbgdml.utils</span> <span class="kn">import</span> <span class="n">z_to_element</span>
 
 <div class="viewcode-block" id="solvent"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.solvents.solvent">[docs]</a><span class="k">class</span> <span class="nc">solvent</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Identifies and describes the solvent for MB-GDML.</span>
@@ -277,7 +276,7 @@
         <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">atom_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
             <span class="n">atom_list_elements</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">atom_list</span><span class="p">:</span>
-                <span class="n">atom_list_elements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="n">atom</span><span class="p">]))</span>
+                <span class="n">atom_list_elements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">z_to_element</span><span class="p">[</span><span class="n">atom</span><span class="p">]))</span>
             <span class="n">atom_list</span> <span class="o">=</span> <span class="n">atom_list_elements</span>
 
         <span class="c1"># Determines quantity of each element in atom list.</span>

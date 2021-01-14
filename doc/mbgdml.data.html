@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   
@@ -29,10 +29,9 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -97,7 +96,6 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="mbgdml.html#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mbgdml.html#module-mbgdml.calculate">mbgdml.calculate module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mbgdml.html#module-mbgdml.cli">mbgdml.cli module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mbgdml.html#module-mbgdml.parse">mbgdml.parse module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mbgdml.html#module-mbgdml.partition">mbgdml.partition module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mbgdml.html#module-mbgdml.predict">mbgdml.predict module</a></li>
@@ -188,159 +186,133 @@
 </div>
 <div class="section" id="module-mbgdml.data.basedata">
 <span id="mbgdml-data-basedata-module"></span><h2>mbgdml.data.basedata module<a class="headerlink" href="#module-mbgdml.data.basedata" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="mbgdml.data.basedata.mbGDMLData">
-<em class="property">class </em><code class="descclassname">mbgdml.data.basedata.</code><code class="descname">mbGDMLData</code><a class="reference internal" href="../_modules/mbgdml/data/basedata.html#mbGDMLData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">mbgdml.data.basedata.</code><code class="sig-name descname">mbGDMLData</code><a class="reference internal" href="../_modules/mbgdml/data/basedata.html#mbGDMLData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Parent class for mbGDML data and predict sets.</p>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.basedata.mbGDMLData.system_info">
-<code class="descname">system_info</code><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.system_info" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">system_info</code><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.system_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Information describing the system.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)">dict</a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)">dict</a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.basedata.mbGDMLData.R">
-<code class="descname">R</code><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.R" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">R</code><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.R" title="Permalink to this definition">¶</a></dt>
 <dd><p>Atomic coordinates of structure(s).</p>
 <p>A <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> with shape of <code class="docutils literal notranslate"><span class="pre">(m,</span> <span class="pre">n,</span> <span class="pre">3)</span></code> where <code class="docutils literal notranslate"><span class="pre">m</span></code> is the
 number of structures and <code class="docutils literal notranslate"><span class="pre">n</span></code> is the number of atoms with three
 Cartesian components.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="mbgdml.data.basedata.mbGDMLData.add_system_info">
-<code class="descname">add_system_info</code><span class="sig-paren">(</span><em>dict_data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/basedata.html#mbGDMLData.add_system_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.add_system_info" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_system_info</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dict_data</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/basedata.html#mbGDMLData.add_system_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.add_system_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds information about the system to the model.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dataset</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a>) – Contains all data as <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> objects.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Contains all data as <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> objects along with added
-system information.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dataset</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a>) – Contains all data as <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> objects.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Contains all data as <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> objects along with added
+system information.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>If the system is a solvent, the ‘solvent’ name and ‘cluster_size’
 is included.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.basedata.mbGDMLData.e_unit">
-<code class="descname">e_unit</code><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.e_unit" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">e_unit</code><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.e_unit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Units of energy. Options are <code class="docutils literal notranslate"><span class="pre">'eV'</span></code>, <code class="docutils literal notranslate"><span class="pre">'hartree'</span></code>,
 <code class="docutils literal notranslate"><span class="pre">'kcal/mol'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'kJ/mol'</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.basedata.mbGDMLData.n_R">
-<code class="descname">n_R</code><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.n_R" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">n_R</code><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.n_R" title="Permalink to this definition">¶</a></dt>
 <dd><p>Number of structures.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.basedata.mbGDMLData.n_z">
-<code class="descname">n_z</code><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.n_z" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">n_z</code><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.n_z" title="Permalink to this definition">¶</a></dt>
 <dd><p>Number of atoms.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.basedata.mbGDMLData.r_unit">
-<code class="descname">r_unit</code><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.r_unit" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">r_unit</code><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.r_unit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Units of distance. Options are <code class="docutils literal notranslate"><span class="pre">'Angstrom'</span></code> or <code class="docutils literal notranslate"><span class="pre">'bohr'</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="mbgdml.data.basedata.mbGDMLData.save">
-<code class="descname">save</code><span class="sig-paren">(</span><em>name</em>, <em>data</em>, <em>save_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/basedata.html#mbGDMLData.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.save" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">save_dir</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/basedata.html#mbGDMLData.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>General save function for GDML data sets and models.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Name of the file to be saved not including the <code class="docutils literal notranslate"><span class="pre">npz</span></code> extension.</li>
-<li><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a>) – Data to be saved to <code class="docutils literal notranslate"><span class="pre">npz</span></code> file.</li>
-<li><strong>save_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Directory to save the file (with or without the <code class="docutils literal notranslate"><span class="pre">'/'</span></code> suffix).</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Name of the file to be saved not including the <code class="docutils literal notranslate"><span class="pre">npz</span></code> extension.</p></li>
+<li><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a>) – Data to be saved to <code class="docutils literal notranslate"><span class="pre">npz</span></code> file.</p></li>
+<li><p><strong>save_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Directory to save the file (with or without the <code class="docutils literal notranslate"><span class="pre">'/'</span></code> suffix).</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt>
-<code class="descname">system_info</code></dt>
+<dl class="py method">
+<dt id="id0">
+<em class="property">property </em><code class="sig-name descname">system_info</code><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.basedata.mbGDMLData.z">
-<code class="descname">z</code><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.z" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">z</code><a class="headerlink" href="#mbgdml.data.basedata.mbGDMLData.z" title="Permalink to this definition">¶</a></dt>
 <dd><p>Atomic numbers of all atoms in data set structures.</p>
 <p>A <code class="docutils literal notranslate"><span class="pre">(n,)</span></code> shape array of type <code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int32</span></code> containing atomic
 numbers of atoms in the structures in order as they appear.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -348,306 +320,251 @@ numbers of atoms in the structures in order as they appear.</p>
 </div>
 <div class="section" id="module-mbgdml.data.calculation">
 <span id="mbgdml-data-calculation-module"></span><h2>mbgdml.data.calculation module<a class="headerlink" href="#module-mbgdml.data.calculation" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="mbgdml.data.calculation.PartitionOutput">
-<em class="property">class </em><code class="descclassname">mbgdml.data.calculation.</code><code class="descname">PartitionOutput</code><span class="sig-paren">(</span><em>output_path</em>, <em>cluster_label</em>, <em>partition_label</em>, <em>md_temp</em>, <em>grad_e_unit</em>, <em>grad_r_unit</em>, <em>md_iter=0</em>, <em>e_unit='kcal/mol'</em>, <em>r_unit='Angstrom'</em>, <em>theory='unknown'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/calculation.html#PartitionOutput"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">mbgdml.data.calculation.</code><code class="sig-name descname">PartitionOutput</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">output_path</span></em>, <em class="sig-param"><span class="n">cluster_label</span></em>, <em class="sig-param"><span class="n">partition_label</span></em>, <em class="sig-param"><span class="n">md_temp</span></em>, <em class="sig-param"><span class="n">grad_e_unit</span></em>, <em class="sig-param"><span class="n">grad_r_unit</span></em>, <em class="sig-param"><span class="n">md_iter</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">e_unit</span><span class="o">=</span><span class="default_value">'kcal/mol'</span></em>, <em class="sig-param"><span class="n">r_unit</span><span class="o">=</span><span class="default_value">'Angstrom'</span></em>, <em class="sig-param"><span class="n">theory</span><span class="o">=</span><span class="default_value">'unknown'</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/calculation.html#PartitionOutput"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Quantum chemistry output file for all MD steps of a single partition.</p>
 <p>Output file that contains electronic energies and gradients of the same
 partition from a single MD trajectory. For a single dimer partition of a
 n step MD trajectory would have n coordinates, single point energies,
 and gradients.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>output_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to computational chemistry output file that contains energies
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to computational chemistry output file that contains energies
 and gradients (preferably ab initio) of all MD steps of a
-single partition.</li>
-<li><strong>cluster_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Identifies the cluster where this partition originates from. Specifies
+single partition.</p></li>
+<li><p><strong>cluster_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Identifies the cluster where this partition originates from. Specifies
 at least the solvent and size of the parent cluster. For example, if
 this partition is the number 23 structure from ABCluster
-for a four water cluster, this could be <code class="docutils literal notranslate"><span class="pre">'4H2O.abc23'</span></code>.</li>
-<li><strong>partition_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Specifies the molecules composing this partition. Typically we use a
+for a four water cluster, this could be <code class="docutils literal notranslate"><span class="pre">'4H2O.abc23'</span></code>.</p></li>
+<li><p><strong>partition_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Specifies the molecules composing this partition. Typically we use a
 single uppercase letter per molecule in the order it appears in the
 xyz coordinates. For example, a partition from a 4H2O cluster with the
-first and third water molecules would be <code class="docutils literal notranslate"><span class="pre">'AC'</span></code>.</li>
-<li><strong>md_temp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – The set point for the MD thermostat. This only affects labeling and
+first and third water molecules would be <code class="docutils literal notranslate"><span class="pre">'AC'</span></code>.</p></li>
+<li><p><strong>md_temp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – The set point for the MD thermostat. This only affects labeling and
 directory organization as it has a significant impact on geometry
-sampling.</li>
-<li><strong>md_iter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional) – Specifies the MD iteration for labeling and data-tracking purposes.
-Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</li>
-<li><strong>e_unit</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Desired units of energy. Available units implemented are <code class="docutils literal notranslate"><span class="pre">'eV'</span></code>,
+sampling.</p></li>
+<li><p><strong>md_iter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional) – Specifies the MD iteration for labeling and data-tracking purposes.
+Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+<li><p><strong>e_unit</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Desired units of energy. Available units implemented are <code class="docutils literal notranslate"><span class="pre">'eV'</span></code>,
 <code class="docutils literal notranslate"><span class="pre">'hartree'</span></code>, <code class="docutils literal notranslate"><span class="pre">'kcal/mol'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'kJ/mol'</span></code>. Defaults to
-<code class="docutils literal notranslate"><span class="pre">'kcal/mol'</span></code>.</li>
-<li><strong>r_unit</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Desired units of distance. Available units implemented in cclib’s
-convertor function are <code class="docutils literal notranslate"><span class="pre">'Angstrom'</span></code> and <code class="docutils literal notranslate"><span class="pre">'bohr'</span></code>.</li>
-<li><strong>theory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Level of theory for the calculations. For example, <code class="docutils literal notranslate"><span class="pre">'mp2.def2tzvp'</span></code>.
-Defaults to <code class="docutils literal notranslate"><span class="pre">'unknown'</span></code>.</li>
+<code class="docutils literal notranslate"><span class="pre">'kcal/mol'</span></code>.</p></li>
+<li><p><strong>r_unit</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Desired units of distance. Available units implemented in cclib’s
+convertor function are <code class="docutils literal notranslate"><span class="pre">'Angstrom'</span></code> and <code class="docutils literal notranslate"><span class="pre">'bohr'</span></code>.</p></li>
+<li><p><strong>theory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Level of theory for the calculations. For example, <code class="docutils literal notranslate"><span class="pre">'mp2.def2tzvp'</span></code>.
+Defaults to <code class="docutils literal notranslate"><span class="pre">'unknown'</span></code>.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>Typical GDML units are kcal/mol and kcal/mol/Angstrom for energies
 and forces, respectively.</p>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.calculation.PartitionOutput.output_path">
-<code class="descname">output_path</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.output_path" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">output_path</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.output_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Path to computational chemistry output file that contains energies
 and gradients (preferably ab initio) of all MD steps of a
 single partition.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.calculation.PartitionOutput.cluster_label">
-<code class="descname">cluster_label</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.cluster_label" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">cluster_label</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.cluster_label" title="Permalink to this definition">¶</a></dt>
 <dd><p>Identifies the cluster where this partition originates from. Specifies
 at least the solvent and size of the parent cluster. For example, if
 this partition is the number 23 structure from ABCluster
 for a four water cluster, this could be ‘4H2O.abc23’.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.calculation.PartitionOutput.partition_label">
-<code class="descname">partition_label</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.partition_label" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">partition_label</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.partition_label" title="Permalink to this definition">¶</a></dt>
 <dd><p>Specifies the molecules composing this partition. Typically we use a
 single uppercase letter per molecule in the order it appears in the
 xyz coordinates. For example, a partition from a 4H2O cluster with the
 first and third water molecules would be ‘AC’.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.calculation.PartitionOutput.md_temp">
-<code class="descname">md_temp</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.md_temp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">md_temp</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.md_temp" title="Permalink to this definition">¶</a></dt>
 <dd><p>The set point for the MD thermostat. This only affects labeling and
 directory organization as it has a significant impact on geometry
 sampling.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.calculation.PartitionOutput.md_iter">
-<code class="descname">md_iter</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.md_iter" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">md_iter</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.md_iter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Specifies the MD iteration for labeling and data-tracking purposes.
 Defaults to 0.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.calculation.PartitionOutput.e_unit">
-<code class="descname">e_unit</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.e_unit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">e_unit</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.e_unit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Desired units of energy. Available units implemented are ‘eV’,
 ‘hartree’, ‘kcal/mol’, and ‘kJ/mol’. Defaults to ‘kcal/mol’.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.calculation.PartitionOutput.r_unit">
-<code class="descname">r_unit</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.r_unit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">r_unit</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.r_unit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Desired units of distance. Available units implemented in cclib’s
 convertor function are ‘Angstrom’ and ‘bohr’.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.calculation.PartitionOutput.output_name">
-<code class="descname">output_name</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.output_name" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">output_name</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.output_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>The name of the quantum chemistry output file (no extension).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.calculation.PartitionOutput.partition_size">
-<code class="descname">partition_size</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.partition_size" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">partition_size</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.partition_size" title="Permalink to this definition">¶</a></dt>
 <dd><p>The number of solvent molecules in the partition.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.calculation.PartitionOutput.cclib_data">
-<code class="descname">cclib_data</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.cclib_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">cclib_data</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.cclib_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Contains all data parsed from output file.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cclib.parser.data.ccData`</span></code></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cclib.parser.data.ccData`</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.calculation.PartitionOutput.z">
-<code class="descname">z</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.z" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">z</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.z" title="Permalink to this definition">¶</a></dt>
 <dd><p>A (n,) array containing n atomic numbers.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.calculation.PartitionOutput.R">
-<code class="descname">R</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.R" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">R</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.R" title="Permalink to this definition">¶</a></dt>
 <dd><p>A (m, n, 3) array containing the atomic coordinates
 of n atoms of m MD steps.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.calculation.PartitionOutput.E">
-<code class="descname">E</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.E" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">E</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.E" title="Permalink to this definition">¶</a></dt>
 <dd><p>A (m,) array containing the energies of m structures.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.calculation.PartitionOutput.G">
-<code class="descname">G</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.G" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">G</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.G" title="Permalink to this definition">¶</a></dt>
 <dd><p>A (m, n, 3) array containing the atomic gradients of n atoms of m MD
 steps.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.calculation.PartitionOutput.F">
-<code class="descname">F</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.F" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">F</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.F" title="Permalink to this definition">¶</a></dt>
 <dd><p>A (m, n, 3) array containing the atomic forces
 of n atoms of m MD steps. Simply the negative of grads.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.calculation.PartitionOutput.system">
-<code class="descname">system</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.system" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">system</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.system" title="Permalink to this definition">¶</a></dt>
 <dd><p>From mbgdml.solvents and designates the system. Currently
 only ‘solvent’ is implemented.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.calculation.PartitionOutput.solvent_info">
-<code class="descname">solvent_info</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.solvent_info" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">solvent_info</code><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput.solvent_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>If the system is ‘solvent’, contains information
 about the system and solvent. ‘solvent_name’, ‘solvent_label’,
 ‘solvent_molec_size’, and ‘cluster_size’.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -655,413 +572,333 @@ about the system and solvent. ‘solvent_name’, ‘solvent_label’,
 </div>
 <div class="section" id="module-mbgdml.data.dataset">
 <span id="mbgdml-data-dataset-module"></span><h2>mbgdml.data.dataset module<a class="headerlink" href="#module-mbgdml.data.dataset" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="mbgdml.data.dataset.mbGDMLDataset">
-<em class="property">class </em><code class="descclassname">mbgdml.data.dataset.</code><code class="descname">mbGDMLDataset</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/dataset.html#mbGDMLDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">mbgdml.data.dataset.</code><code class="sig-name descname">mbGDMLDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/dataset.html#mbGDMLDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mbgdml.data.basedata.mbGDMLData" title="mbgdml.data.basedata.mbGDMLData"><code class="xref py py-class docutils literal notranslate"><span class="pre">mbgdml.data.basedata.mbGDMLData</span></code></a></p>
 <p>For creating, loading, manipulating, and using data sets.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dataset_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Path to a saved <code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.NpzFile</span></code>.</td>
-</tr>
-</tbody>
-</table>
-<dl class="attribute">
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dataset_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Path to a saved <code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.NpzFile</span></code>.</p>
+</dd>
+</dl>
+<dl class="py attribute">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.name">
-<code class="descname">name</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.name" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">name</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Name of the data set. Defaults to <code class="docutils literal notranslate"><span class="pre">'dataset'</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.theory">
-<code class="descname">theory</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.theory" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">theory</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.theory" title="Permalink to this definition">¶</a></dt>
 <dd><p>The level of theory used to compute energy and gradients of the data
 set.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.mb">
-<code class="descname">mb</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.mb" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">mb</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.mb" title="Permalink to this definition">¶</a></dt>
 <dd><p>The order of n-body corrections this data set is intended for. For
 example, a tetramer solvent cluster with one-, two-, and three-body
 contributions removed will have a <code class="docutils literal notranslate"><span class="pre">mb</span></code> order of 4.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.E">
-<code class="descname">E</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.E" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">E</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.E" title="Permalink to this definition">¶</a></dt>
 <dd><p>The energies of structure(s).</p>
 <p>A <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> with shape of <code class="docutils literal notranslate"><span class="pre">(n,)</span></code> where <code class="docutils literal notranslate"><span class="pre">n</span></code> is the number
 of atoms.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.E_max">
-<code class="descname">E_max</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.E_max" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">E_max</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.E_max" title="Permalink to this definition">¶</a></dt>
 <dd><p>Maximum energy of all structures.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.E_mean">
-<code class="descname">E_mean</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.E_mean" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">E_mean</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.E_mean" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mean of all energies.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.E_min">
-<code class="descname">E_min</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.E_min" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">E_min</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.E_min" title="Permalink to this definition">¶</a></dt>
 <dd><p>Minimum energy of all structures.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.E_var">
-<code class="descname">E_var</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.E_var" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">E_var</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.E_var" title="Permalink to this definition">¶</a></dt>
 <dd><p>Energy variance.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.F">
-<code class="descname">F</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.F" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">F</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.F" title="Permalink to this definition">¶</a></dt>
 <dd><p>Atomic forces of atoms in structure(s).</p>
 <p>A <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> with shape of <code class="docutils literal notranslate"><span class="pre">(m,</span> <span class="pre">n,</span> <span class="pre">3)</span></code> where <code class="docutils literal notranslate"><span class="pre">m</span></code> is the
 number of structures and <code class="docutils literal notranslate"><span class="pre">n</span></code> is the number of atoms with three
 Cartesian components.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.F_max">
-<code class="descname">F_max</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.F_max" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">F_max</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.F_max" title="Permalink to this definition">¶</a></dt>
 <dd><p>Maximum atomic force in all structures.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.F_mean">
-<code class="descname">F_mean</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.F_mean" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">F_mean</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.F_mean" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mean of all forces.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.F_min">
-<code class="descname">F_min</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.F_min" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">F_min</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.F_min" title="Permalink to this definition">¶</a></dt>
 <dd><p>Minimum atomic force in all structures.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.F_var">
-<code class="descname">F_var</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.F_var" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">F_var</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.F_var" title="Permalink to this definition">¶</a></dt>
 <dd><p>Force variance.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.convertE">
-<code class="descname">convertE</code><span class="sig-paren">(</span><em>E_units</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/dataset.html#mbGDMLDataset.convertE"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.convertE" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">convertE</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">E_units</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/dataset.html#mbGDMLDataset.convertE"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.convertE" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert energies and updates <a class="reference internal" href="../tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.e_unit" title="mbgdml.data.dataset.mbGDMLDataset.e_unit"><code class="xref py py-attr docutils literal notranslate"><span class="pre">e_unit</span></code></a>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Desired units of energy. Options are <code class="docutils literal notranslate"><span class="pre">'eV'</span></code>, <code class="docutils literal notranslate"><span class="pre">'hartree'</span></code>,
-<code class="docutils literal notranslate"><span class="pre">'kcal/mol'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'kJ/mol'</span></code>.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>E_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Desired units of energy. Options are <code class="docutils literal notranslate"><span class="pre">'eV'</span></code>, <code class="docutils literal notranslate"><span class="pre">'hartree'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'kcal/mol'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'kJ/mol'</span></code>.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.convertF">
-<code class="descname">convertF</code><span class="sig-paren">(</span><em>force_e_units</em>, <em>force_r_units</em>, <em>e_units</em>, <em>r_units</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/dataset.html#mbGDMLDataset.convertF"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.convertF" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">convertF</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">force_e_units</span></em>, <em class="sig-param"><span class="n">force_r_units</span></em>, <em class="sig-param"><span class="n">e_units</span></em>, <em class="sig-param"><span class="n">r_units</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/dataset.html#mbGDMLDataset.convertF"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.convertF" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert forces.</p>
 <p>Does not change <a class="reference internal" href="../tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.e_unit" title="mbgdml.data.dataset.mbGDMLDataset.e_unit"><code class="xref py py-attr docutils literal notranslate"><span class="pre">e_unit</span></code></a> or <a class="reference internal" href="../tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.r_unit" title="mbgdml.data.dataset.mbGDMLDataset.r_unit"><code class="xref py py-attr docutils literal notranslate"><span class="pre">r_unit</span></code></a>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>force_e_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Specifies package-specific energy units used in calculation.
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>force_e_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Specifies package-specific energy units used in calculation.
 Available units are <code class="docutils literal notranslate"><span class="pre">'eV'</span></code>, <code class="docutils literal notranslate"><span class="pre">'hartree'</span></code>, <code class="docutils literal notranslate"><span class="pre">'kcal/mol'</span></code>, and
-<code class="docutils literal notranslate"><span class="pre">'kJ/mol'</span></code>.</li>
-<li><strong>force_r_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Specifies package-specific distance units used in calculation.
-Available units are <code class="docutils literal notranslate"><span class="pre">'Angstrom'</span></code> and <code class="docutils literal notranslate"><span class="pre">'bohr'</span></code>.</li>
-<li><strong>e_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Desired units of energy. Available units are <code class="docutils literal notranslate"><span class="pre">'eV'</span></code>,
-<code class="docutils literal notranslate"><span class="pre">'hartree'</span></code>, <code class="docutils literal notranslate"><span class="pre">'kcal/mol'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'kJ/mol'</span></code>.</li>
-<li><strong>r_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Desired units of distance. Available units are <code class="docutils literal notranslate"><span class="pre">'Angstrom'</span></code> and
-<code class="docutils literal notranslate"><span class="pre">'bohr'</span></code>.</li>
+<code class="docutils literal notranslate"><span class="pre">'kJ/mol'</span></code>.</p></li>
+<li><p><strong>force_r_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Specifies package-specific distance units used in calculation.
+Available units are <code class="docutils literal notranslate"><span class="pre">'Angstrom'</span></code> and <code class="docutils literal notranslate"><span class="pre">'bohr'</span></code>.</p></li>
+<li><p><strong>e_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Desired units of energy. Available units are <code class="docutils literal notranslate"><span class="pre">'eV'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'hartree'</span></code>, <code class="docutils literal notranslate"><span class="pre">'kcal/mol'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'kJ/mol'</span></code>.</p></li>
+<li><p><strong>r_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Desired units of distance. Available units are <code class="docutils literal notranslate"><span class="pre">'Angstrom'</span></code> and
+<code class="docutils literal notranslate"><span class="pre">'bohr'</span></code>.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.convertR">
-<code class="descname">convertR</code><span class="sig-paren">(</span><em>R_units</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/dataset.html#mbGDMLDataset.convertR"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.convertR" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">convertR</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">R_units</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/dataset.html#mbGDMLDataset.convertR"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.convertR" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert coordinates and updates <a class="reference internal" href="../tutorials/datasets.html#mbgdml.data.dataset.mbGDMLDataset.r_unit" title="mbgdml.data.dataset.mbGDMLDataset.r_unit"><code class="xref py py-attr docutils literal notranslate"><span class="pre">r_unit</span></code></a>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>R_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Desired units of coordinates. Options are <code class="docutils literal notranslate"><span class="pre">'Angstrom'</span></code> or
-<code class="docutils literal notranslate"><span class="pre">'bohr'</span></code>.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>R_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Desired units of coordinates. Options are <code class="docutils literal notranslate"><span class="pre">'Angstrom'</span></code> or
+<code class="docutils literal notranslate"><span class="pre">'bohr'</span></code>.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.create_mb">
-<code class="descname">create_mb</code><span class="sig-paren">(</span><em>ref_dataset</em>, <em>model_paths</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/dataset.html#mbGDMLDataset.create_mb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.create_mb" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_mb</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ref_dataset</span></em>, <em class="sig-param"><span class="n">model_paths</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/dataset.html#mbGDMLDataset.create_mb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.create_mb" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a many-body data set.</p>
 <p>Removes energy and force predictions from the reference data set using
 GDML models in <code class="docutils literal notranslate"><span class="pre">model_paths</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>ref_dataset</strong> (<a class="reference internal" href="#mbgdml.data.dataset.mbGDMLDataset" title="mbgdml.data.dataset.mbGDMLDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mbGDMLDataset</span></code></a>) – Reference data set of structures, energies, and forces. This is the
-data where mbGDML predictions will be subtracted from.</li>
-<li><strong>model_paths</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> [<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>]) – Paths to saved many-body GDML models in the form of
-<code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.NpzFile</span></code>.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ref_dataset</strong> (<a class="reference internal" href="#mbgdml.data.dataset.mbGDMLDataset" title="mbgdml.data.dataset.mbGDMLDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mbGDMLDataset</span></code></a>) – Reference data set of structures, energies, and forces. This is the
+data where mbGDML predictions will be subtracted from.</p></li>
+<li><p><strong>model_paths</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> [<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>]) – Paths to saved many-body GDML models in the form of
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.NpzFile</span></code>.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.dataset">
-<code class="descname">dataset</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.dataset" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">dataset</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.dataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Contains all data as <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> objects.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.from_combined">
-<code class="descname">from_combined</code><span class="sig-paren">(</span><em>dataset_paths</em>, <em>name=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/dataset.html#mbGDMLDataset.from_combined"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.from_combined" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">from_combined</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dataset_paths</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/dataset.html#mbGDMLDataset.from_combined"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.from_combined" title="Permalink to this definition">¶</a></dt>
 <dd><p>Combines multiple data sets into one.</p>
 <p>Typically used on a single partition size (e.g., monomer, dimer, trimer,
 etc.) to represent the complete dataset.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>dataset_paths</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> [<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>]) – Paths to data sets to combine.</li>
-<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Name for the combined data set.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_paths</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> [<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>]) – Paths to data sets to combine.</p></li>
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Name for the combined data set.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.from_partitioncalc">
-<code class="descname">from_partitioncalc</code><span class="sig-paren">(</span><em>partcalc</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/dataset.html#mbGDMLDataset.from_partitioncalc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.from_partitioncalc" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">from_partitioncalc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">partcalc</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/dataset.html#mbGDMLDataset.from_partitioncalc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.from_partitioncalc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates data set from partition calculations.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>partcalc</strong> (<a class="reference internal" href="../tutorials/partitioning.html#mbgdml.data.calculation.PartitionOutput" title="mbgdml.data.calculation.PartitionOutput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PartitionOutput</span></code></a>) – Data from energy and gradient calculations of same partition.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>partcalc</strong> (<a class="reference internal" href="../tutorials/partitioning.html#mbgdml.data.calculation.PartitionOutput" title="mbgdml.data.calculation.PartitionOutput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PartitionOutput</span></code></a>) – Data from energy and gradient calculations of same partition.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.load">
-<code class="descname">load</code><span class="sig-paren">(</span><em>dataset_path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/dataset.html#mbGDMLDataset.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.load" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dataset_path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/dataset.html#mbGDMLDataset.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read data set.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dataset_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to NumPy <code class="docutils literal notranslate"><span class="pre">npz</span></code> file.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dataset_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to NumPy <code class="docutils literal notranslate"><span class="pre">npz</span></code> file.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.md5">
-<code class="descname">md5</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.md5" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">md5</code><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.md5" title="Permalink to this definition">¶</a></dt>
 <dd><p>Unique MD5 hash of data set. Encoded with UTF-8.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.name_partition">
-<code class="descname">name_partition</code><span class="sig-paren">(</span><em>cluster_label</em>, <em>partition_label</em>, <em>md_temp</em>, <em>md_iter</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/dataset.html#mbGDMLDataset.name_partition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.name_partition" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">name_partition</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cluster_label</span></em>, <em class="sig-param"><span class="n">partition_label</span></em>, <em class="sig-param"><span class="n">md_temp</span></em>, <em class="sig-param"><span class="n">md_iter</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/dataset.html#mbGDMLDataset.name_partition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.name_partition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Automates and standardizes partition datasets names.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>cluster_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – The label identifying the parent cluster of the partition.
-For example, <code class="docutils literal notranslate"><span class="pre">'4H2O.abc0'</span></code>.</li>
-<li><strong>partition_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Identifies what solvent molecules are in the partition.
-For example, <code class="docutils literal notranslate"><span class="pre">'AB'</span></code>.</li>
-<li><strong>md_temp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Set point temperautre for the MD thermostat in Kelvin.</li>
-<li><strong>md_iter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Identifies the iteration of the MD simulation.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cluster_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – The label identifying the parent cluster of the partition.
+For example, <code class="docutils literal notranslate"><span class="pre">'4H2O.abc0'</span></code>.</p></li>
+<li><p><strong>partition_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Identifies what solvent molecules are in the partition.
+For example, <code class="docutils literal notranslate"><span class="pre">'AB'</span></code>.</p></li>
+<li><p><strong>md_temp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Set point temperautre for the MD thermostat in Kelvin.</p></li>
+<li><p><strong>md_iter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Identifies the iteration of the MD simulation.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.print">
-<code class="descname">print</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/dataset.html#mbGDMLDataset.print"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.print" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">print</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/dataset.html#mbGDMLDataset.print"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.print" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints all structure coordinates, energies, and force of a data set.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="mbgdml.data.dataset.mbGDMLDataset.read_xyz">
-<code class="descname">read_xyz</code><span class="sig-paren">(</span><em>file_path</em>, <em>xyz_type</em>, <em>r_unit=None</em>, <em>e_unit=None</em>, <em>energy_comments=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/dataset.html#mbGDMLDataset.read_xyz"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.read_xyz" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">read_xyz</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_path</span></em>, <em class="sig-param"><span class="n">xyz_type</span></em>, <em class="sig-param"><span class="n">r_unit</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">e_unit</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">energy_comments</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/dataset.html#mbGDMLDataset.read_xyz"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.dataset.mbGDMLDataset.read_xyz" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads data from xyz files.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to xyz file.</li>
-<li><strong>xyz_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Type of data. Either <code class="docutils literal notranslate"><span class="pre">'coords'</span></code>, <code class="docutils literal notranslate"><span class="pre">'forces'</span></code>, <code class="docutils literal notranslate"><span class="pre">'grads'</span></code>, or
-<code class="docutils literal notranslate"><span class="pre">'extended'</span></code>.</li>
-<li><strong>r_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Units of distance. Options are <code class="docutils literal notranslate"><span class="pre">'Angstrom'</span></code> or <code class="docutils literal notranslate"><span class="pre">'bohr'</span></code>.</li>
-<li><strong>e_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Units of energy. Options are <code class="docutils literal notranslate"><span class="pre">'eV'</span></code>, <code class="docutils literal notranslate"><span class="pre">'hartree'</span></code>,
-<code class="docutils literal notranslate"><span class="pre">'kcal/mol'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'kJ/mol'</span></code>.</li>
-<li><strong>energy_comments</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional) – If there are comments specifying the energies of the structures.
-Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to xyz file.</p></li>
+<li><p><strong>xyz_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Type of data. Either <code class="docutils literal notranslate"><span class="pre">'coords'</span></code>, <code class="docutils literal notranslate"><span class="pre">'forces'</span></code>, <code class="docutils literal notranslate"><span class="pre">'grads'</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">'extended'</span></code>.</p></li>
+<li><p><strong>r_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Units of distance. Options are <code class="docutils literal notranslate"><span class="pre">'Angstrom'</span></code> or <code class="docutils literal notranslate"><span class="pre">'bohr'</span></code>.</p></li>
+<li><p><strong>e_units</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Units of energy. Options are <code class="docutils literal notranslate"><span class="pre">'eV'</span></code>, <code class="docutils literal notranslate"><span class="pre">'hartree'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'kcal/mol'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'kJ/mol'</span></code>.</p></li>
+<li><p><strong>energy_comments</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional) – If there are comments specifying the energies of the structures.
+Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">xyz_type</span></code> is <code class="docutils literal notranslate"><span class="pre">'grads'</span></code>, it will take the negative and store as
 forces. If it is <code class="docutils literal notranslate"><span class="pre">'extended'</span></code> the three rightmost data will be stored
@@ -1073,9 +910,9 @@ as forces.</p>
 </div>
 <div class="section" id="module-mbgdml.data.generate">
 <span id="mbgdml-data-generate-module"></span><h2>mbgdml.data.generate module<a class="headerlink" href="#module-mbgdml.data.generate" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="mbgdml.data.generate.data_sets">
-<code class="descclassname">mbgdml.data.generate.</code><code class="descname">data_sets</code><span class="sig-paren">(</span><em>trajfolder</em>, <em>submit=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/generate.html#data_sets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.generate.data_sets" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">mbgdml.data.generate.</code><code class="sig-name descname">data_sets</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">trajfolder</span></em>, <em class="sig-param"><span class="n">submit</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/generate.html#data_sets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.generate.data_sets" title="Permalink to this definition">¶</a></dt>
 <dd><p>Driver for generating all positions and gradients from MD trajectories.</p>
 <p>The provided folder contains the MD trajectories used for partitioning a
 solvent into n-body contributions. Typically three iterations of
@@ -1085,21 +922,17 @@ containing n solvent molecules.</p>
 <p>The trajectories must be labled with the following scheme:
 ‘solvent info-temperature-iteration-<em>traj</em>.xyz’. For example,
 ‘4MeOH-300K-1-md-trajectory.xyz’.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>trajfolder</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Directory containing all MD trajectories to be included in solvent data
-sets. Must contain ‘traj’ in filename and have an ‘xyz’ file extension.</li>
-<li><strong>submit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) – specifies if calculations should be submitted.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>trajfolder</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Directory containing all MD trajectories to be included in solvent data
+sets. Must contain ‘traj’ in filename and have an ‘xyz’ file extension.</p></li>
+<li><p><strong>submit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) – specifies if calculations should be submitted.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data_sets</span><span class="p">(</span><span class="s1">&#39;./path/to/dir/&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data_sets</span><span class="p">(</span><span class="s1">&#39;./path/to/dir/&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1107,94 +940,81 @@ sets. Must contain ‘traj’ in filename and have an ‘xyz’ file extension.<
 </div>
 <div class="section" id="module-mbgdml.data.model">
 <span id="mbgdml-data-model-module"></span><h2>mbgdml.data.model module<a class="headerlink" href="#module-mbgdml.data.model" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="mbgdml.data.model.mbGDMLModel">
-<em class="property">class </em><code class="descclassname">mbgdml.data.model.</code><code class="descname">mbGDMLModel</code><a class="reference internal" href="../_modules/mbgdml/data/model.html#mbGDMLModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">mbgdml.data.model.</code><code class="sig-name descname">mbGDMLModel</code><a class="reference internal" href="../_modules/mbgdml/data/model.html#mbGDMLModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mbgdml.data.basedata.mbGDMLData" title="mbgdml.data.basedata.mbGDMLData"><code class="xref py py-class docutils literal notranslate"><span class="pre">mbgdml.data.basedata.mbGDMLData</span></code></a></p>
 <p>A class to load, inspect, and modify GDML models.</p>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.model.mbGDMLModel.model_path">
-<code class="descname">model_path</code><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel.model_path" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">model_path</code><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel.model_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Path to the npz file.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.model.mbGDMLModel.model">
-<code class="descname">model</code><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel.model" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">model</code><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel.model" title="Permalink to this definition">¶</a></dt>
 <dd><p>GDML model for predicting energies and forces.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.npzfile</span></code></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.npzfile</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="mbgdml.data.model.mbGDMLModel.add_manybody_info">
-<code class="descname">add_manybody_info</code><span class="sig-paren">(</span><em>mb_order</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/model.html#mbGDMLModel.add_manybody_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel.add_manybody_info" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_manybody_info</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mb_order</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/model.html#mbGDMLModel.add_manybody_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel.add_manybody_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds many-body (mb) information to GDML model.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mb_order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – The max order of many-body predictions removed from the dataset.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code></a> – If accessing information when no model is loaded.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mb_order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – The max order of many-body predictions removed from the dataset.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.9)"><strong>AttributeError</strong></a> – If accessing information when no model is loaded.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="mbgdml.data.model.mbGDMLModel.add_modifications">
-<code class="descname">add_modifications</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/model.html#mbGDMLModel.add_modifications"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel.add_modifications" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_modifications</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/model.html#mbGDMLModel.add_modifications"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel.add_modifications" title="Permalink to this definition">¶</a></dt>
 <dd><p>mbGDML-specific modifications of models.</p>
 <ul class="simple">
-<li>Adds system information if possible which could include <code class="docutils literal notranslate"><span class="pre">'system'</span></code>,
-<code class="docutils literal notranslate"><span class="pre">'solvent'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'cluster_size'</span></code>.</li>
-<li>Adds mbGDML version with <code class="docutils literal notranslate"><span class="pre">'mbgdml_version'</span></code>.</li>
+<li><p>Adds system information if possible which could include <code class="docutils literal notranslate"><span class="pre">'system'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'solvent'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'cluster_size'</span></code>.</p></li>
+<li><p>Adds mbGDML version with <code class="docutils literal notranslate"><span class="pre">'mbgdml_version'</span></code>.</p></li>
 </ul>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.model.mbGDMLModel.code_version">
-<code class="descname">code_version</code><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel.code_version" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">code_version</code><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel.code_version" title="Permalink to this definition">¶</a></dt>
 <dd><p>sGDML code version used to train the model.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code></a> – If accessing information when no model is loaded.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.9)"><strong>AttributeError</strong></a> – If accessing information when no model is loaded.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="mbgdml.data.model.mbGDMLModel.load">
-<code class="descname">load</code><span class="sig-paren">(</span><em>model_path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/model.html#mbGDMLModel.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel.load" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model_path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/model.html#mbGDMLModel.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.model.mbGDMLModel.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads GDML model.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to mbGDML model.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code></a> – If npz file is not a GDML model.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to mbGDML model.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.9)"><strong>AttributeError</strong></a> – If npz file is not a GDML model.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1202,165 +1022,136 @@ sets. Must contain ‘traj’ in filename and have an ‘xyz’ file extension.<
 </div>
 <div class="section" id="module-mbgdml.data.predictset">
 <span id="mbgdml-data-predictset-module"></span><h2>mbgdml.data.predictset module<a class="headerlink" href="#module-mbgdml.data.predictset" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="mbgdml.data.predictset.mbGDMLPredictset">
-<em class="property">class </em><code class="descclassname">mbgdml.data.predictset.</code><code class="descname">mbGDMLPredictset</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/predictset.html#mbGDMLPredictset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">mbgdml.data.predictset.</code><code class="sig-name descname">mbGDMLPredictset</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/predictset.html#mbGDMLPredictset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mbgdml.data.basedata.mbGDMLData" title="mbgdml.data.basedata.mbGDMLData"><code class="xref py py-class docutils literal notranslate"><span class="pre">mbgdml.data.basedata.mbGDMLData</span></code></a></p>
 <p>A predict set is a data set with mbGDML predicted energy and forces
 instead of training data.</p>
 <p>When analyzing many structures using mbGDML it is easier (and faster) to
 predict all many-body contributions once and then analyze the stored data.
 The predict set accomplishes just this.</p>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.predictset.mbGDMLPredictset.sgdml_version">
-<code class="descname">sgdml_version</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.sgdml_version" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">sgdml_version</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.sgdml_version" title="Permalink to this definition">¶</a></dt>
 <dd><p>The sGDML Python package version used for predictions.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.predictset.mbGDMLPredictset.name">
-<code class="descname">name</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.name" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">name</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>File name of the predict set.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.predictset.mbGDMLPredictset.theory">
-<code class="descname">theory</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.theory" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">theory</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.theory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Specifies the level of theory used for GDML training.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.predictset.mbGDMLPredictset.E_true">
-<code class="descname">E_true</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.E_true" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">E_true</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.E_true" title="Permalink to this definition">¶</a></dt>
 <dd><p>True energies from data set.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.predictset.mbGDMLPredictset.F_true">
-<code class="descname">F_true</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.F_true" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">F_true</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.F_true" title="Permalink to this definition">¶</a></dt>
 <dd><p>True forces from data set.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="mbgdml.data.predictset.mbGDMLPredictset.load">
-<code class="descname">load</code><span class="sig-paren">(</span><em>predictset_path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/predictset.html#mbGDMLPredictset.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.load" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">predictset_path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/predictset.html#mbGDMLPredictset.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads predict data set and loads data.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>predictset_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to predict set <code class="docutils literal notranslate"><span class="pre">.npz</span></code> file.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>predictset_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to predict set <code class="docutils literal notranslate"><span class="pre">.npz</span></code> file.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="mbgdml.data.predictset.mbGDMLPredictset.load_dataset">
-<code class="descname">load_dataset</code><span class="sig-paren">(</span><em>dataset_path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/predictset.html#mbGDMLPredictset.load_dataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.load_dataset" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">load_dataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dataset_path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/predictset.html#mbGDMLPredictset.load_dataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.load_dataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads data set in preparation to create a predict set.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dataset_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to data set.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dataset_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to data set.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="mbgdml.data.predictset.mbGDMLPredictset.load_models">
-<code class="descname">load_models</code><span class="sig-paren">(</span><em>model_paths</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/predictset.html#mbGDMLPredictset.load_models"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.load_models" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">load_models</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model_paths</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/predictset.html#mbGDMLPredictset.load_models"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.load_models" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads model(s) in preparation to create a predict set.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model_paths</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> [<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>]) – Paths to GDML models in assending order of n-body corrections, e.g.,
-[‘/path/to/1body-model.npz’, ‘/path/to/2body-model.npz’].</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model_paths</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> [<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>]) – Paths to GDML models in assending order of n-body corrections, e.g.,
+[‘/path/to/1body-model.npz’, ‘/path/to/2body-model.npz’].</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="mbgdml.data.predictset.mbGDMLPredictset.nbody_predictions">
-<code class="descname">nbody_predictions</code><span class="sig-paren">(</span><em>nbody_order</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/predictset.html#mbGDMLPredictset.nbody_predictions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.nbody_predictions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">nbody_predictions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nbody_order</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/predictset.html#mbGDMLPredictset.nbody_predictions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.nbody_predictions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Energies and forces of all structures up to and including a specific
 n-body order.</p>
 <p>Predict sets have data that is broken down into many-body contributions.
 This function sums the many-body contributions up to the specified
 level; for example, <code class="docutils literal notranslate"><span class="pre">3</span></code> returns the energy and force predictions when
 including one, two, and three body contributions/corrections.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nbody_order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Highest many-body order corrections to include.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
-<li><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> – Energy of structures up to and including n-order corrections.</li>
-<li><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> – Forces of structures up to an including n-order corrections.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>nbody_order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Highest many-body order corrections to include.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> – Energy of structures up to and including n-order corrections.</p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> – Forces of structures up to an including n-order corrections.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.predictset.mbGDMLPredictset.predictset">
-<code class="descname">predictset</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.predictset" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">predictset</code><a class="headerlink" href="#mbgdml.data.predictset.mbGDMLPredictset.predictset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Contains all data as <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> objects.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1368,141 +1159,121 @@ including one, two, and three body contributions/corrections.</p>
 </div>
 <div class="section" id="module-mbgdml.data.structure">
 <span id="mbgdml-data-structure-module"></span><h2>mbgdml.data.structure module<a class="headerlink" href="#module-mbgdml.data.structure" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="mbgdml.data.structure.structure">
-<em class="property">class </em><code class="descclassname">mbgdml.data.structure.</code><code class="descname">structure</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/structure.html#structure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.structure.structure" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">mbgdml.data.structure.</code><code class="sig-name descname">structure</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/structure.html#structure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.structure.structure" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Basics of structures defined by positions of atoms.</p>
 <p>Makes using structures with mbGDML easier by providing a
 simple-to-use class to automate parsing of xyz or calculation files or
 manually specifying atoms and coordinates.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to xyz file.</td>
-</tr>
-</tbody>
-</table>
-<dl class="attribute">
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to xyz file.</p>
+</dd>
+</dl>
+<dl class="py method">
 <dt id="mbgdml.data.structure.structure.R">
-<code class="descname">R</code><a class="headerlink" href="#mbgdml.data.structure.structure.R" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">R</code><a class="headerlink" href="#mbgdml.data.structure.structure.R" title="Permalink to this definition">¶</a></dt>
 <dd><p>Atomic coordinates of structure(s).</p>
 <p>A <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> with shape of <code class="docutils literal notranslate"><span class="pre">(m,</span> <span class="pre">n,</span> <span class="pre">3)</span></code> where <code class="docutils literal notranslate"><span class="pre">m</span></code> is the
 number of structures and <code class="docutils literal notranslate"><span class="pre">n</span></code> is the number of atoms with three
 Cartesian components.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.structure.structure.R_num">
-<code class="descname">R_num</code><a class="headerlink" href="#mbgdml.data.structure.structure.R_num" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">R_num</code><a class="headerlink" href="#mbgdml.data.structure.structure.R_num" title="Permalink to this definition">¶</a></dt>
 <dd><p>The number of structures.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.structure.structure.molecules">
-<code class="descname">molecules</code><a class="headerlink" href="#mbgdml.data.structure.structure.molecules" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">molecules</code><a class="headerlink" href="#mbgdml.data.structure.structure.molecules" title="Permalink to this definition">¶</a></dt>
 <dd><p>Molecules in structure.</p>
 <p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> keys specifying the molecule number starting from 0 with
 nested <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a> as values which contain</p>
-<dl class="docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">'z'</span></code></dt>
-<dd>A <code class="docutils literal notranslate"><span class="pre">(n,)</span></code> shape array of type <code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int32</span></code> containing
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'z'</span></code></dt><dd><p>A <code class="docutils literal notranslate"><span class="pre">(n,)</span></code> shape array of type <code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int32</span></code> containing
 atomic numbers of atoms in the structures in order as they
-appear.</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">'R'</span></code></dt>
-<dd>A <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> with shape of <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">3)</span></code> where <code class="docutils literal notranslate"><span class="pre">n</span></code> is
-the number of atoms with three Cartesian components.</dd>
+appear.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">'R'</span></code></dt><dd><p>A <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> with shape of <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">3)</span></code> where <code class="docutils literal notranslate"><span class="pre">n</span></code> is
+the number of atoms with three Cartesian components.</p>
+</dd>
 </dl>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="mbgdml.data.structure.structure.parse">
-<code class="descname">parse</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/structure.html#structure.parse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.structure.structure.parse" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/structure.html#structure.parse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.structure.structure.parse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parses file using cclib for atomic numbers and xyz coordinates.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to xyz file.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to xyz file.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="mbgdml.data.structure.structure.partitions">
-<code class="descname">partitions</code><span class="sig-paren">(</span><em>max_nbody=4</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/structure.html#structure.partitions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.structure.structure.partitions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">partitions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">max_nbody</span><span class="o">=</span><span class="default_value">4</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/structure.html#structure.partitions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.structure.structure.partitions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Partitions of the structure.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>max_nbody</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional) – Highest order of n-body structure to include.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">All nonrepeating molecule combinations from original cluster with
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>max_nbody</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional) – Highest order of n-body structure to include.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>All nonrepeating molecule combinations from original cluster with
 keys being uppercase concatenations of molecule labels and values
-being the string of coordinates.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></td>
-</tr>
-</tbody>
-</table>
+being the string of coordinates.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="mbgdml.data.structure.structure.write_xyz">
-<code class="descname">write_xyz</code><span class="sig-paren">(</span><em>name</em>, <em>save_dir='./'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/structure.html#structure.write_xyz"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.structure.structure.write_xyz" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">write_xyz</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">save_dir</span><span class="o">=</span><span class="default_value">'./'</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mbgdml/data/structure.html#structure.write_xyz"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mbgdml.data.structure.structure.write_xyz" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes xyz file of structure</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – File name.</li>
-<li><strong>save_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to directory to save file.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – File name.</p></li>
+<li><p><strong>save_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to directory to save file.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.structure.structure.z">
-<code class="descname">z</code><a class="headerlink" href="#mbgdml.data.structure.structure.z" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">z</code><a class="headerlink" href="#mbgdml.data.structure.structure.z" title="Permalink to this definition">¶</a></dt>
 <dd><p>Atomic numbers of all atoms.</p>
 <p>A <code class="docutils literal notranslate"><span class="pre">(n,)</span></code> shape array of type <code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int32</span></code> containing atomic
 numbers of atoms in the structures in order as they appear.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py method">
 <dt id="mbgdml.data.structure.structure.z_num">
-<code class="descname">z_num</code><a class="headerlink" href="#mbgdml.data.structure.structure.z_num" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="sig-name descname">z_num</code><a class="headerlink" href="#mbgdml.data.structure.structure.z_num" title="Permalink to this definition">¶</a></dt>
 <dd><p>The number of atoms.</p>
 </dd></dl>
 

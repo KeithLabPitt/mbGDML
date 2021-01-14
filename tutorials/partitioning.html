@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   
@@ -29,10 +29,9 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -169,329 +168,274 @@
   <div class="section" id="partitioning">
 <h1>Partitioning<a class="headerlink" href="#partitioning" title="Permalink to this headline">¶</a></h1>
 <p>TODO</p>
-<dl class="method">
+<dl class="py method">
 <dt id="mbgdml.data.calculation.PartitionOutput">
-<code class="descclassname">calculation.</code><code class="descname">PartitionOutput</code><span class="sig-paren">(</span><em>cluster_label</em>, <em>partition_label</em>, <em>md_temp</em>, <em>grad_e_unit</em>, <em>grad_r_unit</em>, <em>md_iter=0</em>, <em>e_unit='kcal/mol'</em>, <em>r_unit='Angstrom'</em>, <em>theory='unknown'</em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">calculation.</code><code class="sig-name descname">PartitionOutput</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cluster_label</span></em>, <em class="sig-param"><span class="n">partition_label</span></em>, <em class="sig-param"><span class="n">md_temp</span></em>, <em class="sig-param"><span class="n">grad_e_unit</span></em>, <em class="sig-param"><span class="n">grad_r_unit</span></em>, <em class="sig-param"><span class="n">md_iter</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">e_unit</span><span class="o">=</span><span class="default_value">'kcal/mol'</span></em>, <em class="sig-param"><span class="n">r_unit</span><span class="o">=</span><span class="default_value">'Angstrom'</span></em>, <em class="sig-param"><span class="n">theory</span><span class="o">=</span><span class="default_value">'unknown'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mbgdml.data.calculation.PartitionOutput" title="Permalink to this definition">¶</a></dt>
 <dd><p>Quantum chemistry output file for all MD steps of a single partition.</p>
 <p>Output file that contains electronic energies and gradients of the same
 partition from a single MD trajectory. For a single dimer partition of a
 n step MD trajectory would have n coordinates, single point energies,
 and gradients.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>output_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to computational chemistry output file that contains energies
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to computational chemistry output file that contains energies
 and gradients (preferably ab initio) of all MD steps of a
-single partition.</li>
-<li><strong>cluster_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Identifies the cluster where this partition originates from. Specifies
+single partition.</p></li>
+<li><p><strong>cluster_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Identifies the cluster where this partition originates from. Specifies
 at least the solvent and size of the parent cluster. For example, if
 this partition is the number 23 structure from ABCluster
-for a four water cluster, this could be <code class="docutils literal notranslate"><span class="pre">'4H2O.abc23'</span></code>.</li>
-<li><strong>partition_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Specifies the molecules composing this partition. Typically we use a
+for a four water cluster, this could be <code class="docutils literal notranslate"><span class="pre">'4H2O.abc23'</span></code>.</p></li>
+<li><p><strong>partition_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Specifies the molecules composing this partition. Typically we use a
 single uppercase letter per molecule in the order it appears in the
 xyz coordinates. For example, a partition from a 4H2O cluster with the
-first and third water molecules would be <code class="docutils literal notranslate"><span class="pre">'AC'</span></code>.</li>
-<li><strong>md_temp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – The set point for the MD thermostat. This only affects labeling and
+first and third water molecules would be <code class="docutils literal notranslate"><span class="pre">'AC'</span></code>.</p></li>
+<li><p><strong>md_temp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – The set point for the MD thermostat. This only affects labeling and
 directory organization as it has a significant impact on geometry
-sampling.</li>
-<li><strong>md_iter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional) – Specifies the MD iteration for labeling and data-tracking purposes.
-Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</li>
-<li><strong>e_unit</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Desired units of energy. Available units implemented are <code class="docutils literal notranslate"><span class="pre">'eV'</span></code>,
+sampling.</p></li>
+<li><p><strong>md_iter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional) – Specifies the MD iteration for labeling and data-tracking purposes.
+Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+<li><p><strong>e_unit</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Desired units of energy. Available units implemented are <code class="docutils literal notranslate"><span class="pre">'eV'</span></code>,
 <code class="docutils literal notranslate"><span class="pre">'hartree'</span></code>, <code class="docutils literal notranslate"><span class="pre">'kcal/mol'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'kJ/mol'</span></code>. Defaults to
-<code class="docutils literal notranslate"><span class="pre">'kcal/mol'</span></code>.</li>
-<li><strong>r_unit</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Desired units of distance. Available units implemented in cclib’s
-convertor function are <code class="docutils literal notranslate"><span class="pre">'Angstrom'</span></code> and <code class="docutils literal notranslate"><span class="pre">'bohr'</span></code>.</li>
-<li><strong>theory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Level of theory for the calculations. For example, <code class="docutils literal notranslate"><span class="pre">'mp2.def2tzvp'</span></code>.
-Defaults to <code class="docutils literal notranslate"><span class="pre">'unknown'</span></code>.</li>
+<code class="docutils literal notranslate"><span class="pre">'kcal/mol'</span></code>.</p></li>
+<li><p><strong>r_unit</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Desired units of distance. Available units implemented in cclib’s
+convertor function are <code class="docutils literal notranslate"><span class="pre">'Angstrom'</span></code> and <code class="docutils literal notranslate"><span class="pre">'bohr'</span></code>.</p></li>
+<li><p><strong>theory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional) – Level of theory for the calculations. For example, <code class="docutils literal notranslate"><span class="pre">'mp2.def2tzvp'</span></code>.
+Defaults to <code class="docutils literal notranslate"><span class="pre">'unknown'</span></code>.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>Typical GDML units are kcal/mol and kcal/mol/Angstrom for energies
 and forces, respectively.</p>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.calculation.output_path">
-<code class="descname">output_path</code><a class="headerlink" href="#mbgdml.data.calculation.output_path" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">output_path</code><a class="headerlink" href="#mbgdml.data.calculation.output_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Path to computational chemistry output file that contains energies
 and gradients (preferably ab initio) of all MD steps of a
 single partition.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.cluster_label">
-<code class="descclassname">mbgdml.data.</code><code class="descname">cluster_label</code><a class="headerlink" href="#mbgdml.data.cluster_label" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">mbgdml.data.</code><code class="sig-name descname">cluster_label</code><a class="headerlink" href="#mbgdml.data.cluster_label" title="Permalink to this definition">¶</a></dt>
 <dd><p>Identifies the cluster where this partition originates from. Specifies
 at least the solvent and size of the parent cluster. For example, if
 this partition is the number 23 structure from ABCluster
 for a four water cluster, this could be ‘4H2O.abc23’.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.partition_label">
-<code class="descclassname">mbgdml.data.</code><code class="descname">partition_label</code><a class="headerlink" href="#mbgdml.data.partition_label" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">mbgdml.data.</code><code class="sig-name descname">partition_label</code><a class="headerlink" href="#mbgdml.data.partition_label" title="Permalink to this definition">¶</a></dt>
 <dd><p>Specifies the molecules composing this partition. Typically we use a
 single uppercase letter per molecule in the order it appears in the
 xyz coordinates. For example, a partition from a 4H2O cluster with the
 first and third water molecules would be ‘AC’.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.md_temp">
-<code class="descclassname">mbgdml.data.</code><code class="descname">md_temp</code><a class="headerlink" href="#mbgdml.data.md_temp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">mbgdml.data.</code><code class="sig-name descname">md_temp</code><a class="headerlink" href="#mbgdml.data.md_temp" title="Permalink to this definition">¶</a></dt>
 <dd><p>The set point for the MD thermostat. This only affects labeling and
 directory organization as it has a significant impact on geometry
 sampling.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.md_iter">
-<code class="descclassname">mbgdml.data.</code><code class="descname">md_iter</code><a class="headerlink" href="#mbgdml.data.md_iter" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">mbgdml.data.</code><code class="sig-name descname">md_iter</code><a class="headerlink" href="#mbgdml.data.md_iter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Specifies the MD iteration for labeling and data-tracking purposes.
 Defaults to 0.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.e_unit">
-<code class="descclassname">mbgdml.data.</code><code class="descname">e_unit</code><a class="headerlink" href="#mbgdml.data.e_unit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">mbgdml.data.</code><code class="sig-name descname">e_unit</code><a class="headerlink" href="#mbgdml.data.e_unit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Desired units of energy. Available units implemented are ‘eV’,
 ‘hartree’, ‘kcal/mol’, and ‘kJ/mol’. Defaults to ‘kcal/mol’.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.r_unit">
-<code class="descclassname">mbgdml.data.</code><code class="descname">r_unit</code><a class="headerlink" href="#mbgdml.data.r_unit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">mbgdml.data.</code><code class="sig-name descname">r_unit</code><a class="headerlink" href="#mbgdml.data.r_unit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Desired units of distance. Available units implemented in cclib’s
 convertor function are ‘Angstrom’ and ‘bohr’.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.output_name">
-<code class="descclassname">mbgdml.data.</code><code class="descname">output_name</code><a class="headerlink" href="#mbgdml.data.output_name" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">mbgdml.data.</code><code class="sig-name descname">output_name</code><a class="headerlink" href="#mbgdml.data.output_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>The name of the quantum chemistry output file (no extension).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.partition_size">
-<code class="descclassname">mbgdml.data.</code><code class="descname">partition_size</code><a class="headerlink" href="#mbgdml.data.partition_size" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">mbgdml.data.</code><code class="sig-name descname">partition_size</code><a class="headerlink" href="#mbgdml.data.partition_size" title="Permalink to this definition">¶</a></dt>
 <dd><p>The number of solvent molecules in the partition.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.cclib_data">
-<code class="descclassname">mbgdml.data.</code><code class="descname">cclib_data</code><a class="headerlink" href="#mbgdml.data.cclib_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">mbgdml.data.</code><code class="sig-name descname">cclib_data</code><a class="headerlink" href="#mbgdml.data.cclib_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Contains all data parsed from output file.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cclib.parser.data.ccData`</span></code></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cclib.parser.data.ccData`</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.z">
-<code class="descclassname">mbgdml.data.</code><code class="descname">z</code><a class="headerlink" href="#mbgdml.data.z" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">mbgdml.data.</code><code class="sig-name descname">z</code><a class="headerlink" href="#mbgdml.data.z" title="Permalink to this definition">¶</a></dt>
 <dd><p>A (n,) array containing n atomic numbers.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.R">
-<code class="descclassname">mbgdml.data.</code><code class="descname">R</code><a class="headerlink" href="#mbgdml.data.R" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">mbgdml.data.</code><code class="sig-name descname">R</code><a class="headerlink" href="#mbgdml.data.R" title="Permalink to this definition">¶</a></dt>
 <dd><p>A (m, n, 3) array containing the atomic coordinates
 of n atoms of m MD steps.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.E">
-<code class="descclassname">mbgdml.data.</code><code class="descname">E</code><a class="headerlink" href="#mbgdml.data.E" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">mbgdml.data.</code><code class="sig-name descname">E</code><a class="headerlink" href="#mbgdml.data.E" title="Permalink to this definition">¶</a></dt>
 <dd><p>A (m,) array containing the energies of m structures.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.G">
-<code class="descclassname">mbgdml.data.</code><code class="descname">G</code><a class="headerlink" href="#mbgdml.data.G" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">mbgdml.data.</code><code class="sig-name descname">G</code><a class="headerlink" href="#mbgdml.data.G" title="Permalink to this definition">¶</a></dt>
 <dd><p>A (m, n, 3) array containing the atomic gradients of n atoms of m MD
 steps.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.F">
-<code class="descclassname">mbgdml.data.</code><code class="descname">F</code><a class="headerlink" href="#mbgdml.data.F" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">mbgdml.data.</code><code class="sig-name descname">F</code><a class="headerlink" href="#mbgdml.data.F" title="Permalink to this definition">¶</a></dt>
 <dd><p>A (m, n, 3) array containing the atomic forces
 of n atoms of m MD steps. Simply the negative of grads.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.system">
-<code class="descclassname">mbgdml.data.</code><code class="descname">system</code><a class="headerlink" href="#mbgdml.data.system" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">mbgdml.data.</code><code class="sig-name descname">system</code><a class="headerlink" href="#mbgdml.data.system" title="Permalink to this definition">¶</a></dt>
 <dd><p>From mbgdml.solvents and designates the system. Currently
 only ‘solvent’ is implemented.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="mbgdml.data.solvent_info">
-<code class="descclassname">mbgdml.data.</code><code class="descname">solvent_info</code><a class="headerlink" href="#mbgdml.data.solvent_info" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">mbgdml.data.</code><code class="sig-name descname">solvent_info</code><a class="headerlink" href="#mbgdml.data.solvent_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>If the system is ‘solvent’, contains information
 about the system and solvent. ‘solvent_name’, ‘solvent_label’,
 ‘solvent_molec_size’, and ‘cluster_size’.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>mbGDML uses the <a class="reference external" href="https://cclib.github.io/">cclib</a> Python package to parse
 data from output files. The following packages are supported</p>
-<ul class="last simple">
-<li><a class="reference external" href="https://www.scm.com/product/adf/">ADF</a> (versions 2007 and 2013)</li>
-<li><a class="reference external" href="http://daltonprogram.org">DALTON</a> (versions 2013 and 2015)</li>
-<li><a class="reference external" href="http://classic.chem.msu.su/gran/gamess/">Firefly</a>, formerly known as PC GAMESS (version 8.0)</li>
-<li><a class="reference external" href="http://www.msg.ameslab.gov/GAMESS/GAMESS.html">GAMESS (US)</a> (versions 2014 and 2017)</li>
-<li><a class="reference external" href="http://www.cfs.dl.ac.uk">GAMESS-UK</a> (versions 7.0 and 8.0)</li>
-<li><a class="reference external" href="http://www.gaussian.com">Gaussian</a> (versions 09 and 16)</li>
-<li><a class="reference external" href="https://www.schrodinger.com/jaguar">Jaguar</a> (versions 7.0 and 8.3)</li>
-<li><a class="reference external" href="https://gitlab.com/Molcas/OpenMolcas">Molcas</a> (version 18.0)</li>
-<li><a class="reference external" href="http://www.molpro.net/">Molpro</a> (versions 2006 and 2012)</li>
-<li><a class="reference external" href="http://openmopac.net/">MOPAC</a> (version 2016)</li>
-<li><a class="reference external" href="http://www.nwchem-sw.org/index.php/Main_Page">NWChem</a> (versions 6.0, 6.1, 6.5 and 6.6)</li>
-<li><a class="reference external" href="https://orcaforum.cec.mpg.de/">ORCA</a> (versions 4.0 and 4.1)</li>
-<li><a class="reference external" href="http://psicode.org/">Psi4</a> (versions 1.0 and 1.2.1)</li>
-<li><a class="reference external" href="http://q-chem.com/">Q-Chem</a> (versions 4.2 and 5.1)</li>
-<li><a class="reference external" href="http://www.turbomole-gmbh.com/">Turbomole</a> (versions 5.9 and 7.2)</li>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.scm.com/product/adf/">ADF</a> (versions 2007 and 2013)</p></li>
+<li><p><a class="reference external" href="http://daltonprogram.org">DALTON</a> (versions 2013 and 2015)</p></li>
+<li><p><a class="reference external" href="http://classic.chem.msu.su/gran/gamess/">Firefly</a>, formerly known as PC GAMESS (version 8.0)</p></li>
+<li><p><a class="reference external" href="http://www.msg.ameslab.gov/GAMESS/GAMESS.html">GAMESS (US)</a> (versions 2014 and 2017)</p></li>
+<li><p><a class="reference external" href="http://www.cfs.dl.ac.uk">GAMESS-UK</a> (versions 7.0 and 8.0)</p></li>
+<li><p><a class="reference external" href="http://www.gaussian.com">Gaussian</a> (versions 09 and 16)</p></li>
+<li><p><a class="reference external" href="https://www.schrodinger.com/jaguar">Jaguar</a> (versions 7.0 and 8.3)</p></li>
+<li><p><a class="reference external" href="https://gitlab.com/Molcas/OpenMolcas">Molcas</a> (version 18.0)</p></li>
+<li><p><a class="reference external" href="http://www.molpro.net/">Molpro</a> (versions 2006 and 2012)</p></li>
+<li><p><a class="reference external" href="http://openmopac.net/">MOPAC</a> (version 2016)</p></li>
+<li><p><a class="reference external" href="http://www.nwchem-sw.org/index.php/Main_Page">NWChem</a> (versions 6.0, 6.1, 6.5 and 6.6)</p></li>
+<li><p><a class="reference external" href="https://orcaforum.cec.mpg.de/">ORCA</a> (versions 4.0 and 4.1)</p></li>
+<li><p><a class="reference external" href="http://psicode.org/">Psi4</a> (versions 1.0 and 1.2.1)</p></li>
+<li><p><a class="reference external" href="http://q-chem.com/">Q-Chem</a> (versions 4.2 and 5.1)</p></li>
+<li><p><a class="reference external" href="http://www.turbomole-gmbh.com/">Turbomole</a> (versions 5.9 and 7.2)</p></li>
 </ul>
 </div>
 </div>
