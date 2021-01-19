@@ -265,7 +265,7 @@
         <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
             <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">expression</span> <span class="ow">in</span> <span class="n">filename</span><span class="p">:</span>
-                <span class="n">files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+                <span class="n">files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="n">f</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">files</span></div>
 
 <div class="viewcode-block" id="natsort_list"><a class="viewcode-back" href="../../doc/mbgdml.html#mbgdml.utils.natsort_list">[docs]</a><span class="k">def</span> <span class="nf">natsort_list</span><span class="p">(</span><span class="n">unsorted_list</span><span class="p">):</span>
